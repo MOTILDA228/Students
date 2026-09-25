@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 56. Разбор пробного ОГЭ №2</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 56. Разбор пробного ОГЭ №2</h1><div class="ls-sub">Злата · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №1–25</span><span class="ls-tag">повторение</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Практика на уроке</a><a href="#ls-s3">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> как урок 51: сначала Злата оценивает свою часть 2 по критериям, затем разбор ошибок части 1 и двойники. Сравнить баллы с пробником №1.</p>
+<ol class="ls-steps">
+  <li>15 мин — самопроверка части 2.</li>
+  <li>10 мин — ошибки части 1.</li>
+  <li>30 мин — двойники.</li>
+  <li>5 мин — записать динамику в <code>progress.md</code>.</li>
+</ol>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Двойник №5</span><br> Поездка на поезде стоит 2400 руб., на автомобиле — 1560 руб. На сколько процентов автомобиль дешевле?</div>
+<details><summary>Решение</summary>\(\frac{840}{2400} = 35\%\).
+<p class="ls-answer">Ответ: 35</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Двойник №14</span><br> Тело за первую секунду проходит 4 м, а за каждую следующую — на 8 м больше. За сколько секунд оно пройдёт 196 м?</div>
+<details><summary>Решение</summary>\(S_n = 4n^2 = 196\), \(n = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Двойник №15</span><br> В треугольнике \(ABC\) \(\angle A = 30^\circ\), \(\angle B = 45^\circ\), \(BC = 4\sqrt{2}\). Найдите \(AC\).</div>
+<details><summary>Решение</summary>\(\frac{AC}{\sin45^\circ} = \frac{BC}{\sin30^\circ} = 8\sqrt{2}\): \(AC = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Двойник №20</span><br> Решите неравенство \((x + 1)^2 > \sqrt{7}(x + 1)\). Сколько целых решений на отрезке \([-5;\ 5]\)?</div>
+<details><summary>Решение</summary>\((x + 1)(x + 1 - \sqrt{7}) > 0\): \(x < -1\) или \(x > \sqrt{7} - 1 \approx 1{,}65\). На \([-5;\ 5]\): \(-5 \ldots -2\) (4) и 2…5 (4) — 8.
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Двойник №21</span><br> Первая труба пропускает на 3 литра в минуту меньше второй. Резервуар 180 литров она заполняет на 3 минуты дольше, чем вторая заполняет резервуар 162 литра. Сколько литров в минуту пропускает первая труба?</div>
+<details><summary>Решение</summary>\(\frac{180}{x} - \frac{162}{x + 3} = 3\) → \(180x + 540 - 162x = 3x^2 + 9x\) → \(x^2 - 3x - 180 = 0\), \(x = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Двойник №23</span><br> Биссектрисы углов \(C\) и \(D\) параллелограмма \(ABCD\) пересекаются в точке \(M\) на стороне \(AB\). Найдите \(CD\), если \(BC = 9\).</div>
+<details><summary>Решение</summary>\(BM = BC = 9\), \(AM = AD = 9\), \(CD = AB = 18\).
+<p class="ls-answer">Ответ: 18</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Двойник №25</span><br> В треугольнике \(ABC\) \(AB = 10\), \(BC = 14\), \(AC = 12\), \(BD\) — биссектриса. Найдите \(DC\).</div>
+<details><summary>Решение</summary>\(\frac{AD}{DC} = \frac{10}{14}\): \(DC = 12\cdot\frac{14}{24} = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Двойник №22</span><br> Постройте график \(y = \begin{cases} x^2 - 2x + 1, & x \le 3 \\ \frac{12}{x}, & x > 3 \end{cases}\). При каких \(m\) прямая \(y = m\) имеет ровно две общие точки? Запишите количество целых таких \(m\).</div>
+<details><summary>Решение</summary>Парабола \((x - 1)^2\) при \(x \le 3\): от \(+\infty\) вниз до 0 (при \(x = 1\)) и вверх до 4 (при \(x = 3\)). Гипербола при \(x > 3\): значения \((0;\ 4)\). \(0 < m < 4\): 3 точки; \(m = 4\): 2 точки (парабола: \(x = 3\) и \(x = -1\)); \(m > 4\): 1 точка; \(m = 0\): 1. Две точки только при \(m = 4\): одно целое.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Двойник №24</span><br> Докажите, что медиана делит треугольник на два равновеликих треугольника.</div>
+<details><summary>Решение</summary>У треугольников \(ABM\) и \(CBM\) равны основания \(AM = MC\) и общая высота из \(B\) ⇒ площади равны.
+<p class="ls-answer">Ответ: доказательство</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Двойник №12</span><br> \(P = \frac{U^2}{R}\). Найдите \(R\), если \(U = 15\), \(P = 45\).</div>
+<details><summary>Решение</summary>\(R = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 54)</span> Сколько целых решений у неравенства \(x^2 - x - 20 < 0\)?</div>
+<details><summary>Решение</summary>\((-4;\ 5)\): 8.
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 52)</span> Решите уравнение \((x^2 + x)^2 - 4(x^2 + x) - 12 = 0\). Запишите сумму корней.</div>
+<details><summary>Решение</summary>\(t = 6\) или \(t = -2\). \(x^2 + x - 6 = 0\): 2, \(-3\); \(x^2 + x + 2 = 0\) — нет корней. Сумма \(-1\).
+<p class="ls-answer">Ответ: -1</p></details></div>
+</section>
+<nav class="ls-foot"><a href="55-probnyy-oge-2.html">← Урок 55</a><a href="00-index.html">Все уроки</a><a href="57-marafon-20-22.html">Урок 57 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 55. Пробный ОГЭ №2</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 55. Пробный ОГЭ №2</h1><div class="ls-sub">Злата · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №1–25</span><span class="ls-tag">пробник</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Условие к заданиям 1–5</a><a href="#ls-s3">Часть 1</a><a href="#ls-s4">Часть 2</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Формат как у пробника №1:</b> на уроке — часть 1 (60 мин), дома — часть 2 одним подходом (≈ 1,5 ч). Разбор — урок 56.</p>
+<p><b>Шкала:</b> 0–7 — «2»; 8–14 — «3»; 15–21 — «4»; 22–31 — «5» (не меньше 2 баллов за геометрию). Сравнить с пробником №1 по номерам и записать в <code>progress.md</code> и журнал.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Условие к заданиям 1–5</h2>
+<p>Семья (двое взрослых и ребёнок) едет на выходные в деревню за 280 км. Варианты:</p>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Транспорт</th><th>Стоимость</th><th>Время в пути</th></tr>
+<tr><td>поезд</td><td>взрослый билет 780 руб., детский — 50% взрослого</td><td>4 ч</td></tr>
+<tr><td>автобус</td><td>взрослый 650 руб., детский 400 руб.</td><td>5 ч</td></tr>
+<tr><td>автомобиль</td><td>расход 7,5 л на 100 км, бензин 58 руб./л</td><td>3,5 ч</td></tr>
+</table></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Часть 1</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">ОГЭ №1</span><br> Сколько рублей стоит поездка семьи в одну сторону на поезде?</div>
+<details><summary>Решение</summary>\(2\cdot780 + 390 = 1950\).
+<p class="ls-answer">Ответ: 1950</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">ОГЭ №2</span><br> Сколько рублей стоит поездка семьи в одну сторону на автобусе?</div>
+<details><summary>Решение</summary>\(1300 + 400 = 1700\).
+<p class="ls-answer">Ответ: 1700</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">ОГЭ №3</span><br> Сколько рублей стоит бензин на поездку в одну сторону на автомобиле?</div>
+<details><summary>Решение</summary>\(280\cdot\frac{7{,}5}{100} = 21\) л; \(21\cdot58 = 1218\).
+<p class="ls-answer">Ответ: 1218</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">ОГЭ №4</span><br> Какова средняя скорость автобуса (км/ч)?</div>
+<details><summary>Решение</summary>\(280 : 5 = 56\).
+<p class="ls-answer">Ответ: 56</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">ОГЭ №5</span><br> На сколько процентов поездка на автомобиле дешевле поездки на поезде? Ответ округлите до целых.</div>
+<details><summary>Решение</summary>\(\frac{1950 - 1218}{1950}\cdot100\% \approx 37{,}5\% \approx 38\%\).
+<p class="ls-answer">Ответ: 38</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">ОГЭ №6</span><br> Найдите значение выражения \(-0{,}6\cdot(-10)^3 + 4\cdot(-10)^2 - 57\).</div>
+<details><summary>Решение</summary>\(600 + 400 - 57 = 943\).
+<p class="ls-answer">Ответ: 943</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">ОГЭ №7</span><br> Одно из чисел \(\frac{17}{6}\), \(\frac{19}{6}\), \(\frac{22}{6}\), \(\frac{25}{6}\) принадлежит отрезку \([3;\ 3{,}5]\). Какое? Запишите номер.</div>
+<details><summary>Решение</summary>\(\frac{19}{6} \approx 3{,}17\) — номер 2.
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-task-src">ОГЭ №8</span><br> Найдите значение выражения \(\frac{b^{-3}\cdot(b^{2})^{4}}{b^{6}}\) при \(b = \frac{1}{4}\).</div>
+<details><summary>Решение</summary>\(b^{-1} = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-task-src">ОГЭ №9</span><br> Решите уравнение \(4x^2 - 25 = 0\). Запишите больший корень.</div>
+<details><summary>Решение</summary>\(x = \pm2{,}5\).
+<p class="ls-answer">Ответ: 2,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-task-src">ОГЭ №10</span><br> Игральную кость бросают дважды. Найдите вероятность того, что оба раза выпадет число, большее 3.</div>
+<details><summary>Решение</summary>\(\frac{3}{6}\cdot\frac{3}{6} = 0{,}25\).
+<p class="ls-answer">Ответ: 0,25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-task-src">ОГЭ №11</span><br> Установите соответствие: 1) \(y = -\frac{4}{x}\); 2) \(y = -x^2 - 1\); 3) \(y = x - 1\).
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 144 162" width="144" height="162" xmlns="http://www.w3.org/2000/svg" role="img"><defs><clipPath id="ls-clip-86"><rect x="18" y="18" width="108" height="126"/></clipPath></defs><line x1="18" y1="144" x2="18" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="36" y1="144" x2="36" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="54" y1="144" x2="54" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="72" y1="144" x2="72" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="144" x2="90" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="108" y1="144" x2="108" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="126" y1="144" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="144" x2="126" y2="144" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="126" x2="126" y2="126" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="108" x2="126" y2="108" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="90" x2="126" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="126" y2="72" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="54" x2="126" y2="54" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="36" x2="126" y2="36" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="18" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="136" y2="72" stroke="currentColor" stroke-width="1.5"/><polygon points="140,72 131,68 131,76" fill="currentColor"/><text x="132" y="87" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">x</text><line x1="72" y1="144" x2="72" y2="8" stroke="currentColor" stroke-width="1.5"/><polygon points="72,4 68,13 76,13" fill="currentColor"/><text x="60" y="12" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">y</text><text x="63" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">0</text><text x="90" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><text x="63" y="54" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><polyline points="18,252 18.3,250.2 18.6,248.4 18.9,246.6 19.2,244.9 19.5,243.1 19.8,241.4 20.1,239.6 20.4,237.9 20.7,236.2 21,234.5 21.3,232.8 21.6,231.1 21.9,229.4 22.2,227.8 22.5,226.1 22.8,224.5 23.1,222.8 23.4,221.2 23.7,219.6 24,218 24.3,216.4 24.6,214.8 24.9,213.2 25.2,211.7 25.5,210.1 25.8,208.6 26.1,207 26.4,205.5 26.7,204 27,202.5 27.3,201 27.6,199.5 27.9,198 28.2,196.6 28.5,195.1 28.8,193.7 29.1,192.2 29.4,190.8 29.7,189.4 30,188 30.3,186.6 30.6,185.2 30.9,183.8 31.2,182.5 31.5,181.1 31.8,179.8 32.1,178.4 32.4,177.1 32.7,175.8 33,174.5 33.3,173.2 33.6,171.9 33.9,170.6 34.2,169.4 34.5,168.1 34.8,166.9 35.1,165.6 35.4,164.4 35.7,163.2 36,162 36.3,160.8 36.6,159.6 36.9,158.4 37.2,157.3 37.5,156.1 37.8,155 38.1,153.8 38.4,152.7 38.7,151.6 39,150.5 39.3,149.4 39.6,148.3 39.9,147.2 40.2,146.2 40.5,145.1 40.8,144.1 41.1,143 41.4,142 41.7,141 42,140 42.3,139 42.6,138 42.9,137 43.2,136.1 43.5,135.1 43.8,134.2 44.1,133.2 44.4,132.3 44.7,131.4 45,130.5 45.3,129.6 45.6,128.7 45.9,127.8 46.2,127 46.5,126.1 46.8,125.3 47.1,124.4 47.4,123.6 47.7,122.8 48,122 48.3,121.2 48.6,120.4 48.9,119.6 49.2,118.9 49.5,118.1 49.8,117.4 50.1,116.6 50.4,115.9 50.7,115.2 51,114.5 51.3,113.8 51.6,113.1 51.9,112.4 52.2,111.8 52.5,111.1 52.8,110.5 53.1,109.8 53.4,109.2 53.7,108.6 54,108 54.3,107.4 54.6,106.8 54.9,106.2 55.2,105.7 55.5,105.1 55.8,104.6 56.1,104 56.4,103.5 56.7,103 57,102.5 57.3,102 57.6,101.5 57.9,101 58.2,100.6 58.5,100.1 58.8,99.7 59.1,99.2 59.4,98.8 59.7,98.4 60,98 60.3,97.6 60.6,97.2 60.9,96.8 61.2,96.5 61.5,96.1 61.8,95.8 62.1,95.4 62.4,95.1 62.7,94.8 63,94.5 63.3,94.2 63.6,93.9 63.9,93.6 64.2,93.4 64.5,93.1 64.8,92.9 65.1,92.6 65.4,92.4 65.7,92.2 66,92 66.3,91.8 66.6,91.6 66.9,91.4 67.2,91.3 67.5,91.1 67.8,91 68.1,90.8 68.4,90.7 68.7,90.6 69,90.5 69.3,90.4 69.6,90.3 69.9,90.2 70.2,90.2 70.5,90.1 70.8,90.1 71.1,90 71.4,90 71.7,90 72,90 72.3,90 72.6,90 72.9,90 73.2,90.1 73.5,90.1 73.8,90.2 74.1,90.2 74.4,90.3 74.7,90.4 75,90.5 75.3,90.6 75.6,90.7 75.9,90.8 76.2,91 76.5,91.1 76.8,91.3 77.1,91.4 77.4,91.6 77.7,91.8 78,92 78.3,92.2 78.6,92.4 78.9,92.6 79.2,92.9 79.5,93.1 79.8,93.4 80.1,93.6 80.4,93.9 80.7,94.2 81,94.5 81.3,94.8 81.6,95.1 81.9,95.4 82.2,95.8 82.5,96.1 82.8,96.5 83.1,96.8 83.4,97.2 83.7,97.6 84,98 84.3,98.4 84.6,98.8 84.9,99.2 85.2,99.7 85.5,100.1 85.8,100.6 86.1,101 86.4,101.5 86.7,102 87,102.5 87.3,103 87.6,103.5 87.9,104 88.2,104.6 88.5,105.1 88.8,105.7 89.1,106.2 89.4,106.8 89.7,107.4 90,108 90.3,108.6 90.6,109.2 90.9,109.8 91.2,110.5 91.5,111.1 91.8,111.8 92.1,112.4 92.4,113.1 92.7,113.8 93,114.5 93.3,115.2 93.6,115.9 93.9,116.6 94.2,117.4 94.5,118.1 94.8,118.9 95.1,119.6 95.4,120.4 95.7,121.2 96,122 96.3,122.8 96.6,123.6 96.9,124.4 97.2,125.3 97.5,126.1 97.8,127 98.1,127.8 98.4,128.7 98.7,129.6 99,130.5 99.3,131.4 99.6,132.3 99.9,133.2 100.2,134.2 100.5,135.1 100.8,136.1 101.1,137 101.4,138 101.7,139 102,140 102.3,141 102.6,142 102.9,143 103.2,144.1 103.5,145.1 103.8,146.2 104.1,147.2 104.4,148.3 104.7,149.4 105,150.5 105.3,151.6 105.6,152.7 105.9,153.8 106.2,155 106.5,156.1 106.8,157.3 107.1,158.4 107.4,159.6 107.7,160.8 108,162 108.3,163.2 108.6,164.4 108.9,165.6 109.2,166.9 109.5,168.1 109.8,169.4 110.1,170.6 110.4,171.9 110.7,173.2 111,174.5 111.3,175.8 111.6,177.1 111.9,178.4 112.2,179.8 112.5,181.1 112.8,182.5 113.1,183.8 113.4,185.2 113.7,186.6 114,188 114.3,189.4 114.6,190.8 114.9,192.2 115.2,193.7 115.5,195.1 115.8,196.6 116.1,198 116.4,199.5 116.7,201 117,202.5 117.3,204 117.6,205.5 117.9,207 118.2,208.6 118.5,210.1 118.8,211.7 119.1,213.2 119.4,214.8 119.7,216.4 120,218 120.3,219.6 120.6,221.2 120.9,222.8 121.2,224.5 121.5,226.1 121.8,227.8 122.1,229.4 122.4,231.1 122.7,232.8 123,234.5 123.3,236.2 123.6,237.9 123.9,239.6 124.2,241.4 124.5,243.1 124.8,244.9 125.1,246.6 125.4,248.4 125.7,250.2 126,252" fill="none" stroke="var(--ls-accent)" stroke-width="2.2" clip-path="url(#ls-clip-86)"/></svg>
+<figcaption>А</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 144 162" width="144" height="162" xmlns="http://www.w3.org/2000/svg" role="img"><defs><clipPath id="ls-clip-87"><rect x="18" y="18" width="108" height="126"/></clipPath></defs><line x1="18" y1="144" x2="18" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="36" y1="144" x2="36" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="54" y1="144" x2="54" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="72" y1="144" x2="72" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="144" x2="90" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="108" y1="144" x2="108" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="126" y1="144" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="144" x2="126" y2="144" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="126" x2="126" y2="126" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="108" x2="126" y2="108" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="90" x2="126" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="126" y2="72" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="54" x2="126" y2="54" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="36" x2="126" y2="36" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="18" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="136" y2="72" stroke="currentColor" stroke-width="1.5"/><polygon points="140,72 131,68 131,76" fill="currentColor"/><text x="132" y="87" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">x</text><line x1="72" y1="144" x2="72" y2="8" stroke="currentColor" stroke-width="1.5"/><polygon points="72,4 68,13 76,13" fill="currentColor"/><text x="60" y="12" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">y</text><text x="63" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">0</text><text x="90" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><text x="63" y="54" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><polyline points="18,144 18.3,143.7 18.6,143.4 18.9,143.1 19.2,142.8 19.5,142.5 19.8,142.2 20.1,141.9 20.4,141.6 20.7,141.3 21,141 21.3,140.7 21.6,140.4 21.9,140.1 22.2,139.8 22.5,139.5 22.8,139.2 23.1,138.9 23.4,138.6 23.7,138.3 24,138 24.3,137.7 24.6,137.4 24.9,137.1 25.2,136.8 25.5,136.5 25.8,136.2 26.1,135.9 26.4,135.6 26.7,135.3 27,135 27.3,134.7 27.6,134.4 27.9,134.1 28.2,133.8 28.5,133.5 28.8,133.2 29.1,132.9 29.4,132.6 29.7,132.3 30,132 30.3,131.7 30.6,131.4 30.9,131.1 31.2,130.8 31.5,130.5 31.8,130.2 32.1,129.9 32.4,129.6 32.7,129.3 33,129 33.3,128.7 33.6,128.4 33.9,128.1 34.2,127.8 34.5,127.5 34.8,127.2 35.1,126.9 35.4,126.6 35.7,126.3 36,126 36.3,125.7 36.6,125.4 36.9,125.1 37.2,124.8 37.5,124.5 37.8,124.2 38.1,123.9 38.4,123.6 38.7,123.3 39,123 39.3,122.7 39.6,122.4 39.9,122.1 40.2,121.8 40.5,121.5 40.8,121.2 41.1,120.9 41.4,120.6 41.7,120.3 42,120 42.3,119.7 42.6,119.4 42.9,119.1 43.2,118.8 43.5,118.5 43.8,118.2 44.1,117.9 44.4,117.6 44.7,117.3 45,117 45.3,116.7 45.6,116.4 45.9,116.1 46.2,115.8 46.5,115.5 46.8,115.2 47.1,114.9 47.4,114.6 47.7,114.3 48,114 48.3,113.7 48.6,113.4 48.9,113.1 49.2,112.8 49.5,112.5 49.8,112.2 50.1,111.9 50.4,111.6 50.7,111.3 51,111 51.3,110.7 51.6,110.4 51.9,110.1 52.2,109.8 52.5,109.5 52.8,109.2 53.1,108.9 53.4,108.6 53.7,108.3 54,108 54.3,107.7 54.6,107.4 54.9,107.1 55.2,106.8 55.5,106.5 55.8,106.2 56.1,105.9 56.4,105.6 56.7,105.3 57,105 57.3,104.7 57.6,104.4 57.9,104.1 58.2,103.8 58.5,103.5 58.8,103.2 59.1,102.9 59.4,102.6 59.7,102.3 60,102 60.3,101.7 60.6,101.4 60.9,101.1 61.2,100.8 61.5,100.5 61.8,100.2 62.1,99.9 62.4,99.6 62.7,99.3 63,99 63.3,98.7 63.6,98.4 63.9,98.1 64.2,97.8 64.5,97.5 64.8,97.2 65.1,96.9 65.4,96.6 65.7,96.3 66,96 66.3,95.7 66.6,95.4 66.9,95.1 67.2,94.8 67.5,94.5 67.8,94.2 68.1,93.9 68.4,93.6 68.7,93.3 69,93 69.3,92.7 69.6,92.4 69.9,92.1 70.2,91.8 70.5,91.5 70.8,91.2 71.1,90.9 71.4,90.6 71.7,90.3 72,90 72.3,89.7 72.6,89.4 72.9,89.1 73.2,88.8 73.5,88.5 73.8,88.2 74.1,87.9 74.4,87.6 74.7,87.3 75,87 75.3,86.7 75.6,86.4 75.9,86.1 76.2,85.8 76.5,85.5 76.8,85.2 77.1,84.9 77.4,84.6 77.7,84.3 78,84 78.3,83.7 78.6,83.4 78.9,83.1 79.2,82.8 79.5,82.5 79.8,82.2 80.1,81.9 80.4,81.6 80.7,81.3 81,81 81.3,80.7 81.6,80.4 81.9,80.1 82.2,79.8 82.5,79.5 82.8,79.2 83.1,78.9 83.4,78.6 83.7,78.3 84,78 84.3,77.7 84.6,77.4 84.9,77.1 85.2,76.8 85.5,76.5 85.8,76.2 86.1,75.9 86.4,75.6 86.7,75.3 87,75 87.3,74.7 87.6,74.4 87.9,74.1 88.2,73.8 88.5,73.5 88.8,73.2 89.1,72.9 89.4,72.6 89.7,72.3 90,72 90.3,71.7 90.6,71.4 90.9,71.1 91.2,70.8 91.5,70.5 91.8,70.2 92.1,69.9 92.4,69.6 92.7,69.3 93,69 93.3,68.7 93.6,68.4 93.9,68.1 94.2,67.8 94.5,67.5 94.8,67.2 95.1,66.9 95.4,66.6 95.7,66.3 96,66 96.3,65.7 96.6,65.4 96.9,65.1 97.2,64.8 97.5,64.5 97.8,64.2 98.1,63.9 98.4,63.6 98.7,63.3 99,63 99.3,62.7 99.6,62.4 99.9,62.1 100.2,61.8 100.5,61.5 100.8,61.2 101.1,60.9 101.4,60.6 101.7,60.3 102,60 102.3,59.7 102.6,59.4 102.9,59.1 103.2,58.8 103.5,58.5 103.8,58.2 104.1,57.9 104.4,57.6 104.7,57.3 105,57 105.3,56.7 105.6,56.4 105.9,56.1 106.2,55.8 106.5,55.5 106.8,55.2 107.1,54.9 107.4,54.6 107.7,54.3 108,54 108.3,53.7 108.6,53.4 108.9,53.1 109.2,52.8 109.5,52.5 109.8,52.2 110.1,51.9 110.4,51.6 110.7,51.3 111,51 111.3,50.7 111.6,50.4 111.9,50.1 112.2,49.8 112.5,49.5 112.8,49.2 113.1,48.9 113.4,48.6 113.7,48.3 114,48 114.3,47.7 114.6,47.4 114.9,47.1 115.2,46.8 115.5,46.5 115.8,46.2 116.1,45.9 116.4,45.6 116.7,45.3 117,45 117.3,44.7 117.6,44.4 117.9,44.1 118.2,43.8 118.5,43.5 118.8,43.2 119.1,42.9 119.4,42.6 119.7,42.3 120,42 120.3,41.7 120.6,41.4 120.9,41.1 121.2,40.8 121.5,40.5 121.8,40.2 122.1,39.9 122.4,39.6 122.7,39.3 123,39 123.3,38.7 123.6,38.4 123.9,38.1 124.2,37.8 124.5,37.5 124.8,37.2 125.1,36.9 125.4,36.6 125.7,36.3 126,36" fill="none" stroke="var(--ls-accent)" stroke-width="2.2" clip-path="url(#ls-clip-87)"/></svg>
+<figcaption>Б</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 144 162" width="144" height="162" xmlns="http://www.w3.org/2000/svg" role="img"><defs><clipPath id="ls-clip-88"><rect x="18" y="18" width="108" height="126"/></clipPath></defs><line x1="18" y1="144" x2="18" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="36" y1="144" x2="36" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="54" y1="144" x2="54" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="72" y1="144" x2="72" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="144" x2="90" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="108" y1="144" x2="108" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="126" y1="144" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="144" x2="126" y2="144" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="126" x2="126" y2="126" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="108" x2="126" y2="108" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="90" x2="126" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="126" y2="72" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="54" x2="126" y2="54" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="36" x2="126" y2="36" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="18" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="136" y2="72" stroke="currentColor" stroke-width="1.5"/><polygon points="140,72 131,68 131,76" fill="currentColor"/><text x="132" y="87" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">x</text><line x1="72" y1="144" x2="72" y2="8" stroke="currentColor" stroke-width="1.5"/><polygon points="72,4 68,13 76,13" fill="currentColor"/><text x="60" y="12" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">y</text><text x="63" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">0</text><text x="90" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><text x="63" y="54" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><polyline points="18,48 18.3,47.9 18.6,47.7 18.9,47.6 19.2,47.5 19.5,47.3 19.8,47.2 20.1,47 20.4,46.9 20.7,46.7 21,46.6 21.3,46.4 21.6,46.3 21.9,46.1 22.2,46 22.5,45.8 22.8,45.7 23.1,45.5 23.4,45.3 23.7,45.2 24,45 24.3,44.8 24.6,44.7 24.9,44.5 25.2,44.3 25.5,44.1 25.8,43.9 26.1,43.8 26.4,43.6 26.7,43.4 27,43.2 27.3,43 27.6,42.8 27.9,42.6 28.2,42.4 28.5,42.2 28.8,42 29.1,41.8 29.4,41.6 29.7,41.4 30,41.1 30.3,40.9 30.6,40.7 30.9,40.5 31.2,40.2 31.5,40 31.8,39.8 32.1,39.5 32.4,39.3 32.7,39 33,38.8 33.3,38.5 33.6,38.2 33.9,38 34.2,37.7 34.5,37.4 34.8,37.2 35.1,36.9 35.4,36.6 35.7,36.3 36,36 36.3,35.7 36.6,35.4 36.9,35.1 37.2,34.8 37.5,34.4 37.8,34.1 38.1,33.8 38.4,33.4 38.7,33.1 39,32.7 39.3,32.4 39.6,32 39.9,31.6 40.2,31.2 40.5,30.9 40.8,30.5 41.1,30.1 41.4,29.6 41.7,29.2 42,28.8 42.3,28.4 42.6,27.9 42.9,27.5 43.2,27 43.5,26.5 43.8,26 44.1,25.5 44.4,25 44.7,24.5 45,24 45.3,23.5 45.6,22.9 45.9,22.3 46.2,21.8 46.5,21.2 46.8,20.6 47.1,20 47.4,19.3 47.7,18.7 48,18 48.3,17.3 48.6,16.6 48.9,15.9 49.2,15.2 49.5,14.4 49.8,13.6 50.1,12.8 50.4,12 50.7,11.2 51,10.3 51.3,9.4 51.6,8.5 51.9,7.5 52.2,6.5 52.5,5.5 52.8,4.5 53.1,3.4 53.4,2.3 53.7,1.2 54,0 54.3,-1.2 54.6,-2.5 54.9,-3.8 55.2,-5.1 55.5,-6.5 55.8,-8 56.1,-9.5 56.4,-11.1 56.7,-12.7 57,-14.4 57.3,-16.2 57.6,-18 57.9,-19.9 58.2,-21.9 58.5,-24 58.8,-26.2 59.1,-28.5 59.4,-30.9 59.7,-33.4 60,-36 60.3,-38.8 60.6,-41.7 60.9,-44.8 61.2,-48 61.5,-51.4 61.8,-55.1 62.1,-58.9 62.4,-63 62.7,-67.4 63,-72 63.3,-77 63.6,-82.3 63.9,-88 64.2,-94.2 64.5,-100.8 64.8,-108 65.1,-115.8 65.4,-124.4 65.7,-133.7 66,-144 66.3,-155.4 66.6,-168 66.9,-182.1 67.2,-198 67.5,-216 67.8,-236.6 68.1,-260.3 68.4,-288 68.7,-320.7 69,-360 69.3,-408 69.6,-468 69.9,-545.1 70.2,-648 70.5,-702 70.8,-702 71.1,-702 71.4,-702 71.7,-702" fill="none" stroke="var(--ls-accent)" stroke-width="2.2" clip-path="url(#ls-clip-88)"/><polyline points="72.3,864 72.6,864 72.9,864 73.2,864 73.5,864 73.8,792 74.1,689.1 74.4,612 74.7,552 75,504 75.3,464.7 75.6,432 75.9,404.3 76.2,380.6 76.5,360 76.8,342 77.1,326.1 77.4,312 77.7,299.4 78,288 78.3,277.7 78.6,268.4 78.9,259.8 79.2,252 79.5,244.8 79.8,238.2 80.1,232 80.4,226.3 80.7,221 81,216 81.3,211.4 81.6,207 81.9,202.9 82.2,199.1 82.5,195.4 82.8,192 83.1,188.8 83.4,185.7 83.7,182.8 84,180 84.3,177.4 84.6,174.9 84.9,172.5 85.2,170.2 85.5,168 85.8,165.9 86.1,163.9 86.4,162 86.7,160.2 87,158.4 87.3,156.7 87.6,155.1 87.9,153.5 88.2,152 88.5,150.5 88.8,149.1 89.1,147.8 89.4,146.5 89.7,145.2 90,144 90.3,142.8 90.6,141.7 90.9,140.6 91.2,139.5 91.5,138.5 91.8,137.5 92.1,136.5 92.4,135.5 92.7,134.6 93,133.7 93.3,132.8 93.6,132 93.9,131.2 94.2,130.4 94.5,129.6 94.8,128.8 95.1,128.1 95.4,127.4 95.7,126.7 96,126 96.3,125.3 96.6,124.7 96.9,124 97.2,123.4 97.5,122.8 97.8,122.2 98.1,121.7 98.4,121.1 98.7,120.5 99,120 99.3,119.5 99.6,119 99.9,118.5 100.2,118 100.5,117.5 100.8,117 101.1,116.5 101.4,116.1 101.7,115.6 102,115.2 102.3,114.8 102.6,114.4 102.9,113.9 103.2,113.5 103.5,113.1 103.8,112.8 104.1,112.4 104.4,112 104.7,111.6 105,111.3 105.3,110.9 105.6,110.6 105.9,110.2 106.2,109.9 106.5,109.6 106.8,109.2 107.1,108.9 107.4,108.6 107.7,108.3 108,108 108.3,107.7 108.6,107.4 108.9,107.1 109.2,106.8 109.5,106.6 109.8,106.3 110.1,106 110.4,105.8 110.7,105.5 111,105.2 111.3,105 111.6,104.7 111.9,104.5 112.2,104.2 112.5,104 112.8,103.8 113.1,103.5 113.4,103.3 113.7,103.1 114,102.9 114.3,102.6 114.6,102.4 114.9,102.2 115.2,102 115.5,101.8 115.8,101.6 116.1,101.4 116.4,101.2 116.7,101 117,100.8 117.3,100.6 117.6,100.4 117.9,100.2 118.2,100.1 118.5,99.9 118.8,99.7 119.1,99.5 119.4,99.3 119.7,99.2 120,99 120.3,98.8 120.6,98.7 120.9,98.5 121.2,98.3 121.5,98.2 121.8,98 122.1,97.9 122.4,97.7 122.7,97.6 123,97.4 123.3,97.3 123.6,97.1 123.9,97 124.2,96.8 124.5,96.7 124.8,96.5 125.1,96.4 125.4,96.3 125.7,96.1 126,96" fill="none" stroke="var(--ls-accent)" stroke-width="2.2" clip-path="url(#ls-clip-88)"/></svg>
+<figcaption>В</figcaption></figure></div></div>
+<details><summary>Решение</summary>А → 2, Б → 3, В → 1.
+<p class="ls-answer">Ответ: 231</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">12.</span> <span class="ls-task-src">ОГЭ №12</span><br> Мощность постоянного тока \(P = \frac{U^2}{R}\). Найдите \(U\) (в вольтах), если \(P = 72\) Вт, \(R = 8\) Ом.</div>
+<details><summary>Решение</summary>\(U^2 = 576\), \(U = 24\).
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">13.</span> <span class="ls-task-src">ОГЭ №13</span><br> Решите неравенство \(5x - 2(x - 4) \le 9x + 20\). Укажите наименьшее целое решение.</div>
+<details><summary>Решение</summary>\(3x + 8 \le 9x + 20\) → \(-12 \le 6x\), \(x \ge -2\).
+<p class="ls-answer">Ответ: -2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">14.</span> <span class="ls-task-src">ОГЭ №14</span><br> Камень бросили в колодец. За первую секунду он пролетел 5 м, а за каждую следующую — на 10 м больше. За сколько секунд он долетит до воды на глубине 80 м?</div>
+<details><summary>Решение</summary>\(S_n = \frac{10 + 10(n - 1)}{2}n = 5n^2 = 80\), \(n = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">15.</span> <span class="ls-task-src">ОГЭ №15</span><br> В треугольнике \(ABC\) \(\angle A = 45^\circ\), \(\angle B = 60^\circ\), \(BC = 3\sqrt{6}\). Найдите \(AC\).</div>
+<details><summary>Решение</summary>\(\frac{AC}{\sin60^\circ} = \frac{BC}{\sin45^\circ}\): \(AC = \frac{3\sqrt{6}\cdot\sin60^\circ}{\sin45^\circ} = 3\sqrt{6}\cdot\frac{\sqrt{3}}{\sqrt{2}} = 3\sqrt{9} = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">16.</span> <span class="ls-task-src">ОГЭ №16</span><br> Радиус окружности, вписанной в квадрат, равен 4. Найдите диагональ квадрата, делённую на \(\sqrt{2}\).</div>
+<details><summary>Решение</summary>Сторона 8, диагональ \(8\sqrt{2}\). Ответ 8.
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">17.</span> <span class="ls-task-src">ОГЭ №17</span><br> Сумма двух углов параллелограмма \(100^\circ\). Найдите один из оставшихся углов.</div>
+<details><summary>Решение</summary>Равные углы по \(50^\circ\), остальные \(130^\circ\).
+<p class="ls-answer">Ответ: 130</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">18.</span> <span class="ls-task-src">ОГЭ №18</span><br> Найдите тангенс угла \(AOB\).
+<svg class="ls-fig" viewBox="0 0 232 180" width="232" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="168" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="220" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="194" y2="142" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="142" x2="168" y2="64" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="58,142 58,141.5 58,141.1 58,140.6 57.9,140.2 57.9,139.8 57.8,139.3 57.8,138.9 57.7,138.4 57.6,138 57.5,137.5 57.4,137.1 57.3,136.7 57.1,136.2 57,135.8 56.9,135.4 56.7,134.9 56.6,134.5 56.4,134.1 56.2,133.7 56,133.3 55.8,132.9 55.6,132.5 55.4,132.1 55.1,131.7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+<details><summary>Решение</summary>Противолежащий 3, прилежащий 5: \(0{,}6\).
+<p class="ls-answer">Ответ: 0,6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">19.</span> <span class="ls-task-src">ОГЭ №19</span><br> Какие утверждения верны? 1) Если две стороны и угол одного треугольника равны двум сторонам и углу другого, то треугольники равны. 2) Средняя линия треугольника параллельна одной из его сторон. 3) Площадь круга меньше квадрата длины его диаметра.</div>
+<details><summary>Решение</summary>1 — неверно (угол должен быть между сторонами). 2 — верно. 3 — верно (\(\frac{\pi d^2}{4} < d^2\)).
+<p class="ls-answer">Ответ: 23</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Часть 2</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">ОГЭ №20 (2 балла)</span><br> Решите неравенство \((x - 3)^2 < \sqrt{2}(x - 3)\).</div>
+<details><summary>Решение</summary>\((x - 3)(x - 3 - \sqrt{2}) < 0\): \(3 < x < 3 + \sqrt{2}\). Ответ: \((3;\ 3 + \sqrt{2})\).
+<p class="ls-answer">Ответ: \((3;\ 3 + \sqrt{2})\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">ОГЭ №21 (2 балла)</span><br> Первый рабочий за час делает на 2 детали больше второго и выполняет заказ из 120 деталей на 4 часа быстрее, чем второй выполняет заказ из 140 деталей. Сколько деталей в час делает первый рабочий?</div>
+<details><summary>Решение</summary>Пусть первый делает \(x\) деталей в час, второй — \(x - 2\). \(\frac{140}{x - 2} - \frac{120}{x} = 4\) → \(140x - 120(x - 2) = 4x(x - 2)\) → \(4x^2 - 28x - 240 = 0\) → \(x^2 - 7x - 60 = 0\): \(x = 12\) или \(x = -5\) (не подходит). Ответ: 12.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">ОГЭ №22 (2 балла)</span><br> Постройте график \(y = \begin{cases} x^2 + 4x + 4, & x \ge -3 \\ -\frac{3}{x}, & x < -3 \end{cases}\). При каких \(m\) прямая \(y = m\) имеет с графиком одну или две общие точки?</div>
+<details><summary>Решение</summary>Парабола \((x + 2)^2\) при \(x \ge -3\): от 1 (при \(x = -3\)) вниз до 0 и вверх. Гипербола при \(x < -3\): значения \((0;\ 1)\). \(m = 0\): 1 точка; \(0 < m < 1\): 3 точки; \(m = 1\): 2 точки (гипербола не достигает 1); \(m > 1\): 1 точка. Ответ: \(m = 0\), \(m \ge 1\).
+<p class="ls-answer">Ответ: \(m = 0\); \(m \ge 1\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">ОГЭ №23 (2 балла)</span><br> Биссектрисы углов \(A\) и \(B\) параллелограмма \(ABCD\) пересекаются в точке \(K\) на стороне \(CD\). Найдите \(AB\), если \(AD = 7\).</div>
+<details><summary>Решение</summary>\(\angle DAK = \angle KAB = \angle AKD\) (накрест лежащие) ⇒ \(DK = AD = 7\). Аналогично \(CK = BC = 7\). \(AB = CD = 14\).
+<p class="ls-answer">Ответ: 14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">ОГЭ №24 (2 балла)</span><br> Докажите, что отрезок, соединяющий середины оснований трапеции, делит её на две равновеликие части.</div>
+<details><summary>Решение</summary>Получаются две трапеции с равными основаниями (половины оснований) и общей высотой — площади равны по формуле \(\frac{a + b}{2}h\).
+<p class="ls-answer">Ответ: доказательство</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">ОГЭ №25 (2 балла)</span><br> В треугольнике \(ABC\) \(AB = 12\), \(BC = 15\), \(AC = 18\). Биссектриса \(BD\). Найдите \(AD\).</div>
+<details><summary>Решение</summary>\(\frac{AD}{DC} = \frac{12}{15} = \frac{4}{5}\): \(AD = 18\cdot\frac{4}{9} = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+</section>
+<nav class="ls-foot"><a href="54-povtorenie-neravenstva-progressii-grafiki.html">← Урок 54</a><a href="00-index.html">Все уроки</a><a href="56-razbor-probnika-2.html">Урок 56 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
