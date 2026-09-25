@@ -1,0 +1,205 @@
+@title Урок 60. Повторение: задания №11 и №12
+@tags ОГЭ №11 | ОГЭ №12 | повторение
+@teacher
+<p><b>Цель:</b> графики и формулы — ещё два балла, которые берутся по алгоритму. Добавляем формулы, где нужно извлечь корень или решить уравнение.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 59.</li>
+  <li>10 мин — две шпаргалки ниже.</li>
+  <li>35 мин — практика: сначала три №11, потом четыре №12.</li>
+  <li>5 мин — итог.</li>
+</ol>
+<p><b>Типичные ошибки:</b> в №11 путает графики \(\frac{k}{x}\) с \(k > 0\) и \(k < 0\); в №12 не извлекает корень в конце (\(I^2 = 49\) → пишет 49).</p>
+@theory
+<h3>№11 — как узнать график</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Вид</th><th>Формула</th><th>Что смотреть</th></tr>
+<tr><td class="ls-left">прямая</td><td>\(y = kx + b\)</td><td class="ls-left">\(b\) — пересечение с осью \(y\); \(k > 0\) — вверх, \(k < 0\) — вниз</td></tr>
+<tr><td class="ls-left">парабола</td><td>\(y = ax^2 + c\)</td><td class="ls-left">\(a > 0\) — ветви вверх; \(c\) — пересечение с осью \(y\)</td></tr>
+<tr><td class="ls-left">гипербола</td><td>\(y = \frac{k}{x}\)</td><td class="ls-left">\(k > 0\) — I и III четверти; \(k < 0\) — II и IV</td></tr>
+</table></div>
+<div class="ls-rule">Сомневаешься — подставь \(x = 1\) в формулу и проверь, проходит ли график через эту точку.</div>
+
+<h3>№12 — формулы</h3>
+<ol class="ls-steps">
+  <li>Выпиши известные буквы и искомую.</li>
+  <li>Подставь, посчитай всё числовое.</li>
+  <li>Реши уравнение. Если получилось \(I^2 = 49\) — извлеки корень: \(I = 7\) (величины в физике положительные).</li>
+</ol>
+<div class="ls-example">\(PV = \nu RT\), \(R = 8{,}31\): \(\nu = 10\), \(P = 20\,775\), \(V = 4\) → \(83\,100 = 83{,}1\,T\) → \(T = 1000\).</div>
+@practice
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками функций и формулами, которые их задают.
+<div class="ls-figs"><figure>
+@plot -3 3 -3 4 scale=18
+f 3*x - 1
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 4 scale=18
+f -0.5*x + 2
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 4 scale=18
+f x + 3
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(y = 3x - 1\)</span><span>2) \(y = -0{,}5x + 2\)</span><span>3) \(y = x + 3\)</span></div>
+@sol
+А: круто вверх, ось \(y\) в \(-1\) → 1. Б: полого вниз, в 2 → 2. В: вверх, в 3 → 3.
+@ans 123
+@check match([lambda x: 3*x - 1, lambda x: -0.5*x + 2, lambda x: x + 3], [lambda x: 3*x - 1, lambda x: -0.5*x + 2, lambda x: x + 3])
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками функций и формулами, которые их задают.
+<div class="ls-figs"><figure>
+@plot -3 3 -3 4 scale=18
+f -x**2 + 3
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 4 scale=18
+f 4/x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 4 scale=18
+f -4/x
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(y = -\frac{4}{x}\)</span><span>2) \(y = \frac{4}{x}\)</span><span>3) \(y = -x^2 + 3\)</span></div>
+@sol
+А — парабола → 3. Б — гипербола в I и III четвертях (\(k > 0\)) → 2. В — во II и IV (\(k < 0\)) → 1.
+@ans 321
+@check match([lambda x: -x*x + 3, lambda x: 4/x, lambda x: -4/x], [lambda x: -4/x, lambda x: 4/x, lambda x: -x*x + 3])
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками функций \(y = kx + b\) и знаками коэффициентов.
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f -x - 1
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f 2*x + 1
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -2*x + 2
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(k > 0,\ b > 0\)</span><span>2) \(k &lt; 0,\ b > 0\)</span><span>3) \(k &lt; 0,\ b &lt; 0\)</span></div>
+@sol
+А: вниз, ниже нуля → 3. Б: вверх, выше нуля → 1. В: вниз, выше нуля → 2.
+@ans 312
+@check ''.join(str([c(k, b) for c in (lambda k, b: k > 0 and b > 0, lambda k, b: k < 0 and b > 0, lambda k, b: k < 0 and b < 0)].index(True) + 1) for k, b in ((-1, -1), (2, 1), (-2, 2)))
+@task
+@src Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)
+Площадь поверхности прямоугольного параллелепипеда с рёбрами \(a\), \(b\) и \(c\) вычисляется по формуле \(S = 2(ab + ac + bc)\). Найдите \(c\), если \(a = 3\), \(b = 4\), \(S = 94\).
+@sol
+\(94 = 2(12 + 3c + 4c)\) → \(47 = 12 + 7c\) → \(7c = 35\) → \(c = 5\).
+@ans 5
+@check F(94//2 - 3*4, 3+4)
+@task
+@src Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)
+Мощность постоянного тока (в ваттах) вычисляется по формуле \(P = I^2R\). Найдите силу тока \(I\) (в амперах), если \(P = 245\) Вт, \(R = 5\) Ом.
+@sol
+\(245 = 5I^2\) → \(I^2 = 49\) → \(I = 7\) А.
+@ans 7
+@check sqrt(245/5)
+@task
+@src Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)
+Закон Менделеева–Клапейрона можно записать в виде \(PV = \nu RT\), где \(R = 8{,}31\). Найдите температуру \(T\) (в кельвинах), если \(\nu = 10\) моль, \(P = 20\,775\) Па, \(V = 4\) м³.
+@sol
+\(20775\cdot4 = 83100\); \(10\cdot8{,}31 = 83{,}1\). \(T = 83100 : 83{,}1 = 1000\) К.
+@ans 1000
+@check 20775*4/(10*F('8.31'))
+@task
+@src Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)
+Длина окружности \(C = 2\pi R\). Считая \(\pi \approx 3{,}14\), найдите радиус \(R\), если \(C = 31{,}4\).
+@sol
+\(31{,}4 = 6{,}28R\) → \(R = 5\).
+@ans 5
+@check F('31.4')/(2*F('3.14'))
+@hw
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками и формулами.
+<div class="ls-figs"><figure>
+@plot -3 3 -3 4 scale=18
+f -2*x + 3
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 4 scale=18
+f 0.5*x - 1
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 4 scale=18
+f 2*x
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(y = 2x\)</span><span>2) \(y = -2x + 3\)</span><span>3) \(y = 0{,}5x - 1\)</span></div>
+@sol
+А → 2, Б → 3, В (через начало координат) → 1.
+@ans 231
+@check match([lambda x: -2*x + 3, lambda x: 0.5*x - 1, lambda x: 2*x], [lambda x: 2*x, lambda x: -2*x + 3, lambda x: 0.5*x - 1])
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками и формулами.
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f 1/x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -x**2
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f x**2 - 2
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(y = -x^2\)</span><span>2) \(y = x^2 - 2\)</span><span>3) \(y = \frac{1}{x}\)</span></div>
+@sol
+А — гипербола → 3. Б — ветви вниз, вершина в начале координат → 1. В — ветви вверх, ось \(y\) в \(-2\) → 2.
+@ans 312
+@check match([lambda x: 1/x, lambda x: -x*x, lambda x: x*x - 2], [lambda x: -x*x, lambda x: x*x - 2, lambda x: 1/x])
+@task
+@src Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)
+По формуле \(S = 2(ab + ac + bc)\) найдите \(c\), если \(a = 2\), \(b = 5\), \(S = 104\).
+@sol
+\(52 = 10 + 2c + 5c\) → \(7c = 42\) → \(c = 6\).
+@ans 6
+@check F(104//2 - 2*5, 2+5)
+@task
+@src Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)
+По формуле \(P = I^2R\) найдите силу тока \(I\) (в амперах), если \(P = 180\) Вт, \(R = 5\) Ом.
+@sol
+\(I^2 = 36\) → \(I = 6\) А.
+@ans 6
+@check sqrt(180/5)
+@task
+@src Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)
+Длина окружности \(C = 2\pi R\). Считая \(\pi \approx 3{,}14\), найдите \(C\), если \(R = 4{,}5\).
+@sol
+\(2\cdot3{,}14\cdot4{,}5 = 6{,}28\cdot4{,}5 = 28{,}26\).
+@ans 28,26
+@check 2*F('3.14')*F('4.5')
+@task
+@rep 58
+Решите уравнение \(x^2 - 9x = 0\). Запишите корни в порядке возрастания.
+@sol
+\(x(x - 9) = 0\): 0 и 9.
+@ans 0; 9
+@check roots(1,-9,0)
+@task
+@rep 56
+Радиус окружности равен 25, хорда равна 48. Найдите расстояние от центра до хорды.
+@sol
+Половина хорды 24. \(\sqrt{625 - 576} = 7\).
+@ans 7
+@check leg(25,24)
+@task
+@rep 52
+Сколько листов формата A6 получится из одного листа формата A3?
+@sol
+A3 → 2 листа A4 → 4 листа A5 → 8 листов A6.
+@ans 8
+@check 2**(6-3)
