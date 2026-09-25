@@ -3,7 +3,7 @@
 В @check пишется выражение на Python, которое заново считает ответ из условия
 задачи (а не копирует его). Сборщик сравнивает результат с тем, что написано в @ans.
 Доступны: F (обыкновенная дробь), sqrt, roots, hyp, leg, sind/cosd/tand,
-ap/aps (арифм. прогрессия), gp/gps (геом. прогрессия), comb, solve2 (система 2×2), which (выбор варианта
+ap/aps (арифм. прогрессия), gp/gps (геом. прогрессия), comb, area (площадь многоугольника по вершинам), solve2 (система 2×2), which (выбор варианта
 в №13 по множеству решений), match (соответствие графиков и формул в №11), pi, math.
 """
 import math
@@ -75,6 +75,12 @@ def comb(n, k):
     return math.comb(n, k)
 
 
+def area(*pts):
+    """Площадь многоугольника по вершинам (формула шнурования): area((1,1), (7,2), (3,5))."""
+    n = len(pts)
+    return abs(sum(F(pts[i][0]) * pts[(i + 1) % n][1] - F(pts[(i + 1) % n][0]) * pts[i][1] for i in range(n))) / 2
+
+
 def solve2(a, b, c, d, e, f):
     """Система a·x + b·y = c, d·x + e·y = f → [x, y] (обыкновенные дроби)."""
     det = F(a) * e - F(b) * d
@@ -102,7 +108,7 @@ def match(graphs, formulas, xs=(-3, -1.5, -0.5, 0.5, 1.5, 3)):
 
 
 NS = {"F": F, "sqrt": sqrt, "roots": roots, "hyp": hyp, "leg": leg, "sind": sind, "cosd": cosd,
-      "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "solve2": solve2, "which": which, "match": match, "pi": math.pi,
+      "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "area": area, "solve2": solve2, "which": which, "match": match, "pi": math.pi,
       "math": math, "abs": abs, "round": round, "min": min, "max": max, "sum": sum, "range": range,
       "len": len, "sorted": sorted, "int": int, "str": str, "float": float}
 

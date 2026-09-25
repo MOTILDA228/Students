@@ -147,7 +147,7 @@ def _fig(header, lines):
         ys += [0, gh]
     x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
     span = max(x1 - x0, y1 - y0, 1e-9)
-    s = float(hopts.get("scale", 26 if grid else min(70, max(14, 280 / span))))
+    s = float(hopts.get("scale", 26 if grid else min(70, 280 / span)))
     m = float(hopts.get("margin", 12 if grid else 26))
     w, h = (x1 - x0) * s + 2 * m, (y1 - y0) * s + 2 * m
 
