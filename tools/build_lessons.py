@@ -242,6 +242,9 @@ def build_student(student_dir):
         out.write_text(page(meta["title"], render_page(meta, sections, subtitle, prev, nxt)), encoding="utf-8")
         built.append(out)
         errors, notes, checked, unchecked = validate(src.name, sections)
+        for m in re.finditer(r"\\\((.*?)\\\)", src.read_text(encoding="utf-8"), re.S):
+            if re.search(r"<[A-Za-z/!?]", m.group(1)):
+                errors.append(f"{src.name}: в формуле «{m.group(1)[:40]}» знак < перед буквой — пишите &lt; или \\lt")
         status = "ОШИБКА" if errors else "ок"
         extra = f", без @check: {unchecked}" if unchecked else ""
         print(f"[{status}] {out.relative_to(ROOT)} — проверено ответов: {checked}{extra}")

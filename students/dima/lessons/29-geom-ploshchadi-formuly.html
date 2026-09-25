@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 29. Геометрия: площади треугольника и четырёхугольников по формулам</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 29. Геометрия: площади треугольника и четырёхугольников по формулам</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №17</span><span class="ls-tag">ОГЭ №15</span><span class="ls-tag">ОГЭ №18</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима находит площади по формулам, когда фигура задана числами (без клеток): ромб через диагонали, параллелограмм с углом 30°, трапеция и треугольник через высоту.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 28.</li>
+  <li>15 мин — шпаргалка. Вернуть карточку формул из урока 14, дописать ромб и «угол 30°».</li>
+  <li>25–30 мин — практика. В задачах 5–7 сначала найти недостающий отрезок Пифагором, потом площадь.</li>
+  <li>5 мин — итог: «нет высоты — ищем её: через угол 30° или через Пифагора».</li>
+</ol>
+<p><b>Типичные ошибки:</b> у ромба забывает делить на 2; у параллелограмма умножает две стороны; в ромбе со стороной и диагональю берёт целую диагональ как катет.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Все формулы площадей</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Фигура</th><th>Площадь</th></tr>
+<tr><td class="ls-left">треугольник</td><td>\(S = \frac{1}{2}a\cdot h\)</td></tr>
+<tr><td class="ls-left">прямоугольный треугольник</td><td>\(S = \frac{1}{2}a\cdot b\) (катеты)</td></tr>
+<tr><td class="ls-left">прямоугольник</td><td>\(S = a\cdot b\)</td></tr>
+<tr><td class="ls-left">параллелограмм</td><td>\(S = a\cdot h\)</td></tr>
+<tr><td class="ls-left">ромб (и квадрат)</td><td>\(S = \frac{1}{2}d_1\cdot d_2\) (диагонали)</td></tr>
+<tr><td class="ls-left">трапеция</td><td>\(S = \frac{a + b}{2}\cdot h\)</td></tr>
+</table></div>
+
+<h3>2. Ромб через диагонали</h3>
+<svg class="ls-fig" viewBox="0 0 252 172" width="252" height="172" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,86 126,26 226,86 126,146" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="86" x2="226" y2="86" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="126" y1="26" x2="126" y2="146" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="126,75 137,75 137,86" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="76" y="74" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">d₁</text><text x="138" y="118" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">d₂</text><text x="12" y="86" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="126" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="240" y="86" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="126" y="160" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg>
+<div class="ls-rule">\(S = \frac{d_1\cdot d_2}{2}\). Диагонали 10 и 14 → \(S = \frac{10\cdot14}{2} = 70\).<br>
+Квадрат — тоже ромб: квадрат с диагональю 6 имеет площадь \(\frac{6\cdot6}{2} = 18\).</div>
+
+<h3>3. Параллелограмм с углом 30°</h3>
+<svg class="ls-fig" viewBox="0 0 355.9 112" width="355.9" height="112" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,86 129.9,26 329.9,26 226,86" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="129.9" y1="26" x2="129.9" y2="86" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="129.9,75 140.9,75 140.9,86" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="56,86 56,85.3 56,84.7 55.9,84 55.9,83.4 55.8,82.7 55.7,82.1 55.7,81.4 55.5,80.8 55.4,80.1 55.3,79.5 55.1,78.9 55,78.2 54.8,77.6 54.6,77 54.4,76.4 54.2,75.7 54,75.1 53.7,74.5 53.5,73.9 53.2,73.3 52.9,72.7 52.6,72.1 52.3,71.6 52,71" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="68.5" y="74.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">30°</text><text x="71.5" y="44.7" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">b</text><text x="126" y="99" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a</text><text x="144" y="56" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">h</text><text x="12.2" y="88.3" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="238.9" y="91.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><text x="119.7" y="16.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="343.6" y="23" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="118" y="93.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">H</text></svg>
+<div class="ls-rule">Высота \(BH\) — катет против угла \(30^\circ\) в треугольнике \(ABH\), значит, \(h = \frac{b}{2}\) (урок 11).
+\(S = a\cdot\frac{b}{2}\). Стороны 8 и 5, угол \(30^\circ\): \(h = 2{,}5\), \(S = 8\cdot2{,}5 = 20\).</div>
+<div class="ls-warn">Площадь параллелограмма — это <b>не</b> произведение двух сторон! Умножаем сторону на <b>высоту</b>.</div>
+
+<h3>4. Нет нужного отрезка — ищем Пифагором</h3>
+<div class="ls-example">Ромб со стороной 5 и диагональю 6: половина диагонали 3, вторая половина \(\sqrt{25 - 9} = 4\), вторая диагональ 8. \(S = \frac{6\cdot8}{2} = 24\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Диагонали ромба равны 10 и 14. Найдите площадь ромба.</div>
+<details><summary>Решение</summary>\(S = \frac{10\cdot14}{2} = 70\).
+<p class="ls-answer">Ответ: 70</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Стороны параллелограмма равны 8 и 5, а угол между ними равен \(30^\circ\). Найдите площадь параллелограмма.</div>
+<details><summary>Решение</summary>Высота к стороне 8 — катет против \(30^\circ\): \(h = 5 : 2 = 2{,}5\). \(S = 8\cdot2{,}5 = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Основания трапеции равны 6 и 10, а высота равна 7. Найдите площадь трапеции.</div>
+<details><summary>Решение</summary>\(S = \frac{6 + 10}{2}\cdot7 = 8\cdot7 = 56\).
+<p class="ls-answer">Ответ: 56</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Сторона треугольника равна 12, а высота, проведённая к ней, равна 7. Найдите площадь треугольника.</div>
+<details><summary>Решение</summary>\(S = \frac{12\cdot7}{2} = 42\).
+<p class="ls-answer">Ответ: 42</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Одна сторона прямоугольника равна 6, а диагональ равна 10. Найдите площадь прямоугольника.</div>
+<details><summary>Решение</summary>Другая сторона: \(\sqrt{100 - 36} = 8\). \(S = 6\cdot8 = 48\).
+<p class="ls-answer">Ответ: 48</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Основания равнобедренной трапеции равны 4 и 10, а её боковые стороны равны 5. Найдите площадь трапеции.</div>
+<details><summary>Решение</summary>Уголок: \(\frac{10 - 4}{2} = 3\). Высота: \(\sqrt{25 - 9} = 4\). \(S = \frac{4 + 10}{2}\cdot4 = 28\).
+<p class="ls-answer">Ответ: 28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Сторона ромба равна 5, а одна из диагоналей равна 6. Найдите площадь ромба.
+<svg class="ls-fig" viewBox="0 0 340 268" width="340" height="268" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,134 170,26 314,134 170,242" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="134" x2="314" y2="134" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="170" y1="26" x2="170" y2="242" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="170,123 181,123 181,134" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="90.2" y="69.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">5</text><text x="12" y="134" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="170" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="328" y="134" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="170" y="256" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg></div>
+<details><summary>Решение</summary>Диагонали ромба делятся пополам и перпендикулярны. Половина известной диагонали: 3. Вторая половина: \(\sqrt{25 - 9} = 4\), вся диагональ 8.
+\(S = \frac{6\cdot8}{2} = 24\).
+<p class="ls-answer">Ответ: 24</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Диагонали ромба равны 7 и 12. Найдите площадь ромба.</div>
+<details><summary>Решение</summary>\(\frac{7\cdot12}{2} = 42\).
+<p class="ls-answer">Ответ: 42</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Стороны параллелограмма равны 10 и 6, а угол между ними равен \(30^\circ\). Найдите площадь параллелограмма.</div>
+<details><summary>Решение</summary>Высота к стороне 10: \(6 : 2 = 3\). \(S = 10\cdot3 = 30\).
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Диагональ квадрата равна 6. Найдите площадь квадрата.</div>
+<details><summary>Решение</summary>Квадрат — ромб с равными диагоналями: \(S = \frac{6\cdot6}{2} = 18\).
+<p class="ls-answer">Ответ: 18</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Сторона ромба равна 13, а одна из диагоналей равна 24. Найдите площадь ромба.</div>
+<details><summary>Решение</summary>Половина диагонали 12, вторая половина \(\sqrt{169 - 144} = 5\), вторая диагональ 10. \(S = \frac{24\cdot10}{2} = 120\).
+<p class="ls-answer">Ответ: 120</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В прямоугольном треугольнике один из катетов равен 7, а гипотенуза равна 25. Найдите площадь треугольника.</div>
+<details><summary>Решение</summary>Второй катет: \(\sqrt{625 - 49} = \sqrt{576} = 24\). \(S = \frac{7\cdot24}{2} = 84\).
+<p class="ls-answer">Ответ: 84</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 27)</span> Решите неравенство \(-5x \ge 15\). В ответ запишите наибольшее целое решение.</div>
+<details><summary>Решение</summary>Делим на \(-5\), переворачиваем знак: \(x \le -3\). Наибольшее целое: \(-3\).
+<p class="ls-answer">Ответ: \(-3\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 25)</span> Решите уравнение \(x^2 - x - 6 = 0\). Запишите корни в порядке возрастания.</div>
+<details><summary>Решение</summary>Произведение \(-6\), сумма 1: \(-2\) и 3.
+<p class="ls-answer">Ответ: \(-2\); 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 21)</span> Вычислите \(19^2\) с помощью формулы квадрата разности.</div>
+<details><summary>Решение</summary>\((20 - 1)^2 = 400 - 40 + 1 = 361\).
+<p class="ls-answer">Ответ: 361</p></details></div>
+</section>
+<nav class="ls-foot"><a href="28-kvadratnye-neravenstva.html">← Урок 28</a><a href="00-index.html">Все уроки</a><a href="30-sistemy-neravenstv.html">Урок 30 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

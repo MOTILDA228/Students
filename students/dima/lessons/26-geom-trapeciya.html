@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 26. Геометрия: трапеция</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 26. Геометрия: трапеция</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №17</span><span class="ls-tag">ОГЭ №18</span><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима решает №17 про трапецию: углы, средняя линия, высота равнобедренной трапеции, площадь.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 25.</li>
+  <li>15 мин — шпаргалка. Связать с уроком 20: углы при боковой стороне — односторонние.</li>
+  <li>25–30 мин — практика. В задачах на высоту равнобедренной трапеции всегда рисовать две высоты и «отрезать» уголки.</li>
+  <li>5 мин — итог: «углы при боковой стороне — 180, средняя линия — полусумма оснований».</li>
+</ol>
+<p><b>Типичные ошибки:</b> складывает углы при основании вместо углов при боковой стороне; среднюю линию считает как сумму оснований; в «уголке» берёт всю разность оснований, а не её половину.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Что такое трапеция</h3>
+<svg class="ls-fig" viewBox="0 0 292 152" width="292" height="152" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,126 86,26 186,26 266,126" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="44,126 44,125.2 43.9,124.5 43.9,123.7 43.7,122.9 43.6,122.2 43.4,121.4 43.2,120.7 42.9,119.9 42.7,119.2 42.4,118.5 42,117.8 41.7,117.1 41.3,116.5 40.8,115.8 40.4,115.2 39.9,114.6 39.4,114 38.9,113.4 38.3,112.9 37.8,112.4 37.2,111.9 36.6,111.4 35.9,111 35.3,110.6" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="77.8,39.7 79,40.4 80.3,40.9 81.6,41.4 83,41.7 84.4,41.9 85.8,42 87.2,42 88.6,41.8 90,41.5 91.3,41.1 92.6,40.6 93.9,39.9 95.1,39.2 96.2,38.3 97.2,37.4 98.2,36.4 99.1,35.2 99.8,34.1 100.5,32.8 101,31.5 101.4,30.2 101.8,28.8 101.9,27.4 102,26" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="75.7,43.1 77.3,44 78.9,44.7 80.5,45.2 82.3,45.6 84,45.9 85.7,46 87.5,45.9 89.3,45.7 91,45.4 92.7,44.9 94.3,44.2 95.9,43.4 97.3,42.5 98.7,41.4 100.1,40.2 101.2,38.9 102.3,37.6 103.3,36.1 104.1,34.5 104.8,32.9 105.3,31.2 105.7,29.5 105.9,27.8 106,26" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="13.2" y="131.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="75.6" y="16.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="195.4" y="15.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="279" y="131.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg>
+<div class="ls-rule">У трапеции две стороны <b>параллельны</b> — это <b>основания</b> (\(AD\) и \(BC\)). Две другие — <b>боковые стороны</b> (\(AB\) и \(CD\)).<br>
+Углы <b>при боковой стороне</b> в сумме дают \(180^\circ\): \(\angle A + \angle B = 180^\circ\), \(\angle C + \angle D = 180^\circ\) (односторонние углы, урок 20).</div>
+
+<h3>2. Равнобедренная трапеция</h3>
+<svg class="ls-fig" viewBox="0 0 292 152" width="292" height="152" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,126 86,26 206,26 266,126" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="50.9" y1="72.9" x2="61.1" y2="79.1" stroke="currentColor" stroke-width="1.6"/><line x1="241.1" y1="72.9" x2="230.9" y2="79.1" stroke="currentColor" stroke-width="1.6"/><line x1="86" y1="26" x2="86" y2="126" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><line x1="206" y1="26" x2="206" y2="126" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="86,115 97,115 97,126" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="206,115 217,115 217,126" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="44,126 44,125.2 43.9,124.5 43.9,123.7 43.7,122.9 43.6,122.2 43.4,121.4 43.2,120.7 42.9,119.9 42.7,119.2 42.4,118.5 42,117.8 41.7,117.1 41.3,116.5 40.8,115.8 40.4,115.2 39.9,114.6 39.4,114 38.9,113.4 38.3,112.9 37.8,112.4 37.2,111.9 36.6,111.4 35.9,111 35.3,110.6" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="256.7,110.6 256.1,111 255.4,111.4 254.8,111.9 254.2,112.4 253.7,112.9 253.1,113.4 252.6,114 252.1,114.6 251.6,115.2 251.2,115.8 250.7,116.5 250.3,117.1 250,117.8 249.6,118.5 249.3,119.2 249.1,119.9 248.8,120.7 248.6,121.4 248.4,122.2 248.3,122.9 248.1,123.7 248.1,124.5 248,125.2 248,126" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="56" y="139" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">1,5</text><text x="146" y="13" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">3</text><text x="146" y="139" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">6</text><text x="12.5" y="129.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="76.6" y="15.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="215.4" y="15.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="279.5" y="129.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><text x="73.8" y="132.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">H</text><text x="218.2" y="132.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">K</text></svg>
+<div class="ls-rule">Боковые стороны равны, <b>углы при основании равны</b>: \(\angle A = \angle D\), \(\angle B = \angle C\).<br>
+Высоты \(BH\) и \(CK\) отрезают по краям два одинаковых прямоугольных треугольника.
+Их нижний катет: \(AH = \frac{AD - BC}{2}\) — <b>полуразность оснований</b>. Здесь \(\frac{6 - 3}{2} = 1{,}5\).</div>
+<div class="ls-example">Дальше — Пифагор в треугольнике \(ABH\): боковая сторона — гипотенуза, \(AH\) и высота — катеты.</div>
+
+<h3>3. Средняя линия</h3>
+<svg class="ls-fig" viewBox="0 0 292 152" width="292" height="152" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,126 86,26 186,26 266,126" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="56" y1="76" x2="226" y2="76" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="35.9" y1="97.9" x2="46.1" y2="104.1" stroke="currentColor" stroke-width="1.6"/><line x1="65.9" y1="47.9" x2="76.1" y2="54.1" stroke="currentColor" stroke-width="1.6"/><line x1="209.1" y1="45.3" x2="199.8" y2="52.8" stroke="currentColor" stroke-width="1.6"/><line x1="212.2" y1="49.2" x2="202.9" y2="56.7" stroke="currentColor" stroke-width="1.6"/><line x1="249.1" y1="95.3" x2="239.8" y2="102.8" stroke="currentColor" stroke-width="1.6"/><line x1="252.2" y1="99.2" x2="242.9" y2="106.7" stroke="currentColor" stroke-width="1.6"/><text x="13.2" y="131.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="75.6" y="16.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="195.4" y="15.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="279" y="131.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><text x="42" y="76" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">M</text><text x="240" y="76" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">N</text></svg>
+<div class="ls-rule"><b>Средняя линия</b> соединяет середины боковых сторон. Она параллельна основаниям и равна их <b>полусумме</b>:
+\[ MN = \frac{AD + BC}{2} \]</div>
+
+<h3>4. Площадь (урок 14)</h3>
+<div class="ls-rule">\(S = \frac{a + b}{2}\cdot h\) — средняя линия на высоту.<br>
+Если угол при основании \(45^\circ\), то треугольник-уголок равнобедренный: <b>высота равна полуразности оснований</b>.</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Один из углов трапеции при боковой стороне равен \(70^\circ\). Найдите другой угол при этой же боковой стороне.</div>
+<details><summary>Решение</summary>Углы при боковой стороне в сумме \(180^\circ\): \(180 - 70 = 110^\circ\).
+<p class="ls-answer">Ответ: 110</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Один из углов равнобедренной трапеции равен \(64^\circ\). Найдите больший угол трапеции.</div>
+<details><summary>Решение</summary>Угол \(64^\circ\) — острый, при основании. Угол при той же боковой стороне: \(180 - 64 = 116^\circ\).
+<p class="ls-answer">Ответ: 116</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Основания трапеции равны 7 и 13. Найдите её среднюю линию.</div>
+<details><summary>Решение</summary>\(\frac{7 + 13}{2} = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Средняя линия трапеции равна 12, одно из оснований равно 9. Найдите другое основание.</div>
+<details><summary>Решение</summary>Сумма оснований \(= 2\cdot12 = 24\). Другое: \(24 - 9 = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Основания равнобедренной трапеции равны 4 и 10, боковая сторона равна 5. Найдите высоту трапеции.
+<svg class="ls-fig" viewBox="0 0 392 188" width="392" height="188" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,162 128,26 264,26 366,162" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="128" y1="26" x2="128" y2="162" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="128,151 139,151 139,162" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="66.6" y="86.2" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">5</text><text x="196" y="13" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">4</text><text x="196" y="175" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">10</text><text x="12.8" y="166.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="120.2" y="14.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="273.9" y="16.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="379.4" y="166" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><text x="118.1" y="171.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">H</text></svg></div>
+<details><summary>Решение</summary>Уголок: \(AH = \frac{10 - 4}{2} = 3\). В треугольнике \(ABH\): гипотенуза 5, катет 3, высота \(= \sqrt{25 - 9} = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> В равнобедренной трапеции основания равны 3 и 5, а один из углов между боковой стороной и основанием равен \(45^\circ\). Найдите площадь трапеции.
+<svg class="ls-fig" viewBox="0 0 282 98" width="282" height="98" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,72 72,26 210,26 256,72" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="72" y1="26" x2="72" y2="72" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="72,61 83,61 83,72" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="48,72 48,71.3 48,70.6 47.9,69.8 47.8,69.1 47.7,68.4 47.6,67.7 47.4,67 47.3,66.3 47.1,65.6 46.8,64.9 46.6,64.3 46.3,63.6 46,62.9 45.7,62.3 45.4,61.6 45.1,61 44.7,60.4 44.3,59.8 43.9,59.2 43.5,58.6 43,58 42.5,57.5 42.1,57 41.6,56.4" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="59.3" y="58.2" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">45°</text><text x="12.2" y="74.5" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="59.5" y="19.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="223.3" y="21.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="269.9" y="74" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><text x="58.7" y="76.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">H</text></svg></div>
+<details><summary>Решение</summary>Уголок: \(AH = \frac{5 - 3}{2} = 1\). Угол \(45^\circ\) → треугольник \(ABH\) равнобедренный, высота \(BH = AH = 1\).
+\(S = \frac{3 + 5}{2}\cdot1 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Сумма двух углов равнобедренной трапеции равна \(50^\circ\). Найдите больший угол трапеции.</div>
+<details><summary>Решение</summary>Два угла с суммой \(50^\circ\) — это два равных острых угла при основании: по \(25^\circ\).
+Больший угол: \(180 - 25 = 155^\circ\).
+<p class="ls-answer">Ответ: 155</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Один из углов трапеции при боковой стороне равен \(47^\circ\). Найдите другой угол при этой же боковой стороне.</div>
+<details><summary>Решение</summary>\(180 - 47 = 133^\circ\).
+<p class="ls-answer">Ответ: 133</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Основания трапеции равны 5 и 17. Найдите её среднюю линию.</div>
+<details><summary>Решение</summary>\(\frac{5 + 17}{2} = 11\).
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Основания равнобедренной трапеции равны 6 и 22, боковая сторона равна 17. Найдите высоту трапеции.</div>
+<details><summary>Решение</summary>Уголок: \(\frac{22 - 6}{2} = 8\). Высота: \(\sqrt{289 - 64} = \sqrt{225} = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Сумма двух углов равнобедренной трапеции равна \(96^\circ\). Найдите больший угол трапеции.</div>
+<details><summary>Решение</summary>Острые углы по \(48^\circ\). Больший: \(180 - 48 = 132^\circ\).
+<p class="ls-answer">Ответ: 132</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> В равнобедренной трапеции основания равны 7 и 13, а один из углов между боковой стороной и основанием равен \(45^\circ\). Найдите площадь трапеции.</div>
+<details><summary>Решение</summary>Уголок и высота: \(\frac{13 - 7}{2} = 3\). \(S = \frac{7 + 13}{2}\cdot3 = 30\).
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 24)</span> Решите уравнение \(x^2 - 8x + 15 = 0\). Запишите корни в порядке возрастания.</div>
+<details><summary>Решение</summary>\(D = 64 - 60 = 4\). \(x = \frac{8 \pm 2}{2}\): 3 и 5.
+<p class="ls-answer">Ответ: 3; 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 22)</span> Решите уравнение \(5x^2 - 45 = 0\). Запишите корни в порядке возрастания.</div>
+<details><summary>Решение</summary>\(x^2 = 9\) → \(-3\) и 3.
+<p class="ls-answer">Ответ: \(-3\); 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 18)</span> За месяц израсходовано 280 кВт·ч электроэнергии по цене 5,2 руб. за 1 кВт·ч. Сколько рублей нужно заплатить?</div>
+<details><summary>Решение</summary>\(280\cdot5{,}2 = 1456\) руб.
+<p class="ls-answer">Ответ: 1456</p></details></div>
+</section>
+<nav class="ls-foot"><a href="25-kvadratnye-vieta.html">← Урок 25</a><a href="00-index.html">Все уроки</a><a href="27-lineynye-neravenstva.html">Урок 27 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

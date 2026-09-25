@@ -424,7 +424,10 @@ def _plot(header, lines, uid):
             if len(parts) > 1 and parts[1]:
                 ax = float(parts[2]) if len(parts) > 2 else xmax - 1
                 ay = float(eval(code, {"__builtins__": {}}, dict(MATH, x=ax)))
-                out.append(_text(X(ax) + 6, Y(ay) - 12, parts[1], 14, ' font-style="italic"'))
+                half = len(parts[1]) * 3.9  # примерная половина ширины подписи
+                lx = min(max(X(ax) + 6, half + 2), w - half - 2)
+                ly = min(max(Y(ay) - 12, 10), h - 10)
+                out.append(_text(lx, ly, parts[1], 14, ' font-style="italic"'))
         elif word == "pt":
             p = rest.split(None, 2)
             px, py = X(float(p[0])), Y(float(p[1]))

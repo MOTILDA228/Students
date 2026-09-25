@@ -1,0 +1,181 @@
+@title Урок 30. Системы неравенств
+@tags ОГЭ №13 | алгебра
+@teacher
+<p><b>Цель:</b> Дима решает системы линейных неравенств: решает каждое, рисует оба на одной прямой и находит общую часть.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 29.</li>
+  <li>15 мин — шпаргалка. Аналогия: «прийти на урок можно после 14:00 <b>и</b> до 16:00» — подходит только время между.</li>
+  <li>25–30 мин — практика. Две штриховки рисовать разным наклоном или цветом.</li>
+  <li>5 мин — итог: «система — это И: нужна общая часть».</li>
+</ol>
+<p><b>Типичные ошибки:</b> объединяет вместо пересечения; не замечает случай «нет решений»; забывает перевернуть знак при делении на минус.</p>
+@theory
+<h3>1. Что такое система</h3>
+<div class="ls-rule">\(\begin{cases} x > -1 \\ x \le 3 \end{cases}\) — фигурная скобка значит <b>«И»</b>: нужны числа, для которых верны <b>оба</b> неравенства сразу.</div>
+
+<h3>2. Алгоритм</h3>
+<ol class="ls-steps">
+  <li>Реши каждое неравенство отдельно (урок 27).</li>
+  <li>Нарисуй оба решения на одной прямой.</li>
+  <li>Ответ — там, где штриховки <b>перекрываются</b>.</li>
+</ol>
+<div class="ls-figs"><figure>
+@numline -4 6 width=240
+int (-1; +inf)
+@end
+<figcaption>\(x > -1\)</figcaption></figure><figure>
+@numline -4 6 width=240
+int (-inf; 3]
+@end
+<figcaption>\(x \le 3\)</figcaption></figure><figure>
+@numline -4 6 width=240
+int (-1; 3]
+@end
+<figcaption>общая часть: \((-1;\ 3]\)</figcaption></figure></div>
+<div class="ls-example">Ответ: \(-1 < x \le 3\), то есть \((-1;\ 3]\). Концы: \(-1\) выколота (знак строгий), 3 закрашена.</div>
+
+<h3>3. Когда решений нет</h3>
+<div class="ls-rule">\(\begin{cases} x > 5 \\ x < -1 \end{cases}\): числа больше 5 и одновременно меньше \(-1\) не бывает. Штриховки не пересекаются → <b>нет решений</b>.</div>
+
+<h3>4. Как считать целые решения</h3>
+<div class="ls-rule">Выпиши целые числа от левого конца до правого. Выколотый конец <b>не считаем</b>, закрашенный — считаем.
+\((-1;\ 3]\): 0, 1, 2, 3 — четыре числа.</div>
+@practice
+@task
+Решите систему \(\begin{cases} x > 2 \\ x < 7 \end{cases}\). Сколько целых чисел являются её решениями?
+@sol
+Общая часть: \(2 < x < 7\). Целые: 3, 4, 5, 6 — четыре.
+@ans 4
+@check len([x for x in range(-100, 101) if x > 2 and x < 7])
+@task
+Решите систему \(\begin{cases} 2x - 4 \ge 0 \\ x - 6 < 0 \end{cases}\). Найдите наибольшее целое решение.
+@sol
+\(x \ge 2\) и \(x < 6\) → \([2;\ 6)\). 6 не входит, наибольшее целое: 5.
+@ans 5
+@check max(x for x in range(-100, 101) if 2*x - 4 >= 0 and x - 6 < 0)
+@task
+Решите систему \(\begin{cases} 3x + 1 > 7 \\ 2x - 3 \le 9 \end{cases}\). Найдите сумму всех целых решений.
+@sol
+\(3x > 6\) → \(x > 2\); \(2x \le 12\) → \(x \le 6\). Общая часть \((2;\ 6]\): 3, 4, 5, 6. Сумма: 18.
+@ans 18
+@check sum(x for x in range(-100, 101) if 3*x + 1 > 7 and 2*x - 3 <= 9)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Укажите решение системы неравенств \(\begin{cases} x + 3 \ge 0 \\ x - 2 < 0 \end{cases}\).
+<div class="ls-figs"><figure>
+@numline -6 5 width=220
+int (-3; 2]
+@end
+<figcaption>1)</figcaption></figure><figure>
+@numline -6 5 width=220
+int [-3; 2)
+@end
+<figcaption>2)</figcaption></figure><figure>
+@numline -6 5 width=220
+int (-inf; -3]
+@end
+<figcaption>3)</figcaption></figure><figure>
+@numline -6 5 width=220
+int [2; +inf)
+@end
+<figcaption>4)</figcaption></figure></div>
+@sol
+\(x \ge -3\) и \(x < 2\) → \([-3;\ 2)\): \(-3\) закрашена, 2 выколота — вариант 2.
+@ans 2
+@check which(lambda x: x + 3 >= 0 and x - 2 < 0, lambda x: -3 < x <= 2, lambda x: -3 <= x < 2, lambda x: x <= -3, lambda x: x >= 2)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Укажите решение системы неравенств \(\begin{cases} x - 5 > 0 \\ x + 1 < 0 \end{cases}\).
+<div class="ls-opts"><span>1) \((-1;\ 5)\)</span><span>2) \((-\infty;\ -1)\)</span><span>3) \((5;\ +\infty)\)</span><span>4) нет решений</span></div>
+@sol
+\(x > 5\) и \(x < -1\) — таких чисел нет. Вариант 4.
+@ans 4
+@check which(lambda x: x - 5 > 0 and x + 1 < 0, lambda x: -1 < x < 5, lambda x: x < -1, lambda x: x > 5, lambda x: False)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Укажите решение системы неравенств \(\begin{cases} -2x > -8 \\ x + 3 > 0 \end{cases}\).
+<div class="ls-opts"><span>1) \((-3;\ +\infty)\)</span><span>2) \((-\infty;\ 4)\)</span><span>3) \((-3;\ 4)\)</span><span>4) \((4;\ +\infty)\)</span></div>
+@sol
+\(-2x > -8\) → делим на \(-2\), знак переворачивается: \(x < 4\). \(x > -3\). Общая часть: \((-3;\ 4)\) — вариант 3.
+@ans 3
+@check which(lambda x: -2*x > -8 and x + 3 > 0, lambda x: x > -3, lambda x: x < 4, lambda x: -3 < x < 4, lambda x: x > 4)
+@task
+При каких \(x\) оба выражения \(2x - 1\) и \(10 - x\) положительны? Сколько таких целых \(x\)?
+@sol
+Система \(\begin{cases} 2x - 1 > 0 \\ 10 - x > 0 \end{cases}\) → \(x > 0{,}5\) и \(x < 10\). Целые: 1, 2, …, 9 — девять.
+@ans 9
+@check len([x for x in range(-100, 101) if 2*x - 1 > 0 and 10 - x > 0])
+@hw
+@task
+Решите систему \(\begin{cases} x \ge -2 \\ x < 3 \end{cases}\). Сколько целых чисел являются её решениями?
+@sol
+\([-2;\ 3)\): \(-2, -1, 0, 1, 2\) — пять.
+@ans 5
+@check len([x for x in range(-100, 101) if x >= -2 and x < 3])
+@task
+Решите систему \(\begin{cases} 4x - 8 > 0 \\ x - 7 \le 0 \end{cases}\). Найдите наименьшее целое решение.
+@sol
+\(x > 2\) и \(x \le 7\) → \((2;\ 7]\). Наименьшее целое: 3.
+@ans 3
+@check min(x for x in range(-100, 101) if 4*x - 8 > 0 and x - 7 <= 0)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Укажите решение системы неравенств \(\begin{cases} x - 4 \le 0 \\ x + 1 > 0 \end{cases}\).
+<div class="ls-figs"><figure>
+@numline -4 7 width=220
+int [-1; 4)
+@end
+<figcaption>1)</figcaption></figure><figure>
+@numline -4 7 width=220
+int (-inf; -1)
+@end
+<figcaption>2)</figcaption></figure><figure>
+@numline -4 7 width=220
+int (-1; 4]
+@end
+<figcaption>3)</figcaption></figure><figure>
+@numline -4 7 width=220
+int [4; +inf)
+@end
+<figcaption>4)</figcaption></figure></div>
+@sol
+\(x \le 4\) и \(x > -1\) → \((-1;\ 4]\): \(-1\) выколота, 4 закрашена — вариант 3.
+@ans 3
+@check which(lambda x: x - 4 <= 0 and x + 1 > 0, lambda x: -1 <= x < 4, lambda x: x < -1, lambda x: -1 < x <= 4, lambda x: x >= 4)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Укажите решение системы неравенств \(\begin{cases} x + 2 > 0 \\ 3 - x > 0 \end{cases}\).
+<div class="ls-opts"><span>1) \((-2;\ 3)\)</span><span>2) \((-\infty;\ -2)\cup(3;\ +\infty)\)</span><span>3) \((3;\ +\infty)\)</span><span>4) нет решений</span></div>
+@sol
+\(x > -2\); \(3 - x > 0\) → \(x < 3\). Общая часть \((-2;\ 3)\) — вариант 1.
+@ans 1
+@check which(lambda x: x + 2 > 0 and 3 - x > 0, lambda x: -2 < x < 3, lambda x: x < -2 or x > 3, lambda x: x > 3, lambda x: False)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Укажите решение системы неравенств \(\begin{cases} 2x + 1 > 5 \\ x - 1 < 0 \end{cases}\).
+<div class="ls-opts"><span>1) \((1;\ 2)\)</span><span>2) \((2;\ +\infty)\)</span><span>3) \((-\infty;\ 1)\)</span><span>4) нет решений</span></div>
+@sol
+\(2x > 4\) → \(x > 2\); \(x < 1\). Больше 2 и меньше 1 одновременно не бывает — нет решений, вариант 4.
+@ans 4
+@check which(lambda x: 2*x + 1 > 5 and x - 1 < 0, lambda x: 1 < x < 2, lambda x: x > 2, lambda x: x < 1, lambda x: False)
+@task
+@rep 28
+Решите неравенство \(x^2 - 25 < 0\). Сколько целых чисел являются его решениями?
+@sol
+\(-5 < x < 5\): от \(-4\) до 4 — девять чисел.
+@ans 9
+@check len([x for x in range(-100, 101) if x*x - 25 < 0])
+@task
+@rep 26
+Сумма двух углов равнобедренной трапеции равна \(140^\circ\). Найдите больший угол трапеции.
+@sol
+Два острых угла по \(70^\circ\). Больший: \(180 - 70 = 110^\circ\).
+@ans 110
+@check 180-140/2
+@task
+@rep 22
+Решите уравнение \(3x^2 - 48 = 0\). Запишите корни в порядке возрастания.
+@sol
+\(x^2 = 16\) → \(-4\) и 4.
+@ans \(-4\); 4
+@check roots(3,0,-48)
