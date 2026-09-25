@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 51. Практические задачи: участок и теплица (сюжеты ОГЭ №1–5)</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 51. Практические задачи: участок и теплица (сюжеты ОГЭ №1–5)</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №1–5</span><span class="ls-tag">алгебра</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима работает с планом участка на клетках: находит объекты по описанию, считает площади, плитку, расстояния (Пифагор) и окупаемость. Дома — сюжет «Теплица» с полуокружностью.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 50.</li>
+  <li>10 мин — как читать план: масштаб клетки, описание → номера объектов.</li>
+  <li>30 мин — сюжет «Участок» целиком. Задача 7 (окупаемость) — самая трудная, разобрать по шагам.</li>
+  <li>ДЗ — сюжет «Теплица», \(\pi \approx 3{,}14\).</li>
+</ol>
+<p><b>Типичные ошибки:</b> считает площадь в клетках, забыв про масштаб; округляет число упаковок вниз; в окупаемости делит не ту разность.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Как читать план</h3>
+<ol class="ls-steps">
+  <li>Найди масштаб: «сторона клетки равна … м».</li>
+  <li>Прочитай описание и по нему подпиши объекты на плане карандашом (ворота, «справа от ворот», «в глубине участка»).</li>
+  <li>Длины считай в клетках, потом умножай на размер клетки.</li>
+</ol>
+<div class="ls-warn">Если сторона клетки 2 м, то площадь одной клетки — \(2\cdot2 = 4\) м², а не 2!</div>
+
+<h3>2. Упаковки и планки — округляем вверх</h3>
+<div class="ls-rule">Нужно 16 плиток, в упаковке 5: \(16 : 5 = 3{,}2\) — трёх упаковок не хватит, покупаем <b>4</b>. Покупное количество всегда округляем вверх.</div>
+
+<h3>3. Окупаемость</h3>
+<div class="ls-rule">Вариант А дороже купить, но дешевле в работе. Через сколько часов (дней, месяцев) он окупится?
+\[ \text{время} = \frac{\text{разница в стоимости покупки и установки}}{\text{экономия за 1 час}} \]</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Сюжет в формате ОГЭ №1–5 «Участок»</span><br> <p><b>Прочитайте текст и выполните задания 1–5.</b> На плане изображён дачный участок (сторона каждой клетки равна 1 м). Участок имеет прямоугольную форму. Вход и въезд — через ворота в нижней стороне забора. Справа от ворот находится гараж, а правее гаража — сарай. Слева от ворот стоит теплица. Жилой дом находится в глубине участка, а баня — правее дома, у правого края участка. Все дорожки имеют ширину 1 м и вымощены плиткой размером 1 м × 1 м (на плане дорожки показаны пунктиром).</p>
+<svg class="ls-fig" viewBox="0 0 324 261" width="324" height="261" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="237" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="27" y1="237" x2="27" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="42" y1="237" x2="42" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="57" y1="237" x2="57" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="72" y1="237" x2="72" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="87" y1="237" x2="87" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="102" y1="237" x2="102" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="117" y1="237" x2="117" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="132" y1="237" x2="132" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="147" y1="237" x2="147" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="162" y1="237" x2="162" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="177" y1="237" x2="177" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="192" y1="237" x2="192" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="207" y1="237" x2="207" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="222" y1="237" x2="222" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="237" y1="237" x2="237" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="252" y1="237" x2="252" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="267" y1="237" x2="267" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="282" y1="237" x2="282" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="297" y1="237" x2="297" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="312" y1="237" x2="312" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="237" x2="312" y2="237" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="222" x2="312" y2="222" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="207" x2="312" y2="207" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="192" x2="312" y2="192" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="177" x2="312" y2="177" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="162" x2="312" y2="162" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="147" x2="312" y2="147" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="132" x2="312" y2="132" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="117" x2="312" y2="117" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="102" x2="312" y2="102" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="87" x2="312" y2="87" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="72" x2="312" y2="72" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="57" x2="312" y2="57" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="42" x2="312" y2="42" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="27" x2="312" y2="27" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="312" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="237" x2="132" y2="237" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="162" y1="237" x2="312" y2="237" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="312" y1="237" x2="312" y2="12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="312" y1="12" x2="12" y2="12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="12" y1="12" x2="12" y2="237" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><text x="147" y="249" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">ворота</text><polygon points="27,222 72,222 72,147 27,147" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><text x="49.5" y="184.5" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">5</text><polygon points="177,222 237,222 237,132 177,132" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><text x="207" y="177" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">2</text><polygon points="252,222 297,222 297,177 252,177" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><text x="274.5" y="199.5" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">1</text><polygon points="57,117 177,117 177,42 57,42" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><text x="117" y="79.5" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">3</text><polygon points="237,72 297,72 297,27 237,27" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><text x="267" y="49.5" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">4</text><polygon points="132,237 147,237 147,117 132,117" fill="none" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linejoin="round"/><polygon points="72,192 132,192 132,177 72,177" fill="none" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linejoin="round"/><polygon points="177,72 237,72 237,57 177,57" fill="none" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linejoin="round"/></svg>
+<p>Для объектов, указанных в таблице, определите, какими цифрами они обозначены на плане. В ответ запишите последовательность четырёх цифр.</p>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Объекты</th><td>жилой дом</td><td>баня</td><td>гараж</td><td>теплица</td></tr>
+<tr><th>Цифры</th><td></td><td></td><td></td><td></td></tr>
+</table></div></div>
+<details><summary>Решение</summary>Ворота — разрыв в нижней стороне забора. Справа от ворот — 2 (гараж), правее — 1 (сарай). Слева от ворот — 5 (теплица). В глубине — большой объект 3 (дом), правее у края — 4 (баня).
+Дом — 3, баня — 4, гараж — 2, теплица — 5.
+<p class="ls-answer">Ответ: 3425</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Плитку продают в упаковках по 5 штук. Сколько упаковок плитки нужно купить, чтобы вымостить все дорожки?</div>
+<details><summary>Решение</summary>Считаем клетки дорожек: от ворот к дому — 8, к теплице — 4, от дома к бане — 4. Всего 16 плиток. \(16 : 5 = 3{,}2\) → нужно 4 упаковки.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите площадь, которую занимает жилой дом (в квадратных метрах).</div>
+<details><summary>Решение</summary>Дом — прямоугольник \(8\times5\) клеток, клетка \(1\times1\) м: \(S = 40\) м².
+<p class="ls-answer">Ответ: 40</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите расстояние (в метрах) от правого нижнего угла дома до левого нижнего угла бани по прямой.</div>
+<details><summary>Решение</summary>От угла дома \((11; 8)\) до угла бани \((15; 11)\): 4 клетки по горизонтали и 3 по вертикали. \(\sqrt{16 + 9} = 5\) м.
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <p>Хозяин участка планирует устроить в доме зимнее отопление. Он рассматривает два варианта: газовое или электрическое. Цены и расход приведены в таблице.</p>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th></th><th>Котёл</th><th>Прочее оборудование и монтаж</th><th>Расход</th><th>Цена</th></tr>
+<tr><td class="ls-left">газовое</td><td>24 000 руб.</td><td>18 280 руб.</td><td>1,2 м³ газа в час</td><td>5,6 руб. за 1 м³</td></tr>
+<tr><td class="ls-left">электрическое</td><td>20 000 руб.</td><td>15 000 руб.</td><td>5,6 кВт·ч в час</td><td>3,8 руб. за 1 кВт·ч</td></tr>
+</table></div>
+<p>Хозяин выбрал газовое отопление. Через сколько часов непрерывной работы экономия от использования газа вместо электричества компенсирует разницу в стоимости установки газового и электрического оборудования?</p></div>
+<details><summary>Решение</summary>Установка: газ \(24000 + 18280 = 42280\), электричество \(20000 + 15000 = 35000\). Разница: 7280 руб.
+Час работы: газ \(1{,}2\cdot5{,}6 = 6{,}72\) руб., электричество \(5{,}6\cdot3{,}8 = 21{,}28\) руб. Экономия: \(14{,}56\) руб. в час.
+Время: \(7280 : 14{,}56 = 500\) ч.
+<p class="ls-answer">Ответ: 500</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Сколько метров забора нужно, чтобы огородить весь участок, если ворота имеют ширину 2 м и их отдельно покупать не нужно?</div>
+<details><summary>Решение</summary>Участок \(20\times15\) м, периметр \(2\cdot(20 + 15) = 70\) м. Без ворот: \(70 - 2 = 68\) м.
+<p class="ls-answer">Ответ: 68</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Какую часть площади участка (в процентах) занимает гараж?</div>
+<details><summary>Решение</summary>Площадь участка \(20\cdot15 = 300\) м², гараж \(4\cdot6 = 24\) м². \(\frac{24}{300}\cdot100\% = 8\%\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Сюжет в формате ОГЭ №1–5 «Теплица»</span><br> <p><b>Прочитайте текст и выполните задания 1–5.</b> Саша строит на участке теплицу длиной 8 м на прямоугольном фундаменте шириной 3 м. Каркас теплицы делают из металлических дуг в форме <b>полуокружностей</b>, концы дуг ставят на длинные стороны фундамента. Дуги устанавливают через каждый метр, крайние дуги — по краям фундамента. Сверху каркас покрывают плёнкой, торцы закрывают стеклом; в переднем торце по центру — дверь шириной 0,8 м, верхние углы которой касаются дуги. Считайте \(\pi \approx 3{,}14\).</p>
+<svg class="ls-fig" viewBox="0 0 232 142" width="232" height="142" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="116" x2="206" y2="116" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="206,116 205.9,111.3 205.5,106.6 204.9,101.9 204,97.3 202.9,92.7 201.6,88.2 200,83.7 198.2,79.4 196.2,75.1 193.9,71 191.5,67 188.8,63.1 185.9,59.4 182.9,55.8 179.6,52.4 176.2,49.1 172.6,46.1 168.9,43.2 165,40.5 161,38.1 156.9,35.8 152.6,33.8 148.3,32 143.8,30.4 139.3,29.1 134.7,28 130.1,27.1 125.4,26.5 120.7,26.1 116,26 111.3,26.1 106.6,26.5 101.9,27.1 97.3,28 92.7,29.1 88.2,30.4 83.7,32 79.4,33.8 75.1,35.8 71,38.1 67,40.5 63.1,43.2 59.4,46.1 55.8,49.1 52.4,52.4 49.1,55.8 46.1,59.4 43.2,63.1 40.5,67 38.1,71 35.8,75.1 33.8,79.4 32,83.7 30.4,88.2 29.1,92.7 28,97.3 27.1,101.9 26.5,106.6 26.1,111.3 26,116" fill="none" stroke="currentColor" stroke-width="2.0"/><polygon points="92,116 140,116 140,29.2 92,29.2" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><text x="116" y="129" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">3 м</text><text x="116" y="74" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">дверь</text></svg>
+<p>Сколько дуг нужно для каркаса теплицы?</p></div>
+<details><summary>Решение</summary>Длина 8 м, шаг 1 м: промежутков 8, дуг на одну больше — 9.
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите длину одной дуги в метрах. Ответ округлите до десятых.</div>
+<details><summary>Решение</summary>Дуга — половина окружности диаметром 3 м: \(\frac{\pi\cdot3}{2} \approx \frac{3{,}14\cdot3}{2} = 4{,}71\). Округляем: 4,7 м.
+<p class="ls-answer">Ответ: 4,7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Сколько квадратных метров плёнки нужно, чтобы покрыть теплицу сверху (без торцов)? Ответ округлите до целых.</div>
+<details><summary>Решение</summary>Плёнка — прямоугольник: ширина равна длине дуги 4,71 м, длина — 8 м. \(4{,}71\cdot8 = 37{,}68 \approx 38\) м².
+<p class="ls-answer">Ответ: 38</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите высоту теплицы в самой высокой точке (в метрах).</div>
+<details><summary>Решение</summary>Высота полуокружности — это её радиус: \(3 : 2 = 1{,}5\) м.
+<p class="ls-answer">Ответ: 1,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите высоту двери (в метрах). Ответ округлите до десятых.</div>
+<details><summary>Решение</summary>Центр полуокружности — середина нижней стороны торца. Верхний угол двери лежит на дуге: от центра по горизонтали \(0{,}4\) м (половина ширины двери), расстояние до центра — радиус 1,5 м.
+Высота: \(\sqrt{1{,}5^2 - 0{,}4^2} = \sqrt{2{,}25 - 0{,}16} = \sqrt{2{,}09} \approx 1{,}45\). Округляем: 1,4 м.
+<p class="ls-answer">Ответ: 1,4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 49)</span> Найдите объём парного отделения бани размером \(4\times2{,}5\times2{,}4\) м (в м³).</div>
+<details><summary>Решение</summary>\(4\cdot2{,}5\cdot2{,}4 = 10\cdot2{,}4 = 24\) м³.
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 47)</span> Какие из утверждений верны? 1) Диагонали прямоугольника равны. 2) Площадь ромба равна произведению его диагоналей. 3) Вписанный угол, опирающийся на диаметр, прямой.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно (половине). 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 43)</span> Найдите значение выражения \(\frac{a^2 - 4}{a - 2}\) при \(a = 1{,}5\).</div>
+<details><summary>Решение</summary>\(\frac{(a - 2)(a + 2)}{a - 2} = a + 2 = 3{,}5\).
+<p class="ls-answer">Ответ: 3,5</p></details></div>
+</section>
+<nav class="ls-foot"><a href="50-geom-kletki-prototipy.html">← Урок 50</a><a href="00-index.html">Все уроки</a><a href="52-praktika-kvartira-bumaga.html">Урок 52 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
