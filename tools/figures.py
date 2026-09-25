@@ -198,6 +198,17 @@ def _fig(header, lines):
             r = radius(c, args[1]) * s
             fill = "var(--ls-fig-fill)" if "fill" in flags else "none"
             out.append(f'<circle cx="{_f(X(c[0]))}" cy="{_f(Y(c[1]))}" r="{_f(r)}" fill="{fill}" {stroke(flags)}/>')
+        elif word == "arc":
+            (cx0, cy0), (ax, ay), (qx, qy) = (P(at(a)) for a in args[:3])
+            r = math.hypot(ax - cx0, ay - cy0)
+            a1 = math.atan2(ay - cy0, ax - cx0)
+            a2 = math.atan2(qy - cy0, qx - cx0)
+            d = (a2 - a1 + math.pi) % (2 * math.pi) - math.pi
+            if "flip" in flags:
+                d -= math.copysign(2 * math.pi, d)
+            pts_ = " ".join(f"{_f(cx0 + r * math.cos(a1 + d * t / 60))},{_f(cy0 + r * math.sin(a1 + d * t / 60))}"
+                            for t in range(61))
+            out.append(f'<polyline points="{pts_}" fill="none" {stroke(flags)}/>')
         elif word == "angle":
             (ax, ay), (bx, by), (qx, qy) = (P(at(a)) for a in args[:3])
             a1 = math.atan2(ay - by, ax - bx)
