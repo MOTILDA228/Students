@@ -3,7 +3,7 @@
 В @check пишется выражение на Python, которое заново считает ответ из условия
 задачи (а не копирует его). Сборщик сравнивает результат с тем, что написано в @ans.
 Доступны: F (обыкновенная дробь), sqrt, roots, hyp, leg, sind/cosd/tand,
-ap/aps (арифм. прогрессия), gp/gps (геом. прогрессия), comb, which (выбор варианта
+ap/aps (арифм. прогрессия), gp/gps (геом. прогрессия), comb, solve2 (система 2×2), which (выбор варианта
 в №13 по множеству решений), match (соответствие графиков и формул в №11), pi, math.
 """
 import math
@@ -75,6 +75,12 @@ def comb(n, k):
     return math.comb(n, k)
 
 
+def solve2(a, b, c, d, e, f):
+    """Система a·x + b·y = c, d·x + e·y = f → [x, y] (обыкновенные дроби)."""
+    det = F(a) * e - F(b) * d
+    return [(F(c) * e - F(b) * f) / det, (F(a) * f - F(c) * d) / det]
+
+
 def which(truth, *options):
     """Номер варианта (с 1), чьё множество совпадает с truth(x) на сетке точек от −50 до 50 с шагом 1/8.
 
@@ -96,7 +102,7 @@ def match(graphs, formulas, xs=(-3, -1.5, -0.5, 0.5, 1.5, 3)):
 
 
 NS = {"F": F, "sqrt": sqrt, "roots": roots, "hyp": hyp, "leg": leg, "sind": sind, "cosd": cosd,
-      "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "which": which, "match": match, "pi": math.pi,
+      "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "solve2": solve2, "which": which, "match": match, "pi": math.pi,
       "math": math, "abs": abs, "round": round, "min": min, "max": max, "sum": sum, "range": range,
       "len": len, "sorted": sorted, "int": int, "str": str}
 

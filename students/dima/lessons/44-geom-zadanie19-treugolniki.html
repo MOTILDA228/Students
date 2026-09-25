@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 44. Геометрия: задание 19 — верные утверждения про треугольники</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 44. Геометрия: задание 19 — верные утверждения про треугольники</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">ОГЭ №15</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима по справочнику быстро отличает верные утверждения о треугольниках от ловушек. №19 — лёгкий геометрический балл, который засчитывается в обязательные.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 43.</li>
+  <li>15 мин — справочник. Читать вслух, к каждому факту — быстрый рисунок от руки.</li>
+  <li>25–30 мин — практика. Правило: сомневаешься — нарисуй пример, который опровергает утверждение.</li>
+  <li>5 мин — итог. Справочник распечатать и повесить над столом.</li>
+</ol>
+<p><b>Типичные ошибки:</b> путает медиану и биссектрису; «теряет» слово «квадрат» в теореме Пифагора; не проверяет неравенство треугольника.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Справочник: верные утверждения</h3>
+<div class="ls-rule"><b>Углы</b><br>
+• Вертикальные углы равны. Сумма смежных углов равна \(180^\circ\).<br>
+• Сумма углов треугольника равна \(180^\circ\).<br>
+• Внешний угол треугольника равен сумме двух углов треугольника, не смежных с ним.<br>
+• В треугольнике не может быть двух тупых (или двух прямых) углов.</div>
+<div class="ls-rule"><b>Равнобедренный и равносторонний</b><br>
+• В равнобедренном треугольнике углы при основании равны.<br>
+• Если в треугольнике два угла равны, то он равнобедренный.<br>
+• В равнобедренном треугольнике высота, проведённая к основанию, является медианой и биссектрисой.<br>
+• Все углы равностороннего треугольника равны \(60^\circ\).</div>
+<div class="ls-rule"><b>Прямоугольный</b><br>
+• Сумма острых углов прямоугольного треугольника равна \(90^\circ\).<br>
+• Квадрат гипотенузы равен сумме <b>квадратов</b> катетов. Гипотенуза больше любого катета.<br>
+• Катет, лежащий против угла \(30^\circ\), равен половине гипотенузы.<br>
+• Медиана, проведённая к гипотенузе, равна половине гипотенузы; центр описанной окружности — середина гипотенузы.<br>
+• Площадь прямоугольного треугольника равна половине произведения катетов.</div>
+<div class="ls-rule"><b>Стороны, подобие, площадь</b><br>
+• Каждая сторона треугольника <b>меньше суммы</b> двух других (неравенство треугольника).<br>
+• Против большей стороны лежит больший угол.<br>
+• Средняя линия треугольника параллельна стороне и равна её половине.<br>
+• Если два угла одного треугольника равны двум углам другого, треугольники подобны.<br>
+• Площадь треугольника равна половине произведения стороны на высоту, проведённую к ней.</div>
+
+<h3>2. Частые ловушки (это неверно!)</h3>
+<div class="ls-warn">
+• «Сумма углов треугольника равна \(360^\circ\)» — нет, \(180^\circ\).<br>
+• «Медиана делит угол пополам» — это биссектриса.<br>
+• «Треугольник со сторонами 1, 2, 4 существует» — нет: \(1 + 2 < 4\). И 1, 2, 3 тоже нет: \(1 + 2 = 3\), а нужно <b>больше</b>.<br>
+• «Площадь треугольника равна произведению стороны на высоту» — забыли «половине».<br>
+• «Гипотенуза равна сумме катетов» или «квадрат гипотенузы равен сумме катетов» — нет, сумме <b>квадратов</b> катетов.<br>
+• «Любой равнобедренный треугольник равносторонний» — нет (наоборот — да).</div>
+
+<h3>3. Как решать №19</h3>
+<ol class="ls-steps">
+  <li>Читай каждое утверждение до конца — ловушка часто в одном слове («квадратов», «половине», «любой»).</li>
+  <li>Сверь со справочником. Нет в справочнике — нарисуй пример.</li>
+  <li>В ответ — номера верных утверждений подряд, без пробелов и запятых (например, 13).</li>
+</ol>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Сумма углов любого треугольника равна \(180^\circ\).<br>
+2) Внешний угол треугольника равен сумме двух его углов, не смежных с ним.<br>
+3) В любом треугольнике есть хотя бы один тупой угол.</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — неверно: в остроугольном треугольнике тупых углов нет.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Если два угла треугольника равны, то треугольник равнобедренный.<br>
+2) Медиана треугольника делит угол пополам.<br>
+3) Все углы равностороннего треугольника равны \(60^\circ\).</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно (это биссектриса). 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Треугольник со сторонами 1, 2, 4 существует.<br>
+2) Против большей стороны треугольника лежит больший угол.<br>
+3) Каждая сторона треугольника меньше суммы двух других сторон.</div>
+<details><summary>Решение</summary>1 — неверно: \(1 + 2 = 3 < 4\). 2 — верно. 3 — верно (неравенство треугольника).
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Катет, лежащий против угла \(30^\circ\), равен половине гипотенузы.<br>
+2) Сумма острых углов прямоугольного треугольника равна \(90^\circ\).<br>
+3) Квадрат гипотенузы равен сумме катетов.</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — неверно: сумме <b>квадратов</b> катетов.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Средняя линия треугольника параллельна одной из его сторон и равна половине этой стороны.<br>
+2) Площадь треугольника равна произведению его стороны на высоту, проведённую к этой стороне.<br>
+3) Если два угла одного треугольника равны двум углам другого треугольника, то такие треугольники подобны.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно: нужна <b>половина</b> произведения. 3 — верно (признак подобия).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Треугольник со сторонами 1, 2, 3 существует.<br>
+2) Если в треугольнике есть острый угол, то этот треугольник остроугольный.<br>
+3) Медиана прямоугольного треугольника, проведённая к гипотенузе, равна половине гипотенузы.</div>
+<details><summary>Решение</summary>1 — неверно: \(1 + 2 = 3\), а должно быть больше. 2 — неверно: острые углы есть в любом треугольнике, даже в тупоугольном. 3 — верно.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) В любом прямоугольном треугольнике высота, проведённая к гипотенузе, является медианой.<br>
+2) Сумма углов равнобедренного треугольника равна \(180^\circ\).<br>
+3) Площадь прямоугольного треугольника равна половине произведения его катетов.</div>
+<details><summary>Решение</summary>1 — неверно: так бывает только в равнобедренном прямоугольном треугольнике. 2 — верно (как у любого треугольника). 3 — верно.
+<p class="ls-answer">Ответ: 23</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Вертикальные углы равны.<br>
+2) Сумма смежных углов равна \(90^\circ\).<br>
+3) Сумма углов треугольника равна \(180^\circ\).</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно (\(180^\circ\)). 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) В равнобедренном треугольнике высота, проведённая к основанию, является медианой.<br>
+2) Любой равнобедренный треугольник является равносторонним.<br>
+3) В тупоугольном треугольнике все углы тупые.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно. 3 — неверно: тупой угол может быть только один.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Треугольник со сторонами 3, 4, 8 существует.<br>
+2) Если катеты прямоугольного треугольника равны 3 и 4, то гипотенуза равна 5.<br>
+3) Внешний угол треугольника меньше каждого из углов треугольника, не смежных с ним.</div>
+<details><summary>Решение</summary>1 — неверно: \(3 + 4 < 8\). 2 — верно: \(\sqrt{9 + 16} = 5\). 3 — неверно: внешний угол равен их сумме, значит, больше каждого.
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Средняя линия треугольника равна половине стороны, которой она параллельна.<br>
+2) Если три стороны одного треугольника пропорциональны трём сторонам другого, то треугольники подобны.<br>
+3) Площадь треугольника равна половине произведения стороны на высоту, проведённую к этой стороне.</div>
+<details><summary>Решение</summary>Все три верны.
+<p class="ls-answer">Ответ: 123</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны?<br>
+1) Центр окружности, описанной около прямоугольного треугольника, находится на середине гипотенузы.<br>
+2) В прямоугольном треугольнике может быть тупой угол.<br>
+3) Катет прямоугольного треугольника может быть больше гипотенузы.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно: прямой угол плюс тупой уже больше \(180^\circ\). 3 — неверно: гипотенуза самая длинная.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 42)</span> Найдите ординату вершины параболы \(y = x^2 - 2x - 3\).</div>
+<details><summary>Решение</summary>\(x_0 = 1\), \(y_0 = 1 - 2 - 3 = -4\).
+<p class="ls-answer">Ответ: \(-4\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 40)</span> График функции \(y = 2x + b\) проходит через точку \((3; 4)\). Найдите \(b\).</div>
+<details><summary>Решение</summary>\(4 = 2\cdot3 + b\) → \(b = -2\).
+<p class="ls-answer">Ответ: \(-2\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 36)</span> Арифметическая прогрессия: \(a_1 = -5\), \(d = 4\). Найдите \(a_9\).</div>
+<details><summary>Решение</summary>\(-5 + 8\cdot4 = 27\).
+<p class="ls-answer">Ответ: 27</p></details></div>
+</section>
+<nav class="ls-foot"><a href="43-algebraicheskie-drobi.html">← Урок 43</a><a href="00-index.html">Все уроки</a><a href="45-sistemy-uravneniy.html">Урок 45 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

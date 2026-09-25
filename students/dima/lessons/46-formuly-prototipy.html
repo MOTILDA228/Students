@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 46. Расчёты по формулам: прототипы №12</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 46. Расчёты по формулам: прототипы №12</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №12</span><span class="ls-tag">алгебра</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима уверенно решает №12 с любыми формулами: со степенями, корнем, отрицательными числами, дробями.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 45.</li>
+  <li>10 мин — повторить алгоритм урока 13 и «копилку» формул ниже.</li>
+  <li>30 мин — практика. Проговаривать: «что известно, что ищем, получилось уравнение…».</li>
+  <li>5 мин — итог.</li>
+</ol>
+<p><b>Типичные ошибки:</b> в формуле с корнем забывает возвести в квадрат; путает порядок действий в \(150 + 11(t - 5)\); неверно считает \(10^{-4}\).</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Алгоритм (урок 13)</h3>
+<ol class="ls-steps">
+  <li>Выпиши, чему равна каждая буква, и какую букву ищем.</li>
+  <li>Подставь числа, посчитай всё, что считается.</li>
+  <li>Если искомая буква внутри — реши уравнение обратными действиями.</li>
+  <li>Проверь подстановкой.</li>
+</ol>
+
+<h3>2. Корень в формуле</h3>
+<div class="ls-rule">Если \(\sqrt{l} = 2{,}5\), то \(l = 2{,}5^2 = 6{,}25\): чтобы «снять» корень, возводим в квадрат.</div>
+<div class="ls-example">\(T = 2\sqrt{l}\), \(T = 5\): \(5 = 2\sqrt{l}\) → \(\sqrt{l} = 2{,}5\) → \(l = 6{,}25\).</div>
+
+<h3>3. Копилка формул из банка ФИПИ</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>формула</th><th>что это</th></tr>
+<tr><td>\(S_n = 180^\circ(n - 2)\)</td><td class="ls-left">сумма углов выпуклого \(n\)-угольника</td></tr>
+<tr><td>\(r = \frac{a + b - c}{2}\)</td><td class="ls-left">радиус окружности, вписанной в прямоугольный треугольник</td></tr>
+<tr><td>\(T = 2\sqrt{l}\)</td><td class="ls-left">период колебаний маятника</td></tr>
+<tr><td>\(W = \frac{CU^2}{2}\)</td><td class="ls-left">энергия конденсатора</td></tr>
+<tr><td>\(C = 6000 + 4100n\)</td><td class="ls-left">стоимость колодца из \(n\) колец</td></tr>
+<tr><td>\(C = 150 + 11(t - 5)\)</td><td class="ls-left">стоимость поездки на такси длительностью \(t\) минут</td></tr>
+</table></div>
+<div class="ls-warn">\(10^{-4} = 0{,}0001\) (урок 9). \(10^{-4}\cdot400 = 0{,}04\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Сумму углов выпуклого \(n\)-угольника можно вычислить по формуле \(S = 180^\circ(n - 2)\). Найдите сумму углов выпуклого семиугольника.</div>
+<details><summary>Решение</summary>\(n = 7\): \(180\cdot5 = 900^\circ\).
+<p class="ls-answer">Ответ: 900</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> По той же формуле \(S = 180^\circ(n - 2)\) найдите число сторон выпуклого многоугольника, если сумма его углов равна \(1080^\circ\).</div>
+<details><summary>Решение</summary>\(1080 = 180(n - 2)\) → \(n - 2 = 6\) → \(n = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Радиус окружности, вписанной в прямоугольный треугольник, можно найти по формуле \(r = \frac{a + b - c}{2}\), где \(a\) и \(b\) — катеты, \(c\) — гипотенуза. Найдите \(r\), если \(a = 6\), \(b = 8\), \(c = 10\).</div>
+<details><summary>Решение</summary>\(r = \frac{6 + 8 - 10}{2} = \frac{4}{2} = 2\).
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Стоимость поездки на такси длительностью больше 5 минут вычисляется по формуле \(C = 150 + 11(t - 5)\), где \(t\) — длительность поездки в минутах. Найдите стоимость 12-минутной поездки (в рублях).</div>
+<details><summary>Решение</summary>\(C = 150 + 11\cdot(12 - 5) = 150 + 77 = 227\) руб.
+<p class="ls-answer">Ответ: 227</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> Период колебания математического маятника \(T\) (в секундах) приближённо можно вычислить по формуле \(T = 2\sqrt{l}\), где \(l\) — длина нити (в метрах). Пользуясь этой формулой, найдите длину нити маятника, период колебаний которого составляет 5 секунд.</div>
+<details><summary>Решение</summary>\(5 = 2\sqrt{l}\) → \(\sqrt{l} = 2{,}5\) → \(l = 6{,}25\) м.
+<p class="ls-answer">Ответ: 6,25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> Энергия заряженного конденсатора \(W\) (в джоулях) вычисляется по формуле \(W = \frac{CU^2}{2}\), где \(C\) — ёмкость конденсатора (в фарадах), а \(U\) — разность потенциалов на обкладках (в вольтах). Найдите энергию \(W\), если \(C = 10^{-4}\) Ф и \(U = 20\) В.</div>
+<details><summary>Решение</summary>\(U^2 = 400\). \(W = \frac{10^{-4}\cdot400}{2} = \frac{0{,}04}{2} = 0{,}02\) Дж.
+<p class="ls-answer">Ответ: 0,02</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> В фирме «Родник» стоимость (в рублях) колодца из железобетонных колец рассчитывается по формуле \(C = 6000 + 4100n\), где \(n\) — число колец, установленных в колодце. Пользуясь этой формулой, рассчитайте стоимость колодца из 5 колец.</div>
+<details><summary>Решение</summary>\(C = 6000 + 4100\cdot5 = 6000 + 20500 = 26500\) руб.
+<p class="ls-answer">Ответ: 26500</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> По формуле \(S = 180^\circ(n - 2)\) найдите сумму углов выпуклого десятиугольника.</div>
+<details><summary>Решение</summary>\(180\cdot8 = 1440^\circ\).
+<p class="ls-answer">Ответ: 1440</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> По формуле \(r = \frac{a + b - c}{2}\) найдите радиус вписанной окружности прямоугольного треугольника с катетами 5 и 12 и гипотенузой 13.</div>
+<details><summary>Решение</summary>\(\frac{5 + 12 - 13}{2} = 2\).
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> По формуле \(C = 150 + 11(t - 5)\) найдите стоимость 20-минутной поездки на такси (в рублях).</div>
+<details><summary>Решение</summary>\(150 + 11\cdot15 = 150 + 165 = 315\) руб.
+<p class="ls-answer">Ответ: 315</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> По формуле \(T = 2\sqrt{l}\) найдите длину нити маятника (в метрах), период колебаний которого составляет 6 секунд.</div>
+<details><summary>Решение</summary>\(\sqrt{l} = 3\) → \(l = 9\) м.
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> Стоимость колодца \(C = 6000 + 4100n\) (в рублях), где \(n\) — число колец. Сколько колец в колодце, если он стоит 38 800 рублей?</div>
+<details><summary>Решение</summary>\(38800 = 6000 + 4100n\) → \(4100n = 32800\) → \(n = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 44)</span> Какие из утверждений верны? 1) Сумма углов треугольника равна \(180^\circ\). 2) Треугольник со сторонами 2, 3, 6 существует. 3) Медиана, проведённая к гипотенузе, равна половине гипотенузы.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно: \(2 + 3 < 6\). 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 42)</span> Найдите значение функции \(y = \frac{8}{x}\) при \(x = -4\).</div>
+<details><summary>Решение</summary>\(8 : (-4) = -2\).
+<p class="ls-answer">Ответ: \(-2\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 38)</span> Из точки \(A\) проведены касательные \(AB\) и \(AC\) к окружности с центром \(O\), \(\angle BAC = 64^\circ\). Найдите \(\angle BOC\).</div>
+<details><summary>Решение</summary>\(360 - 90 - 90 - 64 = 116^\circ\).
+<p class="ls-answer">Ответ: 116</p></details></div>
+</section>
+<nav class="ls-foot"><a href="45-sistemy-uravneniy.html">← Урок 45</a><a href="00-index.html">Все уроки</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
