@@ -102,7 +102,8 @@ def parse_answer(text):
 
 def verify(expr, answer):
     """(совпало?, пояснение) — сравнивает @check с @ans."""
-    got = eval(expr, {"__builtins__": {}}, dict(NS))
+    env = dict(NS, __builtins__={})  # NS — глобальные имена, чтобы работали и лямбды
+    got = eval(expr, env)
     expected = list(got) if isinstance(got, (list, tuple, set)) else [got]
     given = parse_answer(answer)
     if len(expected) != len(given):

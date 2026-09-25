@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 18. Практические задачи: счётчики, тарифы, покупки</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 18. Практические задачи: счётчики, тарифы, покупки</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №1–5</span><span class="ls-tag">алгебра</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима впервые решает связку заданий 1–5: читает общий текст, находит данные в таблице и считает по 1–2 действия.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 17.</li>
+  <li>10 мин — шпаргалка: как читать задания 1–5, три действия (разность, умножение, проценты).</li>
+  <li>30 мин — практика. Текст сюжета читать вслух, подчёркивать числа. Таблицу разбирать до решения: что в строках, что в столбцах.</li>
+  <li>5 мин — итог. ДЗ — новый сюжет «Мобильная связь», тоже целиком.</li>
+</ol>
+<p><b>Типичные ошибки:</b> не дочитывает общий текст; берёт не ту строку таблицы; пишет в ответ единицы измерения или слово вместо числа.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Как устроены задания 1–5</h3>
+<div class="ls-rule">Сначала идёт <b>общий текст</b> (про квартиру, участок, тарифы, шины…), часто с таблицей или схемой. Потом 5 вопросов по этому тексту. Каждый вопрос — 1–3 действия, но всё нужное спрятано в тексте.</div>
+<ol class="ls-steps">
+  <li>Прочитай общий текст <b>целиком</b>. Подчеркни числа и единицы (рубли, кВт·ч, ГБ, метры).</li>
+  <li>Разберись в таблице: что в строках, что в столбцах.</li>
+  <li>В каждом вопросе найди: что спрашивают, какие числа нужны, какое действие.</li>
+  <li>Ответ — <b>только число</b>, без единиц измерения.</li>
+</ol>
+
+<h3>2. Три главных действия</h3>
+<div class="ls-rule"><b>Расход по счётчику</b> = показание в конце − показание в начале.<br>
+<b>Стоимость</b> = количество × цена за единицу.<br>
+<b>Сравнение:</b> «на сколько больше» — вычитание; «во сколько раз» — деление; «на сколько процентов» — разность : старое значение · 100 (урок 7).</div>
+<div class="ls-example">Счётчик показывал 2340, через месяц — 2490. Израсходовано \(2490 - 2340 = 150\) кВт·ч. При цене 5 руб. за кВт·ч платим \(150\cdot5 = 750\) руб.</div>
+
+<h3>3. Скидки и наценки (повторение урока 7)</h3>
+<div class="ls-rule">Скидка \(p\%\) → умножить на \(1 - \frac{p}{100}\): скидка 20% → \(\cdot0{,}8\).<br>
+Наценка \(p\%\) → умножить на \(1 + \frac{p}{100}\): наценка 15% → \(\cdot1{,}15\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Показания счётчика электроэнергии 1 марта — 3518 кВт·ч, а 1 апреля — 3732 кВт·ч. Сколько киловатт-часов израсходовано за март?</div>
+<details><summary>Решение</summary>Расход = конец − начало: \(3732 - 3518 = 214\) кВт·ч.
+<p class="ls-answer">Ответ: 214</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> 1 кВт·ч электроэнергии стоит 5,6 руб. За месяц израсходовано 150 кВт·ч. Сколько рублей нужно заплатить?</div>
+<details><summary>Решение</summary>\(150\cdot5{,}6 = 840\) руб.
+<p class="ls-answer">Ответ: 840</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Сюжет в формате ОГЭ №1–5 «Электроэнергия»</span><br> <p><b>Прочитайте текст и выполните задания 3–7.</b></p>
+<p>Семья Смирновых живёт в квартире, где установлен двухтарифный счётчик электроэнергии. Днём (с 7:00 до 23:00) электроэнергия стоит <b>6,4 руб.</b> за 1 кВт·ч, ночью (с 23:00 до 7:00) — <b>3,2 руб.</b> за 1 кВт·ч. Раньше у семьи был однотарифный счётчик, по которому 1 кВт·ч стоил <b>5,8 руб.</b> в любое время суток. Показания счётчика приведены в таблице.</p>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Показания, кВт·ч</th><th>1 марта</th><th>1 апреля</th></tr>
+<tr><td class="ls-left">День (Т1)</td><td>4213</td><td>4413</td></tr>
+<tr><td class="ls-left">Ночь (Т2)</td><td>1650</td><td>1750</td></tr>
+</table></div>
+<p>Сколько киловатт-часов электроэнергии семья израсходовала днём за март?</p></div>
+<details><summary>Решение</summary>Строка «День»: \(4413 - 4213 = 200\) кВт·ч.
+<p class="ls-answer">Ответ: 200</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Сколько рублей семья заплатит за дневную электроэнергию за март?</div>
+<details><summary>Решение</summary>Дневной расход 200 кВт·ч по 6,4 руб.: \(200\cdot6{,}4 = 1280\) руб.
+<p class="ls-answer">Ответ: 1280</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Сколько рублей семья заплатит за всю электроэнергию за март?</div>
+<details><summary>Решение</summary>Ночной расход: \(1750 - 1650 = 100\) кВт·ч, стоимость \(100\cdot3{,}2 = 320\) руб.
+Всего: \(1280 + 320 = 1600\) руб.
+<p class="ls-answer">Ответ: 1600</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Сколько рублей сэкономила семья за март, если сравнить с оплатой по однотарифному счётчику?</div>
+<details><summary>Решение</summary>Всего израсходовано \(200 + 100 = 300\) кВт·ч. По однотарифному: \(300\cdot5{,}8 = 1740\) руб.
+Экономия: \(1740 - 1600 = 140\) руб.
+<p class="ls-answer">Ответ: 140</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> На сколько процентов ночной тариф дешевле дневного?</div>
+<details><summary>Решение</summary>Разница: \(6{,}4 - 3{,}2 = 3{,}2\) руб. Делим на дневной тариф (с ним сравниваем): \(\frac{3{,}2}{6{,}4} = 0{,}5\) → 50%.
+<p class="ls-answer">Ответ: 50</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Сюжет в формате ОГЭ №1–5 «Мобильная связь»</span><br> <p><b>Прочитайте текст и выполните задания 1–5.</b></p>
+<p>Саша выбирает тариф мобильной связи. Условия трёх тарифов приведены в таблице. Саша тратит в среднем <b>12 ГБ</b> интернета в месяц; звонки и сообщения во всех тарифах безлимитные.</p>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Тариф</th><th>Абонентская плата, руб. в месяц</th><th>Интернет в пакете</th><th>Каждый ГБ сверх пакета</th></tr>
+<tr><td>«Базовый»</td><td>300</td><td>5 ГБ</td><td>60 руб.</td></tr>
+<tr><td>«Плюс»</td><td>450</td><td>10 ГБ</td><td>40 руб.</td></tr>
+<tr><td>«Безлимит»</td><td>700</td><td>без ограничений</td><td>—</td></tr>
+</table></div>
+<p>Сколько гигабайт сверх пакета израсходует Саша за месяц на тарифе «Базовый»?</p></div>
+<details><summary>Решение</summary>В пакете 5 ГБ, Саша тратит 12 ГБ: \(12 - 5 = 7\) ГБ сверх пакета.
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Сколько рублей в месяц Саша будет платить на тарифе «Базовый»?</div>
+<details><summary>Решение</summary>Абонентская плата 300 руб. + лишние 7 ГБ по 60 руб.: \(300 + 7\cdot60 = 300 + 420 = 720\) руб.
+<p class="ls-answer">Ответ: 720</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Сколько рублей в месяц Саша будет платить на тарифе «Плюс»?</div>
+<details><summary>Решение</summary>Сверх пакета: \(12 - 10 = 2\) ГБ. \(450 + 2\cdot40 = 530\) руб.
+<p class="ls-answer">Ответ: 530</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Какой тариф самый выгодный для Саши? В ответ запишите, сколько рублей в месяц он будет платить на этом тарифе.</div>
+<details><summary>Решение</summary>«Базовый» — 720 руб., «Плюс» — 530 руб., «Безлимит» — 700 руб. Дешевле всего «Плюс»: 530 руб.
+<p class="ls-answer">Ответ: 530</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> На тариф «Безлимит» действует скидка 20% на первые 3 месяца. Сколько рублей Саша заплатит за первые 3 месяца на тарифе «Безлимит»?</div>
+<details><summary>Решение</summary>Со скидкой 20% месяц стоит \(700\cdot0{,}8 = 560\) руб. За 3 месяца: \(560\cdot3 = 1680\) руб.
+<p class="ls-answer">Ответ: 1680</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 16)</span> Решите уравнение \(5x - 7 = 2x + 8\).</div>
+<details><summary>Решение</summary>\(5x - 2x = 8 + 7\) → \(3x = 15\) → \(x = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 14)</span> На клетчатой бумаге с размером клетки \(1\times1\) изображён треугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 232 154" width="232" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 194,116 142,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание 6, высота 3: \(S = \frac{6\cdot3}{2} = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 10)</span> Вычислите \(\sqrt{0{,}64} + \sqrt{0{,}09}\).</div>
+<details><summary>Решение</summary>\(\sqrt{0{,}64} = 0{,}8\), \(\sqrt{0{,}09} = 0{,}3\). \(0{,}8 + 0{,}3 = 1{,}1\).
+<p class="ls-answer">Ответ: 1,1</p></details></div>
+</section>
+<nav class="ls-foot"><a href="17-geom-okruzhnost.html">← Урок 17</a><a href="00-index.html">Все уроки</a><a href="19-kontrolnaya-1.html">Урок 19 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

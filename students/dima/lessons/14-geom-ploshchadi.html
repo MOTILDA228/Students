@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 14. Геометрия: площади фигур и клетчатая бумага</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 14. Геометрия: площади фигур и клетчатая бумага</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №18</span><span class="ls-tag">ОГЭ №17</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима знает 5 формул площадей, находит длины и высоты по клеткам, умеет «достроить до прямоугольника и вычесть лишнее».</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 13.</li>
+  <li>15 мин — шпаргалка. Формулы выписать на отдельную карточку — она понадобится до самого экзамена.</li>
+  <li>25–30 мин — практика. Для каждой фигуры: назвать фигуру → выбрать формулу → посчитать клетки → подставить.</li>
+  <li>5 мин — итог: у треугольника «пополам», у трапеции «полусумма оснований».</li>
+</ol>
+<p><b>Типичные ошибки:</b> забывает делить на 2 у треугольника; берёт за высоту наклонную сторону; считает точки сетки вместо клеток (получает на 1 больше).</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Как мерить по клеткам</h3>
+<div class="ls-rule">Сторона клетки = 1. Длину горизонтального или вертикального отрезка считаем <b>по клеткам</b> (промежуткам), а не по точкам.<br>
+<b>Высота</b> — всегда <b>вертикальный</b> отрезок (если основание горизонтальное) от вершины до прямой, на которой лежит основание.</div>
+
+<h3>2. Формулы площадей</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Фигура</th><th>Площадь</th><th>Словами</th></tr>
+<tr><td>прямоугольник</td><td>\(S = a\cdot b\)</td><td class="ls-left">длина на ширину</td></tr>
+<tr><td>квадрат</td><td>\(S = a^2\)</td><td class="ls-left">сторона в квадрате</td></tr>
+<tr><td>треугольник</td><td>\(S = \frac{1}{2}a\cdot h\)</td><td class="ls-left">сторона на высоту к ней, <b>пополам</b></td></tr>
+<tr><td>прямоугольный треугольник</td><td>\(S = \frac{1}{2}a\cdot b\)</td><td class="ls-left">катет на катет, пополам</td></tr>
+<tr><td>параллелограмм</td><td>\(S = a\cdot h\)</td><td class="ls-left">сторона на высоту к ней</td></tr>
+<tr><td>трапеция</td><td>\(S = \frac{a + b}{2}\cdot h\)</td><td class="ls-left">полусумма оснований на высоту</td></tr>
+</table></div>
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 232 154" width="232" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 194,116 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="90" y1="38" x2="90" y2="116" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="90,105 101,105 101,116" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="116" y="129" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a = 6</text><text x="112.1" y="79.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">h = 3</text></svg>
+<figcaption>треугольник: \(S = \frac{1}{2}\cdot6\cdot3 = 9\)</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 232 154" width="232" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 142,116 194,38 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="90" y1="38" x2="90" y2="116" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="90,105 101,105 101,116" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="90" y="129" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a = 4</text><text x="113.4" y="79.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">h = 3</text></svg>
+<figcaption>параллелограмм: \(S = 4\cdot3 = 12\)</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 258 154" width="258" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 220,116 168,38 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="90" y1="38" x2="90" y2="116" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="90,105 101,105 101,116" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="129" y="129" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a = 7</text><text x="129" y="25" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">b = 3</text><text x="113.4" y="79.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">h = 3</text></svg>
+<figcaption>трапеция: \(S = \frac{7 + 3}{2}\cdot3 = 15\)</figcaption></figure></div>
+
+<h3>3. Если стороны наклонные: достроить и вычесть</h3>
+<svg class="ls-fig" viewBox="0 0 206 180" width="206" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="194" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 168,142 168,38 38,38" fill="none" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linejoin="round"/><polygon points="38,142 168,116 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><text x="26.6" y="150.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="181.6" y="119.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="88" y="24.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg>
+<ol class="ls-steps">
+  <li>Обведи фигуру прямоугольником по линиям сетки: здесь \(5\times4\), его площадь 20.</li>
+  <li>Вокруг треугольника осталось 3 прямоугольных треугольника. Площадь каждого — катет на катет пополам:
+  \(\frac{5\cdot1}{2} = 2{,}5\) · \(\frac{3\cdot3}{2} = 4{,}5\) · \(\frac{2\cdot4}{2} = 4\).</li>
+  <li>Вычитаем: \(20 - 2{,}5 - 4{,}5 - 4 = 9\).</li>
+</ol>
+
+<h3>4. Длина наклонного отрезка</h3>
+<svg class="ls-fig" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="168" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="168" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="168" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="168" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="168" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="168" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="116" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="142" x2="116" y2="142" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><line x1="116" y1="142" x2="116" y2="38" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><text x="77" y="155" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">3</text><text x="129" y="90" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">4</text><circle cx="38" cy="142" r="3.2" fill="currentColor"/><text x="29.6" y="153.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="116" cy="38" r="3.2" fill="currentColor"/><text x="124.4" y="26.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg>
+<div class="ls-rule">Отрезок — гипотенуза. Катеты — сколько клеток по горизонтали и по вертикали. Дальше Пифагор (урок 11): \(AB = \sqrt{3^2 + 4^2} = 5\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> На клетчатой бумаге с размером клетки \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 206 154" width="206" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 168,116 168,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Длина — 5 клеток, ширина — 3 клетки. \(S = 5\cdot3 = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> На клетчатой бумаге с размером клетки \(1\times1\) изображён прямоугольный треугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 232 180" width="232" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="168" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="220" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 194,142 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Катеты: горизонтальный — 6 клеток, вертикальный — 4 клетки. \(S = \frac{6\cdot4}{2} = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> На клетчатой бумаге с размером клетки \(1\times1\) изображён треугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 258 180" width="258" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="168" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="168" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="246" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 220,142 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание — нижняя сторона: 7 клеток. Высота — от верхней вершины вниз до основания: 4 клетки.
+\(S = \frac{1}{2}\cdot7\cdot4 = 14\).
+<p class="ls-answer">Ответ: 14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> На клетчатой бумаге с размером клетки \(1\times1\) изображён параллелограмм. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 258 180" width="258" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="168" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="168" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="246" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 168,142 220,38 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание — 5 клеток, высота (вертикально между основаниями) — 4 клетки. Наклонную сторону не берём! \(S = 5\cdot4 = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> На клетчатой бумаге с размером клетки \(1\times1\) изображена трапеция. Найдите её площадь.
+<svg class="ls-fig" viewBox="0 0 232 180" width="232" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="168" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="220" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 194,142 142,38 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Нижнее основание — 6 клеток, верхнее — 2 клетки, высота — 4 клетки.
+\(S = \frac{6 + 2}{2}\cdot4 = 4\cdot4 = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №18 (ФИПИ / Решу ОГЭ)</span><br> На клетчатой бумаге с размером клетки \(1\times1\) изображён треугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 232 206" width="232" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="194" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="220" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="220" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 194,116 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Все стороны наклонные — достраиваем до прямоугольника \(6\times5\), площадь 30.
+Лишние прямоугольные треугольники: \(\frac{6\cdot2}{2} = 6\) (снизу), \(\frac{4\cdot3}{2} = 6\) (справа), \(\frac{2\cdot5}{2} = 5\) (слева).
+\(S = 30 - 6 - 6 - 5 = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №18 (ФИПИ / Решу ОГЭ)</span><br> На клетчатой бумаге с размером клетки \(1\times1\) отмечены точки \(A\) и \(B\). Найдите длину отрезка \(AB\).
+<svg class="ls-fig" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="168" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="168" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="168" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="168" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="168" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="168" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><circle cx="38" cy="142" r="3.2" fill="currentColor"/><text x="29.6" y="153.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="116" cy="38" r="3.2" fill="currentColor"/><text x="124.4" y="26.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>По горизонтали от \(A\) до \(B\) — 3 клетки, по вертикали — 4 клетки. Это катеты, \(AB\) — гипотенуза: \(\sqrt{9 + 16} = \sqrt{25} = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> На клетчатой бумаге с размером клетки \(1\times1\) изображён прямоугольный треугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 206 180" width="206" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="194" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 168,142 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Катеты 5 и 4. \(S = \frac{5\cdot4}{2} = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> На клетчатой бумаге с размером клетки \(1\times1\) изображён треугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 258 154" width="258" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 220,116 142,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание 7, высота 3. \(S = \frac{7\cdot3}{2} = \frac{21}{2} = 10{,}5\).
+<p class="ls-answer">Ответ: 10,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> На клетчатой бумаге с размером клетки \(1\times1\) изображён параллелограмм. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 232 154" width="232" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 142,116 194,38 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание 4, высота 3. \(S = 4\cdot3 = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №18 (ФИПИ / Решу ОГЭ)</span><br> На клетчатой бумаге с размером клетки \(1\times1\) изображена трапеция. Найдите её площадь.
+<svg class="ls-fig" viewBox="0 0 258 154" width="258" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 220,116 168,38 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основания 7 и 3, высота 3. \(S = \frac{7 + 3}{2}\cdot3 = 5\cdot3 = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №18 (ФИПИ / Решу ОГЭ)</span><br> На клетчатой бумаге с размером клетки \(1\times1\) изображён треугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 180 154" width="180" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="168" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="168" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="168" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="168" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="168" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 142,90 64,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Достраиваем до прямоугольника \(4\times3\) (площадь 12). Лишние треугольники: \(\frac{4\cdot1}{2} = 2\), \(\frac{3\cdot2}{2} = 3\), \(\frac{1\cdot3}{2} = 1{,}5\).
+\(S = 12 - 2 - 3 - 1{,}5 = 5{,}5\).
+<p class="ls-answer">Ответ: 5,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 12)</span> Найдите значение выражения \(3a - 2(a - 4)\) при \(a = -1\).</div>
+<details><summary>Решение</summary>Раскрываем: \(3a - 2a + 8 = a + 8\). При \(a = -1\): \(-1 + 8 = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 10)</span> Вычислите \(\sqrt{2}\cdot\sqrt{18}\).</div>
+<details><summary>Решение</summary>\(\sqrt{36} = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 6)</span> Вычислите \((2{,}7 + 1{,}3)\cdot0{,}25\).</div>
+<details><summary>Решение</summary>Скобка: 4. \(4\cdot0{,}25 = 1\).
+<p class="ls-answer">Ответ: 1</p></details></div>
+</section>
+<nav class="ls-foot"><a href="13-formuly.html">← Урок 13</a><a href="00-index.html">Все уроки</a><a href="15-koordinatnaya-pryamaya.html">Урок 15 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
