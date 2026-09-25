@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 53. Геометрия: все виды задания №15 (треугольники)</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 53. Геометрия: все виды задания №15 (треугольники)</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №15</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> собрать в одну систему всё про треугольники (уроки 5, 8, 11, 32, 35) и решать смешанные прототипы №15 без подсказки, какую тему применять.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 52.</li>
+  <li>15 мин — «карта» №15: по ключевым словам условия выбрать инструмент.</li>
+  <li>25–30 мин — практика: все задачи из разных тем вперемешку.</li>
+  <li>5 мин — итог. Следующий урок — пробный ОГЭ.</li>
+</ol>
+<p><b>Типичные ошибки:</b> не видит внешний угол в задачах с биссектрисой; путает высоту равностороннего треугольника со стороной; при средней линии делит площадь на 2 вместо 4.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Карта задания №15</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>В условии</th><th>Инструмент</th><th>Урок</th></tr>
+<tr><td class="ls-left">углы, «найдите угол»</td><td class="ls-left">сумма углов 180°, смежные, внешний угол</td><td>5</td></tr>
+<tr><td class="ls-left">\(AB = BC\), «равнобедренный»</td><td class="ls-left">углы при основании равны</td><td>8</td></tr>
+<tr><td class="ls-left">биссектриса, медиана, высота</td><td class="ls-left">пополам угол / пополам сторону / 90°</td><td>8</td></tr>
+<tr><td class="ls-left">угол \(C = 90^\circ\), катеты, гипотенуза</td><td class="ls-left">Пифагор, катет против 30°</td><td>11</td></tr>
+<tr><td class="ls-left">\(\sin\), \(\cos\), \(\operatorname{tg}\)</td><td class="ls-left">противолежащий / прилежащий / гипотенуза</td><td>35</td></tr>
+<tr><td class="ls-left">параллельная прямая, середины сторон</td><td class="ls-left">подобие, средняя линия</td><td>32</td></tr>
+<tr><td class="ls-left">площадь</td><td class="ls-left">\(\frac{1}{2}ah\), \(\frac{1}{2}ab\) для прямоугольного</td><td>14, 29</td></tr>
+</table></div>
+
+<h3>2. Два новых факта</h3>
+<div class="ls-rule"><b>Высота равностороннего треугольника</b> со стороной \(a\): \(h = \frac{a\sqrt{3}}{2}\).
+Сторона \(16\sqrt{3}\) → \(h = \frac{16\sqrt{3}\cdot\sqrt{3}}{2} = \frac{16\cdot3}{2} = 24\).</div>
+<div class="ls-rule"><b>Средняя линия отрезает треугольник</b>, подобный исходному с \(k = \frac{1}{2}\), значит, его площадь в \(k^2 = \frac{1}{4}\) раза меньше: площадь 24 → маленький треугольник 6.</div>
+
+<h3>3. Биссектриса + внешний угол</h3>
+<svg class="ls-fig" viewBox="0 0 292 172" width="292" height="172" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,146 126,26 266,146" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="146" x2="189" y2="80" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="115.8,38.3 116.6,38.9 117.4,39.5 118.3,40 119.3,40.5 120.2,40.9 121.2,41.3 122.2,41.5 123.2,41.8 124.2,41.9 125.3,42 126.3,42 127.3,41.9 128.4,41.8 129.4,41.6 130.4,41.4 131.4,41.1 132.3,40.7 133.3,40.2 134.2,39.7 135.1,39.2 135.9,38.6 136.7,37.9 137.4,37.2 138.1,36.4" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="128.5" y="55.9" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">106°</text><polyline points="174.2,86 174.7,87.2 175.4,88.4 176.2,89.6 177,90.6 178,91.6 179,92.5 180.1,93.3 181.3,94 182.5,94.6 183.8,95.1 185.1,95.5 186.4,95.8 187.8,96 189.1,96 190.5,95.9 191.9,95.7 193.2,95.4 194.5,95 195.7,94.5 197,93.9 198.1,93.1 199.2,92.3 200.2,91.4 201.1,90.4" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="184.2" y="109.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">112°</text><text x="12.9" y="150.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="279" y="151.3" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="121.4" y="12.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="201.4" y="73.5" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">L</text></svg>
+<div class="ls-example">\(\angle ALC\) — внешний угол треугольника \(ABL\), он равен сумме \(\angle ABL + \angle BAL\).
+Значит, \(\angle BAL = 112 - 106 = 6^\circ\), весь \(\angle A = 12^\circ\), \(\angle C = 180 - 106 - 12 = 62^\circ\). (Рисунок схематичный.)</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) угол \(C\) равен \(90^\circ\), \(AC = 20\), \(\operatorname{tg} A = 0{,}5\). Найдите \(BC\).</div>
+<details><summary>Решение</summary>\(\operatorname{tg} A = \frac{BC}{AC}\) → \(BC = 0{,}5\cdot20 = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) известно, что \(AB = BC\), внешний угол при вершине \(C\) равен \(128^\circ\). Найдите угол \(B\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 128 = 52^\circ\). \(AB = BC\) → вершина \(B\), \(\angle A = \angle C = 52^\circ\). \(\angle B = 180 - 104 = 76^\circ\).
+<p class="ls-answer">Ответ: 76</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) проведена биссектриса \(AL\), угол \(ALC\) равен \(112^\circ\), угол \(ABC\) равен \(106^\circ\). Найдите угол \(ACB\).</div>
+<details><summary>Решение</summary>Внешний угол \(ALC\) треугольника \(ABL\): \(\angle BAL = 112 - 106 = 6^\circ\). \(\angle BAC = 12^\circ\). \(\angle ACB = 180 - 106 - 12 = 62^\circ\).
+<p class="ls-answer">Ответ: 62</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> Два катета прямоугольного треугольника равны 4 и 10. Найдите площадь этого треугольника.</div>
+<details><summary>Решение</summary>\(S = \frac{4\cdot10}{2} = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) угол \(C\) равен \(90^\circ\), \(AB = 25\), \(BC = 7\). Найдите \(\cos B\).</div>
+<details><summary>Решение</summary>Для угла \(B\) прилежащий катет — \(BC\): \(\cos B = \frac{7}{25} = 0{,}28\).
+<p class="ls-answer">Ответ: 0,28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> Сторона равностороннего треугольника равна \(16\sqrt{3}\). Найдите высоту этого треугольника.</div>
+<details><summary>Решение</summary>\(h = \frac{a\sqrt{3}}{2} = \frac{16\sqrt{3}\cdot\sqrt{3}}{2} = \frac{48}{2} = 24\).
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> Площадь треугольника \(ABC\) равна 24, \(DE\) — средняя линия, параллельная стороне \(AB\). Найдите площадь треугольника \(CDE\).
+<svg class="ls-fig" viewBox="0 0 292 212" width="292" height="212" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,186 266,186 106,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="66" y1="106" x2="186" y2="106" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><text x="14.1" y="193.3" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="278.7" y="192" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="102.6" y="12.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="52.4" y="102.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><text x="199.5" y="102.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">E</text></svg></div>
+<details><summary>Решение</summary>Треугольник \(CDE\) подобен \(CAB\) с \(k = \frac{1}{2}\). Площадь меньше в \(k^2 = 4\) раза: \(24 : 4 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) угол \(C\) равен \(90^\circ\), \(BC = 12\), \(\operatorname{tg} A = 0{,}4\). Найдите \(AC\).</div>
+<details><summary>Решение</summary>\(0{,}4 = \frac{12}{AC}\) → \(AC = 12 : 0{,}4 = 30\).
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) известно, что \(AB = BC\), внешний угол при вершине \(C\) равен \(136^\circ\). Найдите угол \(B\).</div>
+<details><summary>Решение</summary>\(\angle C = 44^\circ\), \(\angle A = 44^\circ\), \(\angle B = 180 - 88 = 92^\circ\).
+<p class="ls-answer">Ответ: 92</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) проведена биссектриса \(AL\), угол \(ALC\) равен \(115^\circ\), угол \(ABC\) равен \(107^\circ\). Найдите угол \(ACB\).</div>
+<details><summary>Решение</summary>\(\angle BAL = 115 - 107 = 8^\circ\), \(\angle A = 16^\circ\), \(\angle C = 180 - 107 - 16 = 57^\circ\).
+<p class="ls-answer">Ответ: 57</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> Сторона равностороннего треугольника равна \(10\sqrt{3}\). Найдите высоту этого треугольника.</div>
+<details><summary>Решение</summary>\(h = \frac{10\sqrt{3}\cdot\sqrt{3}}{2} = \frac{30}{2} = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> Площадь треугольника \(ABC\) равна 36, \(DE\) — средняя линия, параллельная стороне \(AB\). Найдите площадь треугольника \(CDE\).</div>
+<details><summary>Решение</summary>\(36 : 4 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 51)</span> Для дорожки нужно 23 плитки, в упаковке 6 штук. Сколько упаковок нужно купить?</div>
+<details><summary>Решение</summary>\(23 : 6 = 3{,}8\ldots\) → 4 упаковки.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 49)</span> Кожух печи имеет ширину 48 см и высоту боковых стенок 18 см, сверху — арка по дуге окружности с центром в середине нижней стороны кожуха. Найдите радиус арки (в см).</div>
+<details><summary>Решение</summary>Катеты: половина ширины 24 и 18. \(R = \sqrt{576 + 324} = \sqrt{900} = 30\) см.
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 45)</span> Решите систему \(\begin{cases} 2x + y = 7 \\ x - y = 2 \end{cases}\). В ответ запишите \(y\).</div>
+<details><summary>Решение</summary>Складываем: \(3x = 9\) → \(x = 3\), \(y = 7 - 6 = 1\).
+<p class="ls-answer">Ответ: 1</p></details></div>
+</section>
+<nav class="ls-foot"><a href="52-praktika-kvartira-bumaga.html">← Урок 52</a><a href="00-index.html">Все уроки</a><a href="54-probnyy-oge-1.html">Урок 54 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
