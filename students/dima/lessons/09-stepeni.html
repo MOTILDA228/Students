@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 9. Степени</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 9. Степени</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №8</span><span class="ls-tag">ОГЭ №6</span><span class="ls-tag">алгебра</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима считает степени без ошибки «\(2^3 = 6\)», не путается со знаком минус и решает прототипы №8 по правилу «сначала сложи и вычти показатели, потом подставь».</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 8 (углы равнобедренного треугольника).</li>
+  <li>15 мин — шпаргалка: определение, таблица (пусть сам заполнит пропуски), знаки, три свойства.</li>
+  <li>25–30 мин — практика. На задаче 1 проговаривать вслух: «два в кубе — это два умножить на два умножить на два».</li>
+  <li>5 мин — итог: «умножаем степени — показатели складываем, делим — вычитаем».</li>
+</ol>
+<p><b>Типичные ошибки:</b> \(2^3 = 6\); \(-2^4 = 16\); \(2^3\cdot2^4 = 2^{12}\) (перемножает показатели); \(10^{-2} = -100\).</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Что такое степень</h3>
+<div class="ls-rule">\[ a^n = \underbrace{a\cdot a\cdot\ldots\cdot a}_{n\ \text{раз}} \]
+\(a\) — <b>основание</b> (что умножаем), \(n\) — <b>показатель</b> (сколько раз).</div>
+<div class="ls-example">\(2^3 = 2\cdot2\cdot2 = 8\) · \(5^2 = 5\cdot5 = 25\) · \(10^4 = 10\,000\) (единица и 4 нуля)</div>
+<div class="ls-warn"><b>Главная ошибка:</b> \(2^3\) — это <b>не</b> \(2\cdot3 = 6\)! Это \(2\cdot2\cdot2 = 8\).</div>
+
+<h3>2. Таблица, которую нужно знать</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>\(n\)</th><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>25</td></tr>
+<tr><th>\(n^2\)</th><td>121</td><td>144</td><td>169</td><td>196</td><td>225</td><td>256</td><td>289</td><td>324</td><td>361</td><td>400</td><td>625</td></tr>
+</table></div>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>\(n\)</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+<tr><th>\(2^n\)</th><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td><td>64</td><td>128</td><td>256</td><td>512</td><td>1024</td></tr>
+<tr><th>\(n^3\)</th><td>1</td><td>8</td><td>27</td><td>64</td><td>125</td><td>216</td><td>343</td><td>512</td><td>729</td><td>1000</td></tr>
+</table></div>
+
+<h3>3. Степень и знак минус</h3>
+<div class="ls-rule">Минус <b>в скобках</b>:<br>
+• чётная степень (2, 4, 6…) → ответ <b>с плюсом</b>: \((-2)^2 = (-2)\cdot(-2) = 4\);<br>
+• нечётная степень (1, 3, 5…) → ответ <b>с минусом</b>: \((-2)^3 = (-2)\cdot(-2)\cdot(-2) = -8\).</div>
+<div class="ls-warn">Минус <b>без скобок</b> в степень не возводится: \(-2^4 = -(2\cdot2\cdot2\cdot2) = -16\), а \((-2)^4 = 16\).</div>
+<div class="ls-rule">\(a^1 = a\) · \(a^0 = 1\) (любое число, кроме нуля, в нулевой степени — единица).</div>
+
+<h3>4. Три правила для действий со степенями</h3>
+<div class="ls-rule">
+Одинаковые основания <b>умножаем</b> → показатели <b>складываем</b>: \(a^m\cdot a^n = a^{m+n}\).<br>
+Одинаковые основания <b>делим</b> → показатели <b>вычитаем</b>: \(a^m : a^n = a^{m-n}\).<br>
+<b>Степень в степени</b> → показатели <b>умножаем</b>: \((a^m)^n = a^{m\cdot n}\).</div>
+<div class="ls-example">\(3^5\cdot3^2 = 3^7\) · \(7^9 : 7^7 = 7^2 = 49\) · \((2^3)^2 = 2^6 = 64\)</div>
+<div class="ls-warn">Складывать степени по этим правилам <b>нельзя</b>: \(2^3 + 2^2 = 8 + 4 = 12\), а вовсе не \(2^5 = 32\).</div>
+
+<h3>5. Отрицательный показатель и степени десятки</h3>
+<div class="ls-rule">\(a^{-n} = \frac{1}{a^n}\). Для десятки: \(10^{-1} = 0{,}1\) · \(10^{-2} = 0{,}01\) · \(10^{-3} = 0{,}001\).<br>
+<b>Сколько в показателе, столько знаков после запятой</b>, последняя цифра — единица.</div>
+<div class="ls-example">\(6\cdot10^{-2} = 6\cdot0{,}01 = 0{,}06\) · \(3\cdot10^{-3} = 0{,}003\) · \(2^{-3} = \frac{1}{2^3} = \frac{1}{8} = 0{,}125\)</div>
+
+<h3>6. Как решать №8 со степенями и буквой</h3>
+<ol class="ls-steps">
+  <li>Все основания одинаковые — работаем <b>только с показателями</b>.</li>
+  <li>Умножение → складываем, деление (дробная черта) → вычитаем.</li>
+  <li>Получили одну степень — <b>только теперь</b> подставляем число.</li>
+</ol>
+<div class="ls-example">\(\frac{a^{9}\cdot a^{11}}{a^{17}}\) при \(a = 2\): показатель \(9 + 11 - 17 = 3\), значит, \(a^3 = 2^3 = 8\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите: а) \(3^4\); б) \(2^5\); в) \((-2)^3\); г) \(-2^4\).</div>
+<details><summary>Решение</summary>а) \(3\cdot3\cdot3\cdot3 = 9\cdot9 = 81\).<br>
+б) \(2\cdot2\cdot2\cdot2\cdot2 = 32\).<br>
+в) Минус в скобках, степень нечётная → ответ с минусом: \(-8\).<br>
+г) Минус без скобок: сначала \(2^4 = 16\), потом ставим минус: \(-16\).
+<p class="ls-answer">Ответ: а) 81; б) 32; в) \(-8\); г) \(-16\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(5^3 - 4^3\).</div>
+<details><summary>Решение</summary>\(5^3 = 125\), \(4^3 = 64\). \(125 - 64 = 61\).
+<p class="ls-answer">Ответ: 61</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(2^7\cdot2^3 : 2^8\).</div>
+<details><summary>Решение</summary>Основания одинаковые. Показатель: \(7 + 3 - 8 = 2\). \(2^2 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \((3^2)^3 : 3^5\).</div>
+<details><summary>Решение</summary>Степень в степени — умножаем: \((3^2)^3 = 3^6\). Делим: \(3^{6-5} = 3^1 = 3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Запишите десятичной дробью число \(7\cdot10^{-2}\).</div>
+<details><summary>Решение</summary>\(10^{-2} = 0{,}01\) (два знака после запятой). \(7\cdot0{,}01 = 0{,}07\).
+<p class="ls-answer">Ответ: 0,07</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №8 (ФИПИ / Решу ОГЭ)</span><br> Найдите значение выражения \(\frac{a^{12}\cdot a^{5}}{a^{15}}\) при \(a = 6\).</div>
+<details><summary>Решение</summary>Показатель: \(12 + 5 - 15 = 2\). Остаётся \(a^2 = 6^2 = 36\).
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №6 (ФИПИ / Решу ОГЭ)</span><br> Найдите значение выражения \(4\cdot10^{-1} + 6\cdot10^{-3} + 8\cdot10^{-4}\).</div>
+<details><summary>Решение</summary>\(4\cdot10^{-1} = 0{,}4\); \(6\cdot10^{-3} = 0{,}006\); \(8\cdot10^{-4} = 0{,}0008\).
+Складываем столбиком, запятая под запятой:
+<span class="ls-mono">  0,4000
++ 0,0060
++ 0,0008
+  ------
+  0,4068</span>
+<p class="ls-answer">Ответ: 0,4068</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите: а) \(4^3\); б) \((-3)^2\); в) \(-3^2\); г) \(10^4\).</div>
+<details><summary>Решение</summary>а) \(4\cdot4\cdot4 = 64\). б) Минус в скобках, степень чётная → плюс: \(9\). в) Минус без скобок: \(-9\). г) Единица и 4 нуля: \(10\,000\).
+<p class="ls-answer">Ответ: а) 64; б) 9; в) \(-9\); г) 10000</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(2^6 - 6^2\).</div>
+<details><summary>Решение</summary>\(2^6 = 64\), \(6^2 = 36\). \(64 - 36 = 28\).
+<p class="ls-answer">Ответ: 28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(3^5\cdot3^4 : 3^7\).</div>
+<details><summary>Решение</summary>Показатель: \(5 + 4 - 7 = 2\). \(3^2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №8 (ФИПИ / Решу ОГЭ)</span><br> Найдите значение выражения \(\frac{a^{21}\cdot a^{-8}}{a^{11}}\) при \(a = 5\).</div>
+<details><summary>Решение</summary>Показатель: \(21 + (-8) - 11 = 13 - 11 = 2\). \(a^2 = 5^2 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №6 (ФИПИ / Решу ОГЭ)</span><br> Найдите значение выражения \(6\cdot10^{-1} + 2\cdot10^{-2} + 5\cdot10^{-3}\).</div>
+<details><summary>Решение</summary>\(0{,}6 + 0{,}02 + 0{,}005 = 0{,}625\).
+<p class="ls-answer">Ответ: 0,625</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 7)</span> Найдите 20% от числа 350.</div>
+<details><summary>Решение</summary>20% — это пятая часть: \(350 : 5 = 70\). Или \(350\cdot0{,}2 = 70\).
+<p class="ls-answer">Ответ: 70</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 5)</span> Два угла треугольника равны \(72^\circ\) и \(35^\circ\). Найдите третий угол.</div>
+<details><summary>Решение</summary>\(180 - 72 - 35 = 73^\circ\).
+<p class="ls-answer">Ответ: 73</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 1)</span> Вычислите \(\frac{2}{3} + \frac{1}{6}\).</div>
+<details><summary>Решение</summary>Общий знаменатель 6: \(\frac{4}{6} + \frac{1}{6} = \frac{5}{6}\).
+<p class="ls-answer">Ответ: \(\frac{5}{6}\)</p></details></div>
+</section>
+<nav class="ls-foot"><a href="08-geom-treugolniki.html">← Урок 8</a><a href="00-index.html">Все уроки</a><a href="10-korni.html">Урок 10 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Уроки — dima</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Уроки: Дима</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">готово уроков: 11</span><span class="ls-tag">в плане: 70</span></div></header>
+<section class="ls-card"><h2>План и материалы</h2><div class="ls-table-wrap"><table class="ls-table ls-index"><thead><tr><th>№</th><th>Тема</th><th>ОГЭ</th><th>Тип</th><th>Когда</th></tr></thead><tbody>
+<tr><td>1</td><td class="ls-left">Обыкновенные дроби</td><td>6</td><td>алг</td><td>сен ✅</td></tr>
+<tr><td>2</td><td class="ls-left">Десятичные дроби</td><td>6</td><td>алг</td><td>сен ✅</td></tr>
+<tr><td>3</td><td class="ls-left"><a href="03-drobi-zakreplenie.html">Обыкновенные дроби: закрепление</a></td><td>6</td><td>алг</td><td>сен/окт</td></tr>
+<tr><td>4</td><td class="ls-left"><a href="04-delenie-stolbikom.html">Деление в столбик, деление десятичных</a></td><td>6</td><td>алг</td><td>окт</td></tr>
+<tr class="ls-row-geo"><td>5</td><td class="ls-left"><a href="05-geom-ugly.html">Г: углы, смежные/вертикальные, сумма углов треугольника</a></td><td>15, 19</td><td>Г</td><td>окт</td></tr>
+<tr><td>6</td><td class="ls-left"><a href="06-smeshannye-vychisleniya.html">Смешанные вычисления, прототипы №6</a></td><td>6</td><td>алг</td><td>окт</td></tr>
+<tr><td>7</td><td class="ls-left"><a href="07-procenty.html">Проценты</a></td><td>1–5, 6</td><td>алг</td><td>окт</td></tr>
+<tr class="ls-row-geo"><td>8</td><td class="ls-left"><a href="08-geom-treugolniki.html">Г: виды треугольников, высота/медиана/биссектриса</a></td><td>15, 19</td><td>Г</td><td>окт</td></tr>
+<tr><td>9</td><td class="ls-left"><a href="09-stepeni.html">Степени</a></td><td>8</td><td>алг</td><td>окт</td></tr>
+<tr><td>10</td><td class="ls-left"><a href="10-korni.html">Квадратные корни</a></td><td>8</td><td>алг</td><td>окт</td></tr>
+<tr class="ls-row-geo"><td>11</td><td class="ls-left"><a href="11-geom-pifagor.html">Г: прямоугольный треугольник, теорема Пифагора</a></td><td>15</td><td>Г</td><td>окт</td></tr>
+<tr><td>12</td><td class="ls-left"><a href="12-bukvennye-vyrazheniya.html">Буквенные выражения, скобки, подстановка</a></td><td>8, 12</td><td>алг</td><td>ноя</td></tr>
+<tr><td>13</td><td class="ls-left"><a href="13-formuly.html">Выражение переменной из формулы, расчёты по формулам</a></td><td>12</td><td>алг</td><td>ноя</td></tr>
+<tr class="ls-row-geo"><td>14</td><td class="ls-left">Г: площади фигур, клетчатая бумага</td><td>18</td><td>Г</td><td>ноя</td></tr>
+<tr><td>15</td><td class="ls-left">Координатная прямая, сравнение чисел, оценка корней</td><td>7</td><td>алг</td><td>ноя</td></tr>
+<tr><td>16</td><td class="ls-left">Линейные уравнения</td><td>9</td><td>алг</td><td>ноя</td></tr>
+<tr class="ls-row-geo"><td>17</td><td class="ls-left">Г: окружность, центральные и вписанные углы</td><td>16</td><td>Г</td><td>ноя</td></tr>
+<tr><td>18</td><td class="ls-left">Практические задачи: тарифы, покупки</td><td>1–5</td><td>алг</td><td>ноя</td></tr>
+<tr class="ls-row-ctrl"><td>19</td><td class="ls-left">Контрольная 1 (уроки 3–18)</td><td></td><td>контроль</td><td>ноя</td></tr>
+<tr class="ls-row-geo"><td>20</td><td class="ls-left">Г: параллельные прямые, углы при них</td><td>15, 19</td><td>Г</td><td>ноя</td></tr>
+<tr><td>21</td><td class="ls-left">Формулы сокращённого умножения</td><td>8</td><td>алг</td><td>дек</td></tr>
+<tr><td>22</td><td class="ls-left">Разложение на множители</td><td>8, 9</td><td>алг</td><td>дек</td></tr>
+<tr class="ls-row-geo"><td>23</td><td class="ls-left">Г: параллелограмм, прямоугольник, ромб, квадрат</td><td>17</td><td>Г</td><td>дек</td></tr>
+<tr><td>24</td><td class="ls-left">Квадратные уравнения: неполные, дискриминант</td><td>9</td><td>алг</td><td>дек</td></tr>
+<tr><td>25</td><td class="ls-left">Квадратные уравнения: Виета, прототипы</td><td>9</td><td>алг</td><td>дек</td></tr>
+<tr class="ls-row-geo"><td>26</td><td class="ls-left">Г: трапеция</td><td>17</td><td>Г</td><td>дек</td></tr>
+<tr><td>27</td><td class="ls-left">Линейные неравенства, числовая прямая</td><td>13</td><td>алг</td><td>дек</td></tr>
+<tr><td>28</td><td class="ls-left">Квадратные неравенства</td><td>13</td><td>алг</td><td>дек</td></tr>
+<tr class="ls-row-geo"><td>29</td><td class="ls-left">Г: площади четырёхугольников и треугольника</td><td>17, 18</td><td>Г</td><td>янв</td></tr>
+<tr><td>30</td><td class="ls-left">Системы неравенств</td><td>13</td><td>алг</td><td>янв</td></tr>
+<tr><td>31</td><td class="ls-left">Теория вероятностей: классическая формула</td><td>10</td><td>алг</td><td>янв</td></tr>
+<tr class="ls-row-geo"><td>32</td><td class="ls-left">Г: подобие треугольников</td><td>15</td><td>Г</td><td>янв</td></tr>
+<tr><td>33</td><td class="ls-left">Вероятность: противоположное событие, прототипы</td><td>10</td><td>алг</td><td>янв</td></tr>
+<tr class="ls-row-ctrl"><td>34</td><td class="ls-left">Контрольная 2 (уроки 20–33)</td><td></td><td>контроль</td><td>янв</td></tr>
+<tr class="ls-row-geo"><td>35</td><td class="ls-left">Г: синус, косинус, тангенс в прямоугольном треугольнике</td><td>15</td><td>Г</td><td>янв</td></tr>
+<tr><td>36</td><td class="ls-left">Арифметическая прогрессия</td><td>14</td><td>алг</td><td>фев</td></tr>
+<tr><td>37</td><td class="ls-left">Геометрическая прогрессия</td><td>14</td><td>алг</td><td>фев</td></tr>
+<tr class="ls-row-geo"><td>38</td><td class="ls-left">Г: касательная, вписанная и описанная окружность</td><td>16</td><td>Г</td><td>фев</td></tr>
+<tr><td>39</td><td class="ls-left">Текстовые задачи на прогрессии</td><td>14</td><td>алг</td><td>фев</td></tr>
+<tr><td>40</td><td class="ls-left">Линейная функция и её график</td><td>11</td><td>алг</td><td>фев</td></tr>
+<tr class="ls-row-geo"><td>41</td><td class="ls-left">Г: углы в окружности, вписанный четырёхугольник</td><td>16</td><td>Г</td><td>фев</td></tr>
+<tr><td>42</td><td class="ls-left">Парабола и гипербола</td><td>11</td><td>алг</td><td>фев</td></tr>
+<tr><td>43</td><td class="ls-left">Алгебраические дроби: сокращение, упрощение</td><td>8</td><td>алг</td><td>мар</td></tr>
+<tr class="ls-row-geo"><td>44</td><td class="ls-left">Г: задание 19, факты про треугольники</td><td>19</td><td>Г</td><td>мар</td></tr>
+<tr><td>45</td><td class="ls-left">Системы уравнений</td><td>9</td><td>алг</td><td>мар</td></tr>
+<tr><td>46</td><td class="ls-left">Расчёты по формулам: прототипы</td><td>12</td><td>алг</td><td>мар</td></tr>
+<tr class="ls-row-geo"><td>47</td><td class="ls-left">Г: задание 19, факты про четырёхугольники и окружность</td><td>19</td><td>Г</td><td>мар</td></tr>
+<tr><td>48</td><td class="ls-left">Практические сюжеты: шины</td><td>1–5</td><td>алг</td><td>мар</td></tr>
+<tr><td>49</td><td class="ls-left">Практические сюжеты: печь для бани</td><td>1–5</td><td>алг</td><td>мар</td></tr>
+<tr class="ls-row-geo"><td>50</td><td class="ls-left">Г: прототипы №18 (клетки)</td><td>18</td><td>Г</td><td>мар</td></tr>
+<tr><td>51</td><td class="ls-left">Практические сюжеты: теплица, участок</td><td>1–5</td><td>алг</td><td>апр</td></tr>
+<tr><td>52</td><td class="ls-left">Практические сюжеты: листы бумаги, план квартиры, тарифы</td><td>1–5</td><td>алг</td><td>апр</td></tr>
+<tr class="ls-row-geo"><td>53</td><td class="ls-left">Г: прототипы №15</td><td>15</td><td>Г</td><td>апр</td></tr>
+<tr class="ls-row-ctrl"><td>54</td><td class="ls-left">Пробный ОГЭ 1 (часть 1)</td><td>1–19</td><td>контроль</td><td>апр</td></tr>
+<tr><td>55</td><td class="ls-left">Разбор пробника 1</td><td></td><td>алг</td><td>апр</td></tr>
+<tr class="ls-row-geo"><td>56</td><td class="ls-left">Г: прототипы №16</td><td>16</td><td>Г</td><td>апр</td></tr>
+<tr><td>57</td><td class="ls-left">Повторение №6–8</td><td>6–8</td><td>алг</td><td>апр</td></tr>
+<tr><td>58</td><td class="ls-left">Повторение №9–10</td><td>9, 10</td><td>алг</td><td>апр</td></tr>
+<tr class="ls-row-geo"><td>59</td><td class="ls-left">Г: прототипы №17</td><td>17</td><td>Г</td><td>май</td></tr>
+<tr><td>60</td><td class="ls-left">Повторение №11–12</td><td>11, 12</td><td>алг</td><td>май</td></tr>
+<tr><td>61</td><td class="ls-left">Повторение №13–14</td><td>13, 14</td><td>алг</td><td>май</td></tr>
+<tr class="ls-row-geo"><td>62</td><td class="ls-left">Г: прототипы №18–19</td><td>18, 19</td><td>Г</td><td>май</td></tr>
+<tr class="ls-row-ctrl"><td>63</td><td class="ls-left">Пробный ОГЭ 2</td><td>1–19</td><td>контроль</td><td>май</td></tr>
+<tr><td>64</td><td class="ls-left">Разбор пробника 2</td><td></td><td>алг</td><td>май</td></tr>
+<tr class="ls-row-geo"><td>65</td><td class="ls-left">Г: марафон №15–19</td><td>15–19</td><td>Г</td><td>май</td></tr>
+<tr><td>66</td><td class="ls-left">Марафон №1–5</td><td>1–5</td><td>алг</td><td>май</td></tr>
+<tr class="ls-row-ctrl"><td>67</td><td class="ls-left">Пробный ОГЭ 3</td><td>1–19</td><td>контроль</td><td>май</td></tr>
+<tr class="ls-row-geo"><td>68</td><td class="ls-left">Г: финальный разбор геометрии</td><td>15–19</td><td>Г</td><td>май</td></tr>
+<tr><td>69</td><td class="ls-left">Разбор пробника 3, слабые места</td><td></td><td>алг</td><td>май/июн</td></tr>
+<tr><td>70</td><td class="ls-left">Стратегия экзамена: порядок, время, бланк</td><td></td><td>алг</td><td>июн</td></tr>
+</tbody></table></div><p class="ls-muted">Г — геометрия. Ссылка на теме — урок готов.</p></section>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 8. Геометрия: виды треугольников, высота, медиана, биссектриса</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 8. Геометрия: виды треугольников, высота, медиана, биссектриса</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №15</span><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима различает виды треугольников и три главные линии в треугольнике, решает задачи на равнобедренный треугольник по двум шаблонам.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 7, особенно задачи на повторение (урок 5: углы).</li>
+  <li>15 мин — шпаргалка. Рисовать вместе: пусть Дима сам проведёт высоту, медиану и биссектрису в одном треугольнике тремя цветами.</li>
+  <li>25–30 мин — практика 1–7. Задачи 6–7 — настоящие прототипы ОГЭ №15.</li>
+  <li>5 мин — итог: «высота — 90°, медиана — в середину, биссектриса — угол пополам».</li>
+</ol>
+<p><b>Типичные ошибки:</b> путает угол при вершине и угол при основании; забывает делить на 2; считает, что медиана делит угол пополам.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Как устроен треугольник</h3>
+<p>У треугольника 3 <b>вершины</b> (точки \(A, B, C\)), 3 <b>стороны</b> (\(AB, BC, AC\)) и 3 <b>угла</b>. Угол при вершине \(B\) пишут \(\angle B\) или \(\angle ABC\): буква вершины всегда <b>в середине</b>.</p>
+<div class="ls-rule">Сумма углов любого треугольника — \(180^\circ\) (урок 5).</div>
+
+<h3>2. Виды треугольников по углам</h3>
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 172 136" width="172" height="136" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,110 146,110 74,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg>
+<figcaption>остроугольный<br>все углы острые</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 172 142" width="172" height="142" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,116 146,116 26,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="37,116 37,105 26,105" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+<figcaption>прямоугольный<br>есть угол 90°</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 223 112" width="223" height="112" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="62,86 197,86 26,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="82,86 81.9,84.2 81.7,82.5 81.3,80.8 80.8,79.1 80.1,77.5 79.3,75.9 78.3,74.4 77.2,73.1 76.1,71.8 74.7,70.6 73.3,69.5 71.9,68.6 70.3,67.8 68.7,67.1 67,66.6 65.3,66.3 63.5,66.1 61.7,66 60,66.1 58.3,66.4 56.5,66.8 54.9,67.3 53.3,68 51.7,68.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+<figcaption>тупоугольный<br>есть тупой угол</figcaption></figure></div>
+
+<h3>3. Равнобедренный и равносторонний</h3>
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 256 188" width="256" height="188" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,162 128,26 230,162" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="72.2" y1="90.4" x2="81.8" y2="97.6" stroke="currentColor" stroke-width="1.6"/><line x1="183.8" y1="90.4" x2="174.2" y2="97.6" stroke="currentColor" stroke-width="1.6"/><polyline points="46,162 46,161.2 45.9,160.5 45.9,159.7 45.8,158.9 45.6,158.2 45.5,157.4 45.3,156.7 45.1,155.9 44.8,155.2 44.5,154.5 44.2,153.8 43.9,153.1 43.5,152.4 43.1,151.7 42.7,151 42.3,150.4 41.8,149.8 41.4,149.2 40.8,148.6 40.3,148 39.8,147.5 39.2,147 38.6,146.5 38,146" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="210,162 210,161.2 210.1,160.5 210.1,159.7 210.2,158.9 210.4,158.2 210.5,157.4 210.7,156.7 210.9,155.9 211.2,155.2 211.5,154.5 211.8,153.8 212.1,153.1 212.5,152.4 212.9,151.7 213.3,151 213.7,150.4 214.2,149.8 214.6,149.2 215.2,148.6 215.7,148 216.2,147.5 216.8,147 217.4,146.5 218,146" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="13.2" y="167.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="128" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="242.8" y="167.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg>
+<figcaption>равнобедренный: \(AB = BC\)</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 222 199.2" width="222" height="199.2" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,173.2 111,26 196,173.2" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="63.3" y1="96.6" x2="73.7" y2="102.6" stroke="currentColor" stroke-width="1.6"/><line x1="158.7" y1="96.6" x2="148.3" y2="102.6" stroke="currentColor" stroke-width="1.6"/><line x1="111" y1="167.2" x2="111" y2="179.2" stroke="currentColor" stroke-width="1.6"/><text x="13.9" y="180.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="111" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="208.1" y="180.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg>
+<figcaption>равносторонний: все стороны равны</figcaption></figure></div>
+<div class="ls-rule"><b>Равнобедренный треугольник:</b> две равные стороны — <b>боковые</b>, третья — <b>основание</b>.<br>
+<b>Углы при основании равны.</b> (Чёрточки на рисунке показывают равные стороны, дужки — равные углы.)</div>
+<div class="ls-example"><b>Шаблон 1.</b> Дан угол при <b>вершине</b> → угол при основании \(= (180 - \text{вершина}) : 2\).<br>
+Вершина \(40^\circ\): \((180 - 40) : 2 = 70^\circ\).<br><br>
+<b>Шаблон 2.</b> Дан угол при <b>основании</b> → угол при вершине \(= 180 - 2\cdot\text{основание}\).<br>
+Основание \(65^\circ\): \(180 - 2\cdot 65 = 50^\circ\).</div>
+<div class="ls-warn"><b>Где вершина, а где основание?</b> Вершина — между двумя <b>равными</b> сторонами. Если \(AB = BC\), то вершина — \(B\) (общая буква), основание — \(AC\).</div>
+<div class="ls-rule"><b>Равносторонний треугольник:</b> все углы по \(180 : 3 = 60^\circ\).</div>
+
+<h3>4. Три главные линии</h3>
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 202 142" width="202" height="142" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,116 176,116 71,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="71" y1="26" x2="71" y2="116" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="71,105 82,105 82,116" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12.9" y="120.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="189.6" y="119.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="68" y="12.3" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="63.2" y="127.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">H</text></svg>
+<figcaption><b>высота</b> \(CH\): падает под углом 90°</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 202 142" width="202" height="142" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,116 176,116 71,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="71" y1="26" x2="101" y2="116" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="63.5" y1="110" x2="63.5" y2="122" stroke="currentColor" stroke-width="1.6"/><line x1="138.5" y1="110" x2="138.5" y2="122" stroke="currentColor" stroke-width="1.6"/><text x="12.7" y="120.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="189.5" y="119.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="66.6" y="12.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="105.4" y="129.3" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">M</text></svg>
+<figcaption><b>медиана</b> \(CM\): ведёт в середину стороны</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 202 142" width="202" height="142" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,116 176,116 71,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="71" y1="26" x2="89.2" y2="116" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="60.3,47.5 60.9,47.8 61.5,48 62.1,48.3 62.7,48.5 63.3,48.7 64,48.9 64.6,49.1 65.2,49.3 65.9,49.4 66.5,49.6 67.2,49.7 67.8,49.8 68.5,49.9 69.2,49.9 69.8,50 70.5,50 71.1,50 71.8,50 72.5,50 73.1,49.9 73.8,49.8 74.4,49.8 75.1,49.6 75.8,49.5" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="76.9,55.4 77.7,55.2 78.6,55 79.4,54.8 80.1,54.6 80.9,54.3 81.7,54 82.5,53.7 83.2,53.4 84,53 84.7,52.7 85.5,52.3 86.2,51.9 86.9,51.4 87.6,51 88.3,50.5 88.9,50 89.6,49.5 90.2,49 90.9,48.5 91.5,47.9 92.1,47.3 92.7,46.8 93.2,46.1 93.8,45.5" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12.8" y="120.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="189.5" y="119.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="67.1" y="12.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="88.3" y="130" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg>
+<figcaption><b>биссектриса</b> \(CD\): делит угол пополам</figcaption></figure></div>
+<div class="ls-rule">
+<b>Высота</b> — из вершины <b>перпендикулярно</b> к противоположной стороне (угол 90°).<br>
+<b>Медиана</b> — из вершины в <b>середину</b> противоположной стороны: \(AM = MB\).<br>
+<b>Биссектриса</b> — делит угол <b>пополам</b>: \(\angle ACD = \angle DCB\).</div>
+<div class="ls-example"><b>Запоминалка:</b> «Биссектриса — это крыса, которая бегает по углам и делит угол пополам». «Медиана — это обезьяна, которая прыгает на сторону и делит её пополам». «Высота — это кот: прыгает на сторону строго под прямым углом».</div>
+
+<h3>5. Главный секрет равнобедренного треугольника</h3>
+<svg class="ls-fig" viewBox="0 0 256 188" width="256" height="188" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,162 128,26 230,162" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="128" y1="26" x2="128" y2="162" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="128,151 139,151 139,162" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="70.7" y1="92.4" x2="80.3" y2="99.6" stroke="currentColor" stroke-width="1.6"/><line x1="73.7" y1="88.4" x2="83.3" y2="95.6" stroke="currentColor" stroke-width="1.6"/><line x1="182.3" y1="88.4" x2="172.7" y2="95.6" stroke="currentColor" stroke-width="1.6"/><line x1="185.3" y1="92.4" x2="175.7" y2="99.6" stroke="currentColor" stroke-width="1.6"/><line x1="77" y1="156" x2="77" y2="168" stroke="currentColor" stroke-width="1.6"/><line x1="179" y1="156" x2="179" y2="168" stroke="currentColor" stroke-width="1.6"/><text x="12.7" y="166.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="128" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="243.3" y="166.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="128" y="176" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">H</text></svg>
+<div class="ls-rule">В равнобедренном треугольнике высота, проведённая <b>к основанию</b>, одновременно и <b>медиана</b>, и <b>биссектриса</b>. Она делит основание пополам, а угол при вершине — пополам.</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> В равнобедренном треугольнике угол при вершине равен \(40^\circ\). Найдите угол при основании.
+<svg class="ls-fig" viewBox="0 0 156 195" width="156" height="195" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,169 78,26 130,169" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="46.4" y1="95.4" x2="57.6" y2="99.6" stroke="currentColor" stroke-width="1.6"/><line x1="109.6" y1="95.4" x2="98.4" y2="99.6" stroke="currentColor" stroke-width="1.6"/><polyline points="69.1,50.4 69.8,50.7 70.5,50.9 71.3,51.1 72,51.3 72.7,51.5 73.5,51.6 74.2,51.7 75,51.8 75.7,51.9 76.5,52 77.2,52 78,52 78.8,52 79.5,52 80.3,51.9 81,51.8 81.8,51.7 82.5,51.6 83.3,51.5 84,51.3 84.7,51.1 85.5,50.9 86.2,50.7 86.9,50.4" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="78" y="66" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">40°</text><text x="15.7" y="178.5" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="78" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="140.3" y="178.5" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg></div>
+<details><summary>Решение</summary>Работает шаблон 1: \((180 - 40) : 2 = 140 : 2 = 70^\circ\). Проверка: \(70 + 70 + 40 = 180\) ✓.
+<p class="ls-answer">Ответ: 70</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В равнобедренном треугольнике угол при основании равен \(65^\circ\). Найдите угол при вершине.</div>
+<details><summary>Решение</summary>Шаблон 2: при основании два равных угла по \(65^\circ\). \(180 - 2\cdot 65 = 180 - 130 = 50^\circ\).
+<p class="ls-answer">Ответ: 50</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> В треугольнике \(ABC\) проведена биссектриса \(AD\), \(\angle BAC = 64^\circ\). Найдите \(\angle BAD\).
+<svg class="ls-fig" viewBox="0 0 232 162" width="232" height="162" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,136 206,136 79.6,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="136" x2="130.8" y2="70.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="52,136 52,135.4 52,134.8 51.9,134.2 51.9,133.6 51.8,133 51.7,132.4 51.7,131.8 51.6,131.2 51.4,130.6 51.3,130 51.2,129.4 51,128.8 50.8,128.3 50.6,127.7 50.4,127.1 50.2,126.6 50,126 49.8,125.4 49.5,124.9 49.2,124.3 49,123.8 48.7,123.3 48.4,122.8 48,122.2" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="53.1,119.1 52.7,118.4 52.3,117.8 51.9,117.2 51.4,116.6 51,116 50.5,115.4 50,114.9 49.5,114.3 49,113.8 48.5,113.3 48,112.7 47.4,112.2 46.9,111.7 46.3,111.3 45.7,110.8 45.1,110.3 44.5,109.9 43.9,109.5 43.3,109.1 42.6,108.7 42,108.3 41.3,107.9 40.7,107.6 40,107.3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="13.6" y="142.5" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="218.7" y="141.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="73.7" y="13.3" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="140.4" y="60.3" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg></div>
+<details><summary>Решение</summary>Биссектриса делит угол пополам: \(64 : 2 = 32^\circ\).
+<p class="ls-answer">Ответ: 32</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В треугольнике \(ABC\) проведена медиана \(BM\), \(AC = 18\). Найдите \(AM\).</div>
+<details><summary>Решение</summary>Медиана ведёт в середину стороны \(AC\), значит, \(AM = MC = 18 : 2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В треугольнике \(ABC\) проведена высота \(BH\), \(\angle A = 35^\circ\). Найдите \(\angle ABH\).
+<svg class="ls-fig" viewBox="0 0 268 112.5" width="268" height="112.5" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,86.5 112.4,26 242,86.5" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="112.4" y1="26" x2="112.4" y2="86.5" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="112.4,75.5 123.4,75.5 123.4,86.5" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="56,86.5 56,85.7 56,85 55.9,84.2 55.8,83.4 55.8,82.7 55.7,81.9 55.5,81.2 55.4,80.4 55.2,79.7 55,78.9 54.8,78.2 54.6,77.5 54.4,76.7 54.1,76 53.8,75.3 53.5,74.6 53.2,73.9 52.9,73.2 52.6,72.5 52.2,71.9 51.8,71.2 51.4,70.5 51,69.9 50.6,69.3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="68" y="73.3" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">35°</text><text x="12.2" y="88.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="255.9" y="88.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="109.2" y="12.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="104.3" y="97.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">H</text></svg></div>
+<details><summary>Решение</summary>Высота даёт прямой угол: \(\angle AHB = 90^\circ\). Смотрим на маленький треугольник \(ABH\): в нём \(35^\circ\) и \(90^\circ\).
+Третий угол: \(180 - 90 - 35 = 55^\circ\).
+<p class="ls-answer">Ответ: 55</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) известно, что \(AB = BC\), \(\angle ABC = 108^\circ\). Найдите угол \(BCA\).
+<svg class="ls-fig" viewBox="0 0 232 117.4" width="232" height="117.4" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,91.4 116,26 206,91.4" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="67.5" y1="53.8" x2="74.5" y2="63.6" stroke="currentColor" stroke-width="1.6"/><line x1="164.5" y1="53.8" x2="157.5" y2="63.6" stroke="currentColor" stroke-width="1.6"/><polyline points="101.4,36.6 102.3,37.7 103.3,38.7 104.3,39.7 105.4,40.6 106.6,41.3 107.8,42 109.1,42.6 110.4,43.1 111.8,43.5 113.2,43.8 114.6,43.9 116,44 117.4,43.9 118.8,43.8 120.2,43.5 121.6,43.1 122.9,42.6 124.2,42 125.4,41.3 126.6,40.6 127.7,39.7 128.7,38.7 129.7,37.7 130.6,36.6" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="116" y="58" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">108°</text><text x="12.4" y="94.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="116" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="219.6" y="94.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg></div>
+<details><summary>Решение</summary>\(AB = BC\) — общая буква \(B\), значит, \(B\) — вершина, \(AC\) — основание, а \(\angle BCA\) — угол при основании.
+Шаблон 1: \((180 - 108) : 2 = 72 : 2 = 36^\circ\).
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) известно, что \(AC = BC\). Внешний угол при вершине \(B\) равен \(146^\circ\). Найдите угол \(C\).
+<svg class="ls-fig" viewBox="0 0 307 112.6" width="307" height="112.6" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,86.6 206,86.6 116,26" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="206" y1="86.6" x2="281" y2="86.6" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="67.6" y1="51.3" x2="74.4" y2="61.3" stroke="currentColor" stroke-width="1.6"/><line x1="157.6" y1="61.3" x2="164.4" y2="51.3" stroke="currentColor" stroke-width="1.6"/><polyline points="192.7,77.7 193.8,76.3 194.9,75.1 196.2,74 197.6,73 199.1,72.2 200.6,71.5 202.3,71 203.9,70.7 205.6,70.6 207.3,70.7 209,70.9 210.7,71.3 212.3,71.9 213.8,72.6 215.2,73.5 216.6,74.6 217.8,75.8 218.9,77.1 219.8,78.5 220.6,80 221.2,81.6 221.6,83.2 221.9,84.9 222,86.6" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="214.8" y="57.9" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">146°</text><text x="12.1" y="88.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="206" y="100.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="106.6" y="15.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg></div>
+<details><summary>Решение</summary>Шаг 1. Внешний угол и угол \(B\) треугольника — смежные: \(\angle B = 180 - 146 = 34^\circ\).<br>
+Шаг 2. \(AC = BC\) — общая буква \(C\), значит, \(C\) — вершина, \(AB\) — основание. Углы при основании равны: \(\angle A = \angle B = 34^\circ\).<br>
+Шаг 3. \(\angle C = 180 - 34 - 34 = 112^\circ\).
+<p class="ls-answer">Ответ: 112</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> В равнобедренном треугольнике угол при вершине равен \(120^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>\((180 - 120) : 2 = 60 : 2 = 30^\circ\).
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В равнобедренном треугольнике угол при основании равен \(48^\circ\). Найдите угол при вершине.</div>
+<details><summary>Решение</summary>\(180 - 2\cdot 48 = 180 - 96 = 84^\circ\).
+<p class="ls-answer">Ответ: 84</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) известно, что \(AB = BC\), \(\angle ABC = 106^\circ\). Найдите угол \(BCA\).</div>
+<details><summary>Решение</summary>Вершина — \(B\) (общая буква у равных сторон). \(\angle BCA\) — угол при основании: \((180 - 106) : 2 = 74 : 2 = 37^\circ\).
+<p class="ls-answer">Ответ: 37</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В треугольнике \(ABC\) известно, что \(AC = BC\). Внешний угол при вершине \(B\) равен \(122^\circ\). Найдите угол \(C\).</div>
+<details><summary>Решение</summary>\(\angle B = 180 - 122 = 58^\circ\). \(AC = BC\) → вершина \(C\), углы при основании \(A\) и \(B\) равны, \(\angle A = 58^\circ\).
+\(\angle C = 180 - 58 - 58 = 64^\circ\).
+<p class="ls-answer">Ответ: 64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны? В ответ запишите их номера без пробелов.<br>
+1) В равнобедренном треугольнике углы при основании равны.<br>
+2) Медиана треугольника делит угол пополам.<br>
+3) Все углы равностороннего треугольника равны \(60^\circ\).</div>
+<details><summary>Решение</summary>1 — верно (главное свойство равнобедренного треугольника).<br>
+2 — неверно: угол пополам делит <b>биссектриса</b>, а медиана ведёт в середину стороны.<br>
+3 — верно: \(180 : 3 = 60^\circ\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 6)</span> Найдите значение выражения \((4{,}3 - 1{,}8)\cdot 1{,}6\).</div>
+<details><summary>Решение</summary>Скобка: \(4{,}3 - 1{,}8 = 2{,}5\). Умножаем: \(25\cdot16 = 400\), отделяем 2 знака: \(4{,}00 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 4)</span> Вычислите \(3{,}72 : 1{,}2\).</div>
+<details><summary>Решение</summary>Двигаем запятую на 1 знак в обоих числах: \(37{,}2 : 12\). \(37 : 12 = 3\) (36, остаток 1). Сносим 2, ставим запятую: \(12 : 12 = 1\). Ответ: 3,1.
+Проверка: \(3{,}1\cdot 1{,}2 = 3{,}72\) ✓.
+<p class="ls-answer">Ответ: 3,1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 5)</span> Один из смежных углов в 2 раза больше другого. Найдите больший угол.</div>
+<details><summary>Решение</summary>Меньший \(x\), больший \(2x\). \(x + 2x = 180\), \(3x = 180\), \(x = 60\). Больший: \(2\cdot 60 = 120^\circ\).
+<p class="ls-answer">Ответ: 120</p></details></div>
+</section>
+<nav class="ls-foot"><a href="07-procenty.html">← Урок 7</a><a href="00-index.html">Все уроки</a><a href="09-stepeni.html">Урок 9 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

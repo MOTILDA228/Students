@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 13. Расчёты по формулам: как найти любую букву</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 13. Расчёты по формулам: как найти любую букву</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №12</span><span class="ls-tag">алгебра</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима решает №12 обоих видов: «подставь и посчитай» и «найди букву внутри формулы» через уравнение.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 12.</li>
+  <li>10–15 мин — шпаргалка: обратные действия, «треугольник» для формул вида \(a = b\cdot c\).</li>
+  <li>25–30 мин — практика. В каждой задаче сначала выписать: что дано (числа), что найти (букву).</li>
+  <li>5 мин — итог: «подставь всё, что знаешь, — получится уравнение с одной буквой».</li>
+</ol>
+<p><b>Типичные ошибки:</b> путает обратные действия (вместо деления вычитает); теряет запятую при делении на 1,8; забывает возвести в квадрат.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Два вида задачи №12</h3>
+<div class="ls-rule"><b>Вид 1.</b> Неизвестная буква стоит <b>слева одна</b>: \(P = I^2R\), ищем \(P\). Подставляем и считаем (урок 12).<br>
+<b>Вид 2.</b> Неизвестная буква <b>внутри</b> формулы: \(P = I^2R\), ищем \(R\). Подставляем всё известное → получаем уравнение → решаем.</div>
+
+<h3>2. Обратные действия</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>С буквой сделали</th><td>прибавили 32</td><td>отняли 5</td><td>умножили на 6</td><td>разделили на 4</td></tr>
+<tr><th>Чтобы найти букву</th><td>отнимаем 32</td><td>прибавляем 5</td><td>делим на 6</td><td>умножаем на 4</td></tr>
+</table></div>
+<div class="ls-example"><b>Пример.</b> Температура по Фаренгейту: \(t_F = 1{,}8\,t_C + 32\). Найдите \(t_C\), если \(t_F = 50\).<br>
+\(50 = 1{,}8\,t_C + 32\) → отнимаем 32: \(18 = 1{,}8\,t_C\) → делим на 1,8: \(t_C = 18 : 1{,}8 = 10\).</div>
+
+<h3>3. Треугольник для формул «одно = другое × третье»</h3>
+<div class="ls-rule">Если \(s = v\cdot t\), то \(v = \frac{s}{t}\) и \(t = \frac{s}{v}\).<br>
+Мысленно нарисуй треугольник: наверху \(s\), внизу \(v\) и \(t\). Закрой пальцем то, что ищешь, — останется ответ: верх делим на низ, низ умножаем друг на друга.</div>
+
+<h3>4. Алгоритм</h3>
+<ol class="ls-steps">
+  <li>Выпиши, чему равна каждая буква. Найди, какой буквы не хватает.</li>
+  <li>Подставь все числа в формулу. Посчитай всё, что считается (квадраты, произведения).</li>
+  <li>Осталось уравнение вида «число = число · \(x\)» или «число = число · \(x\) + число». Реши обратными действиями.</li>
+  <li>Проверка: подставь ответ в формулу — должно сойтись.</li>
+</ol>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Путь вычисляется по формуле \(s = v\cdot t\). Найдите время \(t\), если \(s = 120\) км, \(v = 40\) км/ч.</div>
+<details><summary>Решение</summary>\(120 = 40\cdot t\) → \(t = 120 : 40 = 3\) ч.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Периметр прямоугольника \(P = 2(a + b)\). Найдите \(b\), если \(P = 26\), \(a = 5\).</div>
+<details><summary>Решение</summary>\(26 = 2(5 + b)\) → делим на 2: \(13 = 5 + b\) → отнимаем 5: \(b = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Формула перевода температуры: \(t_F = 1{,}8\,t_C + 32\). Найдите \(t_F\), если \(t_C = 25\).</div>
+<details><summary>Решение</summary>Вид 1 — просто подставляем: \(1{,}8\cdot25 + 32 = 45 + 32 = 77\).
+<p class="ls-answer">Ответ: 77</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> По той же формуле \(t_F = 1{,}8\,t_C + 32\) найдите \(t_C\), если \(t_F = 68\).</div>
+<details><summary>Решение</summary>\(68 = 1{,}8\,t_C + 32\) → \(36 = 1{,}8\,t_C\) → \(t_C = 36 : 1{,}8 = 360 : 18 = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> Закон Джоуля–Ленца можно записать в виде \(Q = I^2Rt\), где \(Q\) — количество теплоты (в джоулях), \(I\) — сила тока (в амперах), \(R\) — сопротивление цепи (в омах), \(t\) — время (в секундах). Пользуясь этой формулой, найдите время \(t\) (в секундах), если \(Q = 1296\) Дж, \(I = 6\) А, \(R = 6\) Ом.</div>
+<details><summary>Решение</summary>Подставляем: \(1296 = 6^2\cdot6\cdot t = 36\cdot6\cdot t = 216\,t\). Делим: \(t = 1296 : 216 = 6\) с.
+Проверка: \(36\cdot6\cdot6 = 1296\) ✓.
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> Центростремительное ускорение при движении по окружности (в м/с²) вычисляется по формуле \(a = \omega^2R\), где \(\omega\) — угловая скорость (в с⁻¹), \(R\) — радиус окружности (в метрах). Пользуясь этой формулой, найдите радиус \(R\), если \(\omega = 4\) с⁻¹, \(a = 64\) м/с².</div>
+<details><summary>Решение</summary>\(64 = 4^2\cdot R = 16R\) → \(R = 64 : 16 = 4\) м.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> Площадь четырёхугольника можно вычислить по формуле \(S = \frac{d_1 d_2\sin\alpha}{2}\). Найдите длину диагонали \(d_2\), если \(d_1 = 16\), \(\sin\alpha = \frac{2}{5}\), \(S = 12{,}8\).</div>
+<details><summary>Решение</summary>Подставляем: \(12{,}8 = \frac{16\cdot d_2\cdot\frac{2}{5}}{2}\). Считаем числа: \(16\cdot\frac{2}{5} = 6{,}4\), \(6{,}4 : 2 = 3{,}2\). Получили \(12{,}8 = 3{,}2\,d_2\).
+\(d_2 = 12{,}8 : 3{,}2 = 128 : 32 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Путь вычисляется по формуле \(s = v\cdot t\). Найдите \(s\) (в км), если \(v = 60\) км/ч, \(t = 2{,}5\) ч.</div>
+<details><summary>Решение</summary>\(s = 60\cdot2{,}5 = 150\) км.
+<p class="ls-answer">Ответ: 150</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Периметр прямоугольника \(P = 2(a + b)\). Найдите \(a\), если \(P = 34\), \(b = 9\).</div>
+<details><summary>Решение</summary>\(34 = 2(a + 9)\) → \(17 = a + 9\) → \(a = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Формула \(t_F = 1{,}8\,t_C + 32\). Найдите \(t_F\), если \(t_C = -10\).</div>
+<details><summary>Решение</summary>\(1{,}8\cdot(-10) + 32 = -18 + 32 = 14\).
+<p class="ls-answer">Ответ: 14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №12 (ФИПИ / Решу ОГЭ)</span><br> Мощность постоянного тока (в ваттах) вычисляется по формуле \(P = I^2R\). Пользуясь этой формулой, найдите сопротивление \(R\) (в омах), если мощность составляет 147 Вт, а сила тока равна 3,5 А.</div>
+<details><summary>Решение</summary>\(I^2 = 3{,}5^2 = 12{,}25\). \(147 = 12{,}25\,R\) → \(R = 147 : 12{,}25 = 14700 : 1225 = 12\) Ом.
+Проверка: \(12{,}25\cdot12 = 147\) ✓.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">По мотивам ОГЭ №12</span><br> Площадь трапеции вычисляется по формуле \(S = \frac{a + b}{2}\cdot h\). Найдите высоту \(h\), если \(a = 5\), \(b = 9\), \(S = 35\).</div>
+<details><summary>Решение</summary>\(\frac{5 + 9}{2} = 7\). \(35 = 7h\) → \(h = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 11)</span> Катеты прямоугольного треугольника равны 12 и 16. Найдите гипотенузу.</div>
+<details><summary>Решение</summary>\(\sqrt{144 + 256} = \sqrt{400} = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 9)</span> Вычислите \((-2)^4 - 2^3\).</div>
+<details><summary>Решение</summary>\((-2)^4 = 16\) (чётная степень — плюс), \(2^3 = 8\). \(16 - 8 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 5)</span> В треугольнике \(ABC\) внешний угол при вершине \(C\) равен \(140^\circ\), угол \(A\) равен \(65^\circ\). Найдите угол \(B\).</div>
+<details><summary>Решение</summary>Внешний угол равен сумме двух углов, не смежных с ним: \(\angle A + \angle B = 140^\circ\). \(\angle B = 140 - 65 = 75^\circ\).
+<p class="ls-answer">Ответ: 75</p></details></div>
+</section>
+<nav class="ls-foot"><a href="12-bukvennye-vyrazheniya.html">← Урок 12</a><a href="00-index.html">Все уроки</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

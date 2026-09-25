@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 11. Геометрия: прямоугольный треугольник и теорема Пифагора</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 11. Геометрия: прямоугольный треугольник и теорема Пифагора</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №15</span><span class="ls-tag">ОГЭ №17</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима находит гипотенузу и катет по теореме Пифагора, не путая «сложить» и «вычесть», и знает свойство катета против угла 30°.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 10 (корни: без них Пифагор не решается).</li>
+  <li>15 мин — шпаргалка. Попросить Диму самого показать на рисунке катеты и гипотенузу в 3–4 разных положениях треугольника.</li>
+  <li>25–30 мин — практика. Перед каждой задачей спрашивать: «что ищем — гипотенузу или катет? Значит, складываем или вычитаем?»</li>
+  <li>5 мин — итог + выучить тройки 3-4-5, 6-8-10, 5-12-13.</li>
+</ol>
+<p><b>Типичные ошибки:</b> ищет катет и складывает квадраты; забывает извлечь корень в конце; считает гипотенузой любую самую нижнюю сторону.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Катеты и гипотенуза</h3>
+<svg class="ls-fig" viewBox="0 0 236 190" width="236" height="190" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,26 210,164 26,164" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="26,153 37,153 37,164" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="118" y="177" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a</text><text x="13" y="95" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">b</text><text x="125.8" y="84.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">c</text><text x="14.8" y="172.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="223.1" y="168.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="18.2" y="14.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text></svg>
+<div class="ls-rule"><b>Катеты</b> (\(a\) и \(b\)) — две стороны, которые образуют <b>прямой угол</b>.<br>
+<b>Гипотенуза</b> (\(c\)) — сторона <b>напротив прямого угла</b>. Она всегда самая длинная.</div>
+<div class="ls-warn">Как найти гипотенузу на любом рисунке: найди значок прямого угла ⌐ и посмотри, какая сторона его <b>не касается</b>. Это и есть гипотенуза.</div>
+
+<h3>2. Теорема Пифагора</h3>
+<div class="ls-rule">\[ c^2 = a^2 + b^2 \]
+Квадрат гипотенузы равен сумме квадратов катетов.</div>
+<div class="ls-example"><b>Ищем гипотенузу — складываем:</b> \(c = \sqrt{a^2 + b^2}\).<br>
+Катеты 6 и 8: \(c = \sqrt{36 + 64} = \sqrt{100} = 10\).<br><br>
+<b>Ищем катет — вычитаем</b> (из большего меньшее): \(a = \sqrt{c^2 - b^2}\).<br>
+Гипотенуза 13, катет 5: \(a = \sqrt{169 - 25} = \sqrt{144} = 12\).</div>
+<div class="ls-warn"><b>Самопроверка:</b> гипотенуза должна получиться <b>больше</b> каждого катета. Если катет вышел больше гипотенузы — ты сложил вместо того, чтобы вычесть.</div>
+
+<h3>3. Египетские (пифагоровы) тройки — сразу знаешь ответ</h3>
+<div class="ls-rule">3, 4, 5 · 6, 8, 10 · 9, 12, 15 · 12, 16, 20 · 5, 12, 13 · 8, 15, 17 · 7, 24, 25<br>
+(последнее число в тройке — гипотенуза)</div>
+
+<h3>4. Катет против угла 30°</h3>
+<svg class="ls-fig" viewBox="0 0 232.1 156" width="232.1" height="156" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,130 206.1,26 206.1,130" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="195.1,130 195.1,119 206.1,119" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="60,130 60,129.3 60,128.5 59.9,127.8 59.9,127 59.8,126.3 59.7,125.6 59.6,124.8 59.5,124.1 59.3,123.4 59.2,122.6 59,121.9 58.8,121.2 58.6,120.5 58.4,119.8 58.2,119.1 57.9,118.4 57.7,117.7 57.4,117 57.1,116.3 56.8,115.6 56.5,115 56.2,114.3 55.8,113.6 55.4,113" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="72.4" y="117.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">30°</text><text x="219.1" y="78" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">x</text><text x="109.6" y="66.7" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">2x</text><text x="12.5" y="133.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="218.3" y="137" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="215.3" y="15.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg>
+<div class="ls-rule">Катет, который лежит <b>напротив угла 30°</b>, равен <b>половине гипотенузы</b>. И наоборот: гипотенуза вдвое больше этого катета.</div>
+
+<h3>5. Углы прямоугольного треугольника</h3>
+<div class="ls-rule">Два острых угла вместе дают \(90^\circ\): один \(30^\circ\) → другой \(60^\circ\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Катеты прямоугольного треугольника равны 12 и 16. Найдите гипотенузу.
+<svg class="ls-fig" viewBox="0 0 308 244" width="308" height="244" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,26 282,218 26,218" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="26,207 37,207 37,218" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="154" y="231" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">16</text><text x="13" y="122" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">12</text><text x="161.8" y="111.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">?</text><text x="14.8" y="226.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="295.1" y="222.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="18.2" y="14.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text></svg></div>
+<details><summary>Решение</summary>Ищем гипотенузу — складываем: \(c = \sqrt{12^2 + 16^2} = \sqrt{144 + 256} = \sqrt{400} = 20\). (Тройка 12, 16, 20.)
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Катеты прямоугольного треугольника равны 5 и 12. Найдите гипотенузу.</div>
+<details><summary>Решение</summary>\(c = \sqrt{25 + 144} = \sqrt{169} = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Гипотенуза прямоугольного треугольника равна 17, один из катетов равен 8. Найдите другой катет.
+<svg class="ls-fig" viewBox="0 0 277 172" width="277" height="172" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,26 251,146 26,146" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="26,135 37,135 37,146" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="13" y="86" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">8</text><text x="144.6" y="74.5" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">17</text><text x="138.5" y="159" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">?</text><text x="13.6" y="152.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="264.5" y="149.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="16.4" y="15.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text></svg></div>
+<details><summary>Решение</summary>Ищем катет — вычитаем: \(\sqrt{17^2 - 8^2} = \sqrt{289 - 64} = \sqrt{225} = 15\). Проверка: 15 меньше 17 ✓.
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Гипотенуза прямоугольного треугольника равна 26, один из катетов равен 10. Найдите другой катет.</div>
+<details><summary>Решение</summary>\(\sqrt{26^2 - 10^2} = \sqrt{676 - 100} = \sqrt{576} = 24\).
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В прямоугольном треугольнике один из острых углов равен \(30^\circ\), а гипотенуза равна 18. Найдите катет, лежащий напротив угла \(30^\circ\).</div>
+<details><summary>Решение</summary>Катет против \(30^\circ\) — половина гипотенузы: \(18 : 2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> Катеты прямоугольного треугольника равны 7 и 24. Найдите гипотенузу этого треугольника.</div>
+<details><summary>Решение</summary>\(\sqrt{7^2 + 24^2} = \sqrt{49 + 576} = \sqrt{625} = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">По мотивам ОГЭ (практическая задача на теорему Пифагора)</span><br> Лестницу длиной 2,5 м прислонили к стене. Нижний конец лестницы находится на расстоянии 0,7 м от стены. На какой высоте (в метрах) находится верхний конец лестницы?
+<svg class="ls-fig" viewBox="0 0 157 262" width="157" height="262" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="40" y1="236" x2="40" y2="26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="26" y1="236" x2="131" y2="236" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="89" y1="236" x2="40" y2="68" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="51,236 51,225 40,225" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="77" y="148.4" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">2,5 м</text><text x="64.5" y="249" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">0,7 м</text><text x="27" y="152" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">?</text></svg></div>
+<details><summary>Решение</summary>Стена, пол и лестница образуют прямоугольный треугольник. Лестница — гипотенуза (напротив прямого угла между стеной и полом).
+Ищем катет: \(\sqrt{2{,}5^2 - 0{,}7^2} = \sqrt{6{,}25 - 0{,}49} = \sqrt{5{,}76} = 2{,}4\).
+<p class="ls-answer">Ответ: 2,4</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Катеты прямоугольного треугольника равны 9 и 12. Найдите гипотенузу.</div>
+<details><summary>Решение</summary>\(\sqrt{81 + 144} = \sqrt{225} = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Катеты прямоугольного треугольника равны 8 и 15. Найдите гипотенузу.</div>
+<details><summary>Решение</summary>\(\sqrt{64 + 225} = \sqrt{289} = 17\).
+<p class="ls-answer">Ответ: 17</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Гипотенуза прямоугольного треугольника равна 10, один из катетов равен 6. Найдите другой катет.</div>
+<details><summary>Решение</summary>Катет — вычитаем: \(\sqrt{100 - 36} = \sqrt{64} = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> В прямоугольном треугольнике катет, лежащий напротив угла \(30^\circ\), равен 7. Найдите гипотенузу.</div>
+<details><summary>Решение</summary>Гипотенуза вдвое больше катета против \(30^\circ\): \(7\cdot2 = 14\).
+<p class="ls-answer">Ответ: 14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)</span><br> Гипотенуза прямоугольного треугольника равна 25, один из катетов равен 20. Найдите другой катет.</div>
+<details><summary>Решение</summary>\(\sqrt{625 - 400} = \sqrt{225} = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 9)</span> Вычислите \(2^5\cdot2^4 : 2^6\).</div>
+<details><summary>Решение</summary>Показатель: \(5 + 4 - 6 = 3\). \(2^3 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 7)</span> Товар стоил 2500 рублей. Цену повысили на 12%. Сколько стоит товар теперь?</div>
+<details><summary>Решение</summary>12% от 2500: \(2500\cdot0{,}12 = 300\). Новая цена: \(2500 + 300 = 2800\).
+<p class="ls-answer">Ответ: 2800</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 3)</span> Вычислите \(1\frac{1}{2}\cdot\frac{2}{9}\).</div>
+<details><summary>Решение</summary>\(1\frac{1}{2} = \frac{3}{2}\). \(\frac{3}{2}\cdot\frac{2}{9}\): сокращаем 2 и 2, 3 и 9 → \(\frac{1}{3}\).
+<p class="ls-answer">Ответ: \(\frac{1}{3}\)</p></details></div>
+</section>
+<nav class="ls-foot"><a href="10-korni.html">← Урок 10</a><a href="00-index.html">Все уроки</a><a href="12-bukvennye-vyrazheniya.html">Урок 12 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
