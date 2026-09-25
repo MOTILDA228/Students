@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 15. Контрольная работа №1 (уроки 4–14)</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 15. Контрольная работа №1 (уроки 4–14)</h1><div class="ls-sub">Злата · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №6</span><span class="ls-tag">ОГЭ №8</span><span class="ls-tag">ОГЭ №9</span><span class="ls-tag">ОГЭ №12</span><span class="ls-tag">ОГЭ №15</span><span class="ls-tag">ОГЭ №20</span><span class="ls-tag">контроль</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Инструкция</a><a href="#ls-s3">Контрольная работа</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> проверить блок «преобразования и уравнения» и первые уроки геометрии. Задачи 1–12 — формат части 1, задача 13 — часть 2 (оформить полностью).</p>
+<ol class="ls-steps">
+  <li>45 мин — работа самостоятельно.</li>
+  <li>15 мин — проверка, разбор 2–3 ошибок.</li>
+</ol>
+<p><b>Оценка части 1 (1–12):</b> 11–12 — отлично, темп сохраняем; 8–10 — повторить темы с ошибками в ДЗ; меньше 8 — вставить урок повторения <code>15a</code>. Задача 13 — оценить по критериям ОГЭ: 2 балла (верно и обосновано), 1 балл (вычислительная ошибка), 0.</p>
+<p>Результат записать в <code>progress.md</code> и в журнал (оценка за контрольную — в столбце «Оценка ДЗ»).</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Инструкция</h2>
+<div class="ls-rule">Время — <b>45 минут</b>, без калькулятора. В задачах 1–12 записывай только ответ. Задачу 13 оформи полностью, как на экзамене.</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Контрольная работа</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Урок 5 · ОГЭ №6</span><br> Найдите значение выражения \(\frac{1}{\frac{1}{14} + \frac{1}{35}}\).</div>
+<details><summary>Решение</summary>\(\frac{5}{70} + \frac{2}{70} = \frac{7}{70} = \frac{1}{10}\) → 10.
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Урок 5 · ОГЭ №1–5</span><br> После двух последовательных скидок по 10% пальто стоит 6480 рублей. Сколько оно стоило изначально?</div>
+<details><summary>Решение</summary>\(6480 : 0{,}81 = 8000\).
+<p class="ls-answer">Ответ: 8000</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Урок 6 · ОГЭ №8</span><br> Найдите значение выражения \(\frac{14}{\sqrt{11} - 2} - 2\sqrt{11}\).</div>
+<details><summary>Решение</summary>\(\frac{14(\sqrt{11} + 2)}{7} = 2\sqrt{11} + 4\) → 4.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Урок 8 · ОГЭ №8</span><br> Найдите значение выражения \((3x - 1)^2 - 9x(x - 1)\) при \(x = -\frac{4}{3}\).</div>
+<details><summary>Решение</summary>\(9x^2 - 6x + 1 - 9x^2 + 9x = 3x + 1 = -3\).
+<p class="ls-answer">Ответ: -3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Урок 9 · ОГЭ №8</span><br> Найдите значение выражения \(\frac{a^2 - 16}{a^2 + 8a + 16}\cdot\frac{a + 4}{a - 4}\) при \(a = \sqrt{19}\).</div>
+<details><summary>Решение</summary>\(\frac{(a - 4)(a + 4)}{(a + 4)^2}\cdot\frac{a + 4}{a - 4} = 1\).
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Урок 11 · ОГЭ №12</span><br> Работа \(A = Fs\cos\alpha\). Найдите \(s\) (в метрах), если \(A = 360\) Дж, \(F = 40\) Н, \(\cos\alpha = 0{,}6\).</div>
+<details><summary>Решение</summary>\(360 = 24s\), \(s = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Урок 12 · ОГЭ №9</span><br> Решите уравнение \(3x^2 - 10x + 3 = 0\). Если корней несколько, запишите больший.</div>
+<details><summary>Решение</summary>\(D = 100 - 36 = 64\), \(x = \frac{10 \pm 8}{6}\): 3 и \(\frac{1}{3}\). Больший 3.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-task-src">Урок 14 · ОГЭ №9</span><br> Сколько корней имеет уравнение \(\frac{x + 2}{x - 3} = \frac{2x - 1}{x - 3}\)?</div>
+<details><summary>Решение</summary>ОДЗ \(x \ne 3\); \(x + 2 = 2x - 1\), \(x = 3\) — не подходит. Корней нет: 0.
+<p class="ls-answer">Ответ: 0</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-task-src">Урок 7 · ОГЭ №15</span><br> Прямые \(a \parallel b\), накрест лежащие углы равны \(4x - 12^\circ\) и \(2x + 30^\circ\). Найдите смежный с ними угол.</div>
+<details><summary>Решение</summary>\(4x - 12 = 2x + 30\), \(x = 21\), угол \(72^\circ\), смежный \(108^\circ\).
+<p class="ls-answer">Ответ: 108</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-task-src">Урок 10 · ОГЭ №15</span><br> В треугольнике \(ABC\) \(AB = BC\), \(\angle ABC = 124^\circ\), \(AD\) — биссектриса. Найдите \(\angle ADC\).</div>
+<details><summary>Решение</summary>\(\angle A = \angle C = 28^\circ\), \(\angle DAC = 14^\circ\). \(\angle ADC = 180 - 14 - 28 = 138^\circ\).
+<p class="ls-answer">Ответ: 138</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-task-src">Урок 13 · ОГЭ №15</span><br> Высота равнобедренного треугольника, проведённая к основанию, равна 12, боковая сторона 13. Найдите основание.</div>
+<details><summary>Решение</summary>Половина основания 5, основание 10.
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">12.</span> <span class="ls-task-src">Урок 13 · ОГЭ №17</span><br> Диагонали ромба равны 14 и 48. Найдите его периметр.</div>
+<details><summary>Решение</summary>Сторона \(\sqrt{49 + 576} = 25\), периметр 100.
+<p class="ls-answer">Ответ: 100</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">13.</span> <span class="ls-task-src">Урок 14 · ОГЭ №20 (2 балла)</span><br> Решите уравнение \((x^2 - 4x)^2 + 7(x^2 - 4x) + 12 = 0\). Запишите сумму корней.</div>
+<details><summary>Решение</summary>\(t = x^2 - 4x\): \(t^2 + 7t + 12 = 0\), \(t = -3\) или \(t = -4\).<br>
+\(x^2 - 4x + 3 = 0\): 1 и 3. \(x^2 - 4x + 4 = 0\): 2.<br>
+Ответ: 1; 2; 3. Сумма 6.
+<p class="ls-answer">Ответ: 6</p></details></div>
+</section>
+<nav class="ls-foot"><a href="14-drobnye-uravneniya.html">← Урок 14</a><a href="00-index.html">Все уроки</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
