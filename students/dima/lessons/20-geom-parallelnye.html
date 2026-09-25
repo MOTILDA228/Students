@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 20. Геометрия: параллельные прямые и углы при них</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 20. Геометрия: параллельные прямые и углы при них</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №15</span><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима находит на рисунке накрест лежащие, соответственные и односторонние углы и знает, какие равны, а какие дают в сумме 180°.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — разбор контрольной №1: 2–3 задачи с ошибками.</li>
+  <li>15 мин — шпаргалка. Буквы-подсказки: <b>Z</b> — накрест лежащие, <b>F</b> — соответственные, <b>С</b> (или П) — односторонние. Пусть Дима обведёт буквы на рисунках.</li>
+  <li>25–30 мин — практика. Перед каждой задачей: «какая пара углов? равны или 180?»</li>
+  <li>5 мин — итог: «накрест и соответственные — равны, односторонние — 180».</li>
+</ol>
+<p><b>Типичные ошибки:</b> у односторонних пишет «равны»; не видит, что нужный угол смежный с известным; путается, какая прямая — секущая.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Параллельные прямые и секущая</h3>
+<div class="ls-rule"><b>Параллельные прямые</b> (\(a \parallel b\)) никогда не пересекаются, как рельсы. <b>Секущая</b> \(c\) пересекает обе прямые, и возле каждой точки пересечения получается по 4 угла.</div>
+
+<h3>2. Три пары углов</h3>
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 215.2 173" width="215.2" height="173" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="52.5" x2="189.2" y2="52.5" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="120.5" x2="189.2" y2="120.5" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="71.9" y1="147" x2="141.8" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="103.2,120.5 103.2,119.8 103.1,119.1 103.1,118.4 103,117.7 102.8,117 102.7,116.3 102.5,115.7 102.2,115 102,114.4 101.7,113.7 101.4,113.1 101.1,112.5 100.7,111.9 100.3,111.3 99.9,110.7 99.5,110.2 99,109.7 98.5,109.2 98,108.7 97.5,108.2 96.9,107.8 96.4,107.4 95.8,107 95.2,106.6" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="110.5,52.5 110.5,53.2 110.5,53.9 110.6,54.6 110.7,55.3 110.8,55.9 111,56.6 111.2,57.3 111.4,58 111.7,58.6 112,59.2 112.3,59.9 112.6,60.5 113,61.1 113.4,61.7 113.8,62.2 114.2,62.8 114.7,63.3 115.2,63.8 115.7,64.3 116.2,64.7 116.7,65.2 117.3,65.6 117.9,66 118.5,66.3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="182.4" y="40.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a</text><text x="182.4" y="108.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">b</text></svg>
+<figcaption><b>накрест лежащие</b> (буква Z)<br><b>равны</b></figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 215.2 173" width="215.2" height="173" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="52.5" x2="189.2" y2="52.5" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="120.5" x2="189.2" y2="120.5" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="71.9" y1="147" x2="141.8" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="103.2,120.5 103.2,119.8 103.1,119.1 103.1,118.4 103,117.7 102.8,117 102.7,116.3 102.5,115.7 102.2,115 102,114.4 101.7,113.7 101.4,113.1 101.1,112.5 100.7,111.9 100.3,111.3 99.9,110.7 99.5,110.2 99,109.7 98.5,109.2 98,108.7 97.5,108.2 96.9,107.8 96.4,107.4 95.8,107 95.2,106.6" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="142.5,52.5 142.5,51.8 142.4,51.1 142.3,50.4 142.2,49.7 142.1,49 141.9,48.3 141.7,47.7 141.5,47 141.3,46.4 141,45.7 140.7,45.1 140.3,44.5 140,43.9 139.6,43.3 139.2,42.7 138.7,42.2 138.3,41.7 137.8,41.2 137.3,40.7 136.8,40.2 136.2,39.8 135.7,39.4 135.1,39 134.5,38.6" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="182.4" y="40.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a</text><text x="182.4" y="108.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">b</text></svg>
+<figcaption><b>соответственные</b> (буква F)<br><b>равны</b></figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 215.2 173" width="215.2" height="173" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="52.5" x2="189.2" y2="52.5" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="120.5" x2="189.2" y2="120.5" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="71.9" y1="147" x2="141.8" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="103.2,120.5 103.2,119.8 103.1,119.1 103.1,118.4 103,117.7 102.8,117 102.7,116.3 102.5,115.7 102.2,115 102,114.4 101.7,113.7 101.4,113.1 101.1,112.5 100.7,111.9 100.3,111.3 99.9,110.7 99.5,110.2 99,109.7 98.5,109.2 98,108.7 97.5,108.2 96.9,107.8 96.4,107.4 95.8,107 95.2,106.6" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="140.5,52.5 140.4,53.7 140.3,54.9 140,56.1 139.6,57.3 139.2,58.4 138.6,59.5 137.9,60.5 137.2,61.5 136.4,62.4 135.5,63.2 134.5,64 133.5,64.6 132.4,65.2 131.3,65.6 130.1,66 128.9,66.3 127.7,66.4 126.5,66.5 125.2,66.4 124,66.3 122.8,66 121.7,65.6 120.6,65.2 119.5,64.6" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="144.5,52.5 144.4,54.1 144.2,55.6 143.9,57.1 143.4,58.6 142.8,60.1 142.1,61.5 141.2,62.8 140.3,64.1 139.2,65.2 138,66.3 136.8,67.2 135.5,68.1 134.1,68.8 132.6,69.4 131.1,69.9 129.6,70.2 128,70.4 126.5,70.5 124.9,70.4 123.3,70.2 121.8,69.9 120.3,69.4 118.9,68.8 117.5,68.1" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="182.4" y="40.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a</text><text x="182.4" y="108.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">b</text></svg>
+<figcaption><b>односторонние</b> (буква С)<br>в сумме <b>180°</b></figcaption></figure></div>
+<div class="ls-rule">Если \(a \parallel b\):<br>
+• <b>накрест лежащие</b> углы равны;<br>
+• <b>соответственные</b> углы равны;<br>
+• <b>односторонние</b> углы в сумме дают \(180^\circ\).</div>
+<div class="ls-example"><b>Главный секрет:</b> при параллельных прямых все 8 углов бывают только <b>двух размеров</b>: острый \(x\) и тупой \(180 - x\). Знаешь один угол — знаешь все.</div>
+
+<h3>3. Обратные правила — признаки параллельности (для №19)</h3>
+<div class="ls-rule">Если накрест лежащие углы <b>равны</b> (или соответственные равны, или односторонние в сумме 180°), то прямые <b>параллельны</b>.<br>
+Через точку вне прямой можно провести <b>только одну</b> прямую, параллельную данной.</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Прямые \(a\) и \(b\) параллельны, \(\angle 1 = 64^\circ\). Найдите \(\angle 2\).
+<svg class="ls-fig" viewBox="0 0 236 196.7" width="236" height="196.7" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="58.4" x2="210" y2="58.4" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="138.4" x2="210" y2="138.4" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="78.2" y1="170.7" x2="148.8" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="110,138.4 110,137.6 109.9,136.9 109.8,136.1 109.7,135.4 109.6,134.7 109.4,133.9 109.2,133.2 108.9,132.5 108.6,131.9 108.3,131.2 107.9,130.5 107.6,129.9 107.2,129.3 106.7,128.7 106.3,128.1 105.8,127.5 105.2,127 104.7,126.5 104.1,126 103.6,125.5 102.9,125.1 102.3,124.7 101.7,124.3 101,124" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="119.4" y="122.5" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">1</text><polyline points="117,58.4 117,59.1 117.1,59.8 117.2,60.6 117.3,61.3 117.4,62.1 117.6,62.8 117.8,63.5 118.1,64.2 118.4,64.9 118.7,65.5 119.1,66.2 119.4,66.8 119.8,67.5 120.3,68.1 120.7,68.6 121.2,69.2 121.8,69.7 122.3,70.3 122.9,70.7 123.4,71.2 124.1,71.6 124.7,72 125.3,72.4 126,72.7" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="107.6" y="74.3" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">2</text><text x="202" y="44.4" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a</text><text x="202" y="124.4" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">b</text></svg></div>
+<details><summary>Решение</summary>Углы 1 и 2 — накрест лежащие (буква Z). При параллельных прямых они равны: \(\angle 2 = 64^\circ\).
+<p class="ls-answer">Ответ: 64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> При параллельных прямых и секущей один из односторонних углов равен \(118^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Односторонние в сумме \(180^\circ\): \(180 - 118 = 62^\circ\).
+<p class="ls-answer">Ответ: 62</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Прямые \(a\) и \(b\) параллельны, \(\angle 1 = 72^\circ\). Найдите \(\angle 2\).
+<svg class="ls-fig" viewBox="0 0 236 200.5" width="236" height="200.5" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="60.2" x2="210" y2="60.2" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="140.2" x2="210" y2="140.2" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="94.9" y1="174.5" x2="143.1" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="122,140.2 122,139.4 121.9,138.6 121.8,137.7 121.7,136.9 121.5,136.1 121.2,135.3 120.9,134.5 120.6,133.7 120.3,133 119.9,132.2 119.4,131.5 118.9,130.8 118.4,130.2 117.9,129.5 117.3,128.9 116.7,128.4 116.1,127.8 115.4,127.3 114.7,126.8 114,126.4 113.3,126 112.5,125.6 111.7,125.3 110.9,125" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="130.3" y="122.6" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">1</text><polyline points="116,60.2 116,59 116.2,57.7 116.4,56.5 116.8,55.3 117.2,54.1 117.7,53 118.4,51.9 119.1,50.8 119.8,49.8 120.7,48.9 121.6,48.1 122.6,47.3 123.6,46.6 124.7,46 125.9,45.5 127.1,45 128.3,44.7 129.5,44.4 130.7,44.3 132,44.2 133.3,44.3 134.5,44.4 135.7,44.7 136.9,45" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="114.4" y="36" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">2</text><text x="202" y="46.2" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">a</text><text x="202" y="126.2" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">b</text></svg></div>
+<details><summary>Решение</summary>Угол, соответственный углу 1, стоит у прямой \(a\) справа сверху, он тоже \(72^\circ\). Угол 2 — смежный с ним (вместе прямая линия): \(\angle 2 = 180 - 72 = 108^\circ\).
+Короче: угол 2 тупой, а все тупые углы здесь равны \(180 - 72\).
+<p class="ls-answer">Ответ: 108</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> При параллельных прямых и секущей сумма двух накрест лежащих углов равна \(150^\circ\). Найдите каждый из них.</div>
+<details><summary>Решение</summary>Накрест лежащие равны, значит, делим пополам: \(150 : 2 = 75^\circ\).
+<p class="ls-answer">Ответ: 75</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Один из односторонних углов при параллельных прямых и секущей на \(40^\circ\) больше другого. Найдите больший угол.</div>
+<details><summary>Решение</summary>Меньший \(x\), больший \(x + 40\). Вместе \(180\): \(2x + 40 = 180\) → \(2x = 140\) → \(x = 70\). Больший: \(110^\circ\).
+<p class="ls-answer">Ответ: 110</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">По мотивам ОГЭ №15</span><br> Прямые \(m\) и \(n\) параллельны. Точка \(A\) лежит на прямой \(m\), точки \(B\) и \(C\) — на прямой \(n\). Найдите угол \(BAC\) по данным на рисунке.
+<svg class="ls-fig" viewBox="0 0 272 144" width="272" height="144" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="38" x2="246" y2="38" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="118" x2="246" y2="118" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polygon points="146,38 78.9,118 175.1,118" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="126,38 126,38.7 126.1,39.5 126.1,40.2 126.2,40.9 126.3,41.6 126.5,42.3 126.6,43 126.8,43.7 127.1,44.4 127.3,45.1 127.6,45.8 127.9,46.5 128.2,47.1 128.5,47.7 128.9,48.4 129.3,49 129.7,49.6 130.1,50.2 130.6,50.7 131.1,51.3 131.6,51.8 132.1,52.3 132.6,52.8 133.1,53.3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="115.2" y="52.4" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">50°</text><polyline points="166,38 166,39 165.9,40 165.8,41 165.6,42 165.4,43 165.1,44 164.7,45 164.4,45.9 163.9,46.8 163.5,47.7 162.9,48.6 162.4,49.5 161.8,50.3 161.1,51.1 160.4,51.8 159.7,52.5 159,53.2 158.2,53.9 157.4,54.5 156.5,55 155.6,55.5 154.7,56 153.8,56.4 152.8,56.8" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="173.9" y="57.5" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">70°</text><text x="238" y="26" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">m</text><text x="238" y="106" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">n</text><text x="146" y="24" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="78.9" y="132" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="175.1" y="132" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg></div>
+<details><summary>Решение</summary>Угол \(50^\circ\) и угол \(ABC\) — накрест лежащие (прямые \(m \parallel n\), секущая \(AB\)), значит, \(\angle ABC = 50^\circ\).
+Так же \(\angle ACB = 70^\circ\) (секущая \(AC\)).
+В треугольнике \(ABC\): \(\angle BAC = 180 - 50 - 70 = 60^\circ\).
+<p class="ls-answer">Ответ: 60</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны? Запишите их номера без пробелов.<br>
+1) Если две параллельные прямые пересечены третьей прямой, то накрест лежащие углы равны.<br>
+2) Сумма односторонних углов при двух параллельных прямых и секущей равна \(90^\circ\).<br>
+3) Через точку, не лежащую на данной прямой, можно провести прямую, параллельную этой прямой.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно: сумма \(180^\circ\). 3 — верно (и такая прямая только одна).
+<p class="ls-answer">Ответ: 13</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> При параллельных прямых и секущей один из односторонних углов равен \(74^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>\(180 - 74 = 106^\circ\).
+<p class="ls-answer">Ответ: 106</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> При параллельных прямых и секущей сумма двух накрест лежащих углов равна \(128^\circ\). Найдите один из них.</div>
+<details><summary>Решение</summary>Они равны: \(128 : 2 = 64^\circ\).
+<p class="ls-answer">Ответ: 64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Один из односторонних углов при параллельных прямых и секущей в 4 раза больше другого. Найдите меньший угол.</div>
+<details><summary>Решение</summary>\(x + 4x = 180\) → \(5x = 180\) → \(x = 36^\circ\).
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">По мотивам ОГЭ №15</span><br> Прямые \(m\) и \(n\) параллельны. Найдите угол \(BAC\) по данным на рисунке.
+<svg class="ls-fig" viewBox="0 0 292 144" width="292" height="144" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="38" x2="266" y2="38" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="118" x2="266" y2="118" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polygon points="166,38 70.6,118 203.3,118" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="144,38 144,38.6 144,39.3 144.1,39.9 144.1,40.6 144.2,41.2 144.3,41.8 144.5,42.4 144.6,43.1 144.7,43.7 144.9,44.3 145.1,44.9 145.3,45.5 145.6,46.1 145.8,46.7 146.1,47.3 146.3,47.9 146.6,48.4 146.9,49 147.3,49.5 147.6,50.1 148,50.6 148.4,51.1 148.7,51.6 149.1,52.1" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="132.2" y="50.3" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">40°</text><polyline points="186,38 186,38.9 185.9,39.9 185.8,40.8 185.6,41.8 185.4,42.7 185.2,43.6 184.9,44.5 184.6,45.4 184.2,46.3 183.8,47.1 183.4,47.9 182.9,48.7 182.3,49.5 181.8,50.3 181.2,51 180.5,51.7 179.9,52.4 179.2,53 178.5,53.6 177.7,54.2 176.9,54.7 176.1,55.2 175.3,55.7 174.5,56.1" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="194.7" y="56.3" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">65°</text><text x="258" y="26" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">m</text><text x="258" y="106" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">n</text><text x="166" y="24" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="70.6" y="132" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="203.3" y="132" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg></div>
+<details><summary>Решение</summary>Накрест лежащие углы: \(\angle ABC = 40^\circ\), \(\angle ACB = 65^\circ\). \(\angle BAC = 180 - 40 - 65 = 75^\circ\).
+<p class="ls-answer">Ответ: 75</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №19 (ФИПИ / Решу ОГЭ)</span><br> Какие из утверждений верны? Запишите их номера без пробелов.<br>
+1) Если две параллельные прямые пересечены третьей прямой, то соответственные углы равны.<br>
+2) Если при пересечении двух прямых третьей прямой накрест лежащие углы равны, то прямые параллельны.<br>
+3) Односторонние углы при параллельных прямых и секущей всегда равны.</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно (признак параллельности). 3 — неверно: односторонние в сумме дают \(180^\circ\), а равны только если оба по \(90^\circ\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 18)</span> Показания счётчика электроэнергии 1 октября — 7215 кВт·ч, 1 ноября — 7390 кВт·ч. 1 кВт·ч стоит 6 руб. Сколько рублей нужно заплатить за октябрь?</div>
+<details><summary>Решение</summary>Расход: \(7390 - 7215 = 175\) кВт·ч. Стоимость: \(175\cdot6 = 1050\) руб.
+<p class="ls-answer">Ответ: 1050</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 16)</span> Решите уравнение \(2(x - 3) = x + 5\).</div>
+<details><summary>Решение</summary>\(2x - 6 = x + 5\) → \(2x - x = 5 + 6\) → \(x = 11\).
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 12)</span> Найдите значение выражения \(5(a - 2) - 2a\) при \(a = -3\).</div>
+<details><summary>Решение</summary>\(5a - 10 - 2a = 3a - 10\). При \(a = -3\): \(-9 - 10 = -19\).
+<p class="ls-answer">Ответ: \(-19\)</p></details></div>
+</section>
+<nav class="ls-foot"><a href="19-kontrolnaya-1.html">← Урок 19</a><a href="00-index.html">Все уроки</a><a href="21-fsu.html">Урок 21 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

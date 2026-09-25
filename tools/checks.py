@@ -3,7 +3,8 @@
 В @check пишется выражение на Python, которое заново считает ответ из условия
 задачи (а не копирует его). Сборщик сравнивает результат с тем, что написано в @ans.
 Доступны: F (обыкновенная дробь), sqrt, roots, hyp, leg, sind/cosd/tand,
-ap/aps (арифм. прогрессия), gp/gps (геом. прогрессия), comb, pi, math.
+ap/aps (арифм. прогрессия), gp/gps (геом. прогрессия), comb, which (выбор варианта
+в №13 по множеству решений), pi, math.
 """
 import math
 import re
@@ -74,8 +75,18 @@ def comb(n, k):
     return math.comb(n, k)
 
 
+def which(truth, *options):
+    """Номер варианта (с 1), чьё множество совпадает с truth(x) на сетке точек от −50 до 50 с шагом 1/8.
+
+    Для №13: which(lambda x: 3*x - 2 >= 4*x + 1, lambda x: x >= -3, lambda x: x <= -3, ...) → 2.
+    """
+    xs = [i / 8 for i in range(-400, 401)]
+    hits = [k for k, opt in enumerate(options, 1) if all(bool(truth(x)) == bool(opt(x)) for x in xs)]
+    return hits[0] if len(hits) == 1 else f"подходит вариантов: {len(hits)}"
+
+
 NS = {"F": F, "sqrt": sqrt, "roots": roots, "hyp": hyp, "leg": leg, "sind": sind, "cosd": cosd,
-      "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "pi": math.pi,
+      "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "which": which, "pi": math.pi,
       "math": math, "abs": abs, "round": round, "min": min, "max": max, "sum": sum, "range": range,
       "len": len, "sorted": sorted, "int": int}
 

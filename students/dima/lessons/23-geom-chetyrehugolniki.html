@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 23. Геометрия: параллелограмм, прямоугольник, ромб, квадрат</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 23. Геометрия: параллелограмм, прямоугольник, ромб, квадрат</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №17</span><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима знает свойства четырёх видов четырёхугольников и решает №17 на углы, стороны и диагонали.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 22.</li>
+  <li>15 мин — шпаргалка. Связать с уроком 20: соседние углы параллелограмма — односторонние, поэтому в сумме 180°.</li>
+  <li>25–30 мин — практика. В задачах на ромб и прямоугольник искать прямоугольный треугольник и Пифагора.</li>
+  <li>5 мин — итог: таблица «что есть у какой фигуры».</li>
+</ol>
+<p><b>Типичные ошибки:</b> в задаче «сумма двух углов» складывает соседние углы; в ромбе берёт целые диагонали как катеты вместо половин.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Параллелограмм</h3>
+<svg class="ls-fig" viewBox="0 0 260 132" width="260" height="132" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,106 74,26 234,26 186,106" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="106" x2="234" y2="26" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><line x1="74" y1="26" x2="186" y2="106" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="42,106 42,105.3 41.9,104.6 41.9,103.9 41.8,103.3 41.6,102.6 41.5,101.9 41.3,101.3 41.1,100.6 40.8,100 40.5,99.3 40.2,98.7 39.9,98.1 39.6,97.5 39.2,97 38.8,96.4 38.4,95.9 37.9,95.3 37.5,94.8 37,94.3 36.5,93.9 35.9,93.5 35.4,93 34.8,92.6 34.2,92.3" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="218,26 218,26.7 218.1,27.4 218.1,28.1 218.2,28.7 218.4,29.4 218.5,30.1 218.7,30.7 218.9,31.4 219.2,32 219.5,32.7 219.8,33.3 220.1,33.9 220.4,34.5 220.8,35 221.2,35.6 221.6,36.1 222.1,36.7 222.5,37.2 223,37.7 223.5,38.1 224.1,38.5 224.6,39 225.2,39.4 225.8,39.7" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="66.8,38 67.9,38.6 69,39.1 70.2,39.5 71.4,39.8 72.6,39.9 73.8,40 75.1,40 76.3,39.8 77.5,39.6 78.7,39.2 79.8,38.7 80.9,38.2 81.9,37.5 82.9,36.8 83.8,36 84.7,35.1 85.4,34.1 86.1,33.1 86.7,32 87.1,30.8 87.5,29.7 87.8,28.5 87.9,27.2 88,26" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="64.7,41.4 66.1,42.2 67.6,42.8 69.1,43.3 70.6,43.7 72.2,43.9 73.8,44 75.4,43.9 76.9,43.8 78.5,43.4 80,43 81.5,42.4 82.9,41.7 84.2,40.8 85.5,39.9 86.6,38.8 87.7,37.6 88.7,36.4 89.6,35.1 90.3,33.7 90.9,32.2 91.4,30.7 91.7,29.2 91.9,27.6 92,26" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="193.2,94 192.1,93.4 191,92.9 189.8,92.5 188.6,92.2 187.4,92.1 186.2,92 184.9,92 183.7,92.2 182.5,92.4 181.3,92.8 180.2,93.3 179.1,93.8 178.1,94.5 177.1,95.2 176.2,96 175.3,96.9 174.6,97.9 173.9,98.9 173.3,100 172.9,101.2 172.5,102.3 172.2,103.5 172.1,104.8 172,106" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="195.3,90.6 193.9,89.8 192.4,89.2 190.9,88.7 189.4,88.3 187.8,88.1 186.2,88 184.6,88.1 183.1,88.2 181.5,88.6 180,89 178.5,89.6 177.1,90.3 175.8,91.2 174.5,92.1 173.4,93.2 172.3,94.4 171.3,95.6 170.4,96.9 169.7,98.3 169.1,99.8 168.6,101.3 168.3,102.8 168.1,104.4 168,106" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12.9" y="111" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="62.6" y="17.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="247.1" y="21" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="197.4" y="114.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><circle cx="130" cy="66" r="3.2" fill="currentColor"/><text x="130" y="80" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text></svg>
+<div class="ls-rule">Противоположные стороны <b>параллельны и равны</b>.<br>
+Противоположные углы <b>равны</b>. Соседние углы в сумме дают \(180^\circ\) (это односторонние углы, урок 20).<br>
+Диагонали точкой пересечения <b>делятся пополам</b>: \(AO = OC\), \(BO = OD\).</div>
+<div class="ls-example">У параллелограмма бывают только два размера углов: \(x\) и \(180 - x\). Один угол \(65^\circ\) → углы \(65^\circ, 115^\circ, 65^\circ, 115^\circ\).</div>
+
+<h3>2. Прямоугольник, ромб, квадрат</h3>
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 188 137" width="188" height="137" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,111 26,26 162,26 162,111" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="111" x2="162" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="26" x2="162" y2="111" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="26,100 37,100 37,111" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="56.8" y1="84.7" x2="63.2" y2="94.8" stroke="currentColor" stroke-width="1.6"/><line x1="124.8" y1="42.2" x2="131.2" y2="52.3" stroke="currentColor" stroke-width="1.6"/><line x1="63.2" y1="42.2" x2="56.8" y2="52.3" stroke="currentColor" stroke-width="1.6"/><line x1="131.2" y1="84.7" x2="124.8" y2="94.8" stroke="currentColor" stroke-width="1.6"/><text x="14.1" y="118.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="14.1" y="18.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="173.9" y="18.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="173.9" y="118.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg>
+<figcaption><b>прямоугольник</b></figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 188 140.4" width="188" height="140.4" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,70.2 94,26 162,70.2 94,114.4" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="70.2" x2="162" y2="70.2" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="94" y1="26" x2="94" y2="114.4" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="94,59.2 105,59.2 105,70.2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="56.7" y1="43.1" x2="63.3" y2="53.1" stroke="currentColor" stroke-width="1.6"/><line x1="131.3" y1="43.1" x2="124.7" y2="53.1" stroke="currentColor" stroke-width="1.6"/><line x1="131.3" y1="97.3" x2="124.7" y2="87.3" stroke="currentColor" stroke-width="1.6"/><line x1="56.7" y1="97.3" x2="63.3" y2="87.3" stroke="currentColor" stroke-width="1.6"/><text x="12" y="70.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="94" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="176" y="70.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="94" y="128.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg>
+<figcaption><b>ромб</b></figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 154 154" width="154" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,128 26,26 128,26 128,128" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="128" x2="128" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="26" x2="128" y2="128" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="26,117 37,117 37,128" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="77" x2="32" y2="77" stroke="currentColor" stroke-width="1.6"/><line x1="77" y1="20" x2="77" y2="32" stroke="currentColor" stroke-width="1.6"/><line x1="134" y1="77" x2="122" y2="77" stroke="currentColor" stroke-width="1.6"/><line x1="77" y1="134" x2="77" y2="122" stroke="currentColor" stroke-width="1.6"/><text x="16.1" y="137.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="16.1" y="16.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="137.9" y="16.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="137.9" y="137.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg>
+<figcaption><b>квадрат</b></figcaption></figure></div>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th></th><th>все углы 90°</th><th>все стороны равны</th><th>диагонали равны</th><th>диагонали ⟂ и делят углы пополам</th></tr>
+<tr><td class="ls-left">параллелограмм</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td class="ls-left">прямоугольник</td><td>✓</td><td>—</td><td>✓</td><td>—</td></tr>
+<tr><td class="ls-left">ромб</td><td>—</td><td>✓</td><td>—</td><td>✓</td></tr>
+<tr><td class="ls-left">квадрат</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+</table></div>
+<div class="ls-rule">Все четыре фигуры — параллелограммы, поэтому у всех диагонали делятся пополам.</div>
+
+<h3>3. Где прячется Пифагор</h3>
+<div class="ls-rule"><b>Прямоугольник:</b> диагональ — гипотенуза, стороны — катеты.<br>
+<b>Ромб:</b> диагонали делят его на 4 прямоугольных треугольника. Катеты — <b>половины</b> диагоналей, гипотенуза — сторона ромба.</div>
+<div class="ls-example">Ромб с диагоналями 12 и 16: половины 6 и 8, сторона \(\sqrt{36 + 64} = 10\).</div>
+
+<h3>4. Периметр</h3>
+<div class="ls-rule">Параллелограмм и прямоугольник: \(P = 2(a + b)\). Ромб и квадрат: \(P = 4a\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Один из углов параллелограмма равен \(65^\circ\). Найдите больший угол параллелограмма.</div>
+<details><summary>Решение</summary>Соседний угол: \(180 - 65 = 115^\circ\). Он и есть больший.
+<p class="ls-answer">Ответ: 115</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Сумма двух углов параллелограмма равна \(110^\circ\). Найдите больший угол параллелограмма.</div>
+<details><summary>Решение</summary>Два соседних угла дали бы \(180^\circ\), значит, сложили два <b>противоположных</b> (равных) угла: каждый \(110 : 2 = 55^\circ\).
+Больший угол: \(180 - 55 = 125^\circ\).
+<p class="ls-answer">Ответ: 125</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Периметр ромба равен 48. Найдите его сторону.</div>
+<details><summary>Решение</summary>У ромба 4 равные стороны: \(48 : 4 = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Диагональ прямоугольника равна 13, одна из сторон равна 5. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Диагональ — гипотенуза: \(\sqrt{169 - 25} = \sqrt{144} = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Диагонали ромба равны 12 и 16. Найдите сторону ромба.</div>
+<details><summary>Решение</summary>Половины диагоналей: 6 и 8. Сторона: \(\sqrt{36 + 64} = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Найдите острый угол параллелограмма \(ABCD\), если биссектриса угла \(A\) образует со стороной \(BC\) угол, равный \(15^\circ\).
+<svg class="ls-fig" viewBox="0 0 361.7 98" width="361.7" height="98" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,72 105.7,26 335.7,26 256,72" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="72" x2="197.7" y2="26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="167.7,26 167.7,26.3 167.7,26.7 167.7,27 167.7,27.3 167.7,27.6 167.7,28 167.8,28.3 167.8,28.6 167.8,28.9 167.9,29.3 167.9,29.6 167.9,29.9 168,30.2 168,30.6 168.1,30.9 168.1,31.2 168.2,31.5 168.2,31.9 168.3,32.2 168.4,32.5 168.5,32.8 168.5,33.1 168.6,33.4 168.7,33.8" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="154" y="31.7" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">15°</text><text x="12.2" y="74.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="92" y="22.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="349.6" y="24.3" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="269.1" y="77" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><text x="197.7" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">E</text></svg></div>
+<details><summary>Решение</summary>\(BC \parallel AD\), \(AE\) — секущая. Угол \(BEA\) и угол \(EAD\) — накрест лежащие, значит, \(\angle EAD = 15^\circ\).
+\(AE\) — биссектриса, поэтому весь угол \(A = 2\cdot15 = 30^\circ\). Это острый угол.
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Диагонали \(AC\) и \(BD\) прямоугольника \(ABCD\) пересекаются в точке \(O\), \(BO = 5\), \(AB = 6\). Найдите \(AC\).
+<svg class="ls-fig" viewBox="0 0 260 208" width="260" height="208" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,182 26,26 234,26 234,182" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="182" x2="234" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="26" x2="234" y2="182" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><text x="14.8" y="190.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="14.8" y="17.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="245.2" y="17.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="245.2" y="190.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text><circle cx="130" cy="104" r="3.2" fill="currentColor"/><text x="130" y="118" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text></svg></div>
+<details><summary>Решение</summary>Диагонали прямоугольника равны и делятся пополам: \(BD = 2\cdot BO = 10\), а \(AC = BD = 10\). Длина \(AB\) здесь не нужна.
+<p class="ls-answer">Ответ: 10</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Один из углов параллелограмма равен \(38^\circ\). Найдите больший угол.</div>
+<details><summary>Решение</summary>\(180 - 38 = 142^\circ\).
+<p class="ls-answer">Ответ: 142</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Сумма двух углов параллелограмма равна \(84^\circ\). Найдите больший угол параллелограмма.</div>
+<details><summary>Решение</summary>Это два равных противоположных угла по \(42^\circ\). Больший: \(180 - 42 = 138^\circ\).
+<p class="ls-answer">Ответ: 138</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Диагонали ромба равны 10 и 24. Найдите сторону ромба.</div>
+<details><summary>Решение</summary>Половины: 5 и 12. Сторона: \(\sqrt{25 + 144} = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> Найдите острый угол параллелограмма \(ABCD\), если биссектриса угла \(A\) образует со стороной \(BC\) угол, равный \(28^\circ\).</div>
+<details><summary>Решение</summary>Накрест лежащие углы: \(\angle EAD = 28^\circ\). Угол \(A = 2\cdot28 = 56^\circ\).
+<p class="ls-answer">Ответ: 56</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)</span><br> В ромбе \(ABCD\) угол \(ABC\) равен \(124^\circ\). Найдите угол \(ACD\).
+<svg class="ls-fig" viewBox="0 0 239.1 151.5" width="239.1" height="151.5" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="26,125.5 93.1,26 213.1,26 146,125.5" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="26" y1="125.5" x2="213.1" y2="26" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="84.2,39.3 85.4,40 86.7,40.7 88,41.2 89.4,41.6 90.8,41.8 92.3,42 93.7,42 95.2,41.9 96.6,41.6 98,41.2 99.3,40.7 100.6,40.1 101.9,39.4 103,38.6 104.1,37.6 105.1,36.6 106,35.4 106.8,34.2 107.5,33 108.1,31.6 108.5,30.3 108.9,28.9 109.1,27.4 109.1,26" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="107.2" y="52.5" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">124°</text><text x="13.6" y="132.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="86.5" y="13.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="225.5" y="19.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><text x="152.6" y="137.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">D</text></svg></div>
+<details><summary>Решение</summary>Соседний угол ромба: \(\angle BCD = 180 - 124 = 56^\circ\). Диагональ ромба делит угол пополам: \(\angle ACD = 56 : 2 = 28^\circ\).
+<p class="ls-answer">Ответ: 28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 21)</span> Вычислите \(41^2\) с помощью формулы квадрата суммы.</div>
+<details><summary>Решение</summary>\((40 + 1)^2 = 1600 + 80 + 1 = 1681\).
+<p class="ls-answer">Ответ: 1681</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 18)</span> Тариф стоит 600 руб. в месяц. На первые 2 месяца действует скидка 15%. Сколько рублей заплатит абонент за первые 2 месяца?</div>
+<details><summary>Решение</summary>Со скидкой месяц стоит \(600\cdot0{,}85 = 510\) руб. За 2 месяца: \(1020\) руб.
+<p class="ls-answer">Ответ: 1020</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 15)</span> Какое из чисел \(0{,}7\); \(\frac{3}{4}\); \(0{,}72\); \(\frac{7}{10}\) наибольшее? Запишите его десятичной дробью.</div>
+<details><summary>Решение</summary>\(\frac{3}{4} = 0{,}75\), \(\frac{7}{10} = 0{,}7\). Сравниваем: 0,70; 0,75; 0,72; 0,70. Наибольшее — 0,75.
+<p class="ls-answer">Ответ: 0,75</p></details></div>
+</section>
+<nav class="ls-foot"><a href="22-razlozhenie.html">← Урок 22</a><a href="00-index.html">Все уроки</a><a href="24-kvadratnye-uravneniya.html">Урок 24 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
