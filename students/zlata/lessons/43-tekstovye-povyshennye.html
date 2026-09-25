@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 43. Текстовые задачи повышенного уровня (№21)</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 43. Текстовые задачи повышенного уровня (№21)</h1><div class="ls-sub">Злата · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №21</span><span class="ls-tag">часть 2</span><span class="ls-tag">алгебра</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> №21 на уровне реального экзамена: движение по кругу, средняя скорость, задачи на две неизвестные, проценты с концентрацией. Каждую задачу оформлять полностью.</p>
+<ol class="ls-steps">
+  <li>5 мин — ДЗ урока 42.</li>
+  <li>10 мин — новые сюжеты: средняя скорость, круговая трасса.</li>
+  <li>35 мин — практика 1–5.</li>
+  <li>10 мин — итог, ДЗ.</li>
+</ol>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<div class="ls-rule"><b>Средняя скорость</b> = весь путь : всё время (не среднее арифметическое скоростей!).</div>
+<div class="ls-rule"><b>По кругу:</b> первый догоняет второго, когда проезжает на целый круг больше. Скорость сближения — разность скоростей.</div>
+<div class="ls-warn">Оформление: «Пусть \(x\) км/ч — …», уравнение с пояснением, решение, отбор корней, ответ с единицами.</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №21 (ФИПИ / Решу ОГЭ)</span><br> Первую половину пути автомобиль ехал со скоростью 60 км/ч, а вторую — 90 км/ч. Найдите среднюю скорость на всём пути.</div>
+<details><summary>Решение</summary>Путь \(2s\): время \(\frac{s}{60} + \frac{s}{90} = \frac{5s}{180} = \frac{s}{36}\). \(v = 2s : \frac{s}{36} = 72\) км/ч.
+<p class="ls-answer">Ответ: 72</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №21 (ФИПИ / Решу ОГЭ)</span><br> Из одной точки круговой трассы длиной 12 км одновременно в одном направлении стартовали два автомобиля со скоростями 100 и 80 км/ч. Через сколько минут первый впервые опередит второго на один круг?</div>
+<details><summary>Решение</summary>Сближение 20 км/ч, 12 км → \(0{,}6\) ч = 36 мин.
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №21 (ФИПИ / Решу ОГЭ)</span><br> Смешали 30%-й и 60%-й растворы кислоты и добавили 10 кг воды, получили 36%-й раствор. Если бы вместо воды добавили 10 кг 50%-го раствора, получили бы 41%-й раствор. Сколько килограммов 30%-го раствора использовали?</div>
+<details><summary>Решение</summary>\(x\), \(y\) — массы. \(0{,}3x + 0{,}6y = 0{,}36(x + y + 10)\); \(0{,}3x + 0{,}6y + 5 = 0{,}41(x + y + 10)\). Вычтем: \(5 = 0{,}05(x + y + 10)\) → \(x + y = 90\). Первое: \(0{,}3x + 0{,}6y = 36\) → \(x + 2y = 120\) → \(y = 30\), \(x = 60\).
+<p class="ls-answer">Ответ: 60</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №21 (ФИПИ / Решу ОГЭ)</span><br> Два велосипедиста одновременно отправились в пробег на 208 км. Первый ехал со скоростью на 3 км/ч большей и прибыл на 3 часа раньше. Найдите скорость второго велосипедиста.</div>
+<details><summary>Решение</summary>\(\frac{208}{x} - \frac{208}{x + 3} = 3\) → \(624 = 3x(x + 3)\) → \(x^2 + 3x - 208 = 0\), \(D = 841\), \(x = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №21 (для «5»)</span><br> Баржа прошла по течению 40 км и, повернув обратно, прошла ещё 30 км, затратив на весь путь 5 часов. Найдите собственную скорость баржи, если скорость течения 5 км/ч.</div>
+<details><summary>Решение</summary>\(\frac{40}{x + 5} + \frac{30}{x - 5} = 5\) → \(40(x - 5) + 30(x + 5) = 5(x^2 - 25)\) → \(70x - 50 = 5x^2 - 125\) → \(x^2 - 14x - 15 = 0\), \(x = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №21</span><br> Первую треть пути автомобиль ехал со скоростью 60 км/ч, вторую — 120 км/ч, третью — 110 км/ч. Найдите среднюю скорость. Ответ округлите до целых.</div>
+<details><summary>Решение</summary>\(\frac{3}{\frac{1}{60} + \frac{1}{120} + \frac{1}{110}} = \frac{3}{\frac{22 + 11 + 12}{1320}} = \frac{3960}{45} = 88\).
+<p class="ls-answer">Ответ: 88</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №21</span><br> Из одной точки круговой трассы длиной 15 км стартовали два мотоцикла со скоростями 110 и 80 км/ч. Через сколько минут первый опередит второго на один круг?</div>
+<details><summary>Решение</summary>\(\frac{15}{30} = 0{,}5\) ч = 30 мин.
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №21</span><br> Теплоход проходит по течению до пункта назначения 255 км и после стоянки возвращается. Скорость течения 1 км/ч, стоянка 2 часа, в исходный пункт он вернулся через 34 часа после отплытия. Найдите скорость теплохода в неподвижной воде.</div>
+<details><summary>Решение</summary>\(\frac{255}{x + 1} + \frac{255}{x - 1} = 32\) → \(510x = 32(x^2 - 1)\) → \(16x^2 - 255x - 16 = 0\), \(D = 65025 + 1024 = 66049 = 257^2\), \(x = \frac{255 + 257}{32} = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №21</span><br> Имеется два сосуда с кислотой: 30 кг и 20 кг. Если их слить, получится 68%-й раствор. Если слить равные массы, получится 70%-й. Сколько килограммов кислоты в первом сосуде?</div>
+<details><summary>Решение</summary>\(a\), \(b\) — концентрации (доли). \(30a + 20b = 34\); \(a + b = 1{,}4\). \(30a + 20(1{,}4 - a) = 34\) → \(10a = 6\), \(a = 0{,}6\). Кислоты \(18\) кг.
+<p class="ls-answer">Ответ: 18</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 41)</span> Биссектрисы углов \(A\) и \(B\) трапеции \(ABCD\) (\(AD \parallel BC\)) пересекаются в точке \(F\), \(AF = 20\), \(BF = 21\). Найдите \(AB\).</div>
+<details><summary>Решение</summary>29.
+<p class="ls-answer">Ответ: 29</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 39)</span> Постройте график \(y = \frac{x^2 - 16}{x + 4}\). При каком \(m\) прямая \(y = m\) не имеет общих точек с ним?</div>
+<details><summary>Решение</summary>\(y = x - 4\), \(x \ne -4\): \(m = -8\).
+<p class="ls-answer">Ответ: -8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 35)</span> На сколько миллиметров шина 215/55 шире шины 195/65?</div>
+<details><summary>Решение</summary>20.
+<p class="ls-answer">Ответ: 20</p></details></div>
+</section>
+<nav class="ls-foot"><a href="42-grafiki-modul-parametr.html">← Урок 42</a><a href="00-index.html">Все уроки</a><a href="44-geom-24-dokazatelstvo.html">Урок 44 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
