@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 38. Геометрия: касательная, вписанная и описанная окружность</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 38. Геометрия: касательная, вписанная и описанная окружность</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №16</span><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима использует прямой угол между радиусом и касательной, равенство отрезков касательных и радиусы вписанной/описанной окружности в простых фигурах.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 37.</li>
+  <li>15 мин — шпаргалка: 5 фактов с рисунками. Главный — «радиус в точку касания — 90°».</li>
+  <li>25–30 мин — практика. Во всех задачах с касательной сразу рисовать радиус в точку касания и значок прямого угла.</li>
+  <li>5 мин — итог: «около прямоугольного треугольника — центр на середине гипотенузы».</li>
+</ol>
+<p><b>Типичные ошибки:</b> не видит прямой угол у касательной; считает радиус описанной окружности как половину катета; в описанном четырёхугольнике складывает соседние стороны.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Касательная</h3>
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 286 196" width="286" height="196" xmlns="http://www.w3.org/2000/svg" role="img"><circle cx="98" cy="98" r="72" fill="none" stroke="currentColor" stroke-width="2.0"/><line x1="62" y1="26" x2="260" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="98" y1="98" x2="98" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="98" y1="98" x2="224" y2="26" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="98,37 109,37 109,26" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="98" cy="98" r="3.2" fill="currentColor"/><text x="88.1" y="107.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><text x="85.8" y="19.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="237.5" y="22.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text></svg>
+<figcaption>\(OB \perp AB\)</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 268 196" width="268" height="196" xmlns="http://www.w3.org/2000/svg" role="img"><circle cx="98" cy="98" r="72" fill="none" stroke="currentColor" stroke-width="2.0"/><line x1="242" y1="98" x2="134" y2="35.6" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="242" y1="98" x2="134" y2="160.4" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="98" y1="98" x2="134" y2="35.6" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="98" y1="98" x2="134" y2="160.4" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="128.5,45.2 138,50.7 143.5,41.1" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="128.5,150.8 138,145.3 143.5,154.9" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="185" y1="72" x2="191" y2="61.6" stroke="currentColor" stroke-width="1.6"/><line x1="191" y1="134.4" x2="185" y2="124" stroke="currentColor" stroke-width="1.6"/><circle cx="98" cy="98" r="3.2" fill="currentColor"/><text x="84" y="98" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><text x="256" y="98" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="130.1" y="22.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="130.1" y="173.8" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text></svg>
+<figcaption>\(AB = AC\)</figcaption></figure></div>
+<div class="ls-rule"><b>Касательная</b> касается окружности в одной точке. <b>Радиус, проведённый в точку касания, перпендикулярен касательной</b> (угол \(90^\circ\)). Значит, появляется прямоугольный треугольник — работает Пифагор.</div>
+<div class="ls-rule"><b>Отрезки касательных</b>, проведённых из одной точки, <b>равны</b>: \(AB = AC\).</div>
+
+<h3>2. Окружность, описанная около прямоугольного треугольника</h3>
+<svg class="ls-fig" viewBox="0 0 212 212" width="212" height="212" xmlns="http://www.w3.org/2000/svg" role="img"><circle cx="106" cy="106" r="80" fill="none" stroke="currentColor" stroke-width="2.0"/><polygon points="26,106 186,106 146,36.7" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polyline points="136.5,42.2 142,51.7 151.5,46.2" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12.3" y="108.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="199.6" y="109.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="153" y="24.6" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">C</text><circle cx="106" cy="106" r="3.2" fill="currentColor"/><text x="106" y="120" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text></svg>
+<div class="ls-rule">Центр — <b>середина гипотенузы</b>, радиус — <b>половина гипотенузы</b>: \(R = \frac{c}{2}\).</div>
+
+<h3>3. Квадрат и окружности</h3>
+<svg class="ls-fig" viewBox="0 0 244.3 244.3" width="244.3" height="244.3" xmlns="http://www.w3.org/2000/svg" role="img"><polygon points="54.2,190.2 54.2,54.2 190.2,54.2 190.2,190.2" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><circle cx="122.2" cy="122.2" r="68" fill="none" stroke="currentColor" stroke-width="2.0"/><circle cx="122.2" cy="122.2" r="96.2" fill="none" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4"/><circle cx="122.2" cy="122.2" r="3.2" fill="currentColor"/><text x="122.2" y="136.2" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text></svg>
+<div class="ls-rule"><b>Вписанная</b> в квадрат окружность: \(r = \frac{a}{2}\) (половина стороны).<br>
+<b>Описанная</b> около квадрата: \(R = \frac{d}{2}\) (половина диагонали).</div>
+
+<h3>4. Описанный четырёхугольник</h3>
+<div class="ls-rule">Если в четырёхугольник можно вписать окружность, то <b>суммы противоположных сторон равны</b>: \(AB + CD = BC + AD\).</div>
+
+<h3>5. Касательные из одной точки и центральный угол</h3>
+<div class="ls-rule">В четырёхугольнике \(ABOC\) (точка, две точки касания, центр) два угла прямые, значит, \(\angle BAC + \angle BOC = 180^\circ\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Из точки \(A\) к окружности с центром \(O\) проведена касательная \(AB\) (\(B\) — точка касания). Радиус окружности равен 5, \(OA = 13\). Найдите \(AB\).</div>
+<details><summary>Решение</summary>\(\angle OBA = 90^\circ\). В прямоугольном треугольнике \(OBA\) гипотенуза \(OA = 13\), катет \(OB = 5\): \(AB = \sqrt{169 - 25} = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Из точки \(A\) проведены две касательные \(AB\) и \(AC\) к окружности с центром \(O\), \(\angle BAC = 70^\circ\). Найдите \(\angle BOC\).</div>
+<details><summary>Решение</summary>В четырёхугольнике \(ABOC\) углы \(B\) и \(C\) прямые. Сумма углов четырёхугольника \(360^\circ\): \(\angle BOC = 360 - 90 - 90 - 70 = 110^\circ\).
+<p class="ls-answer">Ответ: 110</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Катеты прямоугольного треугольника равны 6 и 8. Найдите радиус описанной около него окружности.</div>
+<details><summary>Решение</summary>Гипотенуза \(\sqrt{36 + 64} = 10\). \(R = 10 : 2 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Сторона квадрата равна 14. Найдите радиус вписанной в него окружности.</div>
+<details><summary>Решение</summary>\(r = 14 : 2 = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> Четырёхугольник \(ABCD\) описан около окружности, \(AB = 7\), \(BC = 9\), \(CD = 12\). Найдите \(AD\).</div>
+<details><summary>Решение</summary>\(AB + CD = BC + AD\) → \(7 + 12 = 9 + AD\) → \(AD = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> Касательные в точках \(A\) и \(B\) к окружности с центром \(O\) пересекаются под углом \(72^\circ\). Найдите угол \(ABO\).
+<svg class="ls-fig" viewBox="0 0 268.1 212" width="268.1" height="212" xmlns="http://www.w3.org/2000/svg" role="img"><circle cx="106" cy="106" r="80" fill="none" stroke="currentColor" stroke-width="2.0"/><line x1="242.1" y1="106" x2="153" y2="41.3" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="242.1" y1="106" x2="153" y2="170.7" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="106" y1="106" x2="153" y2="41.3" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="106" y1="106" x2="153" y2="170.7" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="153" y1="41.3" x2="153" y2="170.7" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linecap="round"/><polyline points="146.6,50.2 155.5,56.6 161.9,47.7" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="146.6,161.8 155.5,155.4 161.9,164.3" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="227.6,95.4 227,96.2 226.5,97 226.1,97.8 225.7,98.7 225.3,99.5 225,100.4 224.7,101.3 224.5,102.3 224.3,103.2 224.2,104.1 224.1,105.1 224.1,106 224.1,106.9 224.2,107.9 224.3,108.8 224.5,109.7 224.7,110.7 225,111.6 225.3,112.5 225.7,113.3 226.1,114.2 226.5,115 227,115.8 227.6,116.6" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="210.1" y="106" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">72°</text><circle cx="106" cy="106" r="3.2" fill="currentColor"/><text x="92" y="106" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><text x="150.8" y="27.5" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="150.8" y="184.5" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text><text x="256.1" y="106" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">M</text></svg></div>
+<details><summary>Решение</summary>Пусть касательные пересекаются в точке \(M\). В четырёхугольнике \(OAMB\): \(\angle AOB = 180 - 72 = 108^\circ\).
+Треугольник \(AOB\) равнобедренный (\(OA = OB\)): \(\angle ABO = (180 - 108) : 2 = 36^\circ\).
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> Катеты прямоугольного треугольника равны 5 и 12. Найдите радиус окружности, описанной около этого треугольника.</div>
+<details><summary>Решение</summary>Гипотенуза \(\sqrt{25 + 144} = 13\). \(R = 13 : 2 = 6{,}5\).
+<p class="ls-answer">Ответ: 6,5</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Из точки \(A\) проведена касательная \(AB\) к окружности с центром \(O\), радиус 8, \(OA = 17\). Найдите \(AB\).</div>
+<details><summary>Решение</summary>\(\sqrt{289 - 64} = \sqrt{225} = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Из точки \(A\) проведены касательные \(AB\) и \(AC\) к окружности с центром \(O\), \(\angle BAC = 50^\circ\). Найдите \(\angle BOC\).</div>
+<details><summary>Решение</summary>\(360 - 90 - 90 - 50 = 130^\circ\).
+<p class="ls-answer">Ответ: 130</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Сторона квадрата равна 9. Найдите радиус вписанной в него окружности.</div>
+<details><summary>Решение</summary>\(9 : 2 = 4{,}5\).
+<p class="ls-answer">Ответ: 4,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> Касательные в точках \(A\) и \(B\) к окружности с центром \(O\) пересекаются под углом \(64^\circ\). Найдите угол \(ABO\).</div>
+<details><summary>Решение</summary>\(\angle AOB = 180 - 64 = 116^\circ\). \(\angle ABO = (180 - 116) : 2 = 32^\circ\).
+<p class="ls-answer">Ответ: 32</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> Четырёхугольник \(ABCD\) описан около окружности, \(AB = 10\), \(BC = 11\), \(CD = 15\). Найдите \(AD\).</div>
+<details><summary>Решение</summary>\(10 + 15 = 11 + AD\) → \(AD = 14\).
+<p class="ls-answer">Ответ: 14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 36)</span> Арифметическая прогрессия: \(a_1 = 4\), \(d = 6\). Найдите \(a_{12}\).</div>
+<details><summary>Решение</summary>\(4 + 11\cdot6 = 70\).
+<p class="ls-answer">Ответ: 70</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 33)</span> Монету бросают дважды. Найдите вероятность того, что решка выпадет ровно один раз.</div>
+<details><summary>Решение</summary>ОР и РО — 2 исхода из 4: 0,5.
+<p class="ls-answer">Ответ: 0,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 30)</span> Решите систему \(\begin{cases} 3x - 3 > 0 \\ x < 6 \end{cases}\). Сколько целых чисел являются её решениями?</div>
+<details><summary>Решение</summary>\(x > 1\) и \(x < 6\): 2, 3, 4, 5 — четыре.
+<p class="ls-answer">Ответ: 4</p></details></div>
+</section>
+<nav class="ls-foot"><a href="37-geometricheskaya-progressiya.html">← Урок 37</a><a href="00-index.html">Все уроки</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

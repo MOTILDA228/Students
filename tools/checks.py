@@ -4,7 +4,7 @@
 задачи (а не копирует его). Сборщик сравнивает результат с тем, что написано в @ans.
 Доступны: F (обыкновенная дробь), sqrt, roots, hyp, leg, sind/cosd/tand,
 ap/aps (арифм. прогрессия), gp/gps (геом. прогрессия), comb, which (выбор варианта
-в №13 по множеству решений), pi, math.
+в №13 по множеству решений), match (соответствие графиков и формул в №11), pi, math.
 """
 import math
 import re
@@ -85,8 +85,18 @@ def which(truth, *options):
     return hits[0] if len(hits) == 1 else f"подходит вариантов: {len(hits)}"
 
 
+def match(graphs, formulas, xs=(-3, -1.5, -0.5, 0.5, 1.5, 3)):
+    """№11: для графиков А, Б, В (функции в том же порядке, что на рисунках) номера подходящих
+    формул одной строкой, например «312»."""
+    out = ""
+    for g in graphs:
+        hits = [k for k, f in enumerate(formulas, 1) if all(abs(g(x) - f(x)) < 1e-9 for x in xs)]
+        out += str(hits[0]) if len(hits) == 1 else "?"
+    return out
+
+
 NS = {"F": F, "sqrt": sqrt, "roots": roots, "hyp": hyp, "leg": leg, "sind": sind, "cosd": cosd,
-      "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "which": which, "pi": math.pi,
+      "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "which": which, "match": match, "pi": math.pi,
       "math": math, "abs": abs, "round": round, "min": min, "max": max, "sum": sum, "range": range,
       "len": len, "sorted": sorted, "int": int}
 
