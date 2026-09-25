@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 53. Геометрия: марафон №15–19</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 53. Геометрия: марафон №15–19</h1><div class="ls-sub">Злата · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №15–19</span><span class="ls-tag">геометрия</span><span class="ls-tag">повторение</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Марафон</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> десять задач №15–19 подряд, по две на номер, 3–4 минуты на задачу. Цель — все пять номеров «в плюс».</p>
+<ol class="ls-steps">
+  <li>5 мин — ДЗ урока 52.</li>
+  <li>45 мин — марафон 1–10 с засечкой.</li>
+  <li>10 мин — разбор, какие номера медленные.</li>
+</ol>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>№</th><th>В одну строку</th></tr>
+<tr><td>15</td><td class="ls-left">углы, равнобедренный, Пифагор, sin/cos/tg, подобие, средняя линия</td></tr>
+<tr><td>16</td><td class="ls-left">вписанный = ½ центрального; касательная ⟂ радиусу; \(R = \frac{c}{2}\), \(\frac{a}{\sin A} = 2R\)</td></tr>
+<tr><td>17</td><td class="ls-left">свойства четырёхугольников; площади; биссектриса отсекает равнобедренный</td></tr>
+<tr><td>18</td><td class="ls-left">формула или «достроить и вычесть»; Пифагор по клеткам</td></tr>
+<tr><td>19</td><td class="ls-left">сверить со справочником урока 36</td></tr>
+</table></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Марафон</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">ОГЭ №15</span><br> В треугольнике \(ABC\) \(\angle C = 90^\circ\), \(AC = 8\), \(\operatorname{tg} B = 0{,}4\). Найдите \(BC\).</div>
+<details><summary>Решение</summary>\(\operatorname{tg} B = \frac{AC}{BC}\): \(BC = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">ОГЭ №15</span><br> В треугольнике \(ABC\) \(AB = BC\), \(\angle B = 52^\circ\), \(AD\) — высота. Найдите \(\angle BAD\).</div>
+<details><summary>Решение</summary>\(\triangle ABD\) прямоугольный: \(90 - 52 = 38^\circ\).
+<p class="ls-answer">Ответ: 38</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">ОГЭ №16</span><br> Центр окружности, описанной около треугольника \(ABC\), лежит на \(AB\), \(\angle A = 23^\circ\). Найдите \(\angle B\).</div>
+<details><summary>Решение</summary>\(AB\) — диаметр, \(\angle C = 90^\circ\), \(\angle B = 67^\circ\).
+<p class="ls-answer">Ответ: 67</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">ОГЭ №16</span><br> Сторона правильного шестиугольника 7. Найдите радиус описанной окружности.</div>
+<details><summary>Решение</summary>Шестиугольник состоит из шести равносторонних треугольников: \(R = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">ОГЭ №17</span><br> Площадь параллелограмма 90, стороны 10 и 12. Найдите синус острого угла.</div>
+<details><summary>Решение</summary>\(90 = 120\sin\alpha\), \(\sin\alpha = 0{,}75\).
+<p class="ls-answer">Ответ: 0,75</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">ОГЭ №17</span><br> В ромбе \(ABCD\) \(\angle ABC = 124^\circ\). Найдите \(\angle ACD\).</div>
+<details><summary>Решение</summary>\(\angle BCD = 56^\circ\), диагональ — биссектриса: \(28^\circ\).
+<p class="ls-answer">Ответ: 28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">ОГЭ №18</span><br> Найдите площадь треугольника на клетчатой бумаге.
+<svg class="ls-fig" viewBox="0 0 232 206" width="232" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="194" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="220" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="220" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 194,168 142,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>\(6\times5 = 30\) минус \(3 + 5 + 8 = 16\): 14.
+<p class="ls-answer">Ответ: 14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-task-src">ОГЭ №18</span><br> Найдите длину отрезка \(AB\).
+<svg class="ls-fig" viewBox="0 0 284 388" width="284" height="388" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="376" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="376" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="376" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="376" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="376" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="376" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="376" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="376" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="376" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="376" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="272" y1="376" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="376" x2="272" y2="376" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="350" x2="272" y2="350" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="324" x2="272" y2="324" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="298" x2="272" y2="298" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="272" x2="272" y2="272" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="246" x2="272" y2="246" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="220" x2="272" y2="220" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="272" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="272" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="272" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="272" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="272" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="272" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="272" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="350" x2="168" y2="38" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><circle cx="38" cy="350" r="3.2" fill="currentColor"/><text x="32.6" y="362.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="168" cy="38" r="3.2" fill="currentColor"/><text x="173.4" y="25.1" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>5 и 12: 13.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-task-src">ОГЭ №19</span><br> Какие утверждения верны? 1) Треугольник со сторонами 1, 2, 3 существует. 2) Средняя линия трапеции равна полусумме оснований. 3) Диагонали прямоугольника равны.</div>
+<details><summary>Решение</summary>1 — неверно (\(1 + 2 = 3\)). 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-task-src">ОГЭ №19</span><br> Какое из утверждений верно? 1) Все углы ромба равны. 2) Площадь параллелограмма равна половине произведения его диагоналей. 3) Касательная к окружности перпендикулярна радиусу, проведённому в точку касания.</div>
+<details><summary>Решение</summary>3.
+<p class="ls-answer">Ответ: 3</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">ОГЭ №15</span><br> \(\angle C = 90^\circ\), \(AB = 15\), \(\sin A = 0{,}6\). Найдите \(AC\).</div>
+<details><summary>Решение</summary>\(BC = 9\), \(AC = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">ОГЭ №16</span><br> \(AC\) — диаметр, \(\angle BAC = 17^\circ\). Найдите \(\angle ACB\).</div>
+<details><summary>Решение</summary>\(73^\circ\).
+<p class="ls-answer">Ответ: 73</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">ОГЭ №17</span><br> Площадь ромба 54, одна диагональ 12. Найдите другую.</div>
+<details><summary>Решение</summary>9.
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">ОГЭ №18</span><br> Найдите площадь параллелограмма на клетчатой бумаге.
+<svg class="ls-fig" viewBox="0 0 258 154" width="258" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 168,116 220,38 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>\(5\cdot3 = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">ОГЭ №19</span><br> Какие утверждения верны? 1) Сумма углов треугольника \(360^\circ\). 2) Любой ромб является параллелограммом. 3) Отношение площадей подобных треугольников равно квадрату коэффициента подобия.</div>
+<details><summary>Решение</summary>23.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 51)</span> Постройте график \(y = \frac{x^2 - 25}{x - 5}\). При каком \(m\) прямая \(y = m\) не пересекает график?</div>
+<details><summary>Решение</summary>\(y = x + 5\), \(x \ne 5\): \(m = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 49)</span> Решите уравнение \(\frac{x^2 + 2x}{x - 1} = \frac{3}{x - 1}\). Запишите сумму корней.</div>
+<details><summary>Решение</summary>\(x^2 + 2x - 3 = 0\): 1 (не входит в ОДЗ) и \(-3\). Ответ \(-3\).
+<p class="ls-answer">Ответ: -3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 45)</span> Найдите квадрат значения выражения \(\sqrt{(1 - \sqrt{3})^2} + 1\).</div>
+<details><summary>Решение</summary>\(\sqrt{3} - 1 + 1 = \sqrt{3}\), квадрат — 3.
+<p class="ls-answer">Ответ: 3</p></details></div>
+</section>
+<nav class="ls-foot"><a href="52-povtorenie-preobrazovaniya-uravneniya.html">← Урок 52</a><a href="00-index.html">Все уроки</a><a href="54-povtorenie-neravenstva-progressii-grafiki.html">Урок 54 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
