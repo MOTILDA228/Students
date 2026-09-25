@@ -1,0 +1,92 @@
+<!-- title: Урок 6. Смешанные вычисления: прототипы ОГЭ №6 -->
+<header class="ls-head">
+  <h1>Урок 6. Смешанные вычисления: прототипы ОГЭ №6</h1>
+  <div>Дима · 9 класс · подготовка к ОГЭ</div>
+  <div class="ls-tags"><span class="ls-tag">ОГЭ №6</span><span class="ls-tag">алгебра</span></div>
+</header>
+
+<nav class="ls-nav">
+  <a href="#ls-theory">Теория</a><a href="#ls-practice">Практика</a><a href="#ls-hw">Домашнее задание</a>
+  <button class="ls-btn" onclick="lsToggleAll(true)">Раскрыть все решения</button>
+  <button class="ls-btn" onclick="lsToggleAll(false)">Свернуть все решения</button>
+</nav>
+
+<section class="ls-card" id="ls-theory">
+  <h2>Шпаргалка</h2>
+
+  <h3>1. Порядок действий</h3>
+  <div class="ls-rule"><b>Скобки → умножение и деление (слева направо) → сложение и вычитание (слева направо).</b><br>
+    Перед решением расставь над знаками номера действий: 1, 2, 3…</div>
+  <div class="ls-warn">\(5 - 2{,}4\cdot1{,}5\): сначала умножение! \(2{,}4\cdot1{,}5 = 3{,}6\), потом \(5 - 3{,}6 = 1{,}4\). Если начать с \(5 - 2{,}4\), ответ будет неправильный.</div>
+
+  <h3>2. В примере есть и обыкновенная, и десятичная дробь — что делать?</h3>
+  <div class="ls-rule">Посмотри на знаменатель обыкновенной дроби:<br>
+    • <b>2, 4, 5, 8, 10, 20, 25, 50</b> — переводи в <b>десятичную</b> (делится ровно).<br>
+    • <b>3, 6, 7, 9, 12…</b> — переводи десятичную в <b>обыкновенную</b>: \(0{,}3 = \frac{3}{10}\), \(0{,}25 = \frac{25}{100} = \frac{1}{4}\).</div>
+  <div class="ls-example"><b>Выучи наизусть:</b>
+    \(\frac{1}{2} = 0{,}5\) · \(\frac{1}{4} = 0{,}25\) · \(\frac{3}{4} = 0{,}75\) · \(\frac{1}{5} = 0{,}2\) · \(\frac{2}{5} = 0{,}4\) · \(\frac{3}{5} = 0{,}6\) · \(\frac{1}{8} = 0{,}125\) · \(\frac{1}{20} = 0{,}05\)</div>
+
+  <h3>3. Дробь «1 на дробь»</h3>
+  <div class="ls-rule">\( \frac{1}{\frac{a}{b}} = \frac{b}{a} \): единица, делённая на дробь, — это та же дробь, перевёрнутая. Сначала посчитай знаменатель, потом переверни.</div>
+
+  <h3>4. Ответ ОГЭ</h3>
+  <div class="ls-rule">Ответ — целое число или конечная десятичная дробь. Если получилась «некрасивая» дробь вроде \(\frac{7}{3}\), скорее всего, где-то ошибка — перепроверь.</div>
+</section>
+
+<section class="ls-card" id="ls-practice">
+  <h2>Практика на уроке</h2>
+
+  <div class="ls-task"><span class="ls-task-num">1.</span> Вычислите \(2{,}4 + \frac{3}{5}\).
+    <details><summary>Решение</summary>Знаменатель 5 — переводим в десятичную: \(\frac{3}{5} = 0{,}6\). \(2{,}4 + 0{,}6 = 3\).<p class="ls-answer">Ответ: 3</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">2.</span> Вычислите \(\frac{1}{4}\cdot3{,}6\).
+    <details><summary>Решение</summary>Умножить на \(\frac{1}{4}\) — значит поделить на 4: \(3{,}6 : 4 = 0{,}9\).<p class="ls-answer">Ответ: 0,9</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">3.</span> Вычислите \(5 - 2{,}4\cdot1{,}5\).
+    <details><summary>Решение</summary>Сначала умножение: \(24\cdot15 = 360\) → \(3{,}60 = 3{,}6\). Потом \(5 - 3{,}6 = 1{,}4\).<p class="ls-answer">Ответ: 1,4</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">4.</span> Вычислите \(\left(\frac{1}{2} + 0{,}3\right)\cdot5\).
+    <details><summary>Решение</summary>Скобка: \(0{,}5 + 0{,}3 = 0{,}8\). Потом \(0{,}8\cdot5 = 4\).<p class="ls-answer">Ответ: 4</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">5.</span> Вычислите \(\frac{3}{4} : 0{,}25\).
+    <details><summary>Решение</summary>\(\frac{3}{4} = 0{,}75\). \(0{,}75 : 0{,}25 = 75 : 25 = 3\).<p class="ls-answer">Ответ: 3</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №6 (ФИПИ / Решу ОГЭ)</span><br>
+    Найдите значение выражения \((3{,}2 - 1{,}7)\cdot2{,}4\).
+    <details><summary>Решение</summary>Скобка: \(3{,}2 - 1{,}7 = 1{,}5\). \(1{,}5\cdot2{,}4\): \(15\cdot24 = 360\) → \(3{,}60 = 3{,}6\).<p class="ls-answer">Ответ: 3,6</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №6 (ФИПИ / Решу ОГЭ)</span><br>
+    Найдите значение выражения \( \frac{1}{\frac{1}{6} - \frac{1}{14}} \).
+    <details><summary>Решение</summary>Знаменатель: общий знаменатель 42. \(\frac{7}{42} - \frac{3}{42} = \frac{4}{42} = \frac{2}{21}\).
+    Единица на дробь — переворачиваем: \(\frac{21}{2} = 10{,}5\).<p class="ls-answer">Ответ: 10,5</p></details></div>
+</section>
+
+<section class="ls-card" id="ls-hw">
+  <h2>Домашнее задание</h2>
+
+  <div class="ls-task"><span class="ls-task-num">1.</span> Вычислите \(\frac{2}{5}\cdot4{,}5\).
+    <details><summary>Решение</summary>\(\frac{2}{5} = 0{,}4\). \(0{,}4\cdot4{,}5\): \(4\cdot45 = 180\) → \(1{,}80 = 1{,}8\).<p class="ls-answer">Ответ: 1,8</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">2.</span> Вычислите \(8 - 1{,}2\cdot3{,}5\).
+    <details><summary>Решение</summary>Умножение: \(12\cdot35 = 420\) → 4,2. \(8 - 4{,}2 = 3{,}8\).<p class="ls-answer">Ответ: 3,8</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">3.</span> Вычислите \(\left(0{,}6 + \frac{1}{5}\right)\cdot2{,}5\).
+    <details><summary>Решение</summary>\(\frac{1}{5} = 0{,}2\). Скобка: 0,8. \(0{,}8\cdot2{,}5 = 2\).<p class="ls-answer">Ответ: 2</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №6 (ФИПИ / Решу ОГЭ)</span><br>
+    Найдите значение выражения \((6{,}7 - 3{,}2)\cdot2{,}4\).
+    <details><summary>Решение</summary>Скобка: 3,5. \(35\cdot24 = 840\) → 8,40 = 8,4.<p class="ls-answer">Ответ: 8,4</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №6 (ФИПИ / Решу ОГЭ)</span><br>
+    Найдите значение выражения \( \frac{1}{\frac{1}{10} - \frac{1}{15}} \).
+    <details><summary>Решение</summary>Общий знаменатель 30: \(\frac{3}{30} - \frac{2}{30} = \frac{1}{30}\). Переворачиваем: 30.<p class="ls-answer">Ответ: 30</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 4)</span> Вычислите в столбик \(2968 : 7\).
+    <details><summary>Решение</summary>29 : 7 = 4 (28, остаток 1). Сносим 6: 16 : 7 = 2 (14, остаток 2). Сносим 8: 28 : 7 = 4. Ответ: 424. Проверка: \(424\cdot7 = 2968\) ✓.<p class="ls-answer">Ответ: 424</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 5)</span> Два угла треугольника равны 38° и 101°. Найдите третий угол.
+    <details><summary>Решение</summary>\(180 - 38 - 101 = 41^\circ\).<p class="ls-answer">Ответ: 41</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 2)</span> Вычислите \(4{,}5\cdot0{,}2\).
+    <details><summary>Решение</summary>\(45\cdot2 = 90\), после запятой всего 2 знака → 0,90 = 0,9.<p class="ls-answer">Ответ: 0,9</p></details></div>
+</section>

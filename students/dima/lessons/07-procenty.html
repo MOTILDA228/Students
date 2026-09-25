@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 7. Проценты</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover { border-color: var(--ls-accent); }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn { display: none !important; }
+  .ls-card, .ls-head { break-inside: avoid; border-color: #999; }
+  .ls-task { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<!-- title: Урок 7. Проценты -->
+<header class="ls-head">
+  <h1>Урок 7. Проценты</h1>
+  <div>Дима · 9 класс · подготовка к ОГЭ</div>
+  <div class="ls-tags"><span class="ls-tag">ОГЭ №1–5</span><span class="ls-tag">ОГЭ №6</span><span class="ls-tag">алгебра</span></div>
+</header>
+
+<nav class="ls-nav">
+  <a href="#ls-theory">Теория</a><a href="#ls-practice">Практика</a><a href="#ls-hw">Домашнее задание</a>
+  <button class="ls-btn" onclick="lsToggleAll(true)">Раскрыть все решения</button>
+  <button class="ls-btn" onclick="lsToggleAll(false)">Свернуть все решения</button>
+</nav>
+
+<section class="ls-card" id="ls-theory">
+  <h2>Шпаргалка</h2>
+
+  <h3>1. Что такое процент</h3>
+  <div class="ls-rule"><b>1% — это одна сотая часть.</b> Всё целое — 100%. \(\;p\% = \frac{p}{100}\).<br>
+    \(15\% = 0{,}15\) · \(5\% = 0{,}05\) · \(120\% = 1{,}2\)</div>
+  <div class="ls-example"><b>Быстрые проценты:</b> 50% — половина · 25% — четверть · 10% — дели на 10 · 1% — дели на 100 · 20% — дели на 5</div>
+
+  <h3>2. Три типа задач</h3>
+  <div class="ls-rule"><b>А. Найти процент от числа:</b> число × (проценты : 100).
+    \[ 15\%\ \text{от}\ 240 = 240\cdot0{,}15 = 36 \]</div>
+  <div class="ls-rule"><b>Б. Найти число по его проценту:</b> часть : проценты × 100.
+    \[ 30\%\ \text{числа} = 42 \;\Rightarrow\; 42 : 30\cdot100 = 140 \]</div>
+  <div class="ls-rule"><b>В. Сколько процентов одно число от другого:</b> часть : целое × 100.
+    \[ 18\ \text{от}\ 72:\; \frac{18}{72}\cdot100 = 25\% \]</div>
+
+  <h3>3. Увеличить и уменьшить на процент</h3>
+  <div class="ls-rule"><b>Увеличить на \(p\%\):</b> умножить на \(1 + \frac{p}{100}\). Подорожало на 15% → \(\cdot1{,}15\).<br>
+    <b>Уменьшить на \(p\%\):</b> умножить на \(1 - \frac{p}{100}\). Скидка 20% → \(\cdot0{,}8\).</div>
+  <div class="ls-warn"><b>На сколько процентов изменилась цена?</b> Разницу делим на <b>старую</b> цену, а не на новую!</div>
+</section>
+
+<section class="ls-card" id="ls-practice">
+  <h2>Практика на уроке</h2>
+
+  <div class="ls-task"><span class="ls-task-num">1.</span> Найдите 15% от 240.
+    <details><summary>Решение</summary>10% от 240 = 24, 5% — половина от этого = 12. 24 + 12 = 36. Или \(240\cdot0{,}15 = 36\).<p class="ls-answer">Ответ: 36</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">2.</span> 30% числа равны 42. Найдите это число.
+    <details><summary>Решение</summary>1% = \(42 : 30 = 1{,}4\). 100% = \(1{,}4\cdot100 = 140\).<p class="ls-answer">Ответ: 140</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">3.</span> Сколько процентов составляет 18 от 72?
+    <details><summary>Решение</summary>\(\frac{18}{72} = \frac{1}{4} = 0{,}25\) → 25%.<p class="ls-answer">Ответ: 25</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">4.</span> Товар стоил 800 рублей, цену повысили на 15%. Сколько стоит товар теперь?
+    <details><summary>Решение</summary>15% от 800 = 120. \(800 + 120 = 920\). Или \(800\cdot1{,}15 = 920\).<p class="ls-answer">Ответ: 920</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">5.</span> Куртка стоит 1350 рублей. Сколько она будет стоить со скидкой 20%?
+    <details><summary>Решение</summary>Остаётся 80%: \(1350\cdot0{,}8 = 1080\).<p class="ls-answer">Ответ: 1080</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">6.</span> <span class="ls-task-src">По мотивам ОГЭ №1–5 (сюжет «Тарифы»)</span><br>
+    1 кВт·ч электроэнергии по дневному тарифу стоит 5,5 рубля. Ночной тариф на 40% дешевле. Сколько стоит 1 кВт·ч по ночному тарифу?
+    <details><summary>Решение</summary>Дешевле на 40% → остаётся 60%: \(5{,}5\cdot0{,}6 = 3{,}3\).<p class="ls-answer">Ответ: 3,3</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип Решу ОГЭ (текстовая задача на проценты)</span><br>
+    Футболка стоила 800 рублей. После снижения цены она стала стоить 680 рублей. На сколько процентов снижена цена?
+    <details><summary>Решение</summary>Разница: \(800 - 680 = 120\). Делим на <b>старую</b> цену: \(\frac{120}{800} = 0{,}15\) → 15%.<p class="ls-answer">Ответ: 15</p></details></div>
+</section>
+
+<section class="ls-card" id="ls-hw">
+  <h2>Домашнее задание</h2>
+
+  <div class="ls-task"><span class="ls-task-num">1.</span> Найдите 35% от 60.
+    <details><summary>Решение</summary>\(60\cdot0{,}35 = 21\). (10% = 6, 30% = 18, 5% = 3, итого 21.)<p class="ls-answer">Ответ: 21</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">2.</span> 12% числа равны 54. Найдите число.
+    <details><summary>Решение</summary>1% = \(54 : 12 = 4{,}5\). 100% = 450.<p class="ls-answer">Ответ: 450</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">3.</span> Сколько процентов составляет 45 от 180?
+    <details><summary>Решение</summary>\(\frac{45}{180} = \frac{1}{4} = 25\%\).<p class="ls-answer">Ответ: 25</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">4.</span> Кроссовки стоят 3200 рублей. Какой будет цена со скидкой 25%?
+    <details><summary>Решение</summary>25% — четверть: \(3200 : 4 = 800\). \(3200 - 800 = 2400\).<p class="ls-answer">Ответ: 2400</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип Решу ОГЭ</span> Зарплата 40 000 рублей, из неё удерживают налог 13%. Сколько рублей получит работник?
+    <details><summary>Решение</summary>Получит 87%: \(40000\cdot0{,}87 = 34800\).<p class="ls-answer">Ответ: 34800</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип Решу ОГЭ</span> Товар стоил 1200 рублей, а теперь стоит 1380. На сколько процентов он подорожал?
+    <details><summary>Решение</summary>Разница 180. Делим на старую цену: \(\frac{180}{1200} = 0{,}15\) → 15%.<p class="ls-answer">Ответ: 15</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 5)</span> Один из смежных углов равен 64°. Найдите другой.
+    <details><summary>Решение</summary>\(180 - 64 = 116^\circ\).<p class="ls-answer">Ответ: 116</p></details></div>
+
+  <div class="ls-task"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 3)</span> Вычислите \(\frac{2}{3}\cdot\frac{3}{8}\). Ответ — десятичной дробью.
+    <details><summary>Решение</summary>Сокращаем: 3 и 3 → 1 и 1; 2 и 8 → 1 и 4. \(\frac{1}{4} = 0{,}25\).<p class="ls-answer">Ответ: 0,25</p></details></div>
+</section>
+
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('details').forEach(function (d) { d.open = open; }); }
+window.addEventListener('beforeprint', function () { lsToggleAll(true); });
+</script>
+</body>
+</html>
