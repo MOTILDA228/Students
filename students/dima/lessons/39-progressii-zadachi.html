@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 39. Текстовые задачи на прогрессии</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 39. Текстовые задачи на прогрессии</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №14</span><span class="ls-tag">алгебра</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима узнаёт прогрессию в тексте задачи №14, выписывает \(a_1\), \(d\) (или \(q\)), \(n\) и понимает, что спрашивают: один член, сумму или номер.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 38.</li>
+  <li>10–15 мин — шпаргалка: словарик «слова → прогрессия», три вида вопросов.</li>
+  <li>30 мин — практика. Каждое условие переводить в строку «\(a_1 = \ldots,\ d = \ldots,\ n = \ldots\), ищем …».</li>
+  <li>5 мин — итог.</li>
+</ol>
+<p><b>Типичные ошибки:</b> ищет член, когда спрашивают «всего» (сумму); неверно считает \(n\) («через 6 минут» — это седьмой член, если отсчёт с нулевой минуты); путает «на» и «в».</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Как узнать прогрессию в тексте</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>в тексте</th><th>прогрессия</th></tr>
+<tr><td class="ls-left">«каждый следующий на 5 больше», «на 2 меньше»</td><td>арифметическая, \(d = 5\) или \(d = -2\)</td></tr>
+<tr><td class="ls-left">«в 2 раза больше», «удваивается», «уменьшается в 3 раза»</td><td>геометрическая, \(q = 2\) или \(q = \frac{1}{3}\)</td></tr>
+</table></div>
+
+<h3>2. Что спрашивают</h3>
+<div class="ls-rule">
+«Сколько в <b>10-й</b> день (ряд, минуту)?» → один член: \(a_n = a_1 + (n - 1)d\).<br>
+«Сколько <b>всего</b> за 10 дней?» → сумма: \(S_n = \frac{a_1 + a_n}{2}\cdot n\).<br>
+«<b>На какой</b> день будет 40?» → уравнение: \(a_1 + (n - 1)d = 40\), ищем \(n\).</div>
+
+<h3>3. Разбор</h3>
+<div class="ls-example">«Улитка в первую минуту проползла 30 см, а в каждую следующую — на 5 см больше. Сколько сантиметров она проползёт за 8 минут?»<br>
+«На 5 больше» → арифметическая: \(a_1 = 30\), \(d = 5\), \(n = 8\). «За 8 минут» — это <b>всего</b>, то есть сумма.<br>
+\(a_8 = 30 + 7\cdot5 = 65\); \(S_8 = \frac{30 + 65}{2}\cdot8 = 380\) см.</div>
+<div class="ls-example">«На какой минуте улитка проползёт 80 см?» → \(30 + (n - 1)\cdot5 = 80\) → \((n - 1)\cdot5 = 50\) → \(n - 1 = 10\) → \(n = 11\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Улитка в первую минуту проползла 30 см, а в каждую следующую минуту — на 5 см больше, чем в предыдущую. Сколько сантиметров она проползла за восьмую минуту?</div>
+<details><summary>Решение</summary>\(a_1 = 30\), \(d = 5\). \(a_8 = 30 + 7\cdot5 = 65\) см.
+<p class="ls-answer">Ответ: 65</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Для улитки из задачи 1: сколько сантиметров она проползла за первые 8 минут?</div>
+<details><summary>Решение</summary>\(S_8 = \frac{30 + 65}{2}\cdot8 = 380\) см.
+<p class="ls-answer">Ответ: 380</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Врач прописал пациенту в первый день 20 капель лекарства, а в каждый следующий день — на 2 капли больше, чем в предыдущий. В какой день пациент примет 40 капель?</div>
+<details><summary>Решение</summary>\(20 + (n - 1)\cdot2 = 40\) → \((n - 1)\cdot2 = 20\) → \(n - 1 = 10\) → \(n = 11\).
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Число бактерий удваивается каждый час. Сначала было 5 бактерий. Сколько бактерий будет через 4 часа?</div>
+<details><summary>Решение</summary>Геометрическая, \(q = 2\): 5 → 10 → 20 → 40 → 80. Через 4 часа — 80 (это пятый член: \(5\cdot2^4\)).
+<p class="ls-answer">Ответ: 80</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №14 (ФИПИ / Решу ОГЭ)</span><br> В амфитеатре 14 рядов. В первом ряду 20 мест, а в каждом следующем на 3 места больше, чем в предыдущем. Сколько всего мест в амфитеатре?</div>
+<details><summary>Решение</summary>\(a_{14} = 20 + 13\cdot3 = 59\). \(S_{14} = \frac{20 + 59}{2}\cdot14 = 79\cdot7 = 553\).
+<p class="ls-answer">Ответ: 553</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №14 (ФИПИ / Решу ОГЭ)</span><br> Врач прописал пациенту принимать лекарство по такой схеме: в первый день 20 капель, а в каждый следующий день — на 3 капли больше, чем в предыдущий. Сколько капель пациент примет за первые 15 дней?</div>
+<details><summary>Решение</summary>\(a_{15} = 20 + 14\cdot3 = 62\). \(S_{15} = \frac{20 + 62}{2}\cdot15 = 41\cdot15 = 615\).
+<p class="ls-answer">Ответ: 615</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №14 (ФИПИ / Решу ОГЭ)</span><br> Камень бросают в глубокое ущелье. При этом в первую секунду он пролетает 9 метров, а в каждую следующую секунду на 10 метров больше, чем в предыдущую, до тех пор, пока не достигнет дна ущелья. Сколько метров пролетит камень за первые пять секунд?</div>
+<details><summary>Решение</summary>\(a_5 = 9 + 4\cdot10 = 49\). \(S_5 = \frac{9 + 49}{2}\cdot5 = 29\cdot5 = 145\) м.
+<p class="ls-answer">Ответ: 145</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Спортсмен в первый день пробежал 2 км, а в каждый следующий день — на 0,5 км больше, чем в предыдущий. Сколько километров он пробежал в десятый день?</div>
+<details><summary>Решение</summary>\(a_{10} = 2 + 9\cdot0{,}5 = 6{,}5\) км.
+<p class="ls-answer">Ответ: 6,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Для спортсмена из задачи 1: сколько километров он пробежал за первые 10 дней?</div>
+<details><summary>Решение</summary>\(S_{10} = \frac{2 + 6{,}5}{2}\cdot10 = 4{,}25\cdot10 = 42{,}5\) км.
+<p class="ls-answer">Ответ: 42,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> В первый день Маша нашла 3 гриба, а в каждый следующий день — на 2 гриба больше, чем в предыдущий. В какой день она нашла 21 гриб?</div>
+<details><summary>Решение</summary>\(3 + (n - 1)\cdot2 = 21\) → \(n - 1 = 9\) → \(n = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №14 (ФИПИ / Решу ОГЭ)</span><br> Камень бросают в глубокое ущелье. При этом в первую секунду он пролетает 4 метра, а в каждую следующую секунду на 10 метров больше, чем в предыдущую. Сколько метров пролетит камень за первые шесть секунд?</div>
+<details><summary>Решение</summary>\(a_6 = 4 + 5\cdot10 = 54\). \(S_6 = \frac{4 + 54}{2}\cdot6 = 174\) м.
+<p class="ls-answer">Ответ: 174</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №14 (ФИПИ / Решу ОГЭ)</span><br> В амфитеатре 16 рядов. В первом ряду 21 место, а в каждом следующем на 1 место больше, чем в предыдущем. Сколько всего мест в амфитеатре?</div>
+<details><summary>Решение</summary>\(a_{16} = 21 + 15 = 36\). \(S_{16} = \frac{21 + 36}{2}\cdot16 = 57\cdot8 = 456\).
+<p class="ls-answer">Ответ: 456</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 37)</span> Геометрическая прогрессия: \(b_1 = 4\), \(q = 3\). Найдите \(b_5\).</div>
+<details><summary>Решение</summary>\(4\cdot3^4 = 4\cdot81 = 324\).
+<p class="ls-answer">Ответ: 324</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 35)</span> В треугольнике \(ABC\) угол \(C\) равен \(90^\circ\), \(AC = 12\), \(\cos A = 0{,}8\). Найдите \(AB\).</div>
+<details><summary>Решение</summary>\(AB = 12 : 0{,}8 = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 31)</span> На экзамене 60 билетов, Коля выучил 45 из них. Найдите вероятность того, что ему попадётся выученный билет.</div>
+<details><summary>Решение</summary>\(\frac{45}{60} = \frac{3}{4} = 0{,}75\).
+<p class="ls-answer">Ответ: 0,75</p></details></div>
+</section>
+<nav class="ls-foot"><a href="38-geom-kasatelnaya.html">← Урок 38</a><a href="00-index.html">Все уроки</a><a href="40-lineynaya-funkciya.html">Урок 40 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

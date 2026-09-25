@@ -1,0 +1,225 @@
+@title Урок 42. Графики: парабола и гипербола
+@tags ОГЭ №11 | алгебра
+@teacher
+<p><b>Цель:</b> Дима отличает на рисунке прямую, параболу и гиперболу, определяет знак \(a\) и \(c\) у параболы и знак \(k\) у гиперболы, решает №11.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 41.</li>
+  <li>15 мин — шпаргалка: «галочка» и «шапочка», две ветви гиперболы в чётвертях.</li>
+  <li>25–30 мин — практика. В №11 сначала определить вид графика, потом знаки.</li>
+  <li>5 мин — итог: «\(x^2\) — парабола, \(x\) в знаменателе — гипербола, просто \(x\) — прямая».</li>
+</ol>
+<p><b>Типичные ошибки:</b> определяет знак \(c\) по вершине, а не по пересечению с осью \(y\); путает четверти у гиперболы.</p>
+@theory
+<h3>1. Три вида графиков в №11</h3>
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f x + 1
+@end
+<figcaption>прямая: \(y = kx + b\)</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f x**2 - 2
+@end
+<figcaption>парабола: \(y = ax^2 + bx + c\)</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f 2/x
+@end
+<figcaption>гипербола: \(y = \frac{k}{x}\)</figcaption></figure></div>
+
+<h3>2. Парабола \(y = ax^2 + bx + c\)</h3>
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f x**2 - 1
+@end
+<figcaption>\(a > 0\): ветви вверх</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -x**2 + 2
+@end
+<figcaption>\(a &lt; 0\): ветви вниз</figcaption></figure></div>
+<div class="ls-rule"><b>\(a > 0\)</b> — ветви вверх («улыбка»), <b>\(a < 0\)</b> — ветви вниз.<br>
+<b>\(c\)</b> — где парабола пересекает <b>ось \(y\)</b> (при \(x = 0\) \(y = c\)).<br>
+<b>Вершина:</b> \(x_0 = -\frac{b}{2a}\), \(y_0\) — подставить \(x_0\) в формулу.<br>
+<b>Пересечение с осью \(x\)</b> — корни уравнения \(ax^2 + bx + c = 0\).</div>
+<div class="ls-example">\(y = x^2 - 4x + 3\): \(a = 1 > 0\) — ветви вверх; \(c = 3\); \(x_0 = \frac{4}{2} = 2\), \(y_0 = 4 - 8 + 3 = -1\). Вершина \((2; -1)\). С осью \(x\): корни 1 и 3.</div>
+
+<h3>3. Гипербола \(y = \frac{k}{x}\)</h3>
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f 2/x
+@end
+<figcaption>\(k > 0\): I и III четверти</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -2/x
+@end
+<figcaption>\(k &lt; 0\): II и IV четверти</figcaption></figure></div>
+<div class="ls-rule">Две ветви, ось \(y\) не пересекает. \(k > 0\) — ветви справа вверху и слева внизу; \(k < 0\) — слева вверху и справа внизу. Точка \((1; k)\) всегда на графике.</div>
+@practice
+@task
+Найдите ординату вершины параболы \(y = x^2 - 4x + 3\).
+@sol
+\(x_0 = -\frac{-4}{2} = 2\). \(y_0 = 4 - 8 + 3 = -1\).
+@ans \(-1\)
+@check (lambda x: x*x - 4*x + 3)(F(4,2))
+@task
+Найдите абсциссы точек пересечения параболы \(y = x^2 - 6x + 5\) с осью \(Ox\). Запишите их в порядке возрастания.
+@sol
+\(x^2 - 6x + 5 = 0\): произведение 5, сумма 6 → 1 и 5.
+@ans 1; 5
+@check roots(1,-6,5)
+@task
+Найдите значение функции \(y = \frac{6}{x}\) при \(x = -3\).
+@sol
+\(y = 6 : (-3) = -2\).
+@ans \(-2\)
+@check F(6,-3)
+@task
+График функции \(y = \frac{k}{x}\) проходит через точку \((2; -4)\). Найдите \(k\).
+@sol
+\(-4 = \frac{k}{2}\) → \(k = -8\).
+@ans \(-8\)
+@check 2*(-4)
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками функций и формулами, которые их задают. В ответ запишите цифры под буквами А, Б, В.
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f x**2 - 2
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f 2/x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -x + 1
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(y = -x + 1\)</span><span>2) \(y = x^2 - 2\)</span><span>3) \(y = \frac{2}{x}\)</span></div>
+@sol
+А — парабола → 2. Б — гипербола → 3. В — прямая → 1.
+@ans 231
+@check match([lambda x: x*x - 2, lambda x: 2/x, lambda x: -x + 1], [lambda x: -x + 1, lambda x: x*x - 2, lambda x: 2/x])
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+На рисунках изображены графики функций вида \(y = ax^2 + c\). Установите соответствие между графиками и знаками коэффициентов \(a\) и \(c\).
+<div class="ls-figs"><figure>
+@plot -3 3 -4 4 scale=18
+f x**2 - 3
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -4 4 scale=18
+f -x**2 + 2
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -4 4 scale=18
+f x**2 + 1
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(a > 0,\ c > 0\)</span><span>2) \(a &lt; 0,\ c > 0\)</span><span>3) \(a > 0,\ c &lt; 0\)</span></div>
+@sol
+А: ветви вверх, ось \(y\) пересекает ниже нуля → \(a > 0, c < 0\) (3).<br>
+Б: ветви вниз, выше нуля → (2). В: ветви вверх, выше нуля → (1).
+@ans 321
+@check ''.join(str([c(a, cc) for c in (lambda a, c: a > 0 and c > 0, lambda a, c: a < 0 and c > 0, lambda a, c: a > 0 and c < 0)].index(True) + 1) for a, cc in ((1, -3), (-1, 2), (1, 1)))
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками функций и формулами, которые их задают.
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f -x**2
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -2/x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -2*x
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(y = -\frac{2}{x}\)</span><span>2) \(y = -2x\)</span><span>3) \(y = -x^2\)</span></div>
+@sol
+А — парабола ветвями вниз → 3. Б — гипербола во II и IV четвертях → 1. В — прямая через начало координат, идёт вниз → 2.
+@ans 312
+@check match([lambda x: -x*x, lambda x: -2/x, lambda x: -2*x], [lambda x: -2/x, lambda x: -2*x, lambda x: -x*x])
+@hw
+@task
+Найдите ординату вершины параболы \(y = x^2 + 2x - 8\).
+@sol
+\(x_0 = -\frac{2}{2} = -1\). \(y_0 = 1 - 2 - 8 = -9\).
+@ans \(-9\)
+@check (lambda x: x*x + 2*x - 8)(-1)
+@task
+Найдите абсциссы точек пересечения параболы \(y = x^2 - 3x - 4\) с осью \(Ox\). Запишите их в порядке возрастания.
+@sol
+Произведение \(-4\), сумма 3: \(-1\) и 4.
+@ans \(-1\); 4
+@check roots(1,-3,-4)
+@task
+Найдите значение функции \(y = -\frac{12}{x}\) при \(x = 4\).
+@sol
+\(-12 : 4 = -3\).
+@ans \(-3\)
+@check F(-12,4)
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками функций и формулами, которые их задают.
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f 3/x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -x**2 + 1
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f 0.5*x
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(y = 0{,}5x\)</span><span>2) \(y = \frac{3}{x}\)</span><span>3) \(y = -x^2 + 1\)</span></div>
+@sol
+А — гипербола → 2. Б — парабола → 3. В — прямая → 1.
+@ans 231
+@check match([lambda x: 3/x, lambda x: -x*x + 1, lambda x: 0.5*x], [lambda x: 0.5*x, lambda x: 3/x, lambda x: -x*x + 1])
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+На рисунках изображены графики функций вида \(y = ax^2 + c\). Установите соответствие между графиками и знаками коэффициентов \(a\) и \(c\).
+<div class="ls-figs"><figure>
+@plot -3 3 -4 4 scale=18
+f -x**2 - 1
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -4 4 scale=18
+f x**2 - 2
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -4 4 scale=18
+f -x**2 + 3
+@end
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(a > 0,\ c &lt; 0\)</span><span>2) \(a &lt; 0,\ c > 0\)</span><span>3) \(a &lt; 0,\ c &lt; 0\)</span></div>
+@sol
+А: вниз, ниже нуля → 3. Б: вверх, ниже нуля → 1. В: вниз, выше нуля → 2.
+@ans 312
+@check ''.join(str([c(a, cc) for c in (lambda a, c: a > 0 and c < 0, lambda a, c: a < 0 and c > 0, lambda a, c: a < 0 and c < 0)].index(True) + 1) for a, cc in ((-1, -1), (1, -2), (-1, 3)))
+@task
+@rep 40
+Найдите значение функции \(y = 5x - 3\) при \(x = -1\).
+@sol
+\(-5 - 3 = -8\).
+@ans \(-8\)
+@check 5*(-1)-3
+@task
+@rep 38
+Сторона квадрата равна 22. Найдите радиус вписанной в него окружности.
+@sol
+\(22 : 2 = 11\).
+@ans 11
+@check 22/2
+@task
+@rep 33
+Вероятность того, что лампочка перегорит в течение года, равна 0,12. Найдите вероятность того, что она не перегорит в течение года.
+@sol
+\(1 - 0{,}12 = 0{,}88\).
+@ans 0,88
+@check 1-F('0.12')
