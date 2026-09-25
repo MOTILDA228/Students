@@ -1,0 +1,782 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Этап 1: Алгебра</title>
+<style>
+:root{
+  --bg:#faf7f2;
+  --surface:#ffffff;
+  --surface-2:#f1ede4;
+  --ink:#2b2621;
+  --ink-soft:#5c554c;
+  --line:#e2dccf;
+  --accent:#a8492f;
+  --accent-soft:#f2e2da;
+  --good:#3f6b4a;
+  --mono:#3a3530;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1c1a17;
+    --surface:#252220;
+    --surface-2:#2c2925;
+    --ink:#eee7dc;
+    --ink-soft:#b3a99b;
+    --line:#3a3530;
+    --accent:#e08b6f;
+    --accent-soft:#3a2a24;
+    --good:#8fbf9c;
+    --mono:#e7ddce;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1c1a17;
+  --surface:#252220;
+  --surface-2:#2c2925;
+  --ink:#eee7dc;
+  --ink-soft:#b3a99b;
+  --line:#3a3530;
+  --accent:#e08b6f;
+  --accent-soft:#3a2a24;
+  --good:#8fbf9c;
+  --mono:#e7ddce;
+}
+
+*{box-sizing:border-box;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  margin:0;
+  padding:32px 16px 64px;
+  line-height:1.5;
+}
+.wrap{max-width:880px;margin:0 auto;}
+
+h1,h2,h3{font-family:"Fraunces","Georgia",serif;font-weight:600;letter-spacing:-0.01em;text-wrap:balance;}
+h1{font-size:2rem;margin:0 0 4px;}
+.subtitle{color:var(--ink-soft);font-size:1.05rem;margin:0 0 20px;}
+
+/* === математика: нативный MathML === */
+math{
+  font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif;
+  font-size:1.15em;
+  math-style:normal;
+  line-height:normal;
+}
+.formula math{font-size:1.12em;}
+
+.topbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+.pill{
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  color:var(--ink-soft);
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:0.82rem;
+}
+.pill.accent{background:var(--accent-soft);color:var(--accent);border-color:transparent;font-weight:600;}
+
+.source-note{
+  font-size:0.85rem;color:var(--ink-soft);
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:10px;padding:10px 14px;margin-bottom:32px;
+}
+.source-note b{color:var(--ink);}
+
+nav.toc{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 22px;
+  margin-bottom:40px;
+}
+nav.toc h2{font-size:0.95rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin:0 0 10px;font-family:inherit;}
+nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:24px;}
+nav.toc li{margin-bottom:6px;font-size:0.95rem;}
+nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
+nav.toc a:hover{border-color:var(--accent);color:var(--accent);}
+@media(max-width:600px){nav.toc ol{columns:1;}}
+
+section.block{margin-bottom:56px;padding-top:8px;}
+.block-header{
+  display:flex;align-items:baseline;gap:12px;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:10px;margin-bottom:20px;
+  flex-wrap:wrap;
+}
+.block-header .num{font-family:"Fraunces",serif;font-weight:600;color:var(--accent);font-size:1.4rem;}
+.block-header h2{margin:0;font-size:1.35rem;}
+.block-header .time{margin-left:auto;font-size:0.8rem;color:var(--ink-soft);background:var(--surface-2);padding:4px 10px;border-radius:8px;}
+
+.theory{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:20px 22px;
+  margin-bottom:18px;
+}
+.theory h3{font-size:1.02rem;margin:0 0 10px;color:var(--accent);font-family:"Source Sans 3",sans-serif;font-weight:700;}
+.theory p{margin:0 0 10px;}
+.theory ul{margin:0 0 10px;padding-left:22px;}
+.theory li{margin-bottom:8px;}
+.formula{
+  background:var(--surface-2);
+  border-left:3px solid var(--accent);
+  padding:12px 16px;
+  border-radius:0 8px 8px 0;
+  margin:12px 0;
+  color:var(--mono);
+  overflow-x:auto;
+}
+.formula .line{padding:6px 0;display:flex;align-items:center;flex-wrap:wrap;gap:0 8px;}
+.formula .line .cmt{font-size:0.85rem;color:var(--ink-soft);}
+.note{
+  font-size:0.88rem;
+  color:var(--ink-soft);
+  background:var(--accent-soft);
+  border-radius:8px;
+  padding:10px 12px;
+  margin-top:10px;
+}
+
+.practice{background:var(--surface-2);border-radius:12px;padding:18px 22px;}
+.practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.practice-head h3{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin:0;font-family:inherit;}
+.copy-btn{
+  font-family:"Source Sans 3",sans-serif;
+  font-size:0.8rem;font-weight:600;
+  background:var(--surface);
+  color:var(--accent);
+  border:1px solid var(--accent);
+  border-radius:8px;
+  padding:6px 12px;
+  cursor:pointer;
+  transition:background .15s, color .15s;
+  white-space:nowrap;
+}
+.copy-btn:hover{background:var(--accent);color:var(--surface);}
+.copy-btn:disabled{opacity:0.7;cursor:default;}
+
+.subgroup{margin-bottom:18px;}
+.subgroup:last-child{margin-bottom:0;}
+.subgroup .sublabel{
+  font-size:0.78rem;font-weight:700;color:var(--accent);
+  text-transform:uppercase;letter-spacing:0.04em;
+  margin:0 0 8px;
+}
+.tasks{display:grid;gap:10px;}
+.task{
+  display:grid;
+  grid-template-columns:2.6rem 1fr auto;
+  gap:10px 14px;
+  align-items:center;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px 16px;
+  min-height:56px;
+}
+.task .idx{color:var(--accent);font-size:0.85rem;font-weight:600;font-variant-numeric:tabular-nums;}
+.task .q{font-size:1rem;display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;}
+.task .a{
+  font-size:0.95rem;color:var(--good);
+  display:flex;align-items:center;gap:0 6px;
+  justify-content:flex-end;
+}
+.task .a::before{content:"→";opacity:0.55;margin-right:2px;}
+@media(max-width:600px){
+  .task{grid-template-columns:2.6rem 1fr;}
+  .task .a{grid-column:2;justify-content:flex-start;}
+}
+
+footer{
+  text-align:center;color:var(--ink-soft);font-size:0.85rem;
+  margin-top:48px;padding-top:24px;border-top:1px solid var(--line);
+}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+
+<div class="wrap">
+
+<h1>Этап 1 — Алгебраическая база</h1>
+<p class="subtitle">Материалы для Златы: теория + практика. Подготовка к ОГЭ, недели 1–4.</p>
+
+<div class="topbar">
+  <span class="pill accent">130+ заданий</span>
+  <span class="pill">Дроби и проценты</span>
+  <span class="pill">Степени и корни</span>
+  <span class="pill">ФСУ</span>
+  <span class="pill">Разложение на множители</span>
+  <span class="pill">Алгебраические дроби</span>
+</div>
+
+<div class="source-note">
+  Задания составлены в стиле банка заданий ОГЭ (тип №6 «Числа и вычисления», №8 «Степени и корни»), сгруппированы по подтемам, как на <b>oge.sdamgia.ru</b>. Формулы набраны настоящей математической вёрсткой: знаки стоят по оси дроби, скобки обхватывают дробь целиком, корень накрывает всё подкоренное выражение. Кнопка «скопировать вопросы» копирует чистый текст (со знаками / и ^) для отправки ученице.
+</div>
+
+<nav class="toc">
+  <h2>Содержание</h2>
+  <ol>
+    <li><a href="#t1">Дроби, проценты, пропорции</a></li>
+    <li><a href="#t2">Степени с любым показателем</a></li>
+    <li><a href="#t3">Корни и их свойства</a></li>
+    <li><a href="#t4">Формулы сокращённого умножения</a></li>
+    <li><a href="#t5">Разложение на множители</a></li>
+    <li><a href="#t6">Алгебраические дроби</a></li>
+  </ol>
+</nav>
+
+<section class="block" id="t1">
+  <div class="block-header">
+    <span class="num">01</span>
+    <h2>Дроби, проценты, пропорции</h2>
+    <span class="time">2 занятия</span>
+  </div>
+
+  <div class="theory">
+    <h3>Действия с обычными дробями</h3>
+    <p>Сложение и вычитание — через общий знаменатель. Умножение — числитель на числитель, знаменатель на знаменатель. Деление — умножение на обратную дробь.</p>
+    <div class="formula">
+      <div class="line"><math><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>+</mo><mfrac><mi>c</mi><mi>d</mi></mfrac><mo>=</mo><mfrac><mrow><mi>a</mi><mi>d</mi><mo>+</mo><mi>b</mi><mi>c</mi></mrow><mrow><mi>b</mi><mi>d</mi></mrow></mfrac></math></div>
+      <div class="line"><math><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>÷</mo><mfrac><mi>c</mi><mi>d</mi></mfrac><mo>=</mo><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>·</mo><mfrac><mi>d</mi><mi>c</mi></mfrac></math></div>
+    </div>
+
+    <h3>Проценты</h3>
+    <p>Чтобы найти <b>p%</b> от числа <b>a</b> — умножить a на p/100. Чтобы найти число по его проценту — составить уравнение.</p>
+    <div class="formula">
+      <div class="line"><span class="cmt">p% от числа a:</span><math><mi>a</mi><mo>·</mo><mfrac><mi>p</mi><mn>100</mn></mfrac></math></div>
+      <div class="line"><span class="cmt">если p% от x равно b, то</span><math><mi>x</mi><mo>=</mo><mi>b</mi><mo>÷</mo><mfrac><mi>p</mi><mn>100</mn></mfrac></math></div>
+      <div class="line"><span class="cmt">увеличение на p%:</span><math><mi>a</mi><mo>·</mo><mrow><mo>(</mo><mn>1</mn><mo>+</mo><mfrac><mi>p</mi><mn>100</mn></mfrac><mo>)</mo></mrow></math></div>
+      <div class="line"><span class="cmt">уменьшение на p%:</span><math><mi>a</mi><mo>·</mo><mrow><mo>(</mo><mn>1</mn><mo>−</mo><mfrac><mi>p</mi><mn>100</mn></mfrac><mo>)</mo></mrow></math></div>
+    </div>
+
+    <h3>Пропорции</h3>
+    <p>Основное свойство пропорции: произведение крайних членов равно произведению средних.</p>
+    <div class="formula">
+      <div class="line"><math><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>=</mo><mfrac><mi>c</mi><mi>d</mi></mfrac><mo>⟺</mo><mi>a</mi><mo>·</mo><mi>d</mi><mo>=</mo><mi>b</mi><mo>·</mo><mi>c</mi></math></div>
+    </div>
+    <div class="note">Частая ошибка: путают, что ставить в числитель, а что в знаменатель, в задачах на масштаб, скорость и смеси. Проговаривайте вслух: «во сколько раз одно больше другого».</div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-head">
+      <h3>Задания для урока</h3>
+      <button class="copy-btn">Скопировать вопросы</button>
+    </div>
+
+    <div class="tasks">
+      <div class="subgroup">
+        <p class="sublabel">Обыкновенные дроби</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">1.1</span><span class="q" data-copy="3/8 + 5/12"><math><mfrac><mn>3</mn><mn>8</mn></mfrac><mo>+</mo><mfrac><mn>5</mn><mn>12</mn></mfrac></math></span><span class="a"><math><mfrac><mn>19</mn><mn>24</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">1.2</span><span class="q" data-copy="7/9 - 5/6"><math><mfrac><mn>7</mn><mn>9</mn></mfrac><mo>−</mo><mfrac><mn>5</mn><mn>6</mn></mfrac></math></span><span class="a"><math><mo>−</mo><mfrac><mn>1</mn><mn>18</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">1.3</span><span class="q" data-copy="2/5 * 15/16"><math><mfrac><mn>2</mn><mn>5</mn></mfrac><mo>·</mo><mfrac><mn>15</mn><mn>16</mn></mfrac></math></span><span class="a"><math><mfrac><mn>3</mn><mn>8</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">1.4</span><span class="q" data-copy="5/6 : 10/9"><math><mfrac><mn>5</mn><mn>6</mn></mfrac><mo>÷</mo><mfrac><mn>10</mn><mn>9</mn></mfrac></math></span><span class="a"><math><mfrac><mn>3</mn><mn>4</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">1.5</span><span class="q" data-copy="1 3/4 + 2 5/8"><math><mn>1</mn><mfrac><mn>3</mn><mn>4</mn></mfrac><mo>+</mo><mn>2</mn><mfrac><mn>5</mn><mn>8</mn></mfrac></math></span><span class="a"><math><mn>4</mn><mfrac><mn>3</mn><mn>8</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">1.6</span><span class="q" data-copy="5/6 - 1/3 + 1/4"><math><mfrac><mn>5</mn><mn>6</mn></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></math></span><span class="a"><math><mfrac><mn>3</mn><mn>4</mn></mfrac></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Десятичные дроби</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">1.7</span><span class="q" data-copy="3,4 + 5,27"><math><mn>3,4</mn><mo>+</mo><mn>5,27</mn></math></span><span class="a"><math><mn>8,67</mn></math></span></div>
+          <div class="task"><span class="idx">1.8</span><span class="q" data-copy="12,5 - 7,84"><math><mn>12,5</mn><mo>−</mo><mn>7,84</mn></math></span><span class="a"><math><mn>4,66</mn></math></span></div>
+          <div class="task"><span class="idx">1.9</span><span class="q" data-copy="0,6 * 1,5"><math><mn>0,6</mn><mo>·</mo><mn>1,5</mn></math></span><span class="a"><math><mn>0,9</mn></math></span></div>
+          <div class="task"><span class="idx">1.10</span><span class="q" data-copy="3,6 : 0,4"><math><mn>3,6</mn><mo>÷</mo><mn>0,4</mn></math></span><span class="a"><math><mn>9</mn></math></span></div>
+          <div class="task"><span class="idx">1.11</span><span class="q" data-copy="6,3 : 0,7 - 2,4 * 0,5"><math><mn>6,3</mn><mo>÷</mo><mn>0,7</mn><mo>−</mo><mn>2,4</mn><mo>·</mo><mn>0,5</mn></math></span><span class="a"><math><mn>7,8</mn></math></span></div>
+          <div class="task"><span class="idx">1.12</span><span class="q" data-copy="0,08 * 250"><math><mn>0,08</mn><mo>·</mo><mn>250</mn></math></span><span class="a"><math><mn>20</mn></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Проценты</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">1.13</span><span class="q" data-copy="Найдите 12% от 350">Найдите 12% от 350</span><span class="a">42</span></div>
+          <div class="task"><span class="idx">1.14</span><span class="q" data-copy="Найдите 30% от 90">Найдите 30% от 90</span><span class="a">27</span></div>
+          <div class="task"><span class="idx">1.15</span><span class="q" data-copy="Число увеличили на 15%, стало 460. Найдите исходное число">Число увеличили на 15%, стало 460. Найдите исходное число</span><span class="a">400</span></div>
+          <div class="task"><span class="idx">1.16</span><span class="q" data-copy="Цену снизили на 20%, теперь товар стоит 960 руб. Сколько он стоил до снижения?">Цену снизили на 20%, теперь товар стоит 960 ₽. Сколько он стоил до снижения?</span><span class="a">1200 ₽</span></div>
+          <div class="task"><span class="idx">1.17</span><span class="q" data-copy="В классе 28 учеников, 25% — отличники. Сколько отличников?">В классе 28 учеников, 25% — отличники. Сколько отличников?</span><span class="a">7</span></div>
+          <div class="task"><span class="idx">1.18</span><span class="q" data-copy="Вклад 50 000 руб. положили под 8% годовых. Сколько будет через год?">Вклад 50 000 ₽ положили под 8% годовых. Сколько будет через год?</span><span class="a">54 000 ₽</span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Пропорции</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">1.19</span><span class="q" data-copy="Найдите x:  x/15 = 4/5">Найдите x:<math><mfrac><mi>x</mi><mn>15</mn></mfrac><mo>=</mo><mfrac><mn>4</mn><mn>5</mn></mfrac></math></span><span class="a"><math><mi>x</mi><mo>=</mo><mn>12</mn></math></span></div>
+          <div class="task"><span class="idx">1.20</span><span class="q" data-copy="Найдите x:  7/x = 21/9">Найдите x:<math><mfrac><mn>7</mn><mi>x</mi></mfrac><mo>=</mo><mfrac><mn>21</mn><mn>9</mn></mfrac></math></span><span class="a"><math><mi>x</mi><mo>=</mo><mn>3</mn></math></span></div>
+          <div class="task"><span class="idx">1.21</span><span class="q" data-copy="Масштаб карты 1:2 000 000. Расстояние на карте — 3,5 см. Чему равно реальное расстояние в км?">Масштаб карты 1∶2 000 000. Расстояние на карте — 3,5 см. Чему равно реальное расстояние в км?</span><span class="a">70 км</span></div>
+          <div class="task"><span class="idx">1.22</span><span class="q" data-copy="За 5 часов мастер собирает 15 деталей. Сколько деталей он соберёт за 8 часов при той же скорости?">За 5 часов мастер собирает 15 деталей. Сколько деталей он соберёт за 8 часов при той же скорости?</span><span class="a">24</span></div>
+          <div class="task"><span class="idx">1.23</span><span class="q" data-copy="Воду и сироп смешали в отношении 3:5. Сколько сиропа в смеси объёмом 40 л?">Воду и сироп смешали в отношении 3∶5. Сколько сиропа в смеси объёмом 40 л?</span><span class="a">25 л</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="t2">
+  <div class="block-header">
+    <span class="num">02</span>
+    <h2>Степени с любым показателем</h2>
+    <span class="time">1–2 занятия</span>
+  </div>
+
+  <div class="theory">
+    <h3>Основные свойства (уже знает — повторить быстро)</h3>
+    <div class="formula">
+      <div class="line"><math><msup><mi>a</mi><mi>m</mi></msup><mo>·</mo><msup><mi>a</mi><mi>n</mi></msup><mo>=</mo><msup><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mi>n</mi></mrow></msup></math></div>
+      <div class="line"><math><msup><mi>a</mi><mi>m</mi></msup><mo>:</mo><msup><mi>a</mi><mi>n</mi></msup><mo>=</mo><msup><mi>a</mi><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup></math></div>
+      <div class="line"><math><msup><mrow><mo>(</mo><msup><mi>a</mi><mi>m</mi></msup><mo>)</mo></mrow><mi>n</mi></msup><mo>=</mo><msup><mi>a</mi><mrow><mi>m</mi><mi>n</mi></mrow></msup></math></div>
+      <div class="line"><math><msup><mrow><mo>(</mo><mi>a</mi><mi>b</mi><mo>)</mo></mrow><mi>n</mi></msup><mo>=</mo><msup><mi>a</mi><mi>n</mi></msup><mo>·</mo><msup><mi>b</mi><mi>n</mi></msup></math></div>
+      <div class="line"><math><msup><mrow><mo>(</mo><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>)</mo></mrow><mi>n</mi></msup><mo>=</mo><mfrac><msup><mi>a</mi><mi>n</mi></msup><msup><mi>b</mi><mi>n</mi></msup></mfrac></math></div>
+    </div>
+
+    <h3>Новое: нулевой и отрицательный показатель</h3>
+    <div class="formula">
+      <div class="line"><math><msup><mi>a</mi><mn>0</mn></msup><mo>=</mo><mn>1</mn></math><span class="cmt">(a ≠ 0)</span></div>
+      <div class="line"><math><msup><mi>a</mi><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo>=</mo><mfrac><mn>1</mn><msup><mi>a</mi><mi>n</mi></msup></mfrac></math><span class="cmt">(a ≠ 0)</span></div>
+    </div>
+    <div class="note">Главная ловушка ОГЭ: <math><mo>−</mo><msup><mn>2</mn><mn>4</mn></msup></math> и <math><msup><mrow><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>4</mn></msup></math> — это разные числа. Без скобок минус не возводится в степень: первое равно −16, второе равно 16.</div>
+
+    <h3>Стандартный вид числа</h3>
+    <p>Запись числа в виде <math><mi>a</mi><mo>·</mo><msup><mn>10</mn><mi>n</mi></msup></math>, где 1 ≤ a &lt; 10.</p>
+    <div class="formula">
+      <div class="line"><math><mn>45000</mn><mo>=</mo><mn>4,5</mn><mo>·</mo><msup><mn>10</mn><mn>4</mn></msup></math></div>
+      <div class="line"><math><mn>0,00032</mn><mo>=</mo><mn>3,2</mn><mo>·</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></math></div>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-head">
+      <h3>Задания для урока</h3>
+      <button class="copy-btn">Скопировать вопросы</button>
+    </div>
+
+    <div class="tasks">
+      <div class="subgroup">
+        <p class="sublabel">Свойства степеней</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">2.1</span><span class="q" data-copy="2^3 * 2^5"><math><msup><mn>2</mn><mn>3</mn></msup><mo>·</mo><msup><mn>2</mn><mn>5</mn></msup></math></span><span class="a"><math><msup><mn>2</mn><mn>8</mn></msup><mo>=</mo><mn>256</mn></math></span></div>
+          <div class="task"><span class="idx">2.2</span><span class="q" data-copy="3^7 : 3^4"><math><msup><mn>3</mn><mn>7</mn></msup><mo>:</mo><msup><mn>3</mn><mn>4</mn></msup></math></span><span class="a"><math><msup><mn>3</mn><mn>3</mn></msup><mo>=</mo><mn>27</mn></math></span></div>
+          <div class="task"><span class="idx">2.3</span><span class="q" data-copy="(5^2)^3"><math><msup><mrow><mo>(</mo><msup><mn>5</mn><mn>2</mn></msup><mo>)</mo></mrow><mn>3</mn></msup></math></span><span class="a"><math><msup><mn>5</mn><mn>6</mn></msup><mo>=</mo><mn>15625</mn></math></span></div>
+          <div class="task"><span class="idx">2.4</span><span class="q" data-copy="(2^3)^2 * 2^(-4)"><math><msup><mrow><mo>(</mo><msup><mn>2</mn><mn>3</mn></msup><mo>)</mo></mrow><mn>2</mn></msup><mo>·</mo><msup><mn>2</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></math></span><span class="a"><math><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>4</mn></math></span></div>
+          <div class="task"><span class="idx">2.5</span><span class="q" data-copy="6^5 : 6^3 * 6^(-1)"><math><msup><mn>6</mn><mn>5</mn></msup><mo>:</mo><msup><mn>6</mn><mn>3</mn></msup><mo>·</mo><msup><mn>6</mn><mrow><mo>−</mo><mn>1</mn></mrow></msup></math></span><span class="a"><math><mn>6</mn></math></span></div>
+          <div class="task"><span class="idx">2.6</span><span class="q" data-copy="Упростите: (a^3)^4 : a^8">Упростите:<math><msup><mrow><mo>(</mo><msup><mi>a</mi><mn>3</mn></msup><mo>)</mo></mrow><mn>4</mn></msup><mo>:</mo><msup><mi>a</mi><mn>8</mn></msup></math></span><span class="a"><math><msup><mi>a</mi><mn>4</mn></msup></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Нулевой и отрицательный показатель</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">2.7</span><span class="q" data-copy="3^(-2)"><math><msup><mn>3</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></math></span><span class="a"><math><mfrac><mn>1</mn><mn>9</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">2.8</span><span class="q" data-copy="5^0 + 4^(-1)"><math><msup><mn>5</mn><mn>0</mn></msup><mo>+</mo><msup><mn>4</mn><mrow><mo>−</mo><mn>1</mn></mrow></msup></math></span><span class="a"><math><mfrac><mn>5</mn><mn>4</mn></mfrac><mo>=</mo><mn>1,25</mn></math></span></div>
+          <div class="task"><span class="idx">2.9</span><span class="q" data-copy="2^(-4) * 2^6"><math><msup><mn>2</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup><mo>·</mo><msup><mn>2</mn><mn>6</mn></msup></math></span><span class="a"><math><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>4</mn></math></span></div>
+          <div class="task"><span class="idx">2.10</span><span class="q" data-copy="(1/3)^(-2)"><math><msup><mrow><mo>(</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup></math></span><span class="a"><math><mn>9</mn></math></span></div>
+          <div class="task"><span class="idx">2.11</span><span class="q" data-copy="7^(-1) + 7^(-2)"><math><msup><mn>7</mn><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msup><mn>7</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></math></span><span class="a"><math><mfrac><mn>8</mn><mn>49</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">2.12</span><span class="q" data-copy="Сравните: 2^(-3) и 3^(-2)">Сравните:<math><msup><mn>2</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></math>и<math><msup><mn>3</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></math></span><span class="a"><math><msup><mn>2</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>&gt;</mo><msup><mn>3</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Стандартный вид числа</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">2.13</span><span class="q" data-copy="Запишите в стандартном виде: 3 800 000">Запишите в стандартном виде: 3 800 000</span><span class="a"><math><mn>3,8</mn><mo>·</mo><msup><mn>10</mn><mn>6</mn></msup></math></span></div>
+          <div class="task"><span class="idx">2.14</span><span class="q" data-copy="Запишите в стандартном виде: 0,000029">Запишите в стандартном виде: 0,000029</span><span class="a"><math><mn>2,9</mn><mo>·</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></math></span></div>
+          <div class="task"><span class="idx">2.15</span><span class="q" data-copy="(2 * 10^3) * (3 * 10^(-5))"><math><mrow><mo>(</mo><mn>2</mn><mo>·</mo><msup><mn>10</mn><mn>3</mn></msup><mo>)</mo></mrow><mo>·</mo><mrow><mo>(</mo><mn>3</mn><mo>·</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup><mo>)</mo></mrow></math></span><span class="a"><math><mn>6</mn><mo>·</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>=</mo><mn>0,06</mn></math></span></div>
+          <div class="task"><span class="idx">2.16</span><span class="q" data-copy="(8 * 10^6) : (4 * 10^2)"><math><mrow><mo>(</mo><mn>8</mn><mo>·</mo><msup><mn>10</mn><mn>6</mn></msup><mo>)</mo></mrow><mo>:</mo><mrow><mo>(</mo><mn>4</mn><mo>·</mo><msup><mn>10</mn><mn>2</mn></msup><mo>)</mo></mrow></math></span><span class="a"><math><mn>2</mn><mo>·</mo><msup><mn>10</mn><mn>4</mn></msup><mo>=</mo><mn>20000</mn></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Найдите значение выражения (формат №8 ОГЭ)</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">2.17</span><span class="q" data-copy="5^(-8) * (5^2)^5"><math><msup><mn>5</mn><mrow><mo>−</mo><mn>8</mn></mrow></msup><mo>·</mo><msup><mrow><mo>(</mo><msup><mn>5</mn><mn>2</mn></msup><mo>)</mo></mrow><mn>5</mn></msup></math></span><span class="a"><math><msup><mn>5</mn><mn>2</mn></msup><mo>=</mo><mn>25</mn></math></span></div>
+          <div class="task"><span class="idx">2.18</span><span class="q" data-copy="3^5 * 3^(-7) : 3^(-4)"><math><msup><mn>3</mn><mn>5</mn></msup><mo>·</mo><msup><mn>3</mn><mrow><mo>−</mo><mn>7</mn></mrow></msup><mo>:</mo><msup><mn>3</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></math></span><span class="a"><math><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mn>9</mn></math></span></div>
+          <div class="task"><span class="idx">2.19</span><span class="q" data-copy="(2^(-3))^2 * 2^8"><math><msup><mrow><mo>(</mo><msup><mn>2</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>)</mo></mrow><mn>2</mn></msup><mo>·</mo><msup><mn>2</mn><mn>8</mn></msup></math></span><span class="a"><math><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>4</mn></math></span></div>
+          <div class="task"><span class="idx">2.20</span><span class="q" data-copy="7^2 * 7^(-5) * 7^3"><math><msup><mn>7</mn><mn>2</mn></msup><mo>·</mo><msup><mn>7</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup><mo>·</mo><msup><mn>7</mn><mn>3</mn></msup></math></span><span class="a"><math><msup><mn>7</mn><mn>0</mn></msup><mo>=</mo><mn>1</mn></math></span></div>
+          <div class="task"><span class="idx">2.21</span><span class="q" data-copy="(6^4 : 6^2)^(-1)"><math><msup><mrow><mo>(</mo><msup><mn>6</mn><mn>4</mn></msup><mo>:</mo><msup><mn>6</mn><mn>2</mn></msup><mo>)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></math></span><span class="a"><math><mfrac><mn>1</mn><mn>36</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">2.22</span><span class="q" data-copy="10^(-3) * 10^5 : 10"><math><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>·</mo><msup><mn>10</mn><mn>5</mn></msup><mo>:</mo><mn>10</mn></math></span><span class="a"><math><mn>10</mn></math></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="t3">
+  <div class="block-header">
+    <span class="num">03</span>
+    <h2>Корни и их свойства</h2>
+    <span class="time">2 занятия</span>
+  </div>
+
+  <div class="theory">
+    <h3>Определение и область допустимых значений</h3>
+    <p><math><msqrt><mi>a</mi></msqrt></math> определён только при a ≥ 0, и сам всегда неотрицателен.</p>
+
+    <h3>Свойства арифметического квадратного корня</h3>
+    <div class="formula">
+      <div class="line"><math><msqrt><mrow><mi>a</mi><mi>b</mi></mrow></msqrt><mo>=</mo><msqrt><mi>a</mi></msqrt><mo>·</mo><msqrt><mi>b</mi></msqrt></math><span class="cmt">(a ≥ 0, b ≥ 0)</span></div>
+      <div class="line"><math><msqrt><mfrac><mi>a</mi><mi>b</mi></mfrac></msqrt><mo>=</mo><mfrac><msqrt><mi>a</mi></msqrt><msqrt><mi>b</mi></msqrt></mfrac></math><span class="cmt">(a ≥ 0, b &gt; 0)</span></div>
+      <div class="line"><math><msqrt><msup><mi>a</mi><mn>2</mn></msup></msqrt><mo>=</mo><mo>|</mo><mi>a</mi><mo>|</mo></math></div>
+      <div class="line"><math><msup><mrow><mo>(</mo><msqrt><mi>a</mi></msqrt><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mi>a</mi></math><span class="cmt">(a ≥ 0)</span></div>
+    </div>
+
+    <h3>Вынесение и внесение множителя</h3>
+    <div class="formula">
+      <div class="line"><math><msqrt><mn>12</mn></msqrt><mo>=</mo><msqrt><mrow><mn>4</mn><mo>·</mo><mn>3</mn></mrow></msqrt><mo>=</mo><mn>2</mn><msqrt><mn>3</mn></msqrt></math></div>
+      <div class="line"><math><mn>5</mn><msqrt><mn>2</mn></msqrt><mo>=</mo><msqrt><mrow><mn>25</mn><mo>·</mo><mn>2</mn></mrow></msqrt><mo>=</mo><msqrt><mn>50</mn></msqrt></math></div>
+    </div>
+
+    <h3>Освобождение от иррациональности в знаменателе</h3>
+    <div class="formula">
+      <div class="line"><math><mfrac><mn>1</mn><msqrt><mi>a</mi></msqrt></mfrac><mo>=</mo><mfrac><msqrt><mi>a</mi></msqrt><mi>a</mi></mfrac></math></div>
+      <div class="line"><math><mfrac><mn>1</mn><mrow><msqrt><mi>a</mi></msqrt><mo>−</mo><msqrt><mi>b</mi></msqrt></mrow></mfrac><mo>=</mo><mfrac><mrow><msqrt><mi>a</mi></msqrt><mo>+</mo><msqrt><mi>b</mi></msqrt></mrow><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mfrac></math></div>
+    </div>
+    <div class="note">Частая тема заданий №8–9. Обязательно тренировать умножение на «сопряжённое» выражение — это ключевой приём.</div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-head">
+      <h3>Задания для урока</h3>
+      <button class="copy-btn">Скопировать вопросы</button>
+    </div>
+
+    <div class="tasks">
+      <div class="subgroup">
+        <p class="sublabel">Простейшие вычисления</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">3.1</span><span class="q" data-copy="√81"><math><msqrt><mn>81</mn></msqrt></math></span><span class="a"><math><mn>9</mn></math></span></div>
+          <div class="task"><span class="idx">3.2</span><span class="q" data-copy="√0,25"><math><msqrt><mn>0,25</mn></msqrt></math></span><span class="a"><math><mn>0,5</mn></math></span></div>
+          <div class="task"><span class="idx">3.3</span><span class="q" data-copy="√(4/25)"><math><msqrt><mfrac><mn>4</mn><mn>25</mn></mfrac></msqrt></math></span><span class="a"><math><mfrac><mn>2</mn><mn>5</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">3.4</span><span class="q" data-copy="√196"><math><msqrt><mn>196</mn></msqrt></math></span><span class="a"><math><mn>14</mn></math></span></div>
+          <div class="task"><span class="idx">3.5</span><span class="q" data-copy="√1,44"><math><msqrt><mn>1,44</mn></msqrt></math></span><span class="a"><math><mn>1,2</mn></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Вынесение / внесение множителя</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">3.6</span><span class="q" data-copy="√50"><math><msqrt><mn>50</mn></msqrt></math></span><span class="a"><math><mn>5</mn><msqrt><mn>2</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.7</span><span class="q" data-copy="√72"><math><msqrt><mn>72</mn></msqrt></math></span><span class="a"><math><mn>6</mn><msqrt><mn>2</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.8</span><span class="q" data-copy="√98"><math><msqrt><mn>98</mn></msqrt></math></span><span class="a"><math><mn>7</mn><msqrt><mn>2</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.9</span><span class="q" data-copy="Внесите под корень: 3√7">Внесите под корень:<math><mn>3</mn><msqrt><mn>7</mn></msqrt></math></span><span class="a"><math><msqrt><mn>63</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.10</span><span class="q" data-copy="Внесите под корень: 4√5">Внесите под корень:<math><mn>4</mn><msqrt><mn>5</mn></msqrt></math></span><span class="a"><math><msqrt><mn>80</mn></msqrt></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Действия с корнями</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">3.11</span><span class="q" data-copy="√8 + √18 - √2"><math><msqrt><mn>8</mn></msqrt><mo>+</mo><msqrt><mn>18</mn></msqrt><mo>−</mo><msqrt><mn>2</mn></msqrt></math></span><span class="a"><math><mn>4</mn><msqrt><mn>2</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.12</span><span class="q" data-copy="2√3 * 5√3"><math><mn>2</mn><msqrt><mn>3</mn></msqrt><mo>·</mo><mn>5</mn><msqrt><mn>3</mn></msqrt></math></span><span class="a"><math><mn>30</mn></math></span></div>
+          <div class="task"><span class="idx">3.13</span><span class="q" data-copy="√45 - √20 + √5"><math><msqrt><mn>45</mn></msqrt><mo>−</mo><msqrt><mn>20</mn></msqrt><mo>+</mo><msqrt><mn>5</mn></msqrt></math></span><span class="a"><math><mn>2</mn><msqrt><mn>5</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.14</span><span class="q" data-copy="(√7)^2 - (√3)^2"><math><msup><mrow><mo>(</mo><msqrt><mn>7</mn></msqrt><mo>)</mo></mrow><mn>2</mn></msup><mo>−</mo><msup><mrow><mo>(</mo><msqrt><mn>3</mn></msqrt><mo>)</mo></mrow><mn>2</mn></msup></math></span><span class="a"><math><mn>4</mn></math></span></div>
+          <div class="task"><span class="idx">3.15</span><span class="q" data-copy="√6 * √24"><math><msqrt><mn>6</mn></msqrt><mo>·</mo><msqrt><mn>24</mn></msqrt></math></span><span class="a"><math><mn>12</mn></math></span></div>
+          <div class="task"><span class="idx">3.16</span><span class="q" data-copy="(2√5)^2"><math><msup><mrow><mo>(</mo><mn>2</mn><msqrt><mn>5</mn></msqrt><mo>)</mo></mrow><mn>2</mn></msup></math></span><span class="a"><math><mn>20</mn></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Освобождение от иррациональности</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">3.17</span><span class="q" data-copy="1/√11"><math><mfrac><mn>1</mn><msqrt><mn>11</mn></msqrt></mfrac></math></span><span class="a"><math><mfrac><msqrt><mn>11</mn></msqrt><mn>11</mn></mfrac></math></span></div>
+          <div class="task"><span class="idx">3.18</span><span class="q" data-copy="10/√5"><math><mfrac><mn>10</mn><msqrt><mn>5</mn></msqrt></mfrac></math></span><span class="a"><math><mn>2</mn><msqrt><mn>5</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.19</span><span class="q" data-copy="4/(√7 - √3)"><math><mfrac><mn>4</mn><mrow><msqrt><mn>7</mn></msqrt><mo>−</mo><msqrt><mn>3</mn></msqrt></mrow></mfrac></math></span><span class="a"><math><msqrt><mn>7</mn></msqrt><mo>+</mo><msqrt><mn>3</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.20</span><span class="q" data-copy="6/(√10 + √7)"><math><mfrac><mn>6</mn><mrow><msqrt><mn>10</mn></msqrt><mo>+</mo><msqrt><mn>7</mn></msqrt></mrow></mfrac></math></span><span class="a"><math><mn>2</mn><mrow><mo>(</mo><msqrt><mn>10</mn></msqrt><mo>−</mo><msqrt><mn>7</mn></msqrt><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">3.21</span><span class="q" data-copy="(√5 - 1)(√5 + 1)"><math><mrow><mo>(</mo><msqrt><mn>5</mn></msqrt><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mrow><mo>(</mo><msqrt><mn>5</mn></msqrt><mo>+</mo><mn>1</mn><mo>)</mo></mrow></math></span><span class="a"><math><mn>4</mn></math></span></div>
+          <div class="task"><span class="idx">3.22</span><span class="q" data-copy="(3 - √2)(3 + √2)"><math><mrow><mo>(</mo><mn>3</mn><mo>−</mo><msqrt><mn>2</mn></msqrt><mo>)</mo></mrow><mrow><mo>(</mo><mn>3</mn><mo>+</mo><msqrt><mn>2</mn></msqrt><mo>)</mo></mrow></math></span><span class="a"><math><mn>7</mn></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Найдите значение выражения (формат №8 ОГЭ)</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">3.23</span><span class="q" data-copy="(√12 + 3)(√12 - 3)"><math><mrow><mo>(</mo><msqrt><mn>12</mn></msqrt><mo>+</mo><mn>3</mn><mo>)</mo></mrow><mrow><mo>(</mo><msqrt><mn>12</mn></msqrt><mo>−</mo><mn>3</mn><mo>)</mo></mrow></math></span><span class="a"><math><mn>3</mn></math></span></div>
+          <div class="task"><span class="idx">3.24</span><span class="q" data-copy="(√20 + √5) * √5"><math><mrow><mo>(</mo><msqrt><mn>20</mn></msqrt><mo>+</mo><msqrt><mn>5</mn></msqrt><mo>)</mo></mrow><mo>·</mo><msqrt><mn>5</mn></msqrt></math></span><span class="a"><math><mn>15</mn></math></span></div>
+          <div class="task"><span class="idx">3.25</span><span class="q" data-copy="√3 * (√12 - √3)"><math><msqrt><mn>3</mn></msqrt><mo>·</mo><mrow><mo>(</mo><msqrt><mn>12</mn></msqrt><mo>−</mo><msqrt><mn>3</mn></msqrt><mo>)</mo></mrow></math></span><span class="a"><math><mn>3</mn></math></span></div>
+          <div class="task"><span class="idx">3.26</span><span class="q" data-copy="(2√2 + 1)^2"><math><msup><mrow><mo>(</mo><mn>2</mn><msqrt><mn>2</mn></msqrt><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup></math></span><span class="a"><math><mn>9</mn><mo>+</mo><mn>4</mn><msqrt><mn>2</mn></msqrt></math></span></div>
+          <div class="task"><span class="idx">3.27</span><span class="q" data-copy="√50 : √2"><math><msqrt><mn>50</mn></msqrt><mo>:</mo><msqrt><mn>2</mn></msqrt></math></span><span class="a"><math><mn>5</mn></math></span></div>
+          <div class="task"><span class="idx">3.28</span><span class="q" data-copy="(√7 + 2)(√7 - 2)"><math><mrow><mo>(</mo><msqrt><mn>7</mn></msqrt><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mrow><mo>(</mo><msqrt><mn>7</mn></msqrt><mo>−</mo><mn>2</mn><mo>)</mo></mrow></math></span><span class="a"><math><mn>3</mn></math></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="t4">
+  <div class="block-header">
+    <span class="num">04</span>
+    <h2>Формулы сокращённого умножения</h2>
+    <span class="time">1–2 занятия</span>
+  </div>
+
+  <div class="theory">
+    <h3>Базовые формулы (наизусть!)</h3>
+    <div class="formula">
+      <div class="line"><math><msup><mrow><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></math></div>
+      <div class="line"><math><msup><mrow><mo>(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></math></div>
+      <div class="line"><math><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><mrow><mo>(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow><mrow><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow></math></div>
+    </div>
+
+    <h3>Формулы для куба (для сильных учеников)</h3>
+    <div class="formula">
+      <div class="line"><math><msup><mrow><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow><mn>3</mn></msup><mo>=</mo><msup><mi>a</mi><mn>3</mn></msup><mo>+</mo><mn>3</mn><msup><mi>a</mi><mn>2</mn></msup><mi>b</mi><mo>+</mo><mn>3</mn><mi>a</mi><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>3</mn></msup></math></div>
+      <div class="line"><math><msup><mi>a</mi><mn>3</mn></msup><mo>+</mo><msup><mi>b</mi><mn>3</mn></msup><mo>=</mo><mrow><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow><mrow><mo>(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>)</mo></mrow></math></div>
+      <div class="line"><math><msup><mi>a</mi><mn>3</mn></msup><mo>−</mo><msup><mi>b</mi><mn>3</mn></msup><mo>=</mo><mrow><mo>(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow><mrow><mo>(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>)</mo></mrow></math></div>
+    </div>
+    <div class="note">Метод: всегда проверять формулу «в обе стороны» — раскрыть скобки и свернуть обратно. Так закрепляется автоматизм.</div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-head">
+      <h3>Задания для урока</h3>
+      <button class="copy-btn">Скопировать вопросы</button>
+    </div>
+
+    <div class="tasks">
+      <div class="subgroup">
+        <p class="sublabel">Квадрат суммы и разности</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">4.1</span><span class="q" data-copy="Раскройте скобки: (x + 7)^2">Раскройте:<math><msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>7</mn><mo>)</mo></mrow><mn>2</mn></msup></math></span><span class="a"><math><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>14</mn><mi>x</mi><mo>+</mo><mn>49</mn></math></span></div>
+          <div class="task"><span class="idx">4.2</span><span class="q" data-copy="Раскройте скобки: (3y - 2)^2">Раскройте:<math><msup><mrow><mo>(</mo><mn>3</mn><mi>y</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup></math></span><span class="a"><math><mn>9</mn><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>12</mn><mi>y</mi><mo>+</mo><mn>4</mn></math></span></div>
+          <div class="task"><span class="idx">4.3</span><span class="q" data-copy="Раскройте скобки: (a + 5b)^2">Раскройте:<math><msup><mrow><mo>(</mo><mi>a</mi><mo>+</mo><mn>5</mn><mi>b</mi><mo>)</mo></mrow><mn>2</mn></msup></math></span><span class="a"><math><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>10</mn><mi>a</mi><mi>b</mi><mo>+</mo><mn>25</mn><msup><mi>b</mi><mn>2</mn></msup></math></span></div>
+          <div class="task"><span class="idx">4.4</span><span class="q" data-copy="Раскройте скобки: (4 - 3x)^2">Раскройте:<math><msup><mrow><mo>(</mo><mn>4</mn><mo>−</mo><mn>3</mn><mi>x</mi><mo>)</mo></mrow><mn>2</mn></msup></math></span><span class="a"><math><mn>9</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>24</mn><mi>x</mi><mo>+</mo><mn>16</mn></math></span></div>
+          <div class="task"><span class="idx">4.5</span><span class="q" data-copy="Вычислите без калькулятора: 99^2">Вычислите без калькулятора:<math><msup><mn>99</mn><mn>2</mn></msup></math></span><span class="a"><math><mn>9801</mn></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Разность квадратов</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">4.6</span><span class="q" data-copy="Разложите на множители: 81x^2 - 25">Разложите:<math><mn>81</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>25</mn></math></span><span class="a"><math><mrow><mo>(</mo><mn>9</mn><mi>x</mi><mo>−</mo><mn>5</mn><mo>)</mo></mrow><mrow><mo>(</mo><mn>9</mn><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">4.7</span><span class="q" data-copy="Разложите на множители: x^2 - 36">Разложите:<math><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>36</mn></math></span><span class="a"><math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>6</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>6</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">4.8</span><span class="q" data-copy="Разложите на множители: 4a^2 - 49b^2">Разложите:<math><mn>4</mn><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mn>49</mn><msup><mi>b</mi><mn>2</mn></msup></math></span><span class="a"><math><mrow><mo>(</mo><mn>2</mn><mi>a</mi><mo>−</mo><mn>7</mn><mi>b</mi><mo>)</mo></mrow><mrow><mo>(</mo><mn>2</mn><mi>a</mi><mo>+</mo><mn>7</mn><mi>b</mi><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">4.9</span><span class="q" data-copy="Вычислите без калькулятора: 998 * 1002">Вычислите без калькулятора:<math><mn>998</mn><mo>·</mo><mn>1002</mn></math></span><span class="a"><math><mn>999996</mn></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Свёртывание в квадрат</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">4.10</span><span class="q" data-copy="Сверните: 16x^2 + 40x + 25">Сверните:<math><mn>16</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>40</mn><mi>x</mi><mo>+</mo><mn>25</mn></math></span><span class="a"><math><msup><mrow><mo>(</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow><mn>2</mn></msup></math></span></div>
+          <div class="task"><span class="idx">4.11</span><span class="q" data-copy="Сверните: 4a^2 - 20ab + 25b^2">Сверните:<math><mn>4</mn><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mn>20</mn><mi>a</mi><mi>b</mi><mo>+</mo><mn>25</mn><msup><mi>b</mi><mn>2</mn></msup></math></span><span class="a"><math><msup><mrow><mo>(</mo><mn>2</mn><mi>a</mi><mo>−</mo><mn>5</mn><mi>b</mi><mo>)</mo></mrow><mn>2</mn></msup></math></span></div>
+          <div class="task"><span class="idx">4.12</span><span class="q" data-copy="Сверните: x^2 + 2x + 1">Сверните:<math><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></math></span><span class="a"><math><msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup></math></span></div>
+          <div class="task"><span class="idx">4.13</span><span class="q" data-copy="Сверните: 9y^2 + 30y + 25">Сверните:<math><mn>9</mn><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mn>30</mn><mi>y</mi><mo>+</mo><mn>25</mn></math></span><span class="a"><math><msup><mrow><mo>(</mo><mn>3</mn><mi>y</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow><mn>2</mn></msup></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Куб суммы и разности — для сильных</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">4.14</span><span class="q" data-copy="Раскройте скобки: (x + 2)^3">Раскройте:<math><msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>3</mn></msup></math></span><span class="a"><math><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>12</mn><mi>x</mi><mo>+</mo><mn>8</mn></math></span></div>
+          <div class="task"><span class="idx">4.15</span><span class="q" data-copy="Разложите на множители: x^3 - 8">Разложите:<math><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>8</mn></math></span><span class="a"><math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mrow><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>4</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">4.16</span><span class="q" data-copy="Разложите на множители: 27a^3 + 1">Разложите:<math><mn>27</mn><msup><mi>a</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn></math></span><span class="a"><math><mrow><mo>(</mo><mn>3</mn><mi>a</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mrow><mo>(</mo><mn>9</mn><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn><mi>a</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">4.17</span><span class="q" data-copy="Раскройте скобки: (2 - x)^3">Раскройте:<math><msup><mrow><mo>(</mo><mn>2</mn><mo>−</mo><mi>x</mi><mo>)</mo></mrow><mn>3</mn></msup></math></span><span class="a"><math><mn>8</mn><mo>−</mo><mn>12</mn><mi>x</mi><mo>+</mo><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><msup><mi>x</mi><mn>3</mn></msup></math></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="t5">
+  <div class="block-header">
+    <span class="num">05</span>
+    <h2>Разложение на множители</h2>
+    <span class="time">1 занятие</span>
+  </div>
+
+  <div class="theory">
+    <h3>Способы разложения</h3>
+    <ul>
+      <li><b>Вынесение общего множителя:</b> <math><mi>a</mi><mi>b</mi><mo>+</mo><mi>a</mi><mi>c</mi><mo>=</mo><mi>a</mi><mrow><mo>(</mo><mi>b</mi><mo>+</mo><mi>c</mi><mo>)</mo></mrow></math></li>
+      <li><b>Группировка:</b> <math><mi>a</mi><mi>x</mi><mo>+</mo><mi>a</mi><mi>y</mi><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>=</mo><mrow><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo></mrow></math></li>
+      <li><b>По формулам сокращённого умножения</b> — см. блок 4</li>
+      <li><b>Через корни квадратного трёхчлена:</b> <math><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>=</mo><mi>a</mi><mrow><mo>(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></mrow></math></li>
+    </ul>
+    <div class="formula">
+      <div class="line"><math><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn><mo>=</mo><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow></math></div>
+      <div class="line"><span class="cmt">корни найдены по теореме Виета или через дискриминант</span></div>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-head">
+      <h3>Задания для урока</h3>
+      <button class="copy-btn">Скопировать вопросы</button>
+    </div>
+
+    <div class="tasks">
+      <div class="subgroup">
+        <p class="sublabel">Общий множитель</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">5.1</span><span class="q" data-copy="Разложите на множители: 8x^3 - 12x^2">Разложите:<math><mn>8</mn><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>12</mn><msup><mi>x</mi><mn>2</mn></msup></math></span><span class="a"><math><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.2</span><span class="q" data-copy="Разложите на множители: 5a^2b + 15ab^2">Разложите:<math><mn>5</mn><msup><mi>a</mi><mn>2</mn></msup><mi>b</mi><mo>+</mo><mn>15</mn><mi>a</mi><msup><mi>b</mi><mn>2</mn></msup></math></span><span class="a"><math><mn>5</mn><mi>a</mi><mi>b</mi><mrow><mo>(</mo><mi>a</mi><mo>+</mo><mn>3</mn><mi>b</mi><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.3</span><span class="q" data-copy="Разложите на множители: 6xy - 9x">Разложите:<math><mn>6</mn><mi>x</mi><mi>y</mi><mo>−</mo><mn>9</mn><mi>x</mi></math></span><span class="a"><math><mn>3</mn><mi>x</mi><mrow><mo>(</mo><mn>2</mn><mi>y</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.4</span><span class="q" data-copy="Разложите на множители: 14m^3n^2 - 21m^2n">Разложите:<math><mn>14</mn><msup><mi>m</mi><mn>3</mn></msup><msup><mi>n</mi><mn>2</mn></msup><mo>−</mo><mn>21</mn><msup><mi>m</mi><mn>2</mn></msup><mi>n</mi></math></span><span class="a"><math><mn>7</mn><msup><mi>m</mi><mn>2</mn></msup><mi>n</mi><mrow><mo>(</mo><mn>2</mn><mi>m</mi><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Группировка</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">5.5</span><span class="q" data-copy="Разложите на множители: ax + ay - bx - by">Разложите:<math><mi>a</mi><mi>x</mi><mo>+</mo><mi>a</mi><mi>y</mi><mo>−</mo><mi>b</mi><mi>x</mi><mo>−</mo><mi>b</mi><mi>y</mi></math></span><span class="a"><math><mrow><mo>(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.6</span><span class="q" data-copy="Разложите на множители: x^3 + x^2 - x - 1">Разложите:<math><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mo>−</mo><mn>1</mn></math></span><span class="a"><math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup></math></span></div>
+          <div class="task"><span class="idx">5.7</span><span class="q" data-copy="Разложите на множители: 2m^2 - 4mn + 3m - 6n">Разложите:<math><mn>2</mn><msup><mi>m</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>m</mi><mi>n</mi><mo>+</mo><mn>3</mn><mi>m</mi><mo>−</mo><mn>6</mn><mi>n</mi></math></span><span class="a"><math><mrow><mo>(</mo><mn>2</mn><mi>m</mi><mo>+</mo><mn>3</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>m</mi><mo>−</mo><mn>2</mn><mi>n</mi><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.8</span><span class="q" data-copy="Разложите на множители: xy + 3x - 2y - 6">Разложите:<math><mi>x</mi><mi>y</mi><mo>+</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>2</mn><mi>y</mi><mo>−</mo><mn>6</mn></math></span><span class="a"><math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>y</mi><mo>+</mo><mn>3</mn><mo>)</mo></mrow></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Через корни квадратного трёхчлена</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">5.9</span><span class="q" data-copy="Разложите на множители: x^2 - 9x + 20">Разложите:<math><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn><mi>x</mi><mo>+</mo><mn>20</mn></math></span><span class="a"><math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>5</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.10</span><span class="q" data-copy="Разложите на множители: x^2 + 2x - 15">Разложите:<math><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>15</mn></math></span><span class="a"><math><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.11</span><span class="q" data-copy="Разложите на множители: 2x^2 - 7x + 3">Разложите:<math><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>7</mn><mi>x</mi><mo>+</mo><mn>3</mn></math></span><span class="a"><math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.12</span><span class="q" data-copy="Разложите на множители: 3x^2 + 5x - 2">Разложите:<math><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>5</mn><mi>x</mi><mo>−</mo><mn>2</mn></math></span><span class="a"><math><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">5.13</span><span class="q" data-copy="Разложите на множители: x^2 - x - 12">Разложите:<math><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mo>−</mo><mn>12</mn></math></span><span class="a"><math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo>)</mo></mrow></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Сокращение дробей через разложение</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">5.14</span><span class="q" data-copy="Сократите: (x^2 - 16)/(x^2 + 4x)">Сократите:<math><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>16</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mi>x</mi></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow><mi>x</mi></mfrac></math></span></div>
+          <div class="task"><span class="idx">5.15</span><span class="q" data-copy="Сократите: (x^2 - 5x + 6)/(x^2 - 4)">Сократите:<math><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">5.16</span><span class="q" data-copy="Сократите: (2x^2 + 2x)/(x^2 - 1)">Сократите:<math><mfrac><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">5.17</span><span class="q" data-copy="Сократите: (a^2 - ab)/(a^2 - b^2)">Сократите:<math><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mi>a</mi><mi>b</mi></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></math></span><span class="a"><math><mfrac><mi>a</mi><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mfrac></math></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="t6">
+  <div class="block-header">
+    <span class="num">06</span>
+    <h2>Алгебраические дроби</h2>
+    <span class="time">1–2 занятия</span>
+  </div>
+
+  <div class="theory">
+    <h3>Действия с алгебраическими дробями</h3>
+    <p>Правила те же, что для обычных дробей, но перед действием обязательно разложить числитель и знаменатель на множители.</p>
+    <div class="formula">
+      <div class="line"><math><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>±</mo><mfrac><mi>c</mi><mi>d</mi></mfrac><mo>=</mo><mfrac><mrow><mi>a</mi><mi>d</mi><mo>±</mo><mi>b</mi><mi>c</mi></mrow><mrow><mi>b</mi><mi>d</mi></mrow></mfrac></math></div>
+      <div class="line"><math><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>·</mo><mfrac><mi>c</mi><mi>d</mi></mfrac><mo>=</mo><mfrac><mrow><mi>a</mi><mi>c</mi></mrow><mrow><mi>b</mi><mi>d</mi></mrow></mfrac></math></div>
+      <div class="line"><math><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>÷</mo><mfrac><mi>c</mi><mi>d</mi></mfrac><mo>=</mo><mfrac><mrow><mi>a</mi><mi>d</mi></mrow><mrow><mi>b</mi><mi>c</mi></mrow></mfrac></math></div>
+    </div>
+    <div class="note">Ключевое умение для ОГЭ: перед сложением и вычитанием разложить знаменатели, найти общий знаменатель, и не забывать про область допустимых значений — знаменатель не равен нулю.</div>
+  </div>
+
+  <div class="practice">
+    <div class="practice-head">
+      <h3>Задания для урока</h3>
+      <button class="copy-btn">Скопировать вопросы</button>
+    </div>
+
+    <div class="tasks">
+      <div class="subgroup">
+        <p class="sublabel">Сокращение</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">6.1</span><span class="q" data-copy="Сократите: (x^2 - 4)/(x^2 + 4x + 4)">Сократите:<math><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>4</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.2</span><span class="q" data-copy="Сократите: (a^2 - 9b^2)/(a^2 + 3ab)">Сократите:<math><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn><msup><mi>b</mi><mn>2</mn></msup></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn><mi>a</mi><mi>b</mi></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>a</mi><mo>−</mo><mn>3</mn><mi>b</mi></mrow><mi>a</mi></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.3</span><span class="q" data-copy="Сократите: (9 - x^2)/(x^2 - 6x + 9)">Сократите:<math><mfrac><mrow><mn>9</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>6</mn><mi>x</mi><mo>+</mo><mn>9</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow><mrow><mn>3</mn><mo>−</mo><mi>x</mi></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.4</span><span class="q" data-copy="Сократите: (x^3 - x)/(x^2 - 1)">Сократите:<math><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac></math></span><span class="a"><math><mi>x</mi></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Сложение и вычитание</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">6.5</span><span class="q" data-copy="Выполните: 2/(x + 3) + 3/(x - 3)">Выполните:<math><mfrac><mn>2</mn><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac><mo>+</mo><mfrac><mn>3</mn><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mn>5</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.6</span><span class="q" data-copy="Выполните: 5/(x - 2) - 2/(x + 2)">Выполните:<math><mfrac><mn>5</mn><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></mfrac><mo>−</mo><mfrac><mn>2</mn><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mn>14</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.7</span><span class="q" data-copy="Выполните: 1/x + 1/(x + 1)">Выполните:<math><mfrac><mn>1</mn><mi>x</mi></mfrac><mo>+</mo><mfrac><mn>1</mn><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.8</span><span class="q" data-copy="Выполните: 3/(x^2 - 1) + 1/(x + 1)">Выполните:<math><mfrac><mn>3</mn><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac><mo>+</mo><mfrac><mn>1</mn><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Умножение и деление</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">6.9</span><span class="q" data-copy="Выполните: x/(x + 2) * (x + 2)^2/x^2">Выполните:<math><mfrac><mi>x</mi><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac><mo>·</mo><mfrac><msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup><msup><mi>x</mi><mn>2</mn></msup></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mi>x</mi></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.10</span><span class="q" data-copy="Выполните: (x^2 - 1)/x : (x + 1)/x^2">Выполните:<math><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><mi>x</mi></mfrac><mo>÷</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac></math></span><span class="a"><math><mi>x</mi><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow></math></span></div>
+          <div class="task"><span class="idx">6.11</span><span class="q" data-copy="Выполните: (a^2 - b^2)/(a + b) * 1/(a - b)">Выполните:<math><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mfrac><mo>·</mo><mfrac><mn>1</mn><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mfrac></math></span><span class="a"><math><mn>1</mn></math></span></div>
+          <div class="task"><span class="idx">6.12</span><span class="q" data-copy="Выполните: x/(x - 3) : x^2/(x - 3)^2">Выполните:<math><mfrac><mi>x</mi><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac><mo>÷</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><msup><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mi>x</mi></mfrac></math></span></div>
+        </div>
+      </div>
+
+      <div class="subgroup">
+        <p class="sublabel">Составные дроби — для сильных</p>
+        <div class="tasks">
+          <div class="task"><span class="idx">6.13</span><span class="q" data-copy="Упростите: (1/a + 1/b) / (1/a - 1/b)">Упростите:<math><mfrac><mrow><mfrac><mn>1</mn><mi>a</mi></mfrac><mo>+</mo><mfrac><mn>1</mn><mi>b</mi></mfrac></mrow><mrow><mfrac><mn>1</mn><mi>a</mi></mfrac><mo>−</mo><mfrac><mn>1</mn><mi>b</mi></mfrac></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.14</span><span class="q" data-copy="Упростите: (x - 1/x) / (x + 1)">Упростите:<math><mfrac><mrow><mi>x</mi><mo>−</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mi>x</mi></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.15</span><span class="q" data-copy="Упростите: 1 / (1 + 1/(1 + 1/x))">Упростите:<math><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow></mfrac></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac></math></span></div>
+          <div class="task"><span class="idx">6.16</span><span class="q" data-copy="Упростите: (a/b - b/a) / (a/b + b/a)">Упростите:<math><mfrac><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>−</mo><mfrac><mi>b</mi><mi>a</mi></mfrac></mrow><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>+</mo><mfrac><mi>b</mi><mi>a</mi></mfrac></mrow></mfrac></math></span><span class="a"><math><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></math></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Материал подготовлен для подготовки к ОГЭ · Этап 1 из 6 · Злата
+</footer>
+
+</div>
+
+<script>
+(function(){
+  function showCopied(btn, original){
+    btn.textContent = "Скопировано ✓";
+    btn.disabled = true;
+    setTimeout(function(){
+      btn.textContent = original;
+      btn.disabled = false;
+    }, 1600);
+  }
+  function fallbackCopy(text, btn, original){
+    try{
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      showCopied(btn, original);
+    }catch(e){}
+  }
+  document.querySelectorAll(".copy-btn").forEach(function(btn){
+    var original = btn.textContent;
+    btn.addEventListener("click", function(){
+      try{
+        var block = btn.closest("section.block");
+        var lines = [];
+        block.querySelectorAll(".task").forEach(function(t){
+          var idxEl = t.querySelector(".idx");
+          var qEl = t.querySelector(".q");
+          if(idxEl && qEl){
+            var q = qEl.getAttribute("data-copy") || qEl.textContent.trim();
+            lines.push(idxEl.textContent.trim() + ") " + q);
+          }
+        });
+        var text = lines.join("\n");
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(function(){
+            showCopied(btn, original);
+          }).catch(function(){
+            fallbackCopy(text, btn, original);
+          });
+        } else {
+          fallbackCopy(text, btn, original);
+        }
+      }catch(e){}
+    });
+  });
+})();
+</script>
+
+</body></html>
