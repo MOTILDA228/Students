@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 33. Практико-ориентированные задачи №1–5: дачный участок</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 33. Практико-ориентированные задачи №1–5: дачный участок</h1><div class="ls-sub">Злата · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №1–5</span><span class="ls-tag">практика</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Условие</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> первый сюжет №1–5 целиком. Главное — внимательно читать текст, переводить клетки в метры, округлять «в нужную сторону» (упаковки — вверх).</p>
+<ol class="ls-steps">
+  <li>5 мин — проверка ДЗ урока 32.</li>
+  <li>5 мин — как читать сюжет: сначала весь текст, потом подписать объекты на плане.</li>
+  <li>40 мин — задачи 1–5 (темп ОГЭ: 3–4 минуты на задачу), затем 6–7.</li>
+  <li>10 мин — итог, ДЗ.</li>
+</ol>
+<p><b>Типичные ошибки:</b> забывают масштаб клетки; округляют число упаковок вниз; считают площадь в клетках, а не в м².</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Условие</h2>
+<p>На плане изображён дачный участок (сторона клетки — <b>2 м</b>). Ворота отмечены жирной чертой внизу. От ворот к дому ведёт дорожка шириной в одну клетку, выложенная плиткой. Справа от дорожки, у самого забора, стоит теплица, а в дальнем правом углу — баня. Слева от дорожки находится огород квадратной формы.</p>
+<svg class="ls-fig" viewBox="0 0 310 232" width="310" height="232" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="220" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="220" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="220" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="220" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="220" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="220" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="220" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="220" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="220" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="220" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="272" y1="220" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="298" y1="220" x2="298" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="220" x2="298" y2="220" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="298" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="298" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="298" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="298" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="298" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="298" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="298" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="298" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="12,220 298,220 298,12 12,12" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><line x1="142" y1="220" x2="168" y2="220" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polygon points="38,194 116,194 116,116 38,116" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polygon points="116,90 194,90 194,38 116,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polygon points="220,90 272,90 272,38 220,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polygon points="194,194 272,194 272,168 194,168" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/><polygon points="142,220 168,220 168,90 142,90" fill="none" stroke="currentColor" stroke-width="2.0" stroke-dasharray="6 4" stroke-linejoin="round"/><text x="77" y="155" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">1</text><text x="155" y="64" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">2</text><text x="246" y="64" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">3</text><text x="233" y="181" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">4</text></svg>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">ОГЭ №1</span><br> Для объектов, указанных в таблице, определите, какими цифрами они обозначены на плане. Ответ — последовательность цифр для строк таблицы.
+<div class="ls-table-wrap"><table class="ls-table"><tr><th>Объекты</th><th>дом</th><th>баня</th><th>теплица</th><th>огород</th></tr><tr><td>Цифры</td><td></td><td></td><td></td><td></td></tr></table></div></div>
+<details><summary>Решение</summary>Огород квадратный слева — 1. Дом в конце дорожки — 2. Баня в дальнем правом углу — 3. Теплица справа у ворот — 4. Ответ: 2341.
+<p class="ls-answer">Ответ: 2341</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">ОГЭ №2</span><br> Найдите площадь огорода в квадратных метрах.</div>
+<details><summary>Решение</summary>\(3\times3\) клетки, клетка \(2\times2 = 4\) м². \(9\cdot4 = 36\) м².
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">ОГЭ №3</span><br> Дорожку выкладывают плиткой \(50\times50\) см. Плитка продаётся в упаковках по 12 штук. Сколько упаковок нужно купить?</div>
+<details><summary>Решение</summary>Дорожка \(5\times1\) клеток = \(10\times2\) м = 20 м². Одна плитка 0,25 м²: 80 плиток. \(80 : 12 = 6{,}67\) → 7 упаковок.
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">ОГЭ №4</span><br> Найдите расстояние в метрах от левого нижнего угла огорода до левого нижнего угла дома.</div>
+<details><summary>Решение</summary>По клеткам: 3 вправо, 4 вверх — 5 клеток, то есть 10 м.
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">ОГЭ №5</span><br> Плитку можно купить в двух магазинах. В магазине А упаковка стоит 450 руб., доставка — 600 руб. В магазине Б упаковка стоит 480 руб., доставка бесплатна при заказе от 3000 руб. Сколько рублей обойдётся самый дешёвый вариант покупки?</div>
+<details><summary>Решение</summary>А: \(7\cdot450 + 600 = 3750\). Б: \(7\cdot480 = 3360 \ge 3000\) — без доставки: 3360.
+<p class="ls-answer">Ответ: 3360</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">ОГЭ №2</span><br> Теплицу покрывают плёнкой сверху: \(12\) м² крыши плюс 25% на скаты и нахлёст. Найдите площадь плёнки в м².</div>
+<details><summary>Решение</summary>Теплица \(3\times1\) клеток = \(6\times2\) м = 12 м². \(12\cdot1{,}25 = 15\) м².
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">ОГЭ №4</span><br> Найдите периметр забора участка в метрах, если ворота имеют ширину 2 м и в периметр забора не входят.</div>
+<details><summary>Решение</summary>\(2(22 + 16) - 2 = 74\) м.
+<p class="ls-answer">Ответ: 74</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">ОГЭ №2</span><br> Найдите площадь, которую занимает дом, в квадратных метрах.</div>
+<details><summary>Решение</summary>\(3\times2\) клетки = \(6\times4\) м = 24 м².
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">ОГЭ №2</span><br> На сколько квадратных метров площадь бани меньше площади дома?</div>
+<details><summary>Решение</summary>Баня \(4\times4 = 16\) м². \(24 - 16 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">ОГЭ №4</span><br> Найдите расстояние в метрах между левым нижним углом теплицы и правым верхним углом бани. Ответ округлите до десятых.</div>
+<details><summary>Решение</summary>От \((7;\ 1)\) до \((10;\ 7)\): 3 и 6 клеток → 6 и 12 м. \(\sqrt{36 + 144} = \sqrt{180} \approx 13{,}4\).
+<p class="ls-answer">Ответ: 13,4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">ОГЭ №3</span><br> Огород обносят сеткой (по периметру). Сетка продаётся в рулонах по 10 м. Сколько рулонов нужно?</div>
+<details><summary>Решение</summary>Периметр \(4\cdot6 = 24\) м → 3 рулона.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">ОГЭ №5</span><br> Баню топят дровами или газом. Дрова: 1,2 м³ за сезон по 3500 руб./м³ плюс доставка 800 руб. Газ: 520 м³ за сезон по 7,5 руб./м³. Сколько рублей стоит более дешёвый вариант?</div>
+<details><summary>Решение</summary>Дрова: \(4200 + 800 = 5000\). Газ: \(3900\). Ответ 3900.
+<p class="ls-answer">Ответ: 3900</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 31)</span> Сторона правильного треугольника \(9\sqrt{3}\). Найдите радиус описанной окружности.</div>
+<details><summary>Решение</summary>9.
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 29)</span> \(b_1 = 81\), \(q = \frac{1}{3}\). Найдите \(b_5\).</div>
+<details><summary>Решение</summary>1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 25)</span> На клетчатой бумаге изображён треугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 206 180" width="206" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="194" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 168,142 64,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание 5, высота 4: 10.
+<p class="ls-answer">Ответ: 10</p></details></div>
+</section>
+<nav class="ls-foot"><a href="32-veroyatnost-statistika.html">← Урок 32</a><a href="00-index.html">Все уроки</a><a href="34-geom-kletki.html">Урок 34 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

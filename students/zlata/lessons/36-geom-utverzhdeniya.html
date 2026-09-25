@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 36. Геометрия: утверждения №19 — полный справочник</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 36. Геометрия: утверждения №19 — полный справочник</h1><div class="ls-sub">Злата · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Справочник для №19</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> собрать в одну шпаргалку все факты для №19 и потренироваться находить «ловушки» в формулировках. Ответы — номера верных утверждений; автопроверки нет, сверять по решениям.</p>
+<ol class="ls-steps">
+  <li>5 мин — проверка ДЗ урока 35.</li>
+  <li>15 мин — справочник: прочитать вслух, по каждому пункту — пример-контрпример.</li>
+  <li>30 мин — практика 1–8.</li>
+  <li>10 мин — итог, ДЗ; следующий урок — контрольная №3 по всей части 1.</li>
+</ol>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Справочник для №19</h2>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Тема</th><th>Верные факты</th></tr>
+<tr><td>Углы</td><td class="ls-left">вертикальные равны; смежные в сумме \(180^\circ\); при параллельных: накрест лежащие и соответственные равны, односторонние — \(180^\circ\)</td></tr>
+<tr><td>Треугольник</td><td class="ls-left">сумма углов \(180^\circ\); внешний = сумма двух не смежных; каждая сторона меньше суммы двух других; против большей стороны — больший угол; в равнобедренном углы при основании равны</td></tr>
+<tr><td>Прямоугольный</td><td class="ls-left">\(c^2 = a^2 + b^2\) (сумма <b>квадратов</b>); катет против \(30^\circ\) — половина гипотенузы; медиана к гипотенузе — половина гипотенузы</td></tr>
+<tr><td>Четырёхугольники</td><td class="ls-left">у параллелограмма диагонали делятся пополам; у прямоугольника равны; у ромба перпендикулярны; квадрат — и ромб, и прямоугольник; сумма углов \(360^\circ\)</td></tr>
+<tr><td>Окружность</td><td class="ls-left">касательная ⟂ радиусу; вписанный угол — половина центрального; на диаметр — \(90^\circ\); центр описанной — пересечение серединных перпендикуляров, вписанной — биссектрис</td></tr>
+<tr><td>Площади</td><td class="ls-left">ромба — половина произведения диагоналей; трапеции — полусумма оснований на высоту; треугольника — половина основания на высоту</td></tr>
+</table></div>
+<div class="ls-warn">Ловушки: «сумма квадратов» ↔ «квадрат суммы»; «половине» ↔ «равна»; «любой» ↔ «некоторый»; перпендикулярны ↔ параллельны; биссектрис ↔ медиан.</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Квадрат гипотенузы равен сумме квадратов катетов. 2) Диагонали любого ромба равны. 3) Все углы квадрата прямые.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно. 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Центр вписанной в треугольник окружности — точка пересечения его медиан. 2) Если в ромбе один угол прямой, то это квадрат. 3) Площадь трапеции равна произведению средней линии на высоту.</div>
+<details><summary>Решение</summary>1 — неверно (биссектрис). 2 — верно. 3 — верно (средняя линия — полусумма оснований).
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Любой параллелограмм можно вписать в окружность. 2) Треугольник со сторонами 2, 3, 6 существует. 3) Вертикальные углы равны.</div>
+<details><summary>Решение</summary>1 — неверно (только прямоугольник). 2 — неверно (\(2 + 3 < 6\)). 3 — верно.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Если два угла треугольника равны, то равны и противолежащие им стороны. 2) Отношение площадей подобных треугольников равно коэффициенту подобия. 3) Касательная к окружности перпендикулярна радиусу, проведённому в точку касания.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно (квадрату). 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Диагонали прямоугольника точкой пересечения делятся пополам. 2) Сумма углов выпуклого четырёхугольника равна \(180^\circ\). 3) Средняя линия трапеции параллельна её основаниям.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно. 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Через любые три точки проходит ровно одна окружность. 2) В тупоугольном треугольнике только один угол тупой. 3) Косинус острого угла прямоугольного треугольника равен отношению прилежащего катета к гипотенузе.</div>
+<details><summary>Решение</summary>1 — неверно (точки на одной прямой). 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Площадь ромба равна произведению его стороны на высоту. 2) Если одна из диагоналей параллелограмма является биссектрисой его угла, то он ромб. 3) Угол, вписанный в окружность, равен центральному, опирающемуся на ту же дугу.</div>
+<details><summary>Решение</summary>1 — верно (ромб — параллелограмм). 2 — верно. 3 — неверно.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какое из утверждений верно? 1) Все прямоугольные треугольники подобны. 2) Каждая из биссектрис равнобедренного треугольника является его медианой. 3) Сумма углов прямоугольного треугольника равна \(180^\circ\).</div>
+<details><summary>Решение</summary>1 — неверно. 2 — неверно (только проведённая к основанию). 3 — верно.
+<p class="ls-answer">Ответ: 3</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Если диагонали четырёхугольника равны, то это прямоугольник. 2) Отрезки касательных, проведённых из одной точки к окружности, равны. 3) Медиана прямоугольного треугольника, проведённая к гипотенузе, равна половине гипотенузы.</div>
+<details><summary>Решение</summary>1 — неверно (нужен ещё параллелограмм). 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Все равносторонние треугольники подобны. 2) Площадь треугольника равна произведению основания на высоту. 3) Если угол острый, то смежный с ним — тупой.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно (половине). 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) В любой треугольник можно вписать окружность. 2) Если две стороны одного треугольника пропорциональны двум сторонам другого, то треугольники подобны. 3) Диагонали трапеции равны.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно (нужен равный угол между ними). 3 — неверно (только у равнобедренной).
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №19</span><br> Какие утверждения верны? 1) Сумма двух противоположных углов вписанного четырёхугольника равна \(180^\circ\). 2) Тангенс любого острого угла меньше единицы. 3) Квадрат — это ромб.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно (\(\operatorname{tg}60^\circ = \sqrt{3}\)). 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 35)</span> Найдите высоту боковины шины 195/65 R15 (мм).</div>
+<details><summary>Решение</summary>\(126{,}75\).
+<p class="ls-answer">Ответ: 126,75</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 34)</span> Найдите длину отрезка на клетчатой бумаге с концами \((1;\ 2)\) и \((9;\ 8)\).</div>
+<details><summary>Решение</summary>8 и 6: 10.
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 32)</span> В коробке 25 конфет, 7 из них с орехами. Найдите вероятность вытащить конфету без орехов.</div>
+<details><summary>Решение</summary>\(\frac{18}{25} = 0{,}72\).
+<p class="ls-answer">Ответ: 0,72</p></details></div>
+</section>
+<nav class="ls-foot"><a href="35-praktika-shiny.html">← Урок 35</a><a href="00-index.html">Все уроки</a><a href="37-kontrolnaya-3.html">Урок 37 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
