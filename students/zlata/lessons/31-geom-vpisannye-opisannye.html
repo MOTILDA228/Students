@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 31. Геометрия: вписанные и описанные окружности</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 31. Геометрия: вписанные и описанные окружности</h1><div class="ls-sub">Злата · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №16</span><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">ОГЭ №23</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> центры вписанной/описанной окружности, радиусы в правильном и прямоугольном треугольнике, вписанный и описанный четырёхугольник. Теорема синусов для «5».</p>
+<ol class="ls-steps">
+  <li>5 мин — проверка ДЗ урока 30.</li>
+  <li>15 мин — теория.</li>
+  <li>30 мин — практика 1–7.</li>
+  <li>10 мин — итог, ДЗ.</li>
+</ol>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<div class="ls-rule"><b>Описанная</b> окружность: центр — пересечение серединных перпендикуляров. У прямоугольного треугольника центр — середина гипотенузы, \(R = \frac{c}{2}\). <b>Вписанная</b>: центр — пересечение биссектрис; \(S = pr\) (\(p\) — полупериметр).</div>
+<div class="ls-rule"><b>Правильный треугольник</b> со стороной \(a\): \(R = \frac{a}{\sqrt{3}}\), \(r = \frac{a}{2\sqrt{3}}\), \(R = 2r\).</div>
+<div class="ls-rule"><b>Вписанный четырёхугольник:</b> сумма противоположных углов \(180^\circ\). <b>Описанный:</b> суммы противоположных сторон равны.</div>
+<div class="ls-rule"><b>Для «5» — теорема синусов:</b> \(\frac{a}{\sin A} = 2R\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> Катеты прямоугольного треугольника 10 и 24. Найдите радиус описанной окружности.</div>
+<details><summary>Решение</summary>Гипотенуза 26, \(R = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> Четырёхугольник \(ABCD\) вписан в окружность, \(\angle A = 74^\circ\). Найдите \(\angle C\).</div>
+<details><summary>Решение</summary>\(106^\circ\).
+<p class="ls-answer">Ответ: 106</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> В четырёхугольник \(ABCD\) вписана окружность, \(AB = 7\), \(BC = 12\), \(CD = 15\). Найдите \(AD\).</div>
+<details><summary>Решение</summary>\(AB + CD = BC + AD\): \(AD = 22 - 12 = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №16 (ФИПИ / Решу ОГЭ)</span><br> Сторона правильного треугольника \(6\sqrt{3}\). Найдите радиус описанной окружности.</div>
+<details><summary>Решение</summary>\(R = \frac{6\sqrt{3}}{\sqrt{3}} = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №16</span><br> Радиус вписанной в квадрат окружности равен 7. Найдите площадь квадрата.</div>
+<details><summary>Решение</summary>Сторона 14, \(S = 196\).
+<p class="ls-answer">Ответ: 196</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №16</span><br> Площадь треугольника 84, периметр 42. Найдите радиус вписанной окружности.</div>
+<details><summary>Решение</summary>\(r = \frac{S}{p} = \frac{84}{21} = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Для «5»: теорема синусов</span><br> В треугольнике \(ABC\) \(BC = 12\), \(\angle A = 30^\circ\). Найдите радиус описанной окружности.</div>
+<details><summary>Решение</summary>\(2R = \frac{12}{\sin30^\circ} = 24\), \(R = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Прототип ОГЭ №16</span><br> Гипотенуза прямоугольного треугольника 17. Найдите радиус описанной окружности.</div>
+<details><summary>Решение</summary>\(8{,}5\).
+<p class="ls-answer">Ответ: 8,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Прототип ОГЭ №16</span><br> Вписанный четырёхугольник: \(\angle B = 118^\circ\). Найдите \(\angle D\).</div>
+<details><summary>Решение</summary>\(62^\circ\).
+<p class="ls-answer">Ответ: 62</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №16</span><br> Трапеция описана около окружности, боковые стороны 9 и 13. Найдите среднюю линию.</div>
+<details><summary>Решение</summary>Сумма оснований 22, средняя линия 11.
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №16</span><br> Радиус окружности, описанной около правильного треугольника, равен 10. Найдите радиус вписанной.</div>
+<details><summary>Решение</summary>5.
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Для «5»</span><br> В треугольнике \(ABC\) \(AB = 10\), \(\angle C = 150^\circ\). Найдите радиус описанной окружности.</div>
+<details><summary>Решение</summary>\(2R = \frac{10}{0{,}5} = 20\), \(R = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 30)</span> Найдите ординату вершины параболы \(y = x^2 + 6x + 1\).</div>
+<details><summary>Решение</summary>\(x_0 = -3\), \(y_0 = -8\).
+<p class="ls-answer">Ответ: -8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 29)</span> Цена снижается на 20% каждый месяц. Сейчас 5000 руб. Сколько будет через 2 месяца?</div>
+<details><summary>Решение</summary>\(5000\cdot0{,}64 = 3200\).
+<p class="ls-answer">Ответ: 3200</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 27)</span> Сколько членов прогрессии \(7;\ 11;\ 15;\ \ldots\) меньше 100?</div>
+<details><summary>Решение</summary>\(7 + 4(n - 1) < 100\) → \(n < 24{,}25\): 24.
+<p class="ls-answer">Ответ: 24</p></details></div>
+</section>
+<nav class="ls-foot"><a href="30-grafiki.html">← Урок 30</a><a href="00-index.html">Все уроки</a><a href="32-veroyatnost-statistika.html">Урок 32 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

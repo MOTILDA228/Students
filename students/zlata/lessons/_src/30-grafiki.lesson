@@ -1,0 +1,166 @@
+@title Урок 30. Графики: прямая, парабола, гипербола
+@tags ОГЭ №11 | ОГЭ №22 | алгебра
+@teacher
+<p><b>Цель:</b> №11 — сопоставить графики и формулы (по знакам \(k\), \(b\), \(a\), \(c\)). Заодно — чтение графиков, нужное в №22 (урок 39).</p>
+<ol class="ls-steps">
+  <li>5 мин — проверка ДЗ урока 29.</li>
+  <li>15 мин — три функции и что показывают коэффициенты.</li>
+  <li>30 мин — практика 1–6.</li>
+  <li>10 мин — итог, ДЗ.</li>
+</ol>
+@theory
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Функция</th><th>Что читать с графика</th></tr>
+<tr><td>\(y = kx + b\)</td><td class="ls-left">\(k > 0\) — возрастает; \(b\) — точка пересечения с осью \(y\)</td></tr>
+<tr><td>\(y = ax^2 + bx + c\)</td><td class="ls-left">\(a > 0\) — ветви вверх; \(c\) — пересечение с осью \(y\); вершина \(x_0 = -\frac{b}{2a}\)</td></tr>
+<tr><td>\(y = \frac{k}{x}\)</td><td class="ls-left">\(k > 0\) — I и III четверти; \(k < 0\) — II и IV</td></tr>
+</table></div>
+<div class="ls-figs"><figure>
+@plot -3 3 -3 4 scale=18
+f x*x - 2*x
+@end
+<figcaption>\(a > 0\), \(c = 0\)</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -2/x
+@end
+<figcaption>\(k < 0\)</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -x/2 + 1
+@end
+<figcaption>\(k < 0\), \(b > 0\)</figcaption></figure></div>
+@practice
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+Установите соответствие между графиками и формулами. Формулы: 1) \(y = x^2 - 3\); 2) \(y = -\frac{3}{x}\); 3) \(y = 2x - 3\). Ответ — цифры для А, Б, В.
+<div class="ls-figs"><figure>
+@plot -3 3 -4 4 scale=18
+f -3/x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -4 4 scale=18
+f 2*x - 3
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -4 4 scale=18
+f x*x - 3
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+А — гипербола во II и IV → 2. Б — прямая → 3. В — парабола → 1.
+@ans 231
+@check match([lambda x: -3/x, lambda x: 2*x-3, lambda x: x*x-3], [lambda x: x*x-3, lambda x: -3/x, lambda x: 2*x-3])
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+На рисунке график \(y = kx + b\). Установите знаки: 1) \(k > 0, b > 0\); 2) \(k < 0, b > 0\); 3) \(k > 0, b < 0\); 4) \(k < 0, b < 0\).
+@plot -3 3 -3 3 scale=22
+f -1.5*x - 1
+@end
+@sol
+Убывает — \(k < 0\); пересекает \(y\) ниже нуля — \(b < 0\). Вариант 4.
+@ans 4
+@task
+@src Прототип ОГЭ №11 (ФИПИ / Решу ОГЭ)
+На рисунке парабола \(y = ax^2 + bx + c\). Какое утверждение верно: 1) \(a > 0, c > 0\); 2) \(a > 0, c < 0\); 3) \(a < 0, c > 0\); 4) \(a < 0, c < 0\)?
+@plot -3 4 -4 4 scale=20
+f -x*x + 2*x + 2
+@end
+@sol
+Ветви вниз — \(a < 0\); пересечение с \(y\) в точке 2 — \(c > 0\). Вариант 3.
+@ans 3
+@task
+@src Прототип ОГЭ №11 (для «5»)
+Установите соответствие. Формулы: 1) \(y = x^2 + 4x + 3\); 2) \(y = x^2 - 4x + 3\); 3) \(y = -x^2 + 4x - 3\).
+<div class="ls-figs"><figure>
+@plot -5 1 -2 4 scale=18
+f x*x + 4*x + 3
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -1 5 -4 2 scale=18
+f -x*x + 4*x - 3
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -1 5 -2 4 scale=18
+f x*x - 4*x + 3
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+А — ветви вверх, вершина при \(x = -2\) → 1. Б — ветви вниз → 3. В — ветви вверх, вершина при \(x = 2\) → 2.
+@ans 132
+@check match([lambda x: x*x+4*x+3, lambda x: -x*x+4*x-3, lambda x: x*x-4*x+3], [lambda x: x*x+4*x+3, lambda x: x*x-4*x+3, lambda x: -x*x+4*x-3])
+@task
+@src Вершина параболы
+Найдите ординату вершины параболы \(y = 2x^2 - 12x + 7\).
+@sol
+\(x_0 = 3\), \(y_0 = 18 - 36 + 7 = -11\).
+@ans -11
+@check 2*9-12*3+7
+@task
+@src Для «5»: подготовка к №22
+Прямая \(y = kx\) проходит через точку пересечения прямых \(y = 2x - 1\) и \(y = -x + 5\). Найдите \(k\).
+@sol
+\(2x - 1 = -x + 5\): \(x = 2\), \(y = 3\). \(k = 1{,}5\).
+@ans 1,5
+@check F(3,2)
+@hw
+@task
+@src Прототип ОГЭ №11
+Установите соответствие. Формулы: 1) \(y = \frac{2}{x}\); 2) \(y = -x^2 + 2\); 3) \(y = -2x\).
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f -2*x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f 2/x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f -x*x + 2
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+А → 3, Б → 1, В → 2.
+@ans 312
+@check match([lambda x: -2*x, lambda x: 2/x, lambda x: -x*x+2], [lambda x: 2/x, lambda x: -x*x+2, lambda x: -2*x])
+@task
+@src Прототип ОГЭ №11
+Найдите абсциссу вершины параболы \(y = -3x^2 + 18x - 1\).
+@sol
+\(x_0 = \frac{-18}{-6} = 3\).
+@ans 3
+@check F(-18,2*-3)
+@task
+@src Прототип ОГЭ №11
+Прямая \(y = kx + 4\) проходит через точку \((2;\ -2)\). Найдите \(k\).
+@sol
+\(-2 = 2k + 4\), \(k = -3\).
+@ans -3
+@check F(-2-4,2)
+@task
+@src Для «5»
+Найдите абсциссы точек пересечения параболы \(y = x^2 - 3x\) и прямой \(y = x + 5\). В ответ запишите их сумму.
+@sol
+\(x^2 - 4x - 5 = 0\): 5 и \(-1\). Сумма 4.
+@ans 4
+@check sum(roots(1,-4,-5))
+@task
+@rep 29
+\(b_1 = 4\), \(q = 3\). Найдите \(S_5\).
+@sol
+\(4\cdot\frac{243 - 1}{2} = 484\).
+@ans 484
+@check gps(4,3,5)
+@task
+@rep 28
+Касательная \(PA\), радиус 5, \(PO = 13\). Найдите \(PA\).
+@sol
+12.
+@ans 12
+@check leg(13,5)
+@task
+@rep 26
+Человек ростом 1,6 м стоит в 12 м от фонаря высотой 4 м. Найдите длину тени (м).
+@sol
+\(\frac{x}{x + 12} = 0{,}4\) → \(x = 8\).
+@ans 8
+@check [x for x in range(1,100) if F(x,x+12)==F(16,40)][0]
