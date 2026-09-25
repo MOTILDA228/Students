@@ -1,0 +1,160 @@
+<title>Журнал учеников</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+:root{
+  --paper:#F5F7F2; --sheet:#FFFFFF; --ink:#1F3A5F; --muted:#5E6E7E; --rule:#D9DFD6;
+  --red:#C23B22; --ok:#2E7D4F; --ok-bg:#E3F1E7; --warn:#A86A00; --warn-bg:#FBF0DA;
+  --chip:#E8EDF2; --focus:#3B6EA8;
+  --serif:"PT Serif",Georgia,serif; --sans:"PT Sans","Segoe UI",Arial,sans-serif; --mono:"PT Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--paper:#13171C;--sheet:#1B2027;--ink:#DCE4EC;--muted:#95A3B1;--rule:#2D3540;
+  --red:#F08066;--ok:#6CC790;--ok-bg:#1D3326;--warn:#E7B45A;--warn-bg:#3A2E17;--chip:#26303B;--focus:#7FAEE0}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--paper:#13171C;--sheet:#1B2027;--ink:#DCE4EC;--muted:#95A3B1;--rule:#2D3540;
+  --red:#F08066;--ok:#6CC790;--ok-bg:#1D3326;--warn:#E7B45A;--warn-bg:#3A2E17;--chip:#26303B;--focus:#7FAEE0}
+body{background:var(--paper);color:var(--ink);font:15px/1.45 var(--sans)}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:24px 48px;display:grid;gap:20px}
+h1{font:700 30px/1.1 var(--serif);margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:4px 0 0}
+.note{background:var(--warn-bg);color:var(--warn);padding:10px 14px;border-radius:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:8px;text-align:left;
+  font:inherit;color:inherit;cursor:pointer}
+.card[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.card:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.card h2{font:700 20px var(--serif);margin:0}
+.goal{color:var(--muted);font-size:13px}
+.bar{height:6px;background:var(--chip);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok)}
+.stats{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
+.stats b{color:var(--ink);font:700 15px var(--mono)}
+.stats .sc b{color:var(--red)}
+.next{font-size:13px}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.tools label{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:14px}
+.save{font-size:13px;color:var(--muted)}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{font:700 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 8px;border-bottom:1px solid var(--rule)}
+td{padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:middle}
+tr.month td{background:var(--paper);font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 8px}
+tr.done .topic{color:var(--muted)}
+.num{font-family:var(--mono);color:var(--muted);width:34px}
+.topic{min-width:220px}
+.meta{display:flex;gap:6px;margin-top:2px}
+.pill{font-size:11px;padding:1px 7px;border-radius:9px;background:var(--chip);color:var(--muted)}
+.pill.g{background:var(--ok-bg);color:var(--ok)}
+.pill.k{background:var(--warn-bg);color:var(--warn)}
+.c{text-align:center;width:64px}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--ok);cursor:pointer}
+select{font:700 14px var(--mono);color:var(--red);background:var(--sheet);border:1px solid var(--rule);border-radius:5px;padding:3px 4px;width:58px}
+select:disabled,input:disabled{cursor:default;opacity:.6}
+@media (max-width:560px){.meta{flex-wrap:wrap}.topic{min-width:160px}.c{width:48px}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Журнал учеников</h1>
+    <p class="sub">Подготовка к ОГЭ по математике. Отмечайте пройденные уроки, сданное ДЗ и оценку за ДЗ от 0 до 10.</p>
+  </header>
+  <p class="note" id="offline" hidden>Отметки сохраняются только на странице в claude.ai. Здесь журнал открыт для просмотра.</p>
+  <section class="cards" id="cards" aria-label="Ученики"></section>
+  <div class="tools">
+    <label><input type="checkbox" id="only-open"> Скрыть пройденные уроки</label>
+    <span class="save" id="save" aria-live="polite"></span>
+  </div>
+  <div class="sheet"><table>
+    <thead><tr><th>№</th><th>Тема</th><th class="c">Пройден</th><th class="c">ДЗ сдано</th><th class="c">Оценка ДЗ</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+</div>
+
+<script>
+const DATA = /*DATA*/[];
+const marks = {};           // "zlata-5" -> {done, hw, score}
+let db = null, cur = DATA[0] && DATA[0].id;
+try { const t = localStorage.getItem("journal-student"); if (DATA.some(s => s.id === t)) cur = t; } catch (e) {}
+const $ = id => document.getElementById(id);
+const key = (s, n) => s + "-" + n;
+const mk = (s, n) => marks[key(s, n)] || {};
+
+function summary(s) {
+  const L = s.lessons, done = L.filter(l => mk(s.id, l.n).done);
+  const hwDone = done.filter(l => mk(s.id, l.n).hw).length;
+  const sc = L.map(l => mk(s.id, l.n).score).filter(v => typeof v === "number");
+  const next = L.find(l => !mk(s.id, l.n).done);
+  return { total: L.length, done: done.length, hwDone,
+    avg: sc.length ? (sc.reduce((a, b) => a + b, 0) / sc.length).toFixed(1).replace(".", ",") : "—", next };
+}
+
+function renderCards() {
+  $("cards").replaceChildren(...DATA.map(s => {
+    const m = summary(s), b = document.createElement("button");
+    b.className = "card"; b.setAttribute("aria-pressed", s.id === cur);
+    b.innerHTML = `<h2></h2><div class="goal"></div>
+      <div class="bar"><i style="width:${Math.round(100 * m.done / m.total)}%"></i></div>
+      <div class="stats"><span>пройдено <b>${m.done}</b> из ${m.total}</span>
+        <span>ДЗ сдано <b>${m.hwDone}</b> из ${m.done}</span><span class="sc">средняя за ДЗ <b>${m.avg}</b></span></div>
+      <div class="next"></div>`;
+    b.querySelector("h2").textContent = s.name;
+    b.querySelector(".goal").textContent = s.goal;
+    b.querySelector(".next").textContent = m.next ? `Следующий: урок ${m.next.n}. ${m.next.t}` : "Все уроки пройдены";
+    b.onclick = () => { cur = s.id; try { localStorage.setItem("journal-student", cur); } catch (e) {} render(); };
+    return b;
+  }));
+}
+
+function renderRows() {
+  const s = DATA.find(x => x.id === cur); if (!s) return;
+  const hide = $("only-open").checked, out = []; let month = null;
+  for (const l of s.lessons) {
+    const m = mk(s.id, l.n);
+    if (hide && m.done) continue;
+    if (l.m !== month) { month = l.m; const tr = document.createElement("tr"); tr.className = "month";
+      tr.innerHTML = `<td colspan="5"></td>`; tr.firstChild.textContent = month || "—"; out.push(tr); }
+    const tr = document.createElement("tr"); if (m.done) tr.className = "done";
+    const kind = l.type === "Г" ? "g" : (l.type === "контр" ? "k" : "");
+    tr.innerHTML = `<td class="num">${String(l.n).padStart(2, "0")}</td>
+      <td class="topic"><span class="t"></span><div class="meta"><span class="pill ${kind}"></span><span class="pill o"></span></div></td>
+      <td class="c"><input type="checkbox" id="d-${s.id}-${l.n}" aria-label="Урок ${l.n} пройден"></td>
+      <td class="c"><input type="checkbox" id="h-${s.id}-${l.n}" aria-label="ДЗ к уроку ${l.n} сдано"></td>
+      <td class="c"><select id="s-${s.id}-${l.n}" aria-label="Оценка за ДЗ к уроку ${l.n}"><option value="">—</option>
+        ${[...Array(11).keys()].map(v => `<option value="${v}">${v}</option>`).join("")}</select></td>`;
+    tr.querySelector(".t").textContent = l.t;
+    tr.querySelector(".pill").textContent = l.type === "Г" ? "геометрия" : l.type === "контр" ? "контроль" : l.type === "повт" ? "повторение" : "алгебра";
+    tr.querySelector(".o").textContent = "ОГЭ " + l.oge;
+    const [d, h, sel] = tr.querySelectorAll("input,select");
+    d.checked = !!m.done; h.checked = !!m.hw; sel.value = typeof m.score === "number" ? m.score : "";
+    [d, h, sel].forEach(el => el.disabled = !db);
+    d.onchange = () => save(s.id, l.n, { done: d.checked });
+    h.onchange = () => save(s.id, l.n, { hw: h.checked });
+    sel.onchange = () => save(s.id, l.n, { score: sel.value === "" ? null : +sel.value, ...(sel.value !== "" ? { hw: true } : {}) });
+    out.push(tr);
+  }
+  $("rows").replaceChildren(...out);
+}
+function render() { renderCards(); renderRows(); }
+
+async function save(sid, n, patch) {
+  const k = key(sid, n), next = { done: false, hw: false, score: null, ...marks[k], ...patch, student: sid, n, updated: new Date().toISOString() };
+  marks[k] = next; render(); $("save").textContent = "Сохраняю…";
+  try { await db.doc("marks/" + k).set(next); $("save").textContent = "Сохранено"; }
+  catch (e) { $("save").textContent = e && e.code === "not_granted" ? "Нет прав на запись: отметки ставит владелец журнала" : "Не сохранилось, попробуйте ещё раз"; }
+}
+
+$("only-open").onchange = renderRows;
+render();
+(async () => {
+  db = window.claude ? await window.claude.use("db") : null;
+  if (!db) { $("offline").hidden = false; return; }
+  db.collection("marks").onSnapshot(snap => {
+    for (const k in marks) delete marks[k];
+    snap.docs.forEach(d => { marks[d.id] = d.data(); });
+    render();
+  }, () => { $("save").textContent = "Нет связи с журналом"; });
+  render();
+})();
+</script>

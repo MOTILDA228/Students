@@ -1,0 +1,160 @@
+<title>Журнал учеников</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+:root{
+  --paper:#F5F7F2; --sheet:#FFFFFF; --ink:#1F3A5F; --muted:#5E6E7E; --rule:#D9DFD6;
+  --red:#C23B22; --ok:#2E7D4F; --ok-bg:#E3F1E7; --warn:#A86A00; --warn-bg:#FBF0DA;
+  --chip:#E8EDF2; --focus:#3B6EA8;
+  --serif:"PT Serif",Georgia,serif; --sans:"PT Sans","Segoe UI",Arial,sans-serif; --mono:"PT Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--paper:#13171C;--sheet:#1B2027;--ink:#DCE4EC;--muted:#95A3B1;--rule:#2D3540;
+  --red:#F08066;--ok:#6CC790;--ok-bg:#1D3326;--warn:#E7B45A;--warn-bg:#3A2E17;--chip:#26303B;--focus:#7FAEE0}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--paper:#13171C;--sheet:#1B2027;--ink:#DCE4EC;--muted:#95A3B1;--rule:#2D3540;
+  --red:#F08066;--ok:#6CC790;--ok-bg:#1D3326;--warn:#E7B45A;--warn-bg:#3A2E17;--chip:#26303B;--focus:#7FAEE0}
+body{background:var(--paper);color:var(--ink);font:15px/1.45 var(--sans)}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:24px 48px;display:grid;gap:20px}
+h1{font:700 30px/1.1 var(--serif);margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:4px 0 0}
+.note{background:var(--warn-bg);color:var(--warn);padding:10px 14px;border-radius:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:8px;text-align:left;
+  font:inherit;color:inherit;cursor:pointer}
+.card[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.card:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.card h2{font:700 20px var(--serif);margin:0}
+.goal{color:var(--muted);font-size:13px}
+.bar{height:6px;background:var(--chip);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok)}
+.stats{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
+.stats b{color:var(--ink);font:700 15px var(--mono)}
+.stats .sc b{color:var(--red)}
+.next{font-size:13px}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.tools label{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:14px}
+.save{font-size:13px;color:var(--muted)}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{font:700 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 8px;border-bottom:1px solid var(--rule)}
+td{padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:middle}
+tr.month td{background:var(--paper);font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 8px}
+tr.done .topic{color:var(--muted)}
+.num{font-family:var(--mono);color:var(--muted);width:34px}
+.topic{min-width:220px}
+.meta{display:flex;gap:6px;margin-top:2px}
+.pill{font-size:11px;padding:1px 7px;border-radius:9px;background:var(--chip);color:var(--muted)}
+.pill.g{background:var(--ok-bg);color:var(--ok)}
+.pill.k{background:var(--warn-bg);color:var(--warn)}
+.c{text-align:center;width:64px}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--ok);cursor:pointer}
+select{font:700 14px var(--mono);color:var(--red);background:var(--sheet);border:1px solid var(--rule);border-radius:5px;padding:3px 4px;width:58px}
+select:disabled,input:disabled{cursor:default;opacity:.6}
+@media (max-width:560px){.meta{flex-wrap:wrap}.topic{min-width:160px}.c{width:48px}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Журнал учеников</h1>
+    <p class="sub">Подготовка к ОГЭ по математике. Отмечайте пройденные уроки, сданное ДЗ и оценку за ДЗ от 0 до 10.</p>
+  </header>
+  <p class="note" id="offline" hidden>Отметки сохраняются только на странице в claude.ai. Здесь журнал открыт для просмотра.</p>
+  <section class="cards" id="cards" aria-label="Ученики"></section>
+  <div class="tools">
+    <label><input type="checkbox" id="only-open"> Скрыть пройденные уроки</label>
+    <span class="save" id="save" aria-live="polite"></span>
+  </div>
+  <div class="sheet"><table>
+    <thead><tr><th>№</th><th>Тема</th><th class="c">Пройден</th><th class="c">ДЗ сдано</th><th class="c">Оценка ДЗ</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+</div>
+
+<script>
+const DATA = [{"id": "dima", "name": "Дима", "goal": "ОГЭ 2027 на «4»: 15–21 балл, из них ≥2 за геометрию. Закрыть №1–19.", "lessons": [{"n": 1, "t": "Обыкновенные дроби", "oge": "6", "type": "алг", "m": "сен"}, {"n": 2, "t": "Десятичные дроби", "oge": "6", "type": "алг", "m": "сен"}, {"n": 3, "t": "Обыкновенные дроби: закрепление", "oge": "6", "type": "алг", "m": "сен/окт"}, {"n": 4, "t": "Деление в столбик, деление десятичных", "oge": "6", "type": "алг", "m": "окт"}, {"n": 5, "t": "Г: углы, смежные/вертикальные, сумма углов треугольника", "oge": "15, 19", "type": "Г", "m": "окт"}, {"n": 6, "t": "Смешанные вычисления, прототипы №6", "oge": "6", "type": "алг", "m": "окт"}, {"n": 7, "t": "Проценты", "oge": "1–5, 6", "type": "алг", "m": "окт"}, {"n": 8, "t": "Г: виды треугольников, высота/медиана/биссектриса", "oge": "15, 19", "type": "Г", "m": "окт"}, {"n": 9, "t": "Степени", "oge": "8", "type": "алг", "m": "окт"}, {"n": 10, "t": "Квадратные корни", "oge": "8", "type": "алг", "m": "окт"}, {"n": 11, "t": "Г: прямоугольный треугольник, теорема Пифагора", "oge": "15", "type": "Г", "m": "окт"}, {"n": 12, "t": "Буквенные выражения, скобки, подстановка", "oge": "8, 12", "type": "алг", "m": "ноя"}, {"n": 13, "t": "Выражение переменной из формулы, расчёты по формулам", "oge": "12", "type": "алг", "m": "ноя"}, {"n": 14, "t": "Г: площади фигур, клетчатая бумага", "oge": "18", "type": "Г", "m": "ноя"}, {"n": 15, "t": "Координатная прямая, сравнение чисел, оценка корней", "oge": "7", "type": "алг", "m": "ноя"}, {"n": 16, "t": "Линейные уравнения", "oge": "9", "type": "алг", "m": "ноя"}, {"n": 17, "t": "Г: окружность, центральные и вписанные углы", "oge": "16", "type": "Г", "m": "ноя"}, {"n": 18, "t": "Практические задачи: счётчики, тарифы, мобильная связь", "oge": "1–5", "type": "алг", "m": "ноя"}, {"n": 19, "t": "**Контрольная 1** (уроки 3–18)", "oge": "", "type": "контроль", "m": "ноя"}, {"n": 20, "t": "Г: параллельные прямые, углы при них", "oge": "15, 19", "type": "Г", "m": "ноя"}, {"n": 21, "t": "Формулы сокращённого умножения", "oge": "8", "type": "алг", "m": "дек"}, {"n": 22, "t": "Разложение на множители", "oge": "8, 9", "type": "алг", "m": "дек"}, {"n": 23, "t": "Г: параллелограмм, прямоугольник, ромб, квадрат", "oge": "17", "type": "Г", "m": "дек"}, {"n": 24, "t": "Квадратные уравнения: неполные, дискриминант", "oge": "9", "type": "алг", "m": "дек"}, {"n": 25, "t": "Квадратные уравнения: Виета, прототипы", "oge": "9", "type": "алг", "m": "дек"}, {"n": 26, "t": "Г: трапеция", "oge": "17", "type": "Г", "m": "дек"}, {"n": 27, "t": "Линейные неравенства, числовая прямая", "oge": "13", "type": "алг", "m": "дек"}, {"n": 28, "t": "Квадратные неравенства", "oge": "13", "type": "алг", "m": "дек"}, {"n": 29, "t": "Г: площади четырёхугольников и треугольника", "oge": "17, 18", "type": "Г", "m": "янв"}, {"n": 30, "t": "Системы неравенств", "oge": "13", "type": "алг", "m": "янв"}, {"n": 31, "t": "Теория вероятностей: классическая формула", "oge": "10", "type": "алг", "m": "янв"}, {"n": 32, "t": "Г: подобие треугольников", "oge": "15", "type": "Г", "m": "янв"}, {"n": 33, "t": "Вероятность: противоположное событие, прототипы", "oge": "10", "type": "алг", "m": "янв"}, {"n": 34, "t": "**Контрольная 2** (уроки 20–33)", "oge": "", "type": "контроль", "m": "янв"}, {"n": 35, "t": "Г: синус, косинус, тангенс в прямоугольном треугольнике", "oge": "15", "type": "Г", "m": "янв"}, {"n": 36, "t": "Арифметическая прогрессия", "oge": "14", "type": "алг", "m": "фев"}, {"n": 37, "t": "Геометрическая прогрессия", "oge": "14", "type": "алг", "m": "фев"}, {"n": 38, "t": "Г: касательная, вписанная и описанная окружность", "oge": "16", "type": "Г", "m": "фев"}, {"n": 39, "t": "Текстовые задачи на прогрессии", "oge": "14", "type": "алг", "m": "фев"}, {"n": 40, "t": "Линейная функция и её график", "oge": "11", "type": "алг", "m": "фев"}, {"n": 41, "t": "Г: углы в окружности, вписанный четырёхугольник", "oge": "16", "type": "Г", "m": "фев"}, {"n": 42, "t": "Парабола и гипербола", "oge": "11", "type": "алг", "m": "фев"}, {"n": 43, "t": "Алгебраические дроби: сокращение, упрощение", "oge": "8", "type": "алг", "m": "мар"}, {"n": 44, "t": "Г: задание 19, факты про треугольники", "oge": "19", "type": "Г", "m": "мар"}, {"n": 45, "t": "Системы уравнений", "oge": "9", "type": "алг", "m": "мар"}, {"n": 46, "t": "Расчёты по формулам: прототипы", "oge": "12", "type": "алг", "m": "мар"}, {"n": 47, "t": "Г: задание 19, факты про четырёхугольники и окружность", "oge": "19", "type": "Г", "m": "мар"}, {"n": 48, "t": "Практические сюжеты: шины", "oge": "1–5", "type": "алг", "m": "мар"}, {"n": 49, "t": "Практические сюжеты: печь для бани", "oge": "1–5", "type": "алг", "m": "мар"}, {"n": 50, "t": "Г: прототипы №18 (клетки)", "oge": "18", "type": "Г", "m": "мар"}, {"n": 51, "t": "Практические сюжеты: участок, теплица", "oge": "1–5", "type": "алг", "m": "апр"}, {"n": 52, "t": "Практические сюжеты: квартира, листы бумаги", "oge": "1–5", "type": "алг", "m": "апр"}, {"n": 53, "t": "Г: прототипы №15", "oge": "15", "type": "Г", "m": "апр"}, {"n": 54, "t": "**Пробный ОГЭ 1** (часть 1)", "oge": "1–19", "type": "контроль", "m": "апр"}, {"n": 55, "t": "Разбор пробника 1", "oge": "", "type": "алг", "m": "апр"}, {"n": 56, "t": "Г: прототипы №16", "oge": "16", "type": "Г", "m": "апр"}, {"n": 57, "t": "Повторение №6–8", "oge": "6–8", "type": "алг", "m": "апр"}, {"n": 58, "t": "Повторение №9–10", "oge": "9, 10", "type": "алг", "m": "апр"}, {"n": 59, "t": "Г: прототипы №17", "oge": "17", "type": "Г", "m": "май"}, {"n": 60, "t": "Повторение №11–12", "oge": "11, 12", "type": "алг", "m": "май"}, {"n": 61, "t": "Повторение №13–14", "oge": "13, 14", "type": "алг", "m": "май"}, {"n": 62, "t": "Г: прототипы №18–19", "oge": "18, 19", "type": "Г", "m": "май"}, {"n": 63, "t": "**Пробный ОГЭ 2**", "oge": "1–19", "type": "контроль", "m": "май"}, {"n": 64, "t": "Разбор пробника 2", "oge": "", "type": "алг", "m": "май"}, {"n": 65, "t": "Г: марафон №15–19", "oge": "15–19", "type": "Г", "m": "май"}, {"n": 66, "t": "Марафон №1–5: ОСАГО, поездка на машине", "oge": "1–5", "type": "алг", "m": "май"}, {"n": 67, "t": "**Пробный ОГЭ 3**", "oge": "1–19", "type": "контроль", "m": "май"}, {"n": 68, "t": "Г: финальный разбор геометрии", "oge": "15–19", "type": "Г", "m": "май"}, {"n": 69, "t": "Разбор пробника 3, слабые места", "oge": "", "type": "алг", "m": "май/июн"}, {"n": 70, "t": "Стратегия экзамена: порядок, время, бланк", "oge": "", "type": "алг", "m": "июн"}]}, {"id": "zlata", "name": "Злата", "goal": "ОГЭ 2027 на «4»–«5»: вся часть 1 (№1–19) без потерь + часть 2 (№20–22, затем 23–24).", "lessons": [{"n": 1, "t": "Свойства степеней", "oge": "8", "type": "алг", "m": "сен"}, {"n": 2, "t": "Квадратные корни: свойства", "oge": "8", "type": "алг", "m": "сен"}, {"n": 3, "t": "Степени и корни: закрепление", "oge": "8", "type": "алг", "m": "сен"}, {"n": 4, "t": "Входная диагностика по части 1", "oge": "1–19", "type": "контр", "m": "окт"}, {"n": 5, "t": "Дроби, проценты, стандартный вид — быстрый темп", "oge": "6, 8", "type": "алг", "m": "окт"}, {"n": 6, "t": "Корни: вынесение множителя, сравнение, иррациональность в знаменателе", "oge": "8", "type": "алг", "m": "окт"}, {"n": 7, "t": "Г: основные понятия, углы, параллельные прямые", "oge": "15, 19", "type": "Г", "m": "окт"}, {"n": 8, "t": "ФСУ и разложение на множители", "oge": "8, 20", "type": "алг", "m": "окт"}, {"n": 9, "t": "Алгебраические дроби: сокращение и действия", "oge": "8, 20", "type": "алг", "m": "окт"}, {"n": 10, "t": "Г: треугольники, сумма углов, равнобедренный, внешний угол", "oge": "15, 19", "type": "Г", "m": "окт"}, {"n": 11, "t": "Упрощение выражений, подстановка, формулы", "oge": "8, 12", "type": "алг", "m": "окт"}, {"n": 12, "t": "Линейные и квадратные уравнения, теорема Виета", "oge": "9", "type": "алг", "m": "окт"}, {"n": 13, "t": "Г: прямоугольный треугольник, теорема Пифагора", "oge": "15", "type": "Г", "m": "ноя"}, {"n": 14, "t": "Дробно-рациональные уравнения, замена переменной", "oge": "9, 20", "type": "алг", "m": "ноя"}, {"n": 15, "t": "Контрольная №1", "oge": "6, 8, 9, 12, 15", "type": "контр", "m": "ноя"}, {"n": 16, "t": "Г: признаки равенства, подобие, средняя линия", "oge": "15, 19", "type": "Г", "m": "ноя"}, {"n": 17, "t": "Линейные неравенства и системы неравенств", "oge": "13", "type": "алг", "m": "ноя"}, {"n": 18, "t": "Квадратные неравенства, метод интервалов", "oge": "13, 20", "type": "алг", "m": "ноя"}, {"n": 19, "t": "Г: синус, косинус, тангенс", "oge": "15", "type": "Г", "m": "ноя"}, {"n": 20, "t": "Системы уравнений", "oge": "9, 20", "type": "алг", "m": "ноя"}, {"n": 21, "t": "Текстовые задачи: движение", "oge": "21", "type": "алг", "m": "ноя"}, {"n": 22, "t": "Г: параллелограмм, ромб, прямоугольник, трапеция", "oge": "17, 19", "type": "Г", "m": "дек"}, {"n": 23, "t": "Текстовые задачи: работа, проценты, смеси", "oge": "21", "type": "алг", "m": "дек"}, {"n": 24, "t": "Числовая прямая, сравнение чисел", "oge": "7", "type": "алг", "m": "дек"}, {"n": 25, "t": "Г: площади фигур", "oge": "17, 18", "type": "Г", "m": "дек"}, {"n": 26, "t": "Контрольная №2", "oge": "7, 9, 13, 15, 17, 20, 21", "type": "контр", "m": "дек"}, {"n": 27, "t": "Арифметическая прогрессия", "oge": "14", "type": "алг", "m": "дек"}, {"n": 28, "t": "Г: окружность, касательная, центральные и вписанные углы", "oge": "16, 19", "type": "Г", "m": "дек"}, {"n": 29, "t": "Геометрическая прогрессия, задачи с сюжетом", "oge": "14", "type": "алг", "m": "дек"}, {"n": 30, "t": "Графики: прямая, парабола, гипербола", "oge": "11", "type": "алг", "m": "янв"}, {"n": 31, "t": "Г: вписанные и описанные окружности", "oge": "16, 19", "type": "Г", "m": "янв"}, {"n": 32, "t": "Вероятность и статистика", "oge": "10", "type": "алг", "m": "янв"}, {"n": 33, "t": "Практико-ориентированные №1–5: сюжеты I", "oge": "1–5", "type": "алг", "m": "янв"}, {"n": 34, "t": "Г: клетчатая бумага", "oge": "18", "type": "Г", "m": "янв"}, {"n": 35, "t": "Практико-ориентированные №1–5: сюжеты II", "oge": "1–5", "type": "алг", "m": "янв"}, {"n": 36, "t": "Г: утверждения — полный справочник", "oge": "19", "type": "Г", "m": "янв"}, {"n": 37, "t": "Контрольная №3 — вся часть 1", "oge": "1–19", "type": "контр", "m": "фев"}, {"n": 38, "t": "Разбор контрольной №3", "oge": "1–19", "type": "повт", "m": "фев"}, {"n": 39, "t": "Построение графиков, кусочные функции", "oge": "22", "type": "алг", "m": "фев"}, {"n": 40, "t": "Уравнения и неравенства повышенного уровня", "oge": "20", "type": "алг", "m": "фев"}, {"n": 41, "t": "Г: задачи на вычисление повышенного уровня", "oge": "23", "type": "Г", "m": "фев"}, {"n": 42, "t": "Графики с модулем и параметром", "oge": "22", "type": "алг", "m": "фев"}, {"n": 43, "t": "Текстовые задачи повышенного уровня", "oge": "21", "type": "алг", "m": "фев"}, {"n": 44, "t": "Г: задачи на доказательство", "oge": "24", "type": "Г", "m": "фев"}, {"n": 45, "t": "Преобразования выражений повышенного уровня", "oge": "20", "type": "алг", "m": "мар"}, {"n": 46, "t": "Г: №23–24, теоремы синусов и косинусов", "oge": "23, 24", "type": "Г", "m": "мар"}, {"n": 47, "t": "Практико-ориентированные №1–5: сюжеты III", "oge": "1–5", "type": "алг", "m": "мар"}, {"n": 48, "t": "Г: знакомство с №25", "oge": "25", "type": "Г", "m": "мар"}, {"n": 49, "t": "Оформление части 2 по критериям", "oge": "20–25", "type": "повт", "m": "мар"}, {"n": 50, "t": "Пробный ОГЭ №1", "oge": "1–25", "type": "контр", "m": "мар"}, {"n": 51, "t": "Разбор пробника №1", "oge": "1–25", "type": "повт", "m": "мар"}, {"n": 52, "t": "Повторение: преобразования и уравнения", "oge": "6, 8, 9, 20", "type": "повт", "m": "апр"}, {"n": 53, "t": "Г: марафон №15–19", "oge": "15–19", "type": "Г", "m": "апр"}, {"n": 54, "t": "Повторение: неравенства, прогрессии, графики", "oge": "11, 13, 14, 22", "type": "повт", "m": "апр"}, {"n": 55, "t": "Пробный ОГЭ №2", "oge": "1–25", "type": "контр", "m": "апр"}, {"n": 56, "t": "Разбор пробника №2", "oge": "1–25", "type": "повт", "m": "апр"}, {"n": 57, "t": "Часть 2: марафон №20–22", "oge": "20–22", "type": "повт", "m": "апр"}, {"n": 58, "t": "Г: марафон №23–24", "oge": "23, 24", "type": "Г", "m": "апр"}, {"n": 59, "t": "Практико-ориентированные №1–5: новые сюжеты", "oge": "1–5", "type": "повт", "m": "апр"}, {"n": 60, "t": "Пробный ОГЭ №3", "oge": "1–25", "type": "контр", "m": "май"}, {"n": 61, "t": "Разбор пробника №3", "oge": "1–25", "type": "повт", "m": "май"}, {"n": 62, "t": "Слабые места по итогам пробников", "oge": "все", "type": "повт", "m": "май"}, {"n": 63, "t": "Пробный ОГЭ №4", "oge": "1–25", "type": "контр", "m": "май"}, {"n": 64, "t": "Разбор пробника №4", "oge": "1–25", "type": "повт", "m": "май"}, {"n": 65, "t": "Финальное повторение формул и теории", "oge": "все", "type": "повт", "m": "май"}, {"n": 66, "t": "Стратегия экзамена", "oge": "все", "type": "повт", "m": "май"}]}];
+const marks = {};           // "zlata-5" -> {done, hw, score}
+let db = null, cur = DATA[0] && DATA[0].id;
+try { const t = localStorage.getItem("journal-student"); if (DATA.some(s => s.id === t)) cur = t; } catch (e) {}
+const $ = id => document.getElementById(id);
+const key = (s, n) => s + "-" + n;
+const mk = (s, n) => marks[key(s, n)] || {};
+
+function summary(s) {
+  const L = s.lessons, done = L.filter(l => mk(s.id, l.n).done);
+  const hwDone = done.filter(l => mk(s.id, l.n).hw).length;
+  const sc = L.map(l => mk(s.id, l.n).score).filter(v => typeof v === "number");
+  const next = L.find(l => !mk(s.id, l.n).done);
+  return { total: L.length, done: done.length, hwDone,
+    avg: sc.length ? (sc.reduce((a, b) => a + b, 0) / sc.length).toFixed(1).replace(".", ",") : "—", next };
+}
+
+function renderCards() {
+  $("cards").replaceChildren(...DATA.map(s => {
+    const m = summary(s), b = document.createElement("button");
+    b.className = "card"; b.setAttribute("aria-pressed", s.id === cur);
+    b.innerHTML = `<h2></h2><div class="goal"></div>
+      <div class="bar"><i style="width:${Math.round(100 * m.done / m.total)}%"></i></div>
+      <div class="stats"><span>пройдено <b>${m.done}</b> из ${m.total}</span>
+        <span>ДЗ сдано <b>${m.hwDone}</b> из ${m.done}</span><span class="sc">средняя за ДЗ <b>${m.avg}</b></span></div>
+      <div class="next"></div>`;
+    b.querySelector("h2").textContent = s.name;
+    b.querySelector(".goal").textContent = s.goal;
+    b.querySelector(".next").textContent = m.next ? `Следующий: урок ${m.next.n}. ${m.next.t}` : "Все уроки пройдены";
+    b.onclick = () => { cur = s.id; try { localStorage.setItem("journal-student", cur); } catch (e) {} render(); };
+    return b;
+  }));
+}
+
+function renderRows() {
+  const s = DATA.find(x => x.id === cur); if (!s) return;
+  const hide = $("only-open").checked, out = []; let month = null;
+  for (const l of s.lessons) {
+    const m = mk(s.id, l.n);
+    if (hide && m.done) continue;
+    if (l.m !== month) { month = l.m; const tr = document.createElement("tr"); tr.className = "month";
+      tr.innerHTML = `<td colspan="5"></td>`; tr.firstChild.textContent = month || "—"; out.push(tr); }
+    const tr = document.createElement("tr"); if (m.done) tr.className = "done";
+    const kind = l.type === "Г" ? "g" : (l.type === "контр" ? "k" : "");
+    tr.innerHTML = `<td class="num">${String(l.n).padStart(2, "0")}</td>
+      <td class="topic"><span class="t"></span><div class="meta"><span class="pill ${kind}"></span><span class="pill o"></span></div></td>
+      <td class="c"><input type="checkbox" id="d-${s.id}-${l.n}" aria-label="Урок ${l.n} пройден"></td>
+      <td class="c"><input type="checkbox" id="h-${s.id}-${l.n}" aria-label="ДЗ к уроку ${l.n} сдано"></td>
+      <td class="c"><select id="s-${s.id}-${l.n}" aria-label="Оценка за ДЗ к уроку ${l.n}"><option value="">—</option>
+        ${[...Array(11).keys()].map(v => `<option value="${v}">${v}</option>`).join("")}</select></td>`;
+    tr.querySelector(".t").textContent = l.t;
+    tr.querySelector(".pill").textContent = l.type === "Г" ? "геометрия" : l.type === "контр" ? "контроль" : l.type === "повт" ? "повторение" : "алгебра";
+    tr.querySelector(".o").textContent = "ОГЭ " + l.oge;
+    const [d, h, sel] = tr.querySelectorAll("input,select");
+    d.checked = !!m.done; h.checked = !!m.hw; sel.value = typeof m.score === "number" ? m.score : "";
+    [d, h, sel].forEach(el => el.disabled = !db);
+    d.onchange = () => save(s.id, l.n, { done: d.checked });
+    h.onchange = () => save(s.id, l.n, { hw: h.checked });
+    sel.onchange = () => save(s.id, l.n, { score: sel.value === "" ? null : +sel.value, ...(sel.value !== "" ? { hw: true } : {}) });
+    out.push(tr);
+  }
+  $("rows").replaceChildren(...out);
+}
+function render() { renderCards(); renderRows(); }
+
+async function save(sid, n, patch) {
+  const k = key(sid, n), next = { done: false, hw: false, score: null, ...marks[k], ...patch, student: sid, n, updated: new Date().toISOString() };
+  marks[k] = next; render(); $("save").textContent = "Сохраняю…";
+  try { await db.doc("marks/" + k).set(next); $("save").textContent = "Сохранено"; }
+  catch (e) { $("save").textContent = e && e.code === "not_granted" ? "Нет прав на запись: отметки ставит владелец журнала" : "Не сохранилось, попробуйте ещё раз"; }
+}
+
+$("only-open").onchange = renderRows;
+render();
+(async () => {
+  db = window.claude ? await window.claude.use("db") : null;
+  if (!db) { $("offline").hidden = false; return; }
+  db.collection("marks").onSnapshot(snap => {
+    for (const k in marks) delete marks[k];
+    snap.docs.forEach(d => { marks[d.id] = d.data(); });
+    render();
+  }, () => { $("save").textContent = "Нет связи с журналом"; });
+  render();
+})();
+</script>
