@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 31. Теория вероятностей: классическая формула</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 31. Теория вероятностей: классическая формула</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №10</span><span class="ls-tag">алгебра</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Шпаргалка</a><a href="#ls-s3">Практика на уроке</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> Дима решает №10 по формуле «подходящие исходы : все исходы» и записывает ответ десятичной дробью.</p>
+<ol class="ls-steps">
+  <li>5–10 мин — проверка ДЗ урока 30.</li>
+  <li>10–15 мин — шпаргалка. Эксперимент: 10 бумажек, 3 помечены — «какой шанс вытянуть помеченную?»</li>
+  <li>25–30 мин — практика. Для каждой задачи выписывать две строчки: «всего = …», «подходит = …».</li>
+  <li>5 мин — итог. №10 — один из самых лёгких баллов ОГЭ, его нельзя терять.</li>
+</ol>
+<p><b>Типичные ошибки:</b> делит на «остальных», а не на всех; путает, что считать подходящим («исправный» или «неисправный»); оставляет ответ обыкновенной дробью.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Шпаргалка</h2>
+<h3>1. Формула вероятности</h3>
+<div class="ls-rule">\[ P = \frac{\text{сколько подходящих исходов}}{\text{сколько всего исходов}} \]
+Вероятность — число от 0 до 1. 0 — событие невозможно, 1 — точно произойдёт.</div>
+<div class="ls-example">В коробке 20 ручек, из них 8 красных. Вероятность наугад достать красную: \(P = \frac{8}{20} = 0{,}4\).</div>
+
+<h3>2. Алгоритм</h3>
+<ol class="ls-steps">
+  <li><b>Всего</b>: сколько всего равновозможных вариантов (все билеты, все пирожки, все спортсмены).</li>
+  <li><b>Подходит</b>: сколько из них нас устраивает (то, про что спрашивают).</li>
+  <li>Делим и переводим в десятичную дробь.</li>
+</ol>
+<div class="ls-warn"><b>Внимательно с «остальными»!</b> «В фирме 50 машин, 27 чёрных, остальные жёлтые». Жёлтых \(50 - 27 = 23\), а всего по-прежнему 50: \(P = \frac{23}{50} = 0{,}46\).</div>
+
+<h3>3. Как быстро перевести в десятичную дробь</h3>
+<div class="ls-rule">Домножь знаменатель до 10, 100 или 1000: \(\frac{23}{50} = \frac{46}{100} = 0{,}46\) · \(\frac{3}{20} = \frac{15}{100} = 0{,}15\) · \(\frac{4}{16} = \frac{1}{4} = 0{,}25\).
+Или просто дели в столбик (урок 4).</div>
+
+<h3>4. Кубик и монета</h3>
+<div class="ls-rule">У кубика 6 исходов (1, 2, 3, 4, 5, 6). Чётных — 3 (2, 4, 6): \(P = \frac{3}{6} = 0{,}5\).<br>
+У монеты 2 исхода (орёл, решка): \(P(\text{орёл}) = 0{,}5\).</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Практика на уроке</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Игральный кубик бросают один раз. Найдите вероятность того, что выпадет чётное число.</div>
+<details><summary>Решение</summary>Всего 6 исходов, чётных 3 (2, 4, 6). \(P = \frac{3}{6} = 0{,}5\).
+<p class="ls-answer">Ответ: 0,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В лотерее 1000 билетов, из них 5 выигрышных. Найдите вероятность того, что купленный билет окажется выигрышным.</div>
+<details><summary>Решение</summary>\(P = \frac{5}{1000} = 0{,}005\).
+<p class="ls-answer">Ответ: 0,005</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №10 (ФИПИ / Решу ОГЭ)</span><br> В фирме такси в наличии 50 легковых автомобилей: 27 из них чёрного цвета, остальные — жёлтые. Найдите вероятность того, что на случайный вызов приедет машина жёлтого цвета.</div>
+<details><summary>Решение</summary>Жёлтых: \(50 - 27 = 23\). Всего 50. \(P = \frac{23}{50} = \frac{46}{100} = 0{,}46\).
+<p class="ls-answer">Ответ: 0,46</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №10 (ФИПИ / Решу ОГЭ)</span><br> На тарелке 16 пирожков: 7 с рыбой, 5 с вареньем и 4 с вишней. Юля наугад выбирает один пирожок. Найдите вероятность того, что он окажется с вишней.</div>
+<details><summary>Решение</summary>Всего 16, с вишней 4. \(P = \frac{4}{16} = \frac{1}{4} = 0{,}25\).
+<p class="ls-answer">Ответ: 0,25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В соревнованиях участвуют 20 спортсменов: 8 из России, 9 из США, остальные из Китая. Порядок выступлений определяется жребием. Найдите вероятность того, что спортсмен, выступающий последним, окажется из Китая.</div>
+<details><summary>Решение</summary>Из Китая: \(20 - 8 - 9 = 3\). \(P = \frac{3}{20} = \frac{15}{100} = 0{,}15\).
+<p class="ls-answer">Ответ: 0,15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Прототип ОГЭ №10 (ФИПИ / Решу ОГЭ)</span><br> В среднем из 1000 садовых насосов, поступивших в продажу, 5 подтекают. Найдите вероятность того, что один случайно выбранный для контроля насос не подтекает.</div>
+<details><summary>Решение</summary>Не подтекают: \(1000 - 5 = 995\). \(P = \frac{995}{1000} = 0{,}995\).
+<p class="ls-answer">Ответ: 0,995</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Прототип ОГЭ №10 (ФИПИ / Решу ОГЭ)</span><br> Родительский комитет закупил 25 пазлов для подарков детям на окончание учебного года, из них 15 с машинами и 10 с видами городов. Подарки распределяются случайным образом. Найдите вероятность того, что Толе достанется пазл с машиной.</div>
+<details><summary>Решение</summary>\(P = \frac{15}{25} = \frac{3}{5} = 0{,}6\).
+<p class="ls-answer">Ответ: 0,6</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> В коробке 12 синих и 8 красных ручек. Найдите вероятность того, что случайно взятая ручка окажется красной.</div>
+<details><summary>Решение</summary>Всего \(12 + 8 = 20\). \(P = \frac{8}{20} = 0{,}4\).
+<p class="ls-answer">Ответ: 0,4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В классе 25 учеников, из них 14 девочек. Дежурного выбирают случайно. Найдите вероятность того, что дежурным окажется мальчик.</div>
+<details><summary>Решение</summary>Мальчиков \(25 - 14 = 11\). \(P = \frac{11}{25} = \frac{44}{100} = 0{,}44\).
+<p class="ls-answer">Ответ: 0,44</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Прототип ОГЭ №10 (ФИПИ / Решу ОГЭ)</span><br> В среднем из 200 карманных фонариков, поступивших в продажу, 6 неисправных. Найдите вероятность того, что выбранный наудачу в магазине фонарик окажется исправен.</div>
+<details><summary>Решение</summary>Исправных \(200 - 6 = 194\). \(P = \frac{194}{200} = \frac{97}{100} = 0{,}97\).
+<p class="ls-answer">Ответ: 0,97</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Прототип ОГЭ №10 (ФИПИ / Решу ОГЭ)</span><br> На экзамене 40 билетов, Серёжа не выучил 6 из них. Найдите вероятность того, что ему попадётся выученный билет.</div>
+<details><summary>Решение</summary>Выученных \(40 - 6 = 34\). \(P = \frac{34}{40} = \frac{85}{100} = 0{,}85\).
+<p class="ls-answer">Ответ: 0,85</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Прототип ОГЭ №10 (ФИПИ / Решу ОГЭ)</span><br> В чемпионате по гимнастике участвуют 50 спортсменок: 22 из России, 15 из Украины, остальные из Беларуси. Порядок выступлений определяется жребием. Найдите вероятность того, что спортсменка, выступающая первой, окажется из Беларуси.</div>
+<details><summary>Решение</summary>Из Беларуси \(50 - 22 - 15 = 13\). \(P = \frac{13}{50} = \frac{26}{100} = 0{,}26\).
+<p class="ls-answer">Ответ: 0,26</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 29)</span> Диагонали ромба равны 8 и 11. Найдите площадь ромба.</div>
+<details><summary>Решение</summary>\(\frac{8\cdot11}{2} = 44\).
+<p class="ls-answer">Ответ: 44</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 27)</span> Решите неравенство \(7 - 2x \le 1\). В ответ запишите наименьшее целое решение.</div>
+<details><summary>Решение</summary>\(-2x \le -6\) → делим на \(-2\), переворачиваем: \(x \ge 3\). Наименьшее целое: 3.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 23)</span> Диагонали прямоугольника \(ABCD\) пересекаются в точке \(O\), \(AO = 6{,}5\). Найдите \(BD\).</div>
+<details><summary>Решение</summary>Диагонали прямоугольника равны и делятся пополам: \(AC = 13\), \(BD = AC = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+</section>
+<nav class="ls-foot"><a href="30-sistemy-neravenstv.html">← Урок 30</a><a href="00-index.html">Все уроки</a><a href="32-geom-podobie.html">Урок 32 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
