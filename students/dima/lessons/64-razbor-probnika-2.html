@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 64. Разбор пробного ОГЭ №2: задачи-двойники</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 64. Разбор пробного ОГЭ №2: задачи-двойники</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №1–19</span><span class="ls-tag">повторение</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Как разбирать пробник</a><a href="#ls-s3">Задачи-двойники к пробнику №2</a><a href="#ls-s4">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> закрыть ошибки пробника №2 и сравнить с пробником №1.</p>
+<ol class="ls-steps">
+  <li>10 мин — баллы пробника №2, геометрия отдельно, сравнение с №1 (что улучшилось).</li>
+  <li>40 мин — двойники только к заданиям с ошибками. Тип каждой ошибки записать (не знал / посчитал неверно / не дочитал).</li>
+  <li>10 мин — если время есть, двойники к «неуверенным» заданиям.</li>
+</ol>
+<p>Таблица «номер задания → урок для повторения» — в уроке 55.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Как разбирать пробник</h2>
+<div class="ls-rule">1) Посчитай баллы и отдельно задания 15–19. 2) Для каждой ошибки определи её тип. 3) Реши двойник. 4) Если ошибка «не знал» — перечитай шпаргалку урока из таблицы урока 55 и реши ещё 2 задачи оттуда.</div>
+<div class="ls-warn">Если одна и та же тема ошибочна в обоих пробниках — это главный кандидат на повторение до экзамена. Отметь её в <code>progress.md</code>.</div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Задачи-двойники к пробнику №2</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-task-src">Двойник задания 1</span><br> <p>Парное отделение: длина 3,5 м, ширина 2,4 м, высота 2 м. Печи: 1) дровяная «Уголёк», 10–16 м³, 20 000 руб.; 2) дровяная «Пламя», 14–20 м³, 22 000 руб.; 3) электрическая «Электра», 15–22 м³, 16 500 руб. (+ кабель 6 000 руб.). За год электрическая печь тратит 1 600 кВт·ч по 6 руб., дровяная — 1,8 м³ дров по 1 750 руб.</p>
+<p>Найдите объём парного отделения (в м³).</p></div>
+<details><summary>Решение</summary>\(3{,}5\cdot2{,}4\cdot2 = 16{,}8\) м³.
+<p class="ls-answer">Ответ: 16,8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-task-src">Двойник задания 2</span><br> Какие печи подходят по объёму? Запишите номера в порядке возрастания.</div>
+<details><summary>Решение</summary>16,8 не входит в 10–16, входит в 14–20 и 15–22. Ответ: 23.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-task-src">Двойник задания 3</span><br> На сколько рублей подходящая дровяная печь дешевле электрической с учётом кабеля?</div>
+<details><summary>Решение</summary>\(16500 + 6000 = 22500\); \(22500 - 22000 = 500\) руб.
+<p class="ls-answer">Ответ: 500</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-task-src">Двойник задания 4</span><br> На сколько рублей в год дровяная печь дешевле в эксплуатации?</div>
+<details><summary>Решение</summary>\(1600\cdot6 = 9600\); \(1{,}8\cdot1750 = 3150\). Разница 6 450 руб.
+<p class="ls-answer">Ответ: 6450</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-task-src">Двойник задания 5</span><br> Арка кожуха: ширина кожуха 40 см, высота боковых стенок 21 см, центр дуги — середина нижней стороны. Найдите радиус арки.</div>
+<details><summary>Решение</summary>\(\sqrt{20^2 + 21^2} = \sqrt{400 + 441} = \sqrt{841} = 29\) см.
+<p class="ls-answer">Ответ: 29</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-task-src">Двойник задания 6</span><br> Найдите значение выражения \(\frac{4{,}2}{1{,}4\cdot0{,}6}\).</div>
+<details><summary>Решение</summary>\(1{,}4\cdot0{,}6 = 0{,}84\); \(4{,}2 : 0{,}84 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-task-src">Двойник задания 7</span><br> Какое из чисел отмечено на прямой точкой \(A\)?
+<svg class="ls-fig" viewBox="0 0 340 62" width="340" height="62" xmlns="http://www.w3.org/2000/svg" role="img"><defs><pattern id="ls-hatch-250" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" stroke-width="1.4"/></pattern></defs><line x1="6" y1="30" x2="332" y2="30" stroke="currentColor" stroke-width="1.6"/><polygon points="336,30 326,26 326,34" fill="currentColor"/><line x1="65" y1="25" x2="65" y2="35" stroke="currentColor" stroke-width="1.6"/><text x="65" y="47" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">2</text><line x1="135" y1="25" x2="135" y2="35" stroke="currentColor" stroke-width="1.6"/><text x="135" y="47" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">3</text><line x1="205" y1="25" x2="205" y2="35" stroke="currentColor" stroke-width="1.6"/><text x="205" y="47" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">4</text><line x1="275" y1="25" x2="275" y2="35" stroke="currentColor" stroke-width="1.6"/><text x="275" y="47" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">5</text><circle cx="167.2" cy="30" r="3.5" fill="currentColor"/><text x="167.2" y="17" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">A</text></svg>
+<div class="ls-opts"><span>1) \(\sqrt{7}\)</span><span>2) \(\sqrt{12}\)</span><span>3) \(\sqrt{17}\)</span><span>4) \(\sqrt{20}\)</span></div></div>
+<details><summary>Решение</summary>\(A\) между 3 и 4 → число под корнем между 9 и 16: это 12.
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-task-src">Двойник задания 8</span><br> Найдите значение выражения \(\frac{a^{12}\cdot a^{-5}}{a^{4}}\) при \(a = 5\).</div>
+<details><summary>Решение</summary>Показатель 3: \(5^3 = 125\).
+<p class="ls-answer">Ответ: 125</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-task-src">Двойник задания 9</span><br> Решите уравнение \(3x^2 - 48 = 0\). В ответ запишите меньший корень.</div>
+<details><summary>Решение</summary>\(x^2 = 16\) → \(\pm4\). Меньший: \(-4\).
+<p class="ls-answer">Ответ: \(-4\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-task-src">Двойник задания 10</span><br> Из 250 фонариков в среднем 10 неисправных. Найдите вероятность того, что случайно выбранный фонарик исправен.</div>
+<details><summary>Решение</summary>\(\frac{240}{250} = 0{,}96\).
+<p class="ls-answer">Ответ: 0,96</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-task-src">Двойник задания 11</span><br> Установите соответствие между графиками и формулами.
+<div class="ls-figs"><figure>
+<svg class="ls-fig" viewBox="0 0 144 162" width="144" height="162" xmlns="http://www.w3.org/2000/svg" role="img"><defs><clipPath id="ls-clip-251"><rect x="18" y="18" width="108" height="126"/></clipPath></defs><line x1="18" y1="144" x2="18" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="36" y1="144" x2="36" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="54" y1="144" x2="54" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="72" y1="144" x2="72" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="144" x2="90" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="108" y1="144" x2="108" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="126" y1="144" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="144" x2="126" y2="144" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="126" x2="126" y2="126" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="108" x2="126" y2="108" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="90" x2="126" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="126" y2="72" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="54" x2="126" y2="54" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="36" x2="126" y2="36" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="18" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="136" y2="72" stroke="currentColor" stroke-width="1.5"/><polygon points="140,72 131,68 131,76" fill="currentColor"/><text x="132" y="87" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">x</text><line x1="72" y1="144" x2="72" y2="8" stroke="currentColor" stroke-width="1.5"/><polygon points="72,4 68,13 76,13" fill="currentColor"/><text x="60" y="12" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">y</text><text x="63" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">0</text><text x="90" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><text x="63" y="54" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><polyline points="18,-36 18.3,-34.2 18.6,-32.4 18.9,-30.6 19.2,-28.9 19.5,-27.1 19.8,-25.4 20.1,-23.6 20.4,-21.9 20.7,-20.2 21,-18.5 21.3,-16.8 21.6,-15.1 21.9,-13.4 22.2,-11.8 22.5,-10.1 22.8,-8.5 23.1,-6.8 23.4,-5.2 23.7,-3.6 24,-2 24.3,-0.4 24.6,1.2 24.9,2.8 25.2,4.3 25.5,5.9 25.8,7.4 26.1,9 26.4,10.5 26.7,12 27,13.5 27.3,15 27.6,16.5 27.9,18 28.2,19.4 28.5,20.9 28.8,22.3 29.1,23.8 29.4,25.2 29.7,26.6 30,28 30.3,29.4 30.6,30.8 30.9,32.2 31.2,33.5 31.5,34.9 31.8,36.2 32.1,37.6 32.4,38.9 32.7,40.2 33,41.5 33.3,42.8 33.6,44.1 33.9,45.4 34.2,46.6 34.5,47.9 34.8,49.1 35.1,50.4 35.4,51.6 35.7,52.8 36,54 36.3,55.2 36.6,56.4 36.9,57.6 37.2,58.7 37.5,59.9 37.8,61 38.1,62.2 38.4,63.3 38.7,64.4 39,65.5 39.3,66.6 39.6,67.7 39.9,68.8 40.2,69.8 40.5,70.9 40.8,71.9 41.1,73 41.4,74 41.7,75 42,76 42.3,77 42.6,78 42.9,79 43.2,79.9 43.5,80.9 43.8,81.8 44.1,82.8 44.4,83.7 44.7,84.6 45,85.5 45.3,86.4 45.6,87.3 45.9,88.2 46.2,89 46.5,89.9 46.8,90.7 47.1,91.6 47.4,92.4 47.7,93.2 48,94 48.3,94.8 48.6,95.6 48.9,96.4 49.2,97.1 49.5,97.9 49.8,98.6 50.1,99.4 50.4,100.1 50.7,100.8 51,101.5 51.3,102.2 51.6,102.9 51.9,103.6 52.2,104.2 52.5,104.9 52.8,105.5 53.1,106.2 53.4,106.8 53.7,107.4 54,108 54.3,108.6 54.6,109.2 54.9,109.8 55.2,110.3 55.5,110.9 55.8,111.4 56.1,112 56.4,112.5 56.7,113 57,113.5 57.3,114 57.6,114.5 57.9,115 58.2,115.4 58.5,115.9 58.8,116.3 59.1,116.8 59.4,117.2 59.7,117.6 60,118 60.3,118.4 60.6,118.8 60.9,119.2 61.2,119.5 61.5,119.9 61.8,120.2 62.1,120.6 62.4,120.9 62.7,121.2 63,121.5 63.3,121.8 63.6,122.1 63.9,122.4 64.2,122.6 64.5,122.9 64.8,123.1 65.1,123.4 65.4,123.6 65.7,123.8 66,124 66.3,124.2 66.6,124.4 66.9,124.6 67.2,124.7 67.5,124.9 67.8,125 68.1,125.2 68.4,125.3 68.7,125.4 69,125.5 69.3,125.6 69.6,125.7 69.9,125.8 70.2,125.8 70.5,125.9 70.8,125.9 71.1,126 71.4,126 71.7,126 72,126 72.3,126 72.6,126 72.9,126 73.2,125.9 73.5,125.9 73.8,125.8 74.1,125.8 74.4,125.7 74.7,125.6 75,125.5 75.3,125.4 75.6,125.3 75.9,125.2 76.2,125 76.5,124.9 76.8,124.7 77.1,124.6 77.4,124.4 77.7,124.2 78,124 78.3,123.8 78.6,123.6 78.9,123.4 79.2,123.1 79.5,122.9 79.8,122.6 80.1,122.4 80.4,122.1 80.7,121.8 81,121.5 81.3,121.2 81.6,120.9 81.9,120.6 82.2,120.2 82.5,119.9 82.8,119.5 83.1,119.2 83.4,118.8 83.7,118.4 84,118 84.3,117.6 84.6,117.2 84.9,116.8 85.2,116.3 85.5,115.9 85.8,115.4 86.1,115 86.4,114.5 86.7,114 87,113.5 87.3,113 87.6,112.5 87.9,112 88.2,111.4 88.5,110.9 88.8,110.3 89.1,109.8 89.4,109.2 89.7,108.6 90,108 90.3,107.4 90.6,106.8 90.9,106.2 91.2,105.5 91.5,104.9 91.8,104.2 92.1,103.6 92.4,102.9 92.7,102.2 93,101.5 93.3,100.8 93.6,100.1 93.9,99.4 94.2,98.6 94.5,97.9 94.8,97.1 95.1,96.4 95.4,95.6 95.7,94.8 96,94 96.3,93.2 96.6,92.4 96.9,91.6 97.2,90.7 97.5,89.9 97.8,89 98.1,88.2 98.4,87.3 98.7,86.4 99,85.5 99.3,84.6 99.6,83.7 99.9,82.8 100.2,81.8 100.5,80.9 100.8,79.9 101.1,79 101.4,78 101.7,77 102,76 102.3,75 102.6,74 102.9,73 103.2,71.9 103.5,70.9 103.8,69.8 104.1,68.8 104.4,67.7 104.7,66.6 105,65.5 105.3,64.4 105.6,63.3 105.9,62.2 106.2,61 106.5,59.9 106.8,58.7 107.1,57.6 107.4,56.4 107.7,55.2 108,54 108.3,52.8 108.6,51.6 108.9,50.4 109.2,49.1 109.5,47.9 109.8,46.6 110.1,45.4 110.4,44.1 110.7,42.8 111,41.5 111.3,40.2 111.6,38.9 111.9,37.6 112.2,36.2 112.5,34.9 112.8,33.5 113.1,32.2 113.4,30.8 113.7,29.4 114,28 114.3,26.6 114.6,25.2 114.9,23.8 115.2,22.3 115.5,20.9 115.8,19.4 116.1,18 116.4,16.5 116.7,15 117,13.5 117.3,12 117.6,10.5 117.9,9 118.2,7.4 118.5,5.9 118.8,4.3 119.1,2.8 119.4,1.2 119.7,-0.4 120,-2 120.3,-3.6 120.6,-5.2 120.9,-6.8 121.2,-8.5 121.5,-10.1 121.8,-11.8 122.1,-13.4 122.4,-15.1 122.7,-16.8 123,-18.5 123.3,-20.2 123.6,-21.9 123.9,-23.6 124.2,-25.4 124.5,-27.1 124.8,-28.9 125.1,-30.6 125.4,-32.4 125.7,-34.2 126,-36" fill="none" stroke="var(--ls-accent)" stroke-width="2.2" clip-path="url(#ls-clip-251)"/></svg>
+<figcaption>А</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 144 162" width="144" height="162" xmlns="http://www.w3.org/2000/svg" role="img"><defs><clipPath id="ls-clip-252"><rect x="18" y="18" width="108" height="126"/></clipPath></defs><line x1="18" y1="144" x2="18" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="36" y1="144" x2="36" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="54" y1="144" x2="54" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="72" y1="144" x2="72" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="144" x2="90" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="108" y1="144" x2="108" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="126" y1="144" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="144" x2="126" y2="144" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="126" x2="126" y2="126" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="108" x2="126" y2="108" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="90" x2="126" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="126" y2="72" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="54" x2="126" y2="54" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="36" x2="126" y2="36" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="18" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="136" y2="72" stroke="currentColor" stroke-width="1.5"/><polygon points="140,72 131,68 131,76" fill="currentColor"/><text x="132" y="87" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">x</text><line x1="72" y1="144" x2="72" y2="8" stroke="currentColor" stroke-width="1.5"/><polygon points="72,4 68,13 76,13" fill="currentColor"/><text x="60" y="12" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">y</text><text x="63" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">0</text><text x="90" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><text x="63" y="54" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><polyline points="18,66 18.3,66 18.6,65.9 18.9,65.9 19.2,65.9 19.5,65.8 19.8,65.8 20.1,65.8 20.4,65.7 20.7,65.7 21,65.6 21.3,65.6 21.6,65.6 21.9,65.5 22.2,65.5 22.5,65.5 22.8,65.4 23.1,65.4 23.4,65.3 23.7,65.3 24,65.2 24.3,65.2 24.6,65.2 24.9,65.1 25.2,65.1 25.5,65 25.8,65 26.1,64.9 26.4,64.9 26.7,64.8 27,64.8 27.3,64.8 27.6,64.7 27.9,64.7 28.2,64.6 28.5,64.6 28.8,64.5 29.1,64.4 29.4,64.4 29.7,64.3 30,64.3 30.3,64.2 30.6,64.2 30.9,64.1 31.2,64.1 31.5,64 31.8,63.9 32.1,63.9 32.4,63.8 32.7,63.8 33,63.7 33.3,63.6 33.6,63.6 33.9,63.5 34.2,63.4 34.5,63.4 34.8,63.3 35.1,63.2 35.4,63.1 35.7,63.1 36,63 36.3,62.9 36.6,62.8 36.9,62.8 37.2,62.7 37.5,62.6 37.8,62.5 38.1,62.4 38.4,62.4 38.7,62.3 39,62.2 39.3,62.1 39.6,62 39.9,61.9 40.2,61.8 40.5,61.7 40.8,61.6 41.1,61.5 41.4,61.4 41.7,61.3 42,61.2 42.3,61.1 42.6,61 42.9,60.9 43.2,60.8 43.5,60.6 43.8,60.5 44.1,60.4 44.4,60.3 44.7,60.1 45,60 45.3,59.9 45.6,59.7 45.9,59.6 46.2,59.4 46.5,59.3 46.8,59.1 47.1,59 47.4,58.8 47.7,58.7 48,58.5 48.3,58.3 48.6,58.2 48.9,58 49.2,57.8 49.5,57.6 49.8,57.4 50.1,57.2 50.4,57 50.7,56.8 51,56.6 51.3,56.3 51.6,56.1 51.9,55.9 52.2,55.6 52.5,55.4 52.8,55.1 53.1,54.9 53.4,54.6 53.7,54.3 54,54 54.3,53.7 54.6,53.4 54.9,53.1 55.2,52.7 55.5,52.4 55.8,52 56.1,51.6 56.4,51.2 56.7,50.8 57,50.4 57.3,50 57.6,49.5 57.9,49 58.2,48.5 58.5,48 58.8,47.5 59.1,46.9 59.4,46.3 59.7,45.7 60,45 60.3,44.3 60.6,43.6 60.9,42.8 61.2,42 61.5,41.1 61.8,40.2 62.1,39.3 62.4,38.2 62.7,37.2 63,36 63.3,34.8 63.6,33.4 63.9,32 64.2,30.5 64.5,28.8 64.8,27 65.1,25 65.4,22.9 65.7,20.6 66,18 66.3,15.2 66.6,12 66.9,8.5 67.2,4.5 67.5,0 67.8,-5.1 68.1,-11.1 68.4,-18 68.7,-26.2 69,-36 69.3,-48 69.6,-63 69.9,-82.3 70.2,-108 70.5,-144 70.8,-198 71.1,-288" fill="none" stroke="var(--ls-accent)" stroke-width="2.2" clip-path="url(#ls-clip-252)"/><polyline points="72.9,432 73.2,342 73.5,288 73.8,252 74.1,226.3 74.4,207 74.7,192 75,180 75.3,170.2 75.6,162 75.9,155.1 76.2,149.1 76.5,144 76.8,139.5 77.1,135.5 77.4,132 77.7,128.8 78,126 78.3,123.4 78.6,121.1 78.9,119 79.2,117 79.5,115.2 79.8,113.5 80.1,112 80.4,110.6 80.7,109.2 81,108 81.3,106.8 81.6,105.8 81.9,104.7 82.2,103.8 82.5,102.9 82.8,102 83.1,101.2 83.4,100.4 83.7,99.7 84,99 84.3,98.3 84.6,97.7 84.9,97.1 85.2,96.5 85.5,96 85.8,95.5 86.1,95 86.4,94.5 86.7,94 87,93.6 87.3,93.2 87.6,92.8 87.9,92.4 88.2,92 88.5,91.6 88.8,91.3 89.1,90.9 89.4,90.6 89.7,90.3 90,90 90.3,89.7 90.6,89.4 90.9,89.1 91.2,88.9 91.5,88.6 91.8,88.4 92.1,88.1 92.4,87.9 92.7,87.7 93,87.4 93.3,87.2 93.6,87 93.9,86.8 94.2,86.6 94.5,86.4 94.8,86.2 95.1,86 95.4,85.8 95.7,85.7 96,85.5 96.3,85.3 96.6,85.2 96.9,85 97.2,84.9 97.5,84.7 97.8,84.6 98.1,84.4 98.4,84.3 98.7,84.1 99,84 99.3,83.9 99.6,83.7 99.9,83.6 100.2,83.5 100.5,83.4 100.8,83.2 101.1,83.1 101.4,83 101.7,82.9 102,82.8 102.3,82.7 102.6,82.6 102.9,82.5 103.2,82.4 103.5,82.3 103.8,82.2 104.1,82.1 104.4,82 104.7,81.9 105,81.8 105.3,81.7 105.6,81.6 105.9,81.6 106.2,81.5 106.5,81.4 106.8,81.3 107.1,81.2 107.4,81.2 107.7,81.1 108,81 108.3,80.9 108.6,80.9 108.9,80.8 109.2,80.7 109.5,80.6 109.8,80.6 110.1,80.5 110.4,80.4 110.7,80.4 111,80.3 111.3,80.2 111.6,80.2 111.9,80.1 112.2,80.1 112.5,80 112.8,79.9 113.1,79.9 113.4,79.8 113.7,79.8 114,79.7 114.3,79.7 114.6,79.6 114.9,79.6 115.2,79.5 115.5,79.4 115.8,79.4 116.1,79.3 116.4,79.3 116.7,79.2 117,79.2 117.3,79.2 117.6,79.1 117.9,79.1 118.2,79 118.5,79 118.8,78.9 119.1,78.9 119.4,78.8 119.7,78.8 120,78.8 120.3,78.7 120.6,78.7 120.9,78.6 121.2,78.6 121.5,78.5 121.8,78.5 122.1,78.5 122.4,78.4 122.7,78.4 123,78.4 123.3,78.3 123.6,78.3 123.9,78.2 124.2,78.2 124.5,78.2 124.8,78.1 125.1,78.1 125.4,78.1 125.7,78 126,78" fill="none" stroke="var(--ls-accent)" stroke-width="2.2" clip-path="url(#ls-clip-252)"/></svg>
+<figcaption>Б</figcaption></figure><figure>
+<svg class="ls-fig" viewBox="0 0 144 162" width="144" height="162" xmlns="http://www.w3.org/2000/svg" role="img"><defs><clipPath id="ls-clip-253"><rect x="18" y="18" width="108" height="126"/></clipPath></defs><line x1="18" y1="144" x2="18" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="36" y1="144" x2="36" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="54" y1="144" x2="54" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="72" y1="144" x2="72" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="144" x2="90" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="108" y1="144" x2="108" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="126" y1="144" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="144" x2="126" y2="144" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="126" x2="126" y2="126" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="108" x2="126" y2="108" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="90" x2="126" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="126" y2="72" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="54" x2="126" y2="54" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="36" x2="126" y2="36" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="18" x2="126" y2="18" stroke="var(--ls-grid)" stroke-width="1"/><line x1="18" y1="72" x2="136" y2="72" stroke="currentColor" stroke-width="1.5"/><polygon points="140,72 131,68 131,76" fill="currentColor"/><text x="132" y="87" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">x</text><line x1="72" y1="144" x2="72" y2="8" stroke="currentColor" stroke-width="1.5"/><polygon points="72,4 68,13 76,13" fill="currentColor"/><text x="60" y="12" text-anchor="middle" dominant-baseline="central" font-size="15" fill="currentColor" font-style="italic">y</text><text x="63" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">0</text><text x="90" y="85" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><text x="63" y="54" text-anchor="middle" dominant-baseline="central" font-size="13" fill="currentColor">1</text><polyline points="18,-18 18.3,-17.7 18.6,-17.4 18.9,-17.1 19.2,-16.8 19.5,-16.5 19.8,-16.2 20.1,-15.9 20.4,-15.6 20.7,-15.3 21,-15 21.3,-14.7 21.6,-14.4 21.9,-14.1 22.2,-13.8 22.5,-13.5 22.8,-13.2 23.1,-12.9 23.4,-12.6 23.7,-12.3 24,-12 24.3,-11.7 24.6,-11.4 24.9,-11.1 25.2,-10.8 25.5,-10.5 25.8,-10.2 26.1,-9.9 26.4,-9.6 26.7,-9.3 27,-9 27.3,-8.7 27.6,-8.4 27.9,-8.1 28.2,-7.8 28.5,-7.5 28.8,-7.2 29.1,-6.9 29.4,-6.6 29.7,-6.3 30,-6 30.3,-5.7 30.6,-5.4 30.9,-5.1 31.2,-4.8 31.5,-4.5 31.8,-4.2 32.1,-3.9 32.4,-3.6 32.7,-3.3 33,-3 33.3,-2.7 33.6,-2.4 33.9,-2.1 34.2,-1.8 34.5,-1.5 34.8,-1.2 35.1,-0.9 35.4,-0.6 35.7,-0.3 36,0 36.3,0.3 36.6,0.6 36.9,0.9 37.2,1.2 37.5,1.5 37.8,1.8 38.1,2.1 38.4,2.4 38.7,2.7 39,3 39.3,3.3 39.6,3.6 39.9,3.9 40.2,4.2 40.5,4.5 40.8,4.8 41.1,5.1 41.4,5.4 41.7,5.7 42,6 42.3,6.3 42.6,6.6 42.9,6.9 43.2,7.2 43.5,7.5 43.8,7.8 44.1,8.1 44.4,8.4 44.7,8.7 45,9 45.3,9.3 45.6,9.6 45.9,9.9 46.2,10.2 46.5,10.5 46.8,10.8 47.1,11.1 47.4,11.4 47.7,11.7 48,12 48.3,12.3 48.6,12.6 48.9,12.9 49.2,13.2 49.5,13.5 49.8,13.8 50.1,14.1 50.4,14.4 50.7,14.7 51,15 51.3,15.3 51.6,15.6 51.9,15.9 52.2,16.2 52.5,16.5 52.8,16.8 53.1,17.1 53.4,17.4 53.7,17.7 54,18 54.3,18.3 54.6,18.6 54.9,18.9 55.2,19.2 55.5,19.5 55.8,19.8 56.1,20.1 56.4,20.4 56.7,20.7 57,21 57.3,21.3 57.6,21.6 57.9,21.9 58.2,22.2 58.5,22.5 58.8,22.8 59.1,23.1 59.4,23.4 59.7,23.7 60,24 60.3,24.3 60.6,24.6 60.9,24.9 61.2,25.2 61.5,25.5 61.8,25.8 62.1,26.1 62.4,26.4 62.7,26.7 63,27 63.3,27.3 63.6,27.6 63.9,27.9 64.2,28.2 64.5,28.5 64.8,28.8 65.1,29.1 65.4,29.4 65.7,29.7 66,30 66.3,30.3 66.6,30.6 66.9,30.9 67.2,31.2 67.5,31.5 67.8,31.8 68.1,32.1 68.4,32.4 68.7,32.7 69,33 69.3,33.3 69.6,33.6 69.9,33.9 70.2,34.2 70.5,34.5 70.8,34.8 71.1,35.1 71.4,35.4 71.7,35.7 72,36 72.3,36.3 72.6,36.6 72.9,36.9 73.2,37.2 73.5,37.5 73.8,37.8 74.1,38.1 74.4,38.4 74.7,38.7 75,39 75.3,39.3 75.6,39.6 75.9,39.9 76.2,40.2 76.5,40.5 76.8,40.8 77.1,41.1 77.4,41.4 77.7,41.7 78,42 78.3,42.3 78.6,42.6 78.9,42.9 79.2,43.2 79.5,43.5 79.8,43.8 80.1,44.1 80.4,44.4 80.7,44.7 81,45 81.3,45.3 81.6,45.6 81.9,45.9 82.2,46.2 82.5,46.5 82.8,46.8 83.1,47.1 83.4,47.4 83.7,47.7 84,48 84.3,48.3 84.6,48.6 84.9,48.9 85.2,49.2 85.5,49.5 85.8,49.8 86.1,50.1 86.4,50.4 86.7,50.7 87,51 87.3,51.3 87.6,51.6 87.9,51.9 88.2,52.2 88.5,52.5 88.8,52.8 89.1,53.1 89.4,53.4 89.7,53.7 90,54 90.3,54.3 90.6,54.6 90.9,54.9 91.2,55.2 91.5,55.5 91.8,55.8 92.1,56.1 92.4,56.4 92.7,56.7 93,57 93.3,57.3 93.6,57.6 93.9,57.9 94.2,58.2 94.5,58.5 94.8,58.8 95.1,59.1 95.4,59.4 95.7,59.7 96,60 96.3,60.3 96.6,60.6 96.9,60.9 97.2,61.2 97.5,61.5 97.8,61.8 98.1,62.1 98.4,62.4 98.7,62.7 99,63 99.3,63.3 99.6,63.6 99.9,63.9 100.2,64.2 100.5,64.5 100.8,64.8 101.1,65.1 101.4,65.4 101.7,65.7 102,66 102.3,66.3 102.6,66.6 102.9,66.9 103.2,67.2 103.5,67.5 103.8,67.8 104.1,68.1 104.4,68.4 104.7,68.7 105,69 105.3,69.3 105.6,69.6 105.9,69.9 106.2,70.2 106.5,70.5 106.8,70.8 107.1,71.1 107.4,71.4 107.7,71.7 108,72 108.3,72.3 108.6,72.6 108.9,72.9 109.2,73.2 109.5,73.5 109.8,73.8 110.1,74.1 110.4,74.4 110.7,74.7 111,75 111.3,75.3 111.6,75.6 111.9,75.9 112.2,76.2 112.5,76.5 112.8,76.8 113.1,77.1 113.4,77.4 113.7,77.7 114,78 114.3,78.3 114.6,78.6 114.9,78.9 115.2,79.2 115.5,79.5 115.8,79.8 116.1,80.1 116.4,80.4 116.7,80.7 117,81 117.3,81.3 117.6,81.6 117.9,81.9 118.2,82.2 118.5,82.5 118.8,82.8 119.1,83.1 119.4,83.4 119.7,83.7 120,84 120.3,84.3 120.6,84.6 120.9,84.9 121.2,85.2 121.5,85.5 121.8,85.8 122.1,86.1 122.4,86.4 122.7,86.7 123,87 123.3,87.3 123.6,87.6 123.9,87.9 124.2,88.2 124.5,88.5 124.8,88.8 125.1,89.1 125.4,89.4 125.7,89.7 126,90" fill="none" stroke="var(--ls-accent)" stroke-width="2.2" clip-path="url(#ls-clip-253)"/></svg>
+<figcaption>В</figcaption></figure></div>
+<div class="ls-opts"><span>1) \(y = -x + 2\)</span><span>2) \(y = x^2 - 3\)</span><span>3) \(y = -\frac{1}{x}\)</span></div></div>
+<details><summary>Решение</summary>А → 2, Б → 3, В → 1.
+<p class="ls-answer">Ответ: 231</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">12.</span> <span class="ls-task-src">Двойник задания 12</span><br> Сумма углов выпуклого многоугольника равна \(1440^\circ\). Сколько у него сторон?</div>
+<details><summary>Решение</summary>\(1440 : 180 = 8\), \(n = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">13.</span> <span class="ls-task-src">Двойник задания 13</span><br> Укажите решение неравенства \(x^2 - 36 > 0\).
+<div class="ls-opts"><span>1) \((-6;\ 6)\)</span><span>2) \((-\infty;\ -6)\cup(6;\ +\infty)\)</span><span>3) \((6;\ +\infty)\)</span><span>4) \((-\infty;\ 6)\)</span></div></div>
+<details><summary>Решение</summary>«\(>\)» → края: вариант 2.
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">14.</span> <span class="ls-task-src">Двойник задания 14</span><br> В пробирке 5 бактерий, каждые 30 минут их число удваивается. Сколько бактерий будет через 3 часа?</div>
+<details><summary>Решение</summary>3 ч = 6 удвоений: \(5\cdot2^6 = 320\).
+<p class="ls-answer">Ответ: 320</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">15.</span> <span class="ls-task-src">Двойник задания 15</span><br> В треугольнике \(ABC\) известно, что \(AB = BC\), \(\angle ABC = 136^\circ\). Найдите угол \(BAC\).</div>
+<details><summary>Решение</summary>\((180 - 136) : 2 = 22^\circ\).
+<p class="ls-answer">Ответ: 22</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">16.</span> <span class="ls-task-src">Двойник задания 16</span><br> Радиус окружности равен 17, хорда равна 16. Найдите расстояние от центра до хорды.</div>
+<details><summary>Решение</summary>Половина хорды 8. \(\sqrt{289 - 64} = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">17.</span> <span class="ls-task-src">Двойник задания 17</span><br> Основания равнобедренной трапеции равны 5 и 13, боковая сторона 5. Найдите площадь.</div>
+<details><summary>Решение</summary>Уголок 4, высота 3. \(S = \frac{5 + 13}{2}\cdot3 = 27\).
+<p class="ls-answer">Ответ: 27</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">18.</span> <span class="ls-task-src">Двойник задания 18</span><br> На клетчатой бумаге изображён угол. Найдите его тангенс.
+<svg class="ls-fig" viewBox="0 0 206 154" width="206" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="168" y2="116" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="116" x2="142" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="60,116 60,115.4 60,114.8 59.9,114.2 59.9,113.6 59.8,113.1 59.7,112.5 59.6,111.9 59.5,111.3 59.4,110.7 59.2,110.2 59.1,109.6 58.9,109 58.7,108.5 58.5,107.9 58.2,107.4 58,106.8 57.8,106.3 57.5,105.8 57.2,105.3 56.9,104.8 56.6,104.3 56.3,103.8 55.9,103.3 55.6,102.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+<details><summary>Решение</summary>Противолежащий 3, прилежащий 4: \(0{,}75\).
+<p class="ls-answer">Ответ: 0,75</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">19.</span> <span class="ls-task-src">Двойник задания 19</span><br> Какие утверждения верны? 1) Диагонали ромба перпендикулярны. 2) Диагонали любого параллелограмма равны. 3) Вертикальные углы равны.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно. 3 — верно.
+<p class="ls-answer">Ответ: 13</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите значение выражения \(\frac{5{,}6}{0{,}7\cdot0{,}8}\).</div>
+<details><summary>Решение</summary>\(0{,}56\); \(5{,}6 : 0{,}56 = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Решите уравнение \(x^2 + 3x - 28 = 0\). В ответ запишите больший корень.</div>
+<details><summary>Решение</summary>Произведение \(-28\), сумма \(-3\): \(-7\) и 4. Больший: 4.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вероятность того, что новый пылесос прослужит больше года, равна 0,97. Найдите вероятность того, что он сломается в течение года.</div>
+<details><summary>Решение</summary>\(1 - 0{,}97 = 0{,}03\).
+<p class="ls-answer">Ответ: 0,03</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В прямоугольном треугольнике катет, лежащий напротив угла \(30^\circ\), равен 9. Найдите гипотенузу.</div>
+<details><summary>Решение</summary>\(9\cdot2 = 18\).
+<p class="ls-answer">Ответ: 18</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Четырёхугольник \(ABCD\) вписан в окружность, \(\angle B = 71^\circ\). Найдите \(\angle D\).</div>
+<details><summary>Решение</summary>\(180 - 71 = 109^\circ\).
+<p class="ls-answer">Ответ: 109</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 62)</span> На клетчатой бумаге изображена трапеция с основаниями 7 и 3 клетки и высотой 4 клетки. Найдите её площадь.</div>
+<details><summary>Решение</summary>\(\frac{7 + 3}{2}\cdot4 = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 60)</span> По формуле \(P = I^2R\) найдите силу тока \(I\), если \(P = 320\) Вт, \(R = 5\) Ом.</div>
+<details><summary>Решение</summary>\(I^2 = 64\) → \(I = 8\) А.
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 56)</span> Радиус окружности, вписанной в правильный треугольник, равен 7. Найдите высоту треугольника.</div>
+<details><summary>Решение</summary>\(3\cdot7 = 21\).
+<p class="ls-answer">Ответ: 21</p></details></div>
+</section>
+<nav class="ls-foot"><a href="63-probnyy-oge-2.html">← Урок 63</a><a href="00-index.html">Все уроки</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
