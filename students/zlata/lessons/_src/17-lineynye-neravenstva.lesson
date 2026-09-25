@@ -1,0 +1,138 @@
+@title Урок 17. Линейные неравенства и системы неравенств
+@tags ОГЭ №13 | алгебра
+@teacher
+<p><b>Цель:</b> №13 полностью — неравенства, системы, изображение на прямой, выбор варианта ответа. Злата быстро решает линейное, поэтому основной упор на «ловушки» и выбор варианта.</p>
+<ol class="ls-steps">
+  <li>5 мин — проверка ДЗ урока 16.</li>
+  <li>10 мин — шпаргалка: знак при делении на отрицательное, закрашенная/выколотая точка, пересечение.</li>
+  <li>35 мин — практика 1–7.</li>
+  <li>10 мин — итог, ДЗ.</li>
+</ol>
+@theory
+<div class="ls-rule">При умножении/делении на <b>отрицательное</b> число знак неравенства меняется. \(\le, \ge\) — точка закрашена, \([\,]\); \(<, >\) — выколота, \((\,)\).</div>
+<div class="ls-rule"><b>Система</b> — пересечение (общая часть) решений. Нет общей части — нет решений.</div>
+<div class="ls-example">\(\begin{cases} 2x - 6 \le 0 \\ x + 1 > 0 \end{cases}\) → \(x \le 3\), \(x > -1\) → \((-1;\ 3]\).</div>
+@numline -3 5 width=300
+int (-1; 3]
+@end
+@practice
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Решите неравенство \(5 - 3(x + 2) \ge 2x - 11\). Укажите наибольшее целое решение.
+@sol
+\(-1 - 3x \ge 2x - 11\) → \(10 \ge 5x\), \(x \le 2\).
+@ans 2
+@check max(x for x in range(-50,50) if 5-3*(x+2) >= 2*x-11)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Укажите решение неравенства \(\frac{x}{3} - \frac{x - 1}{2} > 1\).
+<div class="ls-opts"><span>1) \((-\infty;\ -3)\)</span><span>2) \((-3;\ +\infty)\)</span><span>3) \((-\infty;\ 3)\)</span><span>4) \((3;\ +\infty)\)</span></div>
+@sol
+\(2x - 3x + 3 > 6\) → \(-x > 3\) → \(x < -3\). Вариант 1.
+@ans 1
+@check which(lambda x: x/3 - (x-1)/2 > 1, lambda x: x < -3, lambda x: x > -3, lambda x: x < 3, lambda x: x > 3)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+Укажите решение системы \(\begin{cases} 3x + 12 > 0 \\ 7 - 2x \ge 1 \end{cases}\).
+<div class="ls-opts"><span>1) \((-4;\ 3]\)</span><span>2) \([-4;\ 3)\)</span><span>3) \((3;\ +\infty)\)</span><span>4) \((-\infty;\ -4)\)</span></div>
+@sol
+\(x > -4\), \(x \le 3\). Вариант 1.
+@ans 1
+@check which(lambda x: 3*x+12 > 0 and 7-2*x >= 1, lambda x: -4 < x <= 3, lambda x: -4 <= x < 3, lambda x: x > 3, lambda x: x < -4)
+@task
+@src Прототип ОГЭ №13 (ФИПИ / Решу ОГЭ)
+На каком рисунке изображено решение системы \(\begin{cases} x \ge 2 \\ x - 5 \ge 0 \end{cases}\)?
+<div class="ls-figs"><figure>
+@numline -1 7 width=200
+int [2; 5]
+@end
+<figcaption>1)</figcaption></figure><figure>
+@numline -1 7 width=200
+int [5; +inf)
+@end
+<figcaption>2)</figcaption></figure><figure>
+@numline -1 7 width=200
+int [2; +inf)
+@end
+<figcaption>3)</figcaption></figure><figure>
+@numline -1 7 width=200
+int (-inf; 2]  U  [5; +inf)
+@end
+<figcaption>4)</figcaption></figure></div>
+@sol
+\(x \ge 2\) и \(x \ge 5\) → \(x \ge 5\). Вариант 2.
+@ans 2
+@check which(lambda x: x >= 2 and x - 5 >= 0, lambda x: 2 <= x <= 5, lambda x: x >= 5, lambda x: x >= 2, lambda x: x <= 2 or x >= 5)
+@task
+@src Прототип ОГЭ №13
+Сколько целых решений имеет система \(\begin{cases} 2x + 7 > 1 \\ 4 - x \ge 0 \end{cases}\)?
+@sol
+\(x > -3\), \(x \le 4\): \(-2, -1, 0, 1, 2, 3, 4\) — 7.
+@ans 7
+@check len([x for x in range(-50,50) if 2*x+7 > 1 and 4-x >= 0])
+@task
+@src Прототип ОГЭ №13
+Укажите решение системы \(\begin{cases} x + 4 < 0 \\ 2x > -6 \end{cases}\).
+<div class="ls-opts"><span>1) \((-4;\ -3)\)</span><span>2) \((-\infty;\ -4)\)</span><span>3) \((-3;\ +\infty)\)</span><span>4) нет решений</span></div>
+@sol
+\(x < -4\) и \(x > -3\) — общих точек нет. Вариант 4.
+@ans 4
+@check which(lambda x: x+4 < 0 and 2*x > -6, lambda x: -4 < x < -3, lambda x: x < -4, lambda x: x > -3, lambda x: False)
+@task
+@src Для «5»
+При каких \(a\) решением неравенства \(ax > 6\) является промежуток \((-\infty;\ -2)\)? Найдите \(a\).
+@sol
+Знак поменялся — \(a < 0\): \(x < \frac{6}{a} = -2\), \(a = -3\).
+@ans -3
+@check F(6,-2)
+@hw
+@task
+@src Прототип ОГЭ №13
+Решите неравенство \(2(x - 3) - 5 \le 4x + 3\). Укажите наименьшее целое решение.
+@sol
+\(2x - 11 \le 4x + 3\) → \(-14 \le 2x\), \(x \ge -7\).
+@ans -7
+@check min(x for x in range(-50,50) if 2*(x-3)-5 <= 4*x+3)
+@task
+@src Прототип ОГЭ №13
+Укажите решение системы \(\begin{cases} 6 - 2x < 0 \\ x - 8 \le 0 \end{cases}\).
+<div class="ls-opts"><span>1) \([3;\ 8)\)</span><span>2) \((3;\ 8]\)</span><span>3) \((-\infty;\ 3)\)</span><span>4) \([8;\ +\infty)\)</span></div>
+@sol
+\(x > 3\), \(x \le 8\). Вариант 2.
+@ans 2
+@check which(lambda x: 6-2*x < 0 and x-8 <= 0, lambda x: 3 <= x < 8, lambda x: 3 < x <= 8, lambda x: x < 3, lambda x: x >= 8)
+@task
+@src Прототип ОГЭ №13
+Сколько целых решений имеет система \(\begin{cases} 3x - 1 \ge -10 \\ 5 - x > 2 \end{cases}\)?
+@sol
+\(x \ge -3\), \(x < 3\): от \(-3\) до 2 — 6.
+@ans 6
+@check len([x for x in range(-50,50) if 3*x-1 >= -10 and 5-x > 2])
+@task
+@src Прототип ОГЭ №13
+Решите неравенство \(\frac{2x - 1}{3} - \frac{x}{2} < 1\). Укажите наибольшее целое решение.
+@sol
+\(4x - 2 - 3x < 6\) → \(x < 8\). Наибольшее целое 7.
+@ans 7
+@check max(x for x in range(-50,50) if F(2*x-1,3)-F(x,2) < 1)
+@task
+@rep 15
+Найдите значение выражения \(\frac{18}{\sqrt{10} - 1} - 2\sqrt{10}\).
+@sol
+\(\frac{18(\sqrt{10} + 1)}{9} = 2\sqrt{10} + 2\) → 2.
+@ans 2
+@check 18/(sqrt(10)-1)-2*sqrt(10)
+@task
+@rep 13
+Катеты прямоугольного треугольника 16 и 30. Найдите гипотенузу.
+@sol
+\(34\).
+@ans 34
+@check hyp(16,30)
+@task
+@rep 9
+Найдите значение выражения \(\frac{b^2 - 25}{b^2 - 10b + 25}\cdot\frac{b - 5}{b + 5}\) при \(b = \sqrt{7}\).
+@sol
+Всё сокращается: 1.
+@ans 1
+@check (7-25)/(sqrt(7)-5)**2*(sqrt(7)-5)/(sqrt(7)+5)

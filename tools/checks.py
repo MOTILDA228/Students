@@ -110,7 +110,7 @@ def match(graphs, formulas, xs=(-3, -1.5, -0.5, 0.5, 1.5, 3)):
 NS = {"F": F, "sqrt": sqrt, "roots": roots, "hyp": hyp, "leg": leg, "sind": sind, "cosd": cosd,
       "tand": tand, "ap": ap, "aps": aps, "gp": gp, "gps": gps, "comb": comb, "area": area, "solve2": solve2, "which": which, "match": match, "pi": math.pi,
       "math": math, "abs": abs, "round": round, "min": min, "max": max, "sum": sum, "range": range,
-      "len": len, "sorted": sorted, "int": int, "str": str, "float": float}
+      "len": len, "sorted": sorted, "int": int, "str": str, "float": float, "enumerate": enumerate, "list": list, "all": all, "any": any}
 
 
 def parse_answer(text):

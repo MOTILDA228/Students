@@ -1,0 +1,145 @@
+@title Урок 19. Геометрия: синус, косинус, тангенс
+@tags ОГЭ №15 | ОГЭ №18 | ОГЭ №23 | геометрия
+@teacher
+<p><b>Цель:</b> тригонометрия прямоугольного треугольника, табличные значения, основное тригонометрическое тождество. Для «5» — площадь через синус и теорема косинусов (понадобятся в №23).</p>
+<ol class="ls-steps">
+  <li>5 мин — проверка ДЗ урока 18.</li>
+  <li>15 мин — определения на чертеже, таблица 30°/45°/60°.</li>
+  <li>30 мин — практика 1–7.</li>
+  <li>10 мин — итог, ДЗ.</li>
+</ol>
+@theory
+<div class="ls-rule">\(\sin A = \frac{\text{противолежащий}}{\text{гипотенуза}}\), \(\cos A = \frac{\text{прилежащий}}{\text{гипотенуза}}\), \(\operatorname{tg} A = \frac{\text{противолежащий}}{\text{прилежащий}}\). \(\sin^2 A + \cos^2 A = 1\).</div>
+@fig
+P C 0 0
+P A 5 0
+P B 0 3
+poly A B C
+right A C B
+angle B A C label=A
+len B C a
+len A C b
+len A B c
+@end
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th></th><th>30°</th><th>45°</th><th>60°</th></tr>
+<tr><td>sin</td><td>\(\frac{1}{2}\)</td><td>\(\frac{\sqrt{2}}{2}\)</td><td>\(\frac{\sqrt{3}}{2}\)</td></tr>
+<tr><td>cos</td><td>\(\frac{\sqrt{3}}{2}\)</td><td>\(\frac{\sqrt{2}}{2}\)</td><td>\(\frac{1}{2}\)</td></tr>
+<tr><td>tg</td><td>\(\frac{\sqrt{3}}{3}\)</td><td>1</td><td>\(\sqrt{3}\)</td></tr>
+</table></div>
+<div class="ls-rule"><b>Для «5»:</b> \(S = \frac{1}{2}ab\sin C\); теорема косинусов \(c^2 = a^2 + b^2 - 2ab\cos C\).</div>
+@practice
+@task
+@src Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)
+В треугольнике \(ABC\) \(\angle C = 90^\circ\), \(AB = 25\), \(\sin A = 0{,}28\). Найдите \(BC\).
+@sol
+\(BC = AB\sin A = 7\).
+@ans 7
+@check 25*F('0.28')
+@task
+@src Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)
+В треугольнике \(ABC\) \(\angle C = 90^\circ\), \(AC = 12\), \(\operatorname{tg} A = 0{,}75\). Найдите \(AB\).
+@sol
+\(BC = 9\), \(AB = 15\).
+@ans 15
+@check hyp(12,12*F(3,4))
+@task
+@src Прототип ОГЭ №15 (ФИПИ / Решу ОГЭ)
+В треугольнике \(ABC\) \(\angle C = 90^\circ\), \(\cos A = \frac{\sqrt{91}}{10}\). Найдите \(\sin A\).
+@sol
+\(\sin^2 A = 1 - 0{,}91 = 0{,}09\), \(\sin A = 0{,}3\).
+@ans 0,3
+@check sqrt(1-F(91,100))
+@task
+@src Прототип ОГЭ №15
+В треугольнике \(ABC\) \(\angle C = 90^\circ\), \(\angle A = 60^\circ\), \(AC = 4\sqrt{3}\). Найдите \(BC\).
+@sol
+\(BC = AC\cdot\operatorname{tg}60^\circ = 4\sqrt{3}\cdot\sqrt{3} = 12\).
+@ans 12
+@check 4*sqrt(3)*tand(60)
+@task
+@src Прототип ОГЭ №18 (ФИПИ / Решу ОГЭ)
+Найдите тангенс угла \(AOB\), изображённого на клетчатой бумаге.
+@fig grid=7x5
+P O 1 1 hide
+P A 6 1 hide
+P B 3 5 hide
+seg O A thick
+seg O B thick
+angle A O B r=20
+@end
+@sol
+Опустим из \(B\) перпендикуляр на \(OA\): противолежащий катет 4 клетки, прилежащий 2. \(\operatorname{tg} = \frac{4}{2} = 2\).
+@ans 2
+@check F(5-1,3-1)
+@task
+@src Прототип ОГЭ №17 (ФИПИ / Решу ОГЭ)
+Найдите площадь параллелограмма со сторонами 8 и 10 и углом \(30^\circ\).
+@sol
+\(S = ab\sin\alpha = 80\cdot\frac{1}{2} = 40\).
+@ans 40
+@check 8*10*sind(30)
+@task
+@src Для «5»: подготовка к №23
+В треугольнике две стороны 5 и 8, угол между ними \(60^\circ\). Найдите третью сторону.
+@sol
+\(c^2 = 25 + 64 - 2\cdot5\cdot8\cdot\frac{1}{2} = 49\), \(c = 7\).
+@ans 7
+@check sqrt(25+64-80*cosd(60))
+@hw
+@task
+@src Прототип ОГЭ №15
+В треугольнике \(ABC\) \(\angle C = 90^\circ\), \(AB = 40\), \(\cos A = 0{,}8\). Найдите \(AC\).
+@sol
+\(32\).
+@ans 32
+@check 40*F(8,10)
+@task
+@src Прототип ОГЭ №15
+В треугольнике \(ABC\) \(\angle C = 90^\circ\), \(BC = 10\), \(\operatorname{tg} A = 2{,}5\). Найдите \(AC\).
+@sol
+\(AC = \frac{BC}{\operatorname{tg} A} = 4\).
+@ans 4
+@check 10/F(5,2)
+@task
+@src Прототип ОГЭ №15
+\(\sin A = \frac{2\sqrt{6}}{5}\) (угол острый). Найдите \(\cos A\).
+@sol
+\(1 - \frac{24}{25} = \frac{1}{25}\), \(\cos A = 0{,}2\).
+@ans 0,2
+@check sqrt(1-F(24,25))
+@task
+@src Прототип ОГЭ №15
+В треугольнике \(ABC\) \(\angle C = 90^\circ\), \(\angle B = 30^\circ\), \(AB = 16\). Найдите \(BC\), делённое на \(\sqrt{3}\).
+@sol
+\(BC = 16\cos30^\circ = 8\sqrt{3}\); делённое на \(\sqrt{3}\) — 8.
+@ans 8
+@check 16*cosd(30)/sqrt(3)
+@task
+@src Прототип ОГЭ №17
+Найдите площадь треугольника со сторонами 12 и 9 и углом \(150^\circ\) между ними.
+@sol
+\(\sin150^\circ = \frac{1}{2}\): \(\frac{1}{2}\cdot12\cdot9\cdot\frac{1}{2} = 27\).
+@ans 27
+@check 12*9*sind(150)/2
+@task
+@rep 17
+Сколько целых решений имеет система \(\begin{cases} 4x + 3 \ge -9 \\ 2 - x > -2 \end{cases}\)?
+@sol
+\(x \ge -3\), \(x < 4\): 7.
+@ans 7
+@check len([x for x in range(-50,50) if 4*x+3 >= -9 and 2-x > -2])
+@task
+@rep 15
+Решите уравнение \((x^2 + 2x)^2 - 2(x^2 + 2x) - 3 = 0\). Запишите сумму корней.
+@sol
+\(t = 3\): \(x = 1, -3\); \(t = -1\): \(x = -1\). Сумма \(-3\).
+@ans -3
+@check sum(x for x in range(-20,20) if (x*x+2*x)**2-2*(x*x+2*x)-3==0)
+@task
+@rep 11
+Найдите значение выражения \(\sqrt{\frac{50a^{10}}{2a^{8}}}\) при \(a = 3\).
+@sol
+\(5a = 15\).
+@ans 15
+@check sqrt(F(50*3**10,2*3**8))
