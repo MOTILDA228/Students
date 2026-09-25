@@ -439,12 +439,18 @@ def _plot(header, lines, uid):
                 lx = min(max(X(ax) + 6, half + 2), w - half - 2)
                 ly = min(max(Y(ay) - 12, 10), h - 10)
                 out.append(_text(lx, ly, parts[1], 14, ' font-style="italic"'))
-        elif word == "pt":
+        elif word in ("pt", "hole"):
             p = rest.split(None, 2)
             px, py = X(float(p[0])), Y(float(p[1]))
-            out.append(f'<circle cx="{_f(px)}" cy="{_f(py)}" r="3.5" fill="currentColor"/>')
+            if word == "pt":
+                out.append(f'<circle cx="{_f(px)}" cy="{_f(py)}" r="3.5" fill="currentColor"/>')
+            else:  # выколотая точка: пустой кружок
+                out.append(f'<circle cx="{_f(px)}" cy="{_f(py)}" r="4" style="fill:var(--ls-card, #fff)" '
+                           f'stroke="currentColor" stroke-width="1.6"/>')
             if len(p) > 2:
-                out.append(_text(px + 10, py - 11, p[2], 14))
+                half = len(p[2]) * 3.9
+                lx = min(max(px + 10, half + 2), w - half - 2)
+                out.append(_text(lx, max(py - 11, 10), p[2], 14))
         elif word == "seg":
             p = rest.split()
             dash = ' stroke-dasharray="5 4"' if "dash" in p else ""
