@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 20. Делимость: признаки, НОД и НОК</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 20. Делимость: признаки, НОД и НОК</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №6</span><span class="ls-tag">база</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Признаки делимости</a><a href="#ls-s5">Ступень 2. НОД</a><a href="#ls-s6">Ступень 3. НОК и разложение</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> признаки делимости на 2, 3, 5, 9, 10, НОД (чтобы сокращать дроби) и НОК (общий знаменатель).</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> признак на 3 проверяет по последней цифре; НОК ищет перемножением (получается не наименьший).</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 19)</span> В равнобедренном треугольнике угол при вершине \(138^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>Углы при основании равны: \((180 - 138) : 2 = 21^\circ\).
+<p class="ls-answer">Ответ: 21</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 19)</span> В прямоугольном треугольнике один острый угол \(64^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 64 = 26^\circ\).
+<p class="ls-answer">Ответ: 26</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 18)</span> Решите уравнение \(6x - 6 = 78\).</div>
+<details><summary>Решение</summary>Шаг 1 — неизвестное уменьшаемое: \(6x = 78 + 6 = 84\). Шаг 2 — неизвестный множитель: \(x = 84 : 6 = 14\). Проверка: \(6\cdot14 - 6 = 78\) ✓.
+<p class="ls-answer">Ответ: 14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 18)</span> Решите уравнение \(6x + 14 = 56\).</div>
+<details><summary>Решение</summary>Шаг 1 — «отцепляем» 14 (неизвестное слагаемое): \(6x = 56 - 14 = 42\). Шаг 2 — неизвестный множитель: \(x = 42 : 6 = 7\). Проверка: \(6\cdot7 + 14 = 56\) ✓.
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 16)</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 258 128" width="258" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="116" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="116" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="116" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 194,90 220,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 6, высота 2: \(S = \frac{6\cdot2}{2} = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 16)</span> Найдите площадь прямоугольного треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 154 128" width="154" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="142" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="142" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="142" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="142" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 116,90 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Это половина прямоугольника 3×2: \(S = \frac{3\cdot2}{2} = 3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(12 : 3\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(3\cdot4 = 12\), значит \(12 : 3 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(6\cdot\square = 54\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(54 : 6 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Признаки делимости</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>На</th><th>Признак</th><th>Пример</th></tr>
+<tr><td>2</td><td class="ls-left">последняя цифра чётная (0, 2, 4, 6, 8)</td><td>3 574 ✓</td></tr>
+<tr><td>5</td><td class="ls-left">последняя цифра 0 или 5</td><td>1 235 ✓</td></tr>
+<tr><td>10</td><td class="ls-left">последняя цифра 0</td><td>4 870 ✓</td></tr>
+<tr><td>3</td><td class="ls-left">сумма цифр делится на 3</td><td>2 451: 2+4+5+1 = 12 ✓</td></tr>
+<tr><td>9</td><td class="ls-left">сумма цифр делится на 9</td><td>3 834: 18 ✓</td></tr>
+</table></div>
+<h3>2. НОД — для сокращения дробей</h3>
+<div class="ls-rule"><b>НОД</b> — самое большое число, на которое делятся оба. \(\text{НОД}(24, 36) = 12\) → \(\frac{24}{36} = \frac{2}{3}\).</div>
+<h3>3. НОК — общий знаменатель</h3>
+<div class="ls-rule"><b>НОК</b> — самое маленькое число, которое делится на оба. Ищем так: берём кратные <b>большего</b> числа и проверяем: \(\text{НОК}(6, 8)\): 8, 16, <b>24</b>.</div>
+<div class="ls-warn">\(6\cdot8 = 48\) — тоже общий знаменатель, но не наименьший: числа выйдут больше, чем надо.</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Признаки делимости</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Делится ли число 8685 на 9? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: сумма цифр (27) делится на 9. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Делится ли число 99 на 9? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: сумма цифр (18) делится на 9. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Делится ли число 2976 на 3? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: сумма цифр (24) делится на 3. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Делится ли число 3114 на 3? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: сумма цифр (9) делится на 3. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Делится ли число 4299 на 3? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: сумма цифр (24) делится на 3. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Делится ли число 9008 на 2? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: последняя цифра чётная. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Делится ли число 5728 на 2? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: последняя цифра чётная. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Делится ли число 6560 на 10? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: последняя цифра 0. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. НОД</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите НОД чисел 9 и 21.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 3 (\(9 = 3\cdot3\), \(21 = 3\cdot7\)).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите НОД чисел 48 и 36.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 12 (\(48 = 12\cdot4\), \(36 = 12\cdot3\)).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите НОД чисел 12 и 21.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 3 (\(12 = 3\cdot4\), \(21 = 3\cdot7\)).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите НОД чисел 24 и 42.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 6 (\(24 = 6\cdot4\), \(42 = 6\cdot7\)).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите НОД чисел 30 и 70.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 10 (\(30 = 10\cdot3\), \(70 = 10\cdot7\)).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите НОД чисел 63 и 54.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 9 (\(63 = 9\cdot7\), \(54 = 9\cdot6\)).
+<p class="ls-answer">Ответ: 9</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. НОК и разложение</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите НОК чисел 6 и 10 (наименьший общий знаменатель для дробей со знаменателями 6 и 10).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 10: 10, 20, 30 — первое, которое делится на 6: 30.
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите НОК чисел 4 и 6 (наименьший общий знаменатель для дробей со знаменателями 4 и 6).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 6: 6, 12 — первое, которое делится на 4: 12.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите НОК чисел 12 и 18 (наименьший общий знаменатель для дробей со знаменателями 12 и 18).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 18: 18, 36 — первое, которое делится на 12: 36.
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите НОК чисел 10 и 15 (наименьший общий знаменатель для дробей со знаменателями 10 и 15).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 15: 15, 30 — первое, которое делится на 10: 30.
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите НОК чисел 5 и 6 (наименьший общий знаменатель для дробей со знаменателями 5 и 6).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 6: 6, 12, 18, 24, 30 — первое, которое делится на 5: 30.
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите НОК чисел 6 и 9 (наименьший общий знаменатель для дробей со знаменателями 6 и 9).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 9: 9, 18 — первое, которое делится на 6: 18.
+<p class="ls-answer">Ответ: 18</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Разложите число 36 на простые множители. В ответ запишите самый большой простой множитель.</div>
+<details><summary>Решение</summary>\(36 = 2\cdot2\cdot3\cdot3\). Наибольший: 3.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Разложите число 50 на простые множители. В ответ запишите самый большой простой множитель.</div>
+<details><summary>Решение</summary>\(50 = 2\cdot5\cdot5\). Наибольший: 5.
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Разложите число 72 на простые множители. В ответ запишите самый большой простой множитель.</div>
+<details><summary>Решение</summary>\(72 = 2\cdot2\cdot2\cdot3\cdot3\). Наибольший: 3.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> Разложите число 12 на простые множители. В ответ запишите самый большой простой множитель.</div>
+<details><summary>Решение</summary>\(12 = 2\cdot2\cdot3\). Наибольший: 3.
+<p class="ls-answer">Ответ: 3</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Делится ли число 8064 на 3? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: сумма цифр (18) делится на 3. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите НОК чисел 6 и 8 (наименьший общий знаменатель для дробей со знаменателями 6 и 8).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 8: 8, 16, 24 — первое, которое делится на 6: 24.
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Разложите число 60 на простые множители. В ответ запишите самый большой простой множитель.</div>
+<details><summary>Решение</summary>\(60 = 2\cdot2\cdot3\cdot5\). Наибольший: 5.
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Разложите число 40 на простые множители. В ответ запишите самый большой простой множитель.</div>
+<details><summary>Решение</summary>\(40 = 2\cdot2\cdot2\cdot5\). Наибольший: 5.
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите НОК чисел 14 и 21 (наименьший общий знаменатель для дробей со знаменателями 14 и 21).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 21: 21, 42 — первое, которое делится на 14: 42.
+<p class="ls-answer">Ответ: 42</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Делится ли число 1026 на 3? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: сумма цифр (9) делится на 3. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Делится ли число 9960 на 10? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: последняя цифра 0. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Делится ли число 8070 на 5? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: последняя цифра 0 или 5. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите НОД чисел 10 и 35.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 5 (\(10 = 5\cdot2\), \(35 = 5\cdot7\)).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите НОД чисел 36 и 30.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 6 (\(36 = 6\cdot6\), \(30 = 6\cdot5\)).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите НОД чисел 35 и 30.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 5 (\(35 = 5\cdot7\), \(30 = 5\cdot6\)).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите НОК чисел 9 и 12 (наименьший общий знаменатель для дробей со знаменателями 9 и 12).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 12: 12, 24, 36 — первое, которое делится на 9: 36.
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Найдите НОК чисел 8 и 12 (наименьший общий знаменатель для дробей со знаменателями 8 и 12).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 12: 12, 24 — первое, которое делится на 8: 24.
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Найдите НОК чисел 3 и 8 (наименьший общий знаменатель для дробей со знаменателями 3 и 8).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 8: 8, 16, 24 — первое, которое делится на 3: 24.
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 18)</span> Решите уравнение \(2x + 18 = 34\).</div>
+<details><summary>Решение</summary>Шаг 1 — «отцепляем» 18 (неизвестное слагаемое): \(2x = 34 - 18 = 16\). Шаг 2 — неизвестный множитель: \(x = 16 : 2 = 8\). Проверка: \(2\cdot8 + 18 = 34\) ✓.
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 16)</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 258 180" width="258" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="168" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="168" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="246" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 220,142 220,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 7, ширина 4. \(S = 7\cdot4 = 28\).
+<p class="ls-answer">Ответ: 28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">12.</span> <span class="ls-rep">Повторение (урок 12)</span> Решите уравнение \(5\cdot x = 140\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 140 : 5 = 28\). Проверка: \(5\cdot28 = 140\) ✓.
+<p class="ls-answer">Ответ: 28</p></details></div>
+</section>
+<nav class="ls-foot"><a href="19-geom-vidy-treugolnikov.html">← Урок 19</a><a href="00-index.html">Все уроки</a><a href="21-drobi-slozhenie.html">Урок 21 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

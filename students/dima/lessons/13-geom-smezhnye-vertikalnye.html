@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 13. Геометрия: смежные и вертикальные углы, сумма углов треугольника</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 13. Геометрия: смежные и вертикальные углы, сумма углов треугольника</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №15</span><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Смежные и вертикальные</a><a href="#ls-s5">Ступень 2. Треугольник</a><a href="#ls-s6">Ступень 3. Прямоугольный треугольник и смесь</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> три факта, на которых держится половина геометрии ОГЭ: смежные — \(180^\circ\), вертикальные равны, сумма углов треугольника \(180^\circ\).</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> путает смежные и вертикальные; в треугольнике складывает углы, а не вычитает из 180.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 12)</span> 8 одинаковых пачек тетрадей содержат 304 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(8\cdot x = 304\).)</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(x = 304 : 8 = 38\).
+<p class="ls-answer">Ответ: 38</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 12)</span> Решите уравнение \(4\cdot x = 116\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 116 : 4 = 29\). Проверка: \(4\cdot29 = 116\) ✓.
+<p class="ls-answer">Ответ: 29</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 11)</span> Решите уравнение \(90 - x = 54\).</div>
+<details><summary>Решение</summary>Неизвестное вычитаемое = уменьшаемое − разность: \(x = 90 - 54 = 36\). Проверка: \(90 - 36 = 54\) ✓.
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 11)</span> Решите уравнение \(x - 119 = 38\).</div>
+<details><summary>Решение</summary>Неизвестное уменьшаемое = разность + вычитаемое: \(x = 38 + 119 = 157\). Проверка: \(157 - 119 = 38\) ✓.
+<p class="ls-answer">Ответ: 157</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 9)</span> Решите уравнение \(14 + x = 133\).</div>
+<details><summary>Решение</summary>Неизвестное слагаемое = сумма − известное слагаемое: \(x = 133 - 14 = 119\). Проверка: \(119 + 14 = 133\) ✓.
+<p class="ls-answer">Ответ: 119</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 9)</span> Задумали число, прибавили к нему 16 и получили 37. Какое число задумали? (Составьте уравнение \(x + 16 = 37\).)</div>
+<details><summary>Решение</summary>\(x = 37 - 16 = 21\).
+<p class="ls-answer">Ответ: 21</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(15 : 5\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(5\cdot3 = 15\), значит \(15 : 5 = 3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(8\cdot\square = 32\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(32 : 8 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Смежные углы</h3>
+<div class="ls-rule">Общая сторона, две другие — продолжение друг друга. <b>Сумма \(180^\circ\).</b></div>
+<svg class="ls-fig" viewBox="0 0 332 136.7" width="332" height="136.7" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="110.7" x2="306" y2="110.7" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="166" y1="110.7" x2="237.1" y2="26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="186,110.7 186,110 185.9,109.3 185.9,108.6 185.8,107.8 185.7,107.1 185.5,106.4 185.4,105.7 185.2,105 184.9,104.3 184.7,103.6 184.4,102.9 184.1,102.3 183.8,101.6 183.5,101 183.1,100.4 182.7,99.7 182.3,99.1 181.9,98.6 181.4,98 180.9,97.4 180.4,96.9 179.9,96.4 179.4,95.9 178.9,95.4" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="196.8" y="96.4" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">50°</text><polyline points="178.9,95.4 177.4,94.3 175.7,93.3 174.1,92.4 172.3,91.8 170.5,91.2 168.6,90.9 166.7,90.8 164.8,90.8 163,91 161.1,91.3 159.3,91.9 157.5,92.6 155.9,93.5 154.3,94.5 152.8,95.7 151.5,97 150.2,98.4 149.1,100 148.2,101.6 147.4,103.4 146.8,105.1 146.4,107 146.1,108.8 146,110.7" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="151.6" y="79.9" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">130°</text></svg>
+<h3>2. Вертикальные углы</h3>
+<div class="ls-rule">Две прямые пересеклись — углы «напротив» друг друга <b>равны</b>.</div>
+<svg class="ls-fig" viewBox="0 0 332 192" width="332" height="192" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="166" x2="306" y2="26" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><line x1="26" y1="26" x2="306" y2="166" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><polyline points="183.9,104.9 184.2,104.2 184.5,103.5 184.8,102.8 185.1,102.1 185.3,101.3 185.5,100.6 185.6,99.8 185.8,99.1 185.9,98.3 185.9,97.5 186,96.8 186,96 186,95.2 185.9,94.5 185.9,93.7 185.8,92.9 185.6,92.2 185.5,91.4 185.3,90.7 185.1,89.9 184.8,89.2 184.5,88.5 184.2,87.8 183.9,87.1" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="200" y="96" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">α</text><polyline points="148.1,87.1 147.8,87.8 147.5,88.5 147.2,89.2 146.9,89.9 146.7,90.7 146.5,91.4 146.4,92.2 146.2,92.9 146.1,93.7 146.1,94.5 146,95.2 146,96 146,96.8 146.1,97.5 146.1,98.3 146.2,99.1 146.4,99.8 146.5,100.6 146.7,101.3 146.9,102.1 147.2,102.8 147.5,103.5 147.8,104.2 148.1,104.9" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="132" y="96" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">α</text></svg>
+<h3>3. Сумма углов треугольника</h3>
+<div class="ls-rule"><b>\(\angle A + \angle B + \angle C = 180^\circ\).</b> Неизвестный угол: \(180 - \) (сумма двух известных).</div>
+<div class="ls-example">Углы 47° и 68°: третий \(180 - 47 - 68 = 65^\circ\).</div>
+<div class="ls-warn">В прямоугольном треугольнике один угол \(90^\circ\), значит два острых в сумме \(90^\circ\).</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Смежные и вертикальные</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Один из смежных углов равен \(120^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 120 = 60^\circ\).
+<p class="ls-answer">Ответ: 60</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Один из смежных углов равен \(46^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 46 = 134^\circ\).
+<p class="ls-answer">Ответ: 134</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Один из смежных углов равен \(125^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 125 = 55^\circ\).
+<p class="ls-answer">Ответ: 55</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Один из смежных углов равен \(50^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 50 = 130^\circ\).
+<p class="ls-answer">Ответ: 130</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Один из смежных углов равен \(116^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 116 = 64^\circ\).
+<p class="ls-answer">Ответ: 64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Один из вертикальных углов равен \(143^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Вертикальные углы равны: \(143^\circ\).
+<p class="ls-answer">Ответ: 143</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Один из вертикальных углов равен \(148^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Вертикальные углы равны: \(148^\circ\).
+<p class="ls-answer">Ответ: 148</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Один из вертикальных углов равен \(66^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Вертикальные углы равны: \(66^\circ\).
+<p class="ls-answer">Ответ: 66</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Один из вертикальных углов равен \(38^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Вертикальные углы равны: \(38^\circ\).
+<p class="ls-answer">Ответ: 38</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Треугольник</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> В треугольнике два угла \(75^\circ\) и \(64^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 75 - 64 = 41^\circ\).
+<p class="ls-answer">Ответ: 41</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В треугольнике два угла \(60^\circ\) и \(63^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 60 - 63 = 57^\circ\).
+<p class="ls-answer">Ответ: 57</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> В треугольнике два угла \(38^\circ\) и \(40^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 38 - 40 = 102^\circ\).
+<p class="ls-answer">Ответ: 102</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В треугольнике два угла \(38^\circ\) и \(58^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 38 - 58 = 84^\circ\).
+<p class="ls-answer">Ответ: 84</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В треугольнике два угла \(32^\circ\) и \(76^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 32 - 76 = 72^\circ\).
+<p class="ls-answer">Ответ: 72</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> В треугольнике два угла \(21^\circ\) и \(38^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 21 - 38 = 121^\circ\).
+<p class="ls-answer">Ответ: 121</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> В треугольнике два угла \(53^\circ\) и \(62^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 53 - 62 = 65^\circ\).
+<p class="ls-answer">Ответ: 65</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> В треугольнике два угла \(69^\circ\) и \(52^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 69 - 52 = 59^\circ\).
+<p class="ls-answer">Ответ: 59</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Прямоугольный треугольник и смесь</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> В прямоугольном треугольнике один острый угол \(38^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 38 = 52^\circ\).
+<p class="ls-answer">Ответ: 52</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В прямоугольном треугольнике один острый угол \(46^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 46 = 44^\circ\).
+<p class="ls-answer">Ответ: 44</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> В прямоугольном треугольнике один острый угол \(73^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 73 = 17^\circ\).
+<p class="ls-answer">Ответ: 17</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В прямоугольном треугольнике один острый угол \(43^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 43 = 47^\circ\).
+<p class="ls-answer">Ответ: 47</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В прямоугольном треугольнике один острый угол \(67^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 67 = 23^\circ\).
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> В треугольнике \(ABC\) \(\angle A = 53^\circ\), \(\angle B = 24^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 53 - 24 = 103^\circ\); смежный: \(180 - 103 = 77^\circ\).
+<p class="ls-answer">Ответ: 77</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> В треугольнике \(ABC\) \(\angle A = 40^\circ\), \(\angle B = 36^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 40 - 36 = 104^\circ\); смежный: \(180 - 104 = 76^\circ\).
+<p class="ls-answer">Ответ: 76</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> В треугольнике \(ABC\) \(\angle A = 37^\circ\), \(\angle B = 46^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 37 - 46 = 97^\circ\); смежный: \(180 - 97 = 83^\circ\).
+<p class="ls-answer">Ответ: 83</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> В треугольнике \(ABC\) \(\angle A = 51^\circ\), \(\angle B = 70^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 51 - 70 = 59^\circ\); смежный: \(180 - 59 = 121^\circ\).
+<p class="ls-answer">Ответ: 121</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> В треугольнике \(ABC\) \(\angle A = 50^\circ\), \(\angle B = 47^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 50 - 47 = 83^\circ\); смежный: \(180 - 83 = 97^\circ\).
+<p class="ls-answer">Ответ: 97</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Один из смежных углов равен \(38^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 38 = 142^\circ\).
+<p class="ls-answer">Ответ: 142</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В прямоугольном треугольнике один острый угол \(56^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 56 = 34^\circ\).
+<p class="ls-answer">Ответ: 34</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> В треугольнике \(ABC\) \(\angle A = 38^\circ\), \(\angle B = 39^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 38 - 39 = 103^\circ\); смежный: \(180 - 103 = 77^\circ\).
+<p class="ls-answer">Ответ: 77</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В треугольнике \(ABC\) \(\angle A = 30^\circ\), \(\angle B = 40^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 30 - 40 = 110^\circ\); смежный: \(180 - 110 = 70^\circ\).
+<p class="ls-answer">Ответ: 70</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В треугольнике два угла \(36^\circ\) и \(28^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 36 - 28 = 116^\circ\).
+<p class="ls-answer">Ответ: 116</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Один из смежных углов равен \(112^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 112 = 68^\circ\).
+<p class="ls-answer">Ответ: 68</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Один из смежных углов равен \(27^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 27 = 153^\circ\).
+<p class="ls-answer">Ответ: 153</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Один из смежных углов равен \(80^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 80 = 100^\circ\).
+<p class="ls-answer">Ответ: 100</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В треугольнике два угла \(55^\circ\) и \(79^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 55 - 79 = 46^\circ\).
+<p class="ls-answer">Ответ: 46</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В треугольнике два угла \(47^\circ\) и \(28^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 47 - 28 = 105^\circ\).
+<p class="ls-answer">Ответ: 105</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> В треугольнике два угла \(47^\circ\) и \(54^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 47 - 54 = 79^\circ\).
+<p class="ls-answer">Ответ: 79</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> В треугольнике два угла \(24^\circ\) и \(64^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 24 - 64 = 92^\circ\).
+<p class="ls-answer">Ответ: 92</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> В прямоугольном треугольнике один острый угол \(26^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 26 = 64^\circ\).
+<p class="ls-answer">Ответ: 64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> В прямоугольном треугольнике один острый угол \(53^\circ\). Найдите другой острый угол.</div>
+<details><summary>Решение</summary>Сумма острых углов \(90^\circ\): \(90 - 53 = 37^\circ\).
+<p class="ls-answer">Ответ: 37</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 11)</span> Решите уравнение \(x - 44 = 14\).</div>
+<details><summary>Решение</summary>Неизвестное уменьшаемое = разность + вычитаемое: \(x = 14 + 44 = 58\). Проверка: \(58 - 44 = 14\) ✓.
+<p class="ls-answer">Ответ: 58</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 9)</span> Задумали число, прибавили к нему 56 и получили 77. Какое число задумали? (Составьте уравнение \(x + 56 = 77\).)</div>
+<details><summary>Решение</summary>\(x = 77 - 56 = 21\).
+<p class="ls-answer">Ответ: 21</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">12.</span> <span class="ls-rep">Повторение (урок 5)</span> Один из смежных углов равен \(114^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 114 = 66^\circ\).
+<p class="ls-answer">Ответ: 66</p></details></div>
+</section>
+<nav class="ls-foot"><a href="12-neizvestnyy-mnozhitel.html">← Урок 12</a><a href="00-index.html">Все уроки</a><a href="14-delimoe-delitel-vse-pravila.html">Урок 14 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

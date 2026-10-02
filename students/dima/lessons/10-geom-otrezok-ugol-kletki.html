@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 10. Геометрия: отрезок, луч, угол; клетчатая бумага</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 10. Геометрия: отрезок, луч, угол; клетчатая бумага</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №18</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Длины по клеткам</a><a href="#ls-s5">Ступень 2. Прямоугольник на клетках</a><a href="#ls-s6">Ступень 3. Без рисунка</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> главные слова геометрии (точка, отрезок, луч, угол) и первый тип №18: длины, площадь и периметр прямоугольника по клеткам.</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> путает периметр и площадь; считает точки вместо клеток при измерении отрезка.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 9)</span> Решите уравнение \(x + 57 = 173\).</div>
+<details><summary>Решение</summary>Неизвестное слагаемое = сумма − известное слагаемое: \(x = 173 - 57 = 116\). Проверка: \(116 + 57 = 173\) ✓.
+<p class="ls-answer">Ответ: 116</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 9)</span> Задумали число, прибавили к нему 21 и получили 56. Какое число задумали? (Составьте уравнение \(x + 21 = 56\).)</div>
+<details><summary>Решение</summary>\(x = 56 - 21 = 35\).
+<p class="ls-answer">Ответ: 35</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(9\cdot\square = 72\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(72 : 9 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(35 : 7\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(7\cdot5 = 35\), значит \(35 : 7 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 6)</span> Вычислите \(50 + 6\cdot4\).</div>
+<details><summary>Решение</summary>Сначала умножение: 24; потом \(50 + 24 = 74\).
+<p class="ls-answer">Ответ: 74</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 6)</span> Вычислите \(0{,}25 + 5{,}51\).</div>
+<details><summary>Решение</summary>Запятая под запятой, недостающие разряды — нули: \(5{,}76\).
+<p class="ls-answer">Ответ: 5,76</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(18 : 2\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(2\cdot9 = 18\), значит \(18 : 2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(8\cdot\square = 64\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(64 : 8 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Словарь</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th>Слово</th><th>Что это</th></tr>
+<tr><td>Отрезок \(AB\)</td><td class="ls-left">часть прямой между двумя точками, у него есть длина</td></tr>
+<tr><td>Луч</td><td class="ls-left">начало есть, конца нет — «бесконечный» в одну сторону</td></tr>
+<tr><td>Угол</td><td class="ls-left">два луча из одной точки (вершины). Прямой — \(90^\circ\), развёрнутый — \(180^\circ\)</td></tr>
+</table></div>
+<svg class="ls-fig" viewBox="0 0 332 234" width="332" height="234" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="26" y1="208" x2="306" y2="208" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="26" y1="208" x2="180" y2="26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="46,208 46,207.3 45.9,206.6 45.9,205.8 45.8,205.1 45.7,204.4 45.5,203.7 45.4,203 45.2,202.3 44.9,201.6 44.7,200.9 44.4,200.2 44.1,199.6 43.8,198.9 43.5,198.3 43.1,197.7 42.7,197.1 42.3,196.5 41.9,195.9 41.5,195.3 41,194.8 40.5,194.2 40,193.7 39.5,193.2 38.9,192.7" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="56.8" y="193.7" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">угол</text><text x="13.1" y="213.4" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><text x="318.8" y="213.7" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="181.1" y="12" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg>
+<h3>2. Клетчатая бумага</h3>
+<div class="ls-rule">Длину отрезка по линии сетки считаем <b>по клеткам</b>, а не по точкам. Площадь прямоугольника — \(S = a\cdot b\) (сколько клеток внутри), периметр — \(P = 2(a + b)\) (длина забора вокруг).</div>
+<svg class="ls-fig" viewBox="0 0 206 154" width="206" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 168,116 168,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg>
+<div class="ls-example">Прямоугольник 5 клеток на 3: \(S = 5\cdot3 = 15\), \(P = 2\cdot(5 + 3) = 16\).</div>
+<div class="ls-warn">Площадь — «сколько плитки внутри», периметр — «сколько забора вокруг». Это разные вопросы!</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Длины по клеткам</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите длину отрезка \(AB\) (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 128 102" width="128" height="102" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="90" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="90" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="90" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="90" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="90" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="116" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="116" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="116" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="64" x2="90" y2="64" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><circle cx="38" cy="64" r="3.2" fill="currentColor"/><text x="24" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="90" cy="64" r="3.2" fill="currentColor"/><text x="104" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>Отрезок идёт по линии сетки — считаем клетки: 2.
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите длину отрезка \(AB\) (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 206 102" width="206" height="102" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="90" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="90" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="90" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="90" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="90" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="90" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="90" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="90" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="64" x2="168" y2="64" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><circle cx="38" cy="64" r="3.2" fill="currentColor"/><text x="24" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="168" cy="64" r="3.2" fill="currentColor"/><text x="182" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>Отрезок идёт по линии сетки — считаем клетки: 5.
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите длину отрезка \(AB\) (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 102 232" width="102" height="232" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="220" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="220" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="220" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="220" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="220" x2="90" y2="220" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="90" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="90" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="90" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="90" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="90" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="90" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="90" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="38" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><circle cx="38" cy="194" r="3.2" fill="currentColor"/><text x="38" y="208" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="38" cy="38" r="3.2" fill="currentColor"/><text x="38" y="24" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>Отрезок идёт по линии сетки — считаем клетки: 6.
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите длину отрезка \(AB\) (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 206 102" width="206" height="102" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="90" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="90" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="90" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="90" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="90" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="90" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="90" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="90" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="64" x2="168" y2="64" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><circle cx="38" cy="64" r="3.2" fill="currentColor"/><text x="24" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="168" cy="64" r="3.2" fill="currentColor"/><text x="182" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>Отрезок идёт по линии сетки — считаем клетки: 5.
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите длину отрезка \(AB\) (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 154 102" width="154" height="102" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="90" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="90" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="90" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="90" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="90" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="90" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="142" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="142" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="142" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="64" x2="116" y2="64" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><circle cx="38" cy="64" r="3.2" fill="currentColor"/><text x="24" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="116" cy="64" r="3.2" fill="currentColor"/><text x="130" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>Отрезок идёт по линии сетки — считаем клетки: 3.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите длину отрезка \(AB\) (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 102 206" width="102" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="90" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="90" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="90" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="90" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="90" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="90" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="90" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="38" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><circle cx="38" cy="168" r="3.2" fill="currentColor"/><text x="38" y="182" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="38" cy="38" r="3.2" fill="currentColor"/><text x="38" y="24" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>Отрезок идёт по линии сетки — считаем клетки: 5.
+<p class="ls-answer">Ответ: 5</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Прямоугольник на клетках</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 232 180" width="232" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="168" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="220" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 194,142 194,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 6, ширина 4. \(S = 6\cdot4 = 24\).
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его периметр.
+<svg class="ls-fig" viewBox="0 0 232 128" width="232" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="116" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="116" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 194,90 194,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Длина 6, ширина 2: \(P = 2\cdot(6 + 2) = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 284 154" width="284" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="272" y1="142" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="272" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="272" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="272" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="272" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="272" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="64,116 246,116 246,38 64,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 7, ширина 3. \(S = 7\cdot3 = 21\).
+<p class="ls-answer">Ответ: 21</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 128 206" width="128" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="116" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="116" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="116" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="116" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="116" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="116" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="116" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 90,168 90,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 2, ширина 5. \(S = 2\cdot5 = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его периметр.
+<svg class="ls-fig" viewBox="0 0 180 128" width="180" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="168" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="168" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="168" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="168" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 142,90 142,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Длина 4, ширина 2: \(P = 2\cdot(4 + 2) = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его периметр.
+<svg class="ls-fig" viewBox="0 0 232 154" width="232" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 194,116 194,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Длина 6, ширина 3: \(P = 2\cdot(6 + 3) = 18\).
+<p class="ls-answer">Ответ: 18</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 154 180" width="154" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="142" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="142" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="142" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="142" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="142" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="142" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 116,142 116,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 3, ширина 4. \(S = 3\cdot4 = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 232 206" width="232" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="194" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="220" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="220" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="64,168 194,168 194,38 64,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 5, ширина 5. \(S = 5\cdot5 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его периметр.
+<svg class="ls-fig" viewBox="0 0 206 180" width="206" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="194" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="64,142 168,142 168,38 64,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Длина 4, ширина 4: \(P = 2\cdot(4 + 4) = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Без рисунка</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Стороны прямоугольника 14 см и 3 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(14 + 3) = 34\) см.
+<p class="ls-answer">Ответ: 34</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Стороны прямоугольника 6 см и 5 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(6 + 5) = 22\) см.
+<p class="ls-answer">Ответ: 22</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Стороны прямоугольника 12 см и 3 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(12 + 3) = 30\) см.
+<p class="ls-answer">Ответ: 30</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Стороны прямоугольника 8 см и 13 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(8 + 13) = 42\) см.
+<p class="ls-answer">Ответ: 42</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Стороны прямоугольника 11 см и 5 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(11 + 5) = 32\) см.
+<p class="ls-answer">Ответ: 32</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Стороны прямоугольника 2 см и 12 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(2 + 12) = 28\) см.
+<p class="ls-answer">Ответ: 28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Стороны прямоугольника 11 см и 12 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(11 + 12) = 46\) см.
+<p class="ls-answer">Ответ: 46</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Площадь прямоугольника 36 см², одна сторона 9 см. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(36 : 9 = 4\) см.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Площадь прямоугольника 84 см², одна сторона 12 см. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(84 : 12 = 7\) см.
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> Площадь прямоугольника 48 см², одна сторона 8 см. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(48 : 8 = 6\) см.
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> Площадь прямоугольника 12 см², одна сторона 2 см. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(12 : 2 = 6\) см.
+<p class="ls-answer">Ответ: 6</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите длину отрезка \(AB\) (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 310 102" width="310" height="102" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="90" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="90" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="90" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="90" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="90" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="90" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="90" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="90" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="90" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="90" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="272" y1="90" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="298" y1="90" x2="298" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="298" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="298" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="298" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="298" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="64" x2="272" y2="64" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><circle cx="38" cy="64" r="3.2" fill="currentColor"/><text x="24" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><circle cx="272" cy="64" r="3.2" fill="currentColor"/><text x="286" y="64" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg></div>
+<details><summary>Решение</summary>Отрезок идёт по линии сетки — считаем клетки: 9.
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Стороны прямоугольника 13 см и 14 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(13 + 14) = 54\) см.
+<p class="ls-answer">Ответ: 54</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Площадь прямоугольника 33 см², одна сторона 11 см. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(33 : 11 = 3\) см.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Площадь прямоугольника 10 см², одна сторона 2 см. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(10 : 2 = 5\) см.
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Стороны прямоугольника 6 см и 11 см. Найдите площадь.</div>
+<details><summary>Решение</summary>\(S = 6\cdot11 = 66\) см².
+<p class="ls-answer">Ответ: 66</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 206 206" width="206" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="194" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="194" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 168,168 168,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 5, ширина 5. \(S = 5\cdot5 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его периметр.
+<svg class="ls-fig" viewBox="0 0 206 206" width="206" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="194" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="194" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 168,168 168,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Длина 5, ширина 5: \(P = 2\cdot(5 + 5) = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его периметр.
+<svg class="ls-fig" viewBox="0 0 128 154" width="128" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="116" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="116" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="116" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="116" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="116" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 90,116 90,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Длина 2, ширина 3: \(P = 2\cdot(2 + 3) = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
+<svg class="ls-fig" viewBox="0 0 154 206" width="154" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="142" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="142" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="142" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="142" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="142" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="142" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="142" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 116,168 116,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 3, ширина 5. \(S = 3\cdot5 = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Стороны прямоугольника 13 см и 2 см. Найдите площадь.</div>
+<details><summary>Решение</summary>\(S = 13\cdot2 = 26\) см².
+<p class="ls-answer">Ответ: 26</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Стороны прямоугольника 2 см и 10 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(2 + 10) = 24\) см.
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Стороны прямоугольника 14 см и 4 см. Найдите периметр.</div>
+<details><summary>Решение</summary>\(P = 2\cdot(14 + 4) = 36\) см.
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Площадь прямоугольника 54 см², одна сторона 6 см. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(54 : 6 = 9\) см.
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Площадь прямоугольника 27 см², одна сторона 9 см. Найдите другую сторону.</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(27 : 9 = 3\) см.
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(56 : 4\).</div>
+<details><summary>Решение</summary>Разбиваем делимое на удобные части: \(56 = 40 + 16\); \(40 : 4 = 10\), \(16 : 4 = 4\). Ответ: 14. Проверка: \(14\cdot4 = 56\) ✓.
+<p class="ls-answer">Ответ: 14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 6)</span> Вычислите \(5{,}6 + 0{,}44\).</div>
+<details><summary>Решение</summary>Запятая под запятой, недостающие разряды — нули: \(6{,}04\).
+<p class="ls-answer">Ответ: 6,04</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">12.</span> <span class="ls-rep">Повторение (урок 3)</span> Вычислите \(\frac{1}{3} + \frac{3}{4}\).</div>
+<details><summary>Решение</summary>Шаг 1 — общий знаменатель 12. Шаг 2 — доп. множители: 4 и 3. Шаг 3: \(\frac{4}{12} + \frac{9}{12} = \frac{13}{12}\).
+<p class="ls-answer">Ответ: \(\frac{13}{12}\)</p></details></div>
+</section>
+<nav class="ls-foot"><a href="09-neizvestnoe-slagaemoe.html">← Урок 9</a><a href="00-index.html">Все уроки</a><a href="11-umenshaemoe-vychitaemoe.html">Урок 11 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

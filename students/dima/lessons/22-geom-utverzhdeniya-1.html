@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 22. Геометрия: утверждения №19 — первые 15 фактов</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 22. Геометрия: утверждения №19 — первые 15 фактов</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №19</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Утверждения</a><a href="#ls-s5">Ступень 2. Числа к фактам</a><a href="#ls-s6">Ступень 3. Клетки</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> №19 — это «верно/неверно» про факты, которые Дима уже знает (уроки 10, 13, 16, 19). Учим читать утверждение до конца и ловить подмену слов.</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> читает первые слова и отвечает «верно»; не замечает подмены «180 → 360», «произведение → сумма».</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 21)</span> Вычислите \(\frac{2}{3} + \frac{2}{9}\).</div>
+<details><summary>Решение</summary>Шаг 1 — общий знаменатель 9. Шаг 2 — доп. множители: 3 и 1. Шаг 3: \(\frac{6}{9} + \frac{2}{9} = \frac{8}{9}\).
+<p class="ls-answer">Ответ: \(\frac{8}{9}\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 21)</span> Найдите \(\frac{5}{8}\) от числа 96.</div>
+<details><summary>Решение</summary>Одна 8-я часть: \(96 : 8 = 12\); 5 таких частей: \(12\cdot5 = 60\).
+<p class="ls-answer">Ответ: 60</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 20)</span> Найдите НОК чисел 14 и 21 (наименьший общий знаменатель для дробей со знаменателями 14 и 21).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 21: 21, 42 — первое, которое делится на 14: 42.
+<p class="ls-answer">Ответ: 42</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 20)</span> Делится ли число 3985 на 5? Ответ: 1 — да, 0 — нет.</div>
+<details><summary>Решение</summary>Признак: последняя цифра 0 или 5. Выполняется → 1.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 18)</span> Решите уравнение \(6x - 24 = 66\).</div>
+<details><summary>Решение</summary>Шаг 1 — неизвестное уменьшаемое: \(6x = 66 + 24 = 90\). Шаг 2 — неизвестный множитель: \(x = 90 : 6 = 15\). Проверка: \(6\cdot15 - 24 = 66\) ✓.
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 18)</span> Решите уравнение \(x : 4 + 5 = 8\).</div>
+<details><summary>Решение</summary>Шаг 1: \(x : 4 = 8 - 5 = 3\). Шаг 2 — неизвестное делимое: \(x = 3\cdot4 = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(10 : 2\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(2\cdot5 = 10\), значит \(10 : 2 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(5\cdot\square = 35\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(35 : 5 = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>Справочник: 15 верных фактов</h3>
+<ol class="ls-steps">
+<li>Вертикальные углы равны.</li><li>Сумма смежных углов \(180^\circ\).</li><li>Сумма углов треугольника \(180^\circ\).</li>
+<li>В прямоугольном треугольнике сумма острых углов \(90^\circ\).</li><li>В равнобедренном треугольнике углы при основании равны.</li>
+<li>В равностороннем треугольнике все углы по \(60^\circ\).</li><li>Если один угол треугольника тупой, остальные — острые.</li>
+<li>Прямой угол — \(90^\circ\), развёрнутый — \(180^\circ\).</li><li>Острый угол меньше \(90^\circ\), тупой — больше.</li>
+<li>Все углы прямоугольника прямые.</li><li>Площадь прямоугольника — произведение соседних сторон.</li>
+<li>Площадь квадрата — \(a^2\), периметр — \(4a\).</li><li>Площадь прямоугольного треугольника — половина произведения катетов.</li>
+<li>Площадь треугольника — половина основания на высоту.</li><li>Периметр — сумма всех сторон.</li>
+</ol>
+<div class="ls-warn"><b>Ловушки:</b> «180» ↔ «360»; «произведение» ↔ «сумма»; «половина» пропала; «всегда», «любой».</div>
+<div class="ls-rule"><b>Алгоритм:</b> прочитать утверждение до конца → найти такой же факт в справочнике → сравнить каждое слово.</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Утверждения</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) В равнобедренном треугольнике углы при основании равны.<br>2) Угол в \(90^\circ\) называется прямым.<br>3) Если один угол треугольника тупой, два других — острые.</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 123</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) Площадь прямоугольного треугольника равна половине произведения катетов.<br>2) Угол в \(90^\circ\) называется прямым.<br>3) Любой угол, больший \(90^\circ\), — острый.</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — неверно.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) Сумма углов треугольника равна \(180^\circ\).<br>2) Сумма углов треугольника равна \(360^\circ\).<br>3) Вертикальные углы в сумме всегда дают \(180^\circ\).</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно. 3 — неверно.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) Треугольник может иметь два тупых угла.<br>2) Если один угол треугольника тупой, два других — острые.<br>3) В равнобедренном треугольнике углы при основании равны.</div>
+<details><summary>Решение</summary>1 — неверно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) В прямоугольном треугольнике сумма острых углов равна \(90^\circ\).<br>2) Все углы прямоугольника прямые.<br>3) Сумма углов треугольника равна \(180^\circ\).</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 123</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) Сумма углов треугольника равна \(360^\circ\).<br>2) Площадь прямоугольного треугольника равна половине произведения катетов.<br>3) Все углы прямоугольника прямые.</div>
+<details><summary>Решение</summary>1 — неверно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) Площадь прямоугольника равна произведению его соседних сторон.<br>2) Площадь прямоугольного треугольника равна половине произведения катетов.<br>3) Вертикальные углы в сумме всегда дают \(180^\circ\).</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — неверно.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) В прямоугольном треугольнике сумма острых углов равна \(90^\circ\).<br>2) Смежные углы всегда равны.<br>3) Площадь прямоугольника равна сумме его сторон.</div>
+<details><summary>Решение</summary>1 — верно. 2 — неверно. 3 — неверно.
+<p class="ls-answer">Ответ: 1</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Числа к фактам</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> В равнобедренном треугольнике угол при вершине \(56^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>Углы при основании равны: \((180 - 56) : 2 = 62^\circ\).
+<p class="ls-answer">Ответ: 62</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В равнобедренном треугольнике угол при вершине \(148^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>Углы при основании равны: \((180 - 148) : 2 = 16^\circ\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> В равнобедренном треугольнике угол при вершине \(40^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>Углы при основании равны: \((180 - 40) : 2 = 70^\circ\).
+<p class="ls-answer">Ответ: 70</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В равнобедренном треугольнике угол при вершине \(106^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>Углы при основании равны: \((180 - 106) : 2 = 37^\circ\).
+<p class="ls-answer">Ответ: 37</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В треугольнике \(ABC\) \(\angle A = 57^\circ\), \(\angle B = 33^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 57 - 33 = 90^\circ\); смежный: \(180 - 90 = 90^\circ\).
+<p class="ls-answer">Ответ: 90</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> В треугольнике \(ABC\) \(\angle A = 26^\circ\), \(\angle B = 33^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 26 - 33 = 121^\circ\); смежный: \(180 - 121 = 59^\circ\).
+<p class="ls-answer">Ответ: 59</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> В треугольнике \(ABC\) \(\angle A = 58^\circ\), \(\angle B = 29^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 58 - 29 = 93^\circ\); смежный: \(180 - 93 = 87^\circ\).
+<p class="ls-answer">Ответ: 87</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> В треугольнике \(ABC\) \(\angle A = 51^\circ\), \(\angle B = 23^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 51 - 23 = 106^\circ\); смежный: \(180 - 106 = 74^\circ\).
+<p class="ls-answer">Ответ: 74</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Клетки</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 284 128" width="284" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="116" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="116" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="116" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="272" y1="116" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="272" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="272" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="272" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="272" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 246,90 220,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 8, высота 2: \(S = \frac{8\cdot2}{2} = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 258 154" width="258" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 220,116 116,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 7, высота 3: \(S = \frac{7\cdot3}{2} = 10{,}5\).
+<p class="ls-answer">Ответ: 10,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 206 180" width="206" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="194" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 168,142 116,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 5, высота 4: \(S = \frac{5\cdot4}{2} = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 232 128" width="232" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="116" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="116" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 194,90 168,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 6, высота 2: \(S = \frac{6\cdot2}{2} = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите площадь прямоугольного треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 206 128" width="206" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="116" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 168,90 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Это половина прямоугольника 5×2: \(S = \frac{5\cdot2}{2} = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите площадь прямоугольного треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 154 128" width="154" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="142" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="142" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="142" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="142" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 116,90 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Это половина прямоугольника 3×2: \(S = \frac{3\cdot2}{2} = 3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите площадь прямоугольного треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 232 180" width="232" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="168" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="168" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="220" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="220" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="220" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="220" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="220" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="220" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 194,142 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Это половина прямоугольника 6×4: \(S = \frac{6\cdot4}{2} = 12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) В равностороннем треугольнике все углы по \(60^\circ\).<br>2) Если один угол треугольника тупой, два других — острые.<br>3) Площадь прямоугольника равна произведению его соседних сторон.</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 123</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 258 206" width="258" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="194" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="194" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="246" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="246" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 220,168 64,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 7, высота 5: \(S = \frac{7\cdot5}{2} = 17{,}5\).
+<p class="ls-answer">Ответ: 17,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите площадь прямоугольного треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 154 180" width="154" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="142" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="142" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="142" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="142" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="142" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="142" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 116,142 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Это половина прямоугольника 3×4: \(S = \frac{3\cdot4}{2} = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите площадь прямоугольного треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 258 206" width="258" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="194" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="194" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="246" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="246" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 220,168 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Это половина прямоугольника 7×5: \(S = \frac{7\cdot5}{2} = 17{,}5\).
+<p class="ls-answer">Ответ: 17,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В треугольнике \(ABC\) \(\angle A = 26^\circ\), \(\angle B = 30^\circ\). Найдите угол, смежный с углом \(C\).</div>
+<details><summary>Решение</summary>\(\angle C = 180 - 26 - 30 = 124^\circ\); смежный: \(180 - 124 = 56^\circ\).
+<p class="ls-answer">Ответ: 56</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) Вертикальные углы в сумме всегда дают \(180^\circ\).<br>2) Сумма углов треугольника равна \(180^\circ\).<br>3) Угол в \(90^\circ\) называется прямым.</div>
+<details><summary>Решение</summary>1 — неверно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) Сумма смежных углов равна \(180^\circ\).<br>2) Если один угол треугольника тупой, два других — острые.<br>3) В равностороннем треугольнике все углы по \(60^\circ\).</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 123</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) В равнобедренном треугольнике углы при основании равны.<br>2) Угол в \(90^\circ\) называется прямым.<br>3) Все углы прямоугольника прямые.</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 123</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Какие из утверждений верны? Запишите номера без пробелов.<br>1) Угол в \(90^\circ\) называется прямым.<br>2) Сумма углов треугольника равна \(180^\circ\).<br>3) Все углы прямоугольника прямые.</div>
+<details><summary>Решение</summary>1 — верно. 2 — верно. 3 — верно.
+<p class="ls-answer">Ответ: 123</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В треугольнике два угла \(34^\circ\) и \(36^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 34 - 36 = 110^\circ\).
+<p class="ls-answer">Ответ: 110</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> В треугольнике два угла \(36^\circ\) и \(27^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 36 - 27 = 117^\circ\).
+<p class="ls-answer">Ответ: 117</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 154 128" width="154" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="142" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="142" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="142" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="142" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 116,90 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 3, высота 2: \(S = \frac{3\cdot2}{2} = 3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 154 180" width="154" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="142" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="142" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="142" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="142" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="142" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="142" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 116,142 116,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 3, высота 4: \(S = \frac{3\cdot4}{2} = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 20)</span> Найдите НОД чисел 48 и 36.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 12 (\(48 = 12\cdot4\), \(36 = 12\cdot3\)).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 18)</span> Решите уравнение \(2x - 25 = 5\).</div>
+<details><summary>Решение</summary>Шаг 1 — неизвестное уменьшаемое: \(2x = 5 + 25 = 30\). Шаг 2 — неизвестный множитель: \(x = 30 : 2 = 15\). Проверка: \(2\cdot15 - 25 = 5\) ✓.
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(91 : x = 13\).</div>
+<details><summary>Решение</summary>Неизвестный делитель = делимое : частное: \(x = 91 : 13 = 7\). Проверка: \(91 : 7 = 13\) ✓.
+<p class="ls-answer">Ответ: 7</p></details></div>
+</section>
+<nav class="ls-foot"><a href="21-drobi-slozhenie.html">← Урок 21</a><a href="00-index.html">Все уроки</a><a href="23-drobi-umnozhenie-delenie.html">Урок 23 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

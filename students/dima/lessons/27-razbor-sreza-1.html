@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 27. Разбор среза №1: повторение слабых тем</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 27. Разбор среза №1: повторение слабых тем</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">повторение</span><span class="ls-tag">база</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Таблица и деление (урок 8)</a><a href="#ls-s3">Неизвестное слагаемое (урок 9)</a><a href="#ls-s4">Уменьшаемое и вычитаемое (урок 11)</a><a href="#ls-s5">Неизвестный множитель (урок 12)</a><a href="#ls-s6">Делимое и делитель (урок 14)</a><a href="#ls-s7">Деление столбиком (урок 15)</a><a href="#ls-s8">Порядок действий (урок 17)</a><a href="#ls-s9">Уравнения в два шага (урок 18)</a><a href="#ls-s10">Делимость (урок 20)</a><a href="#ls-s11">Дроби: сложение и вычитание (урок 21)</a><a href="#ls-s12">Дроби: умножение и деление (урок 23)</a><a href="#ls-s13">Десятичные: +, −, · (урок 24)</a><a href="#ls-s14">Десятичные: деление (урок 25)</a><a href="#ls-s15">Геометрия: углы (урок 13)</a><a href="#ls-s16">Геометрия: треугольники (урок 19)</a><a href="#ls-s17">Геометрия: клетки (урок 16)</a><a href="#ls-s18">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Цель:</b> закрыть темы, где на срезе 0 или 1 из 2. Ниже — по 4 задачи-двойника на каждую тему урока 26. Решать <b>только темы с ошибками</b> (по 4 задачи), начиная с самых важных: уравнения (9–18), деление, дроби.</p>
+<ol class="ls-steps"><li>10 мин — разобрать ошибки среза: «как ты думал?»</li><li>40 мин — двойники по темам с ошибками.</li><li>10 мин — повторный мини-срез: по одной задаче из каждой слабой темы.</li></ol>
+<p>Темы, решённые 2/2 и здесь 4/4, — снимаем с разминки. ДЗ — «смесь» по всем темам.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Таблица и деление (урок 8)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(18 : 3\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(3\cdot6 = 18\), значит \(18 : 3 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(33 : 3\).</div>
+<details><summary>Решение</summary>Разбиваем делимое на удобные части: \(33 = 30 + 3\); \(30 : 3 = 10\), \(3 : 3 = 1\). Ответ: 11. Проверка: \(11\cdot3 = 33\) ✓.
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(63 : 7\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(7\cdot9 = 63\), значит \(63 : 7 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(168 : 8\).</div>
+<details><summary>Решение</summary>Разбиваем делимое на удобные части: \(168 = 160 + 8\); \(160 : 8 = 20\), \(8 : 8 = 1\). Ответ: 21. Проверка: \(21\cdot8 = 168\) ✓.
+<p class="ls-answer">Ответ: 21</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Неизвестное слагаемое (урок 9)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Решите уравнение \(x + 28 = 135\).</div>
+<details><summary>Решение</summary>Неизвестное слагаемое = сумма − известное слагаемое: \(x = 135 - 28 = 107\). Проверка: \(107 + 28 = 135\) ✓.
+<p class="ls-answer">Ответ: 107</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Решите уравнение \(x + 81 = 131\).</div>
+<details><summary>Решение</summary>Неизвестное слагаемое = сумма − известное слагаемое: \(x = 131 - 81 = 50\). Проверка: \(50 + 81 = 131\) ✓.
+<p class="ls-answer">Ответ: 50</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Решите уравнение \(83 + x = 107\).</div>
+<details><summary>Решение</summary>Неизвестное слагаемое = сумма − известное слагаемое: \(x = 107 - 83 = 24\). Проверка: \(24 + 83 = 107\) ✓.
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Решите уравнение \(x + 48 = 130\).</div>
+<details><summary>Решение</summary>Неизвестное слагаемое = сумма − известное слагаемое: \(x = 130 - 48 = 82\). Проверка: \(82 + 48 = 130\) ✓.
+<p class="ls-answer">Ответ: 82</p></details></div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Уменьшаемое и вычитаемое (урок 11)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Решите уравнение \(x - 101 = 110\).</div>
+<details><summary>Решение</summary>Неизвестное уменьшаемое = разность + вычитаемое: \(x = 110 + 101 = 211\). Проверка: \(211 - 101 = 110\) ✓.
+<p class="ls-answer">Ответ: 211</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Решите уравнение \(202 - x = 88\).</div>
+<details><summary>Решение</summary>Неизвестное вычитаемое = уменьшаемое − разность: \(x = 202 - 88 = 114\). Проверка: \(202 - 114 = 88\) ✓.
+<p class="ls-answer">Ответ: 114</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Решите уравнение \(x - 37 = 59\).</div>
+<details><summary>Решение</summary>Неизвестное уменьшаемое = разность + вычитаемое: \(x = 59 + 37 = 96\). Проверка: \(96 - 37 = 59\) ✓.
+<p class="ls-answer">Ответ: 96</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Решите уравнение \(103 - x = 69\).</div>
+<details><summary>Решение</summary>Неизвестное вычитаемое = уменьшаемое − разность: \(x = 103 - 69 = 34\). Проверка: \(103 - 34 = 69\) ✓.
+<p class="ls-answer">Ответ: 34</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Неизвестный множитель (урок 12)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Решите уравнение \(x\cdot4 = 84\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 84 : 4 = 21\). Проверка: \(4\cdot21 = 84\) ✓.
+<p class="ls-answer">Ответ: 21</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Решите уравнение \(5\cdot x = 115\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 115 : 5 = 23\). Проверка: \(5\cdot23 = 115\) ✓.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Решите уравнение \(4\cdot x = 100\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 100 : 4 = 25\). Проверка: \(4\cdot25 = 100\) ✓.
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Решите уравнение \(x\cdot7 = 210\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 210 : 7 = 30\). Проверка: \(7\cdot30 = 210\) ✓.
+<p class="ls-answer">Ответ: 30</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Делимое и делитель (урок 14)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Решите уравнение \(x : 5 = 12\).</div>
+<details><summary>Решение</summary>Неизвестное делимое = частное · делитель: \(x = 12\cdot5 = 60\). Проверка: \(60 : 5 = 12\) ✓.
+<p class="ls-answer">Ответ: 60</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Решите уравнение \(126 : x = 18\).</div>
+<details><summary>Решение</summary>Неизвестный делитель = делимое : частное: \(x = 126 : 18 = 7\). Проверка: \(126 : 7 = 18\) ✓.
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Решите уравнение \(x : 6 = 27\).</div>
+<details><summary>Решение</summary>Неизвестное делимое = частное · делитель: \(x = 27\cdot6 = 162\). Проверка: \(162 : 6 = 27\) ✓.
+<p class="ls-answer">Ответ: 162</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Решите уравнение \(45 : x = 15\).</div>
+<details><summary>Решение</summary>Неизвестный делитель = делимое : частное: \(x = 45 : 15 = 3\). Проверка: \(45 : 3 = 15\) ✓.
+<p class="ls-answer">Ответ: 3</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Деление столбиком (урок 15)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите столбиком \(2376 : 8\).</div>
+<details><summary>Решение</summary>По шагам: \(23 : 8 = 2\) (остаток 7); \(77 : 8 = 9\) (остаток 5); \(56 : 8 = 7\). Ответ: 297. Проверка: \(297\cdot8 = 2376\) ✓.
+<p class="ls-answer">Ответ: 297</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(924 : 3\). Осторожно: в частном будет ноль.</div>
+<details><summary>Решение</summary>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 308. Проверка: \(308\cdot3 = 924\) ✓.
+<p class="ls-answer">Ответ: 308</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите столбиком \(822 : 6\).</div>
+<details><summary>Решение</summary>По шагам: \(8 : 6 = 1\) (остаток 2); \(22 : 6 = 3\) (остаток 4); \(42 : 6 = 7\). Ответ: 137. Проверка: \(137\cdot6 = 822\) ✓.
+<p class="ls-answer">Ответ: 137</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(2850 : 3\). Осторожно: в частном будет ноль.</div>
+<details><summary>Решение</summary>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 950. Проверка: \(950\cdot3 = 2850\) ✓.
+<p class="ls-answer">Ответ: 950</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Порядок действий (урок 17)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \((21 - 11)\cdot6\).</div>
+<details><summary>Решение</summary>Сначала скобки: \(21 - 11 = 10\); потом \(10\cdot6 = 60\).
+<p class="ls-answer">Ответ: 60</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(24 : 8 + 9\cdot5\).</div>
+<details><summary>Решение</summary>Сначала деление и умножение: \(24 : 8 = 3\), \(9\cdot5 = 45\); потом сложение: 48.
+<p class="ls-answer">Ответ: 48</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \((8 - 5)\cdot2\).</div>
+<details><summary>Решение</summary>Сначала скобки: \(8 - 5 = 3\); потом \(3\cdot2 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(18 : 6 + 2\cdot3\).</div>
+<details><summary>Решение</summary>Сначала деление и умножение: \(18 : 6 = 3\), \(2\cdot3 = 6\); потом сложение: 9.
+<p class="ls-answer">Ответ: 9</p></details></div>
+</section>
+<section class="ls-card" id="ls-s9">
+<h2>Уравнения в два шага (урок 18)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Решите уравнение \(4x + 15 = 43\).</div>
+<details><summary>Решение</summary>Шаг 1 — «отцепляем» 15 (неизвестное слагаемое): \(4x = 43 - 15 = 28\). Шаг 2 — неизвестный множитель: \(x = 28 : 4 = 7\). Проверка: \(4\cdot7 + 15 = 43\) ✓.
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Решите уравнение \(2x - 1 = 7\).</div>
+<details><summary>Решение</summary>Шаг 1 — неизвестное уменьшаемое: \(2x = 7 + 1 = 8\). Шаг 2 — неизвестный множитель: \(x = 8 : 2 = 4\). Проверка: \(2\cdot4 - 1 = 7\) ✓.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Решите уравнение \(2x + 11 = 35\).</div>
+<details><summary>Решение</summary>Шаг 1 — «отцепляем» 11 (неизвестное слагаемое): \(2x = 35 - 11 = 24\). Шаг 2 — неизвестный множитель: \(x = 24 : 2 = 12\). Проверка: \(2\cdot12 + 11 = 35\) ✓.
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Решите уравнение \(7x - 10 = 60\).</div>
+<details><summary>Решение</summary>Шаг 1 — неизвестное уменьшаемое: \(7x = 60 + 10 = 70\). Шаг 2 — неизвестный множитель: \(x = 70 : 7 = 10\). Проверка: \(7\cdot10 - 10 = 60\) ✓.
+<p class="ls-answer">Ответ: 10</p></details></div>
+</section>
+<section class="ls-card" id="ls-s10">
+<h2>Делимость (урок 20)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите НОД чисел 90 и 50.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 10 (\(90 = 10\cdot9\), \(50 = 10\cdot5\)).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите НОК чисел 9 и 12 (наименьший общий знаменатель для дробей со знаменателями 9 и 12).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 12: 12, 24, 36 — первое, которое делится на 9: 36.
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите НОД чисел 27 и 45.</div>
+<details><summary>Решение</summary>Наибольшее число, на которое делятся оба: 9 (\(27 = 9\cdot3\), \(45 = 9\cdot5\)).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите НОК чисел 10 и 15 (наименьший общий знаменатель для дробей со знаменателями 10 и 15).</div>
+<details><summary>Решение</summary>Перебираем числа, кратные 15: 15, 30 — первое, которое делится на 10: 30.
+<p class="ls-answer">Ответ: 30</p></details></div>
+</section>
+<section class="ls-card" id="ls-s11">
+<h2>Дроби: сложение и вычитание (урок 21)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(\frac{3}{4} + \frac{1}{6}\).</div>
+<details><summary>Решение</summary>Шаг 1 — общий знаменатель 12. Шаг 2 — доп. множители: 3 и 2. Шаг 3: \(\frac{9}{12} + \frac{2}{12} = \frac{11}{12}\).
+<p class="ls-answer">Ответ: \(\frac{11}{12}\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(\frac{3}{4} - \frac{3}{5}\).</div>
+<details><summary>Решение</summary>Шаг 1 — общий знаменатель 20. Шаг 2 — доп. множители: 5 и 4. Шаг 3: \(\frac{15}{20} - \frac{12}{20} = \frac{3}{20}\).
+<p class="ls-answer">Ответ: 0,15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(\frac{3}{4} + \frac{10}{12}\).</div>
+<details><summary>Решение</summary>Шаг 1 — общий знаменатель 12. Шаг 2 — доп. множители: 3 и 1. Шаг 3: \(\frac{9}{12} + \frac{10}{12} = \frac{19}{12}\).
+<p class="ls-answer">Ответ: \(\frac{19}{12}\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(\frac{2}{6} - \frac{2}{8}\).</div>
+<details><summary>Решение</summary>Шаг 1 — общий знаменатель 24. Шаг 2 — доп. множители: 4 и 3. Шаг 3: \(\frac{8}{24} - \frac{6}{24} = \frac{2}{24}\) \(= \frac{1}{12}\).
+<p class="ls-answer">Ответ: \(\frac{1}{12}\)</p></details></div>
+</section>
+<section class="ls-card" id="ls-s12">
+<h2>Дроби: умножение и деление (урок 23)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(\frac{6}{5}\cdot\frac{2}{3}\).</div>
+<details><summary>Решение</summary>Числитель на числитель, знаменатель на знаменатель (сначала сокращаем крест-накрест): \(\frac{6\cdot2}{5\cdot3} = 0{,}8\).
+<p class="ls-answer">Ответ: 0,8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(3\frac{7}{9}\cdot3\).</div>
+<details><summary>Решение</summary>Шаг 1 — в неправильную дробь: \(3\frac{7}{9} = \frac{3\cdot9 + 7}{9} = \frac{34}{9}\). Шаг 2: \(\frac{34}{9}\cdot3 = \frac{34}{3}\).
+<p class="ls-answer">Ответ: \(\frac{34}{3}\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(\frac{5}{9}\cdot\frac{3}{6}\).</div>
+<details><summary>Решение</summary>Числитель на числитель, знаменатель на знаменатель (сначала сокращаем крест-накрест): \(\frac{5\cdot3}{9\cdot6} = \frac{5}{18}\).
+<p class="ls-answer">Ответ: \(\frac{5}{18}\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(5\frac{3}{8}\cdot4\).</div>
+<details><summary>Решение</summary>Шаг 1 — в неправильную дробь: \(5\frac{3}{8} = \frac{5\cdot8 + 3}{8} = \frac{43}{8}\). Шаг 2: \(\frac{43}{8}\cdot4 = 21{,}5\).
+<p class="ls-answer">Ответ: 21,5</p></details></div>
+</section>
+<section class="ls-card" id="ls-s13">
+<h2>Десятичные: +, −, · (урок 24)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(2{,}58 + 9{,}65\).</div>
+<details><summary>Решение</summary>Запятая под запятой, недостающие разряды — нули: \(12{,}23\).
+<p class="ls-answer">Ответ: 12,23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(1{,}5\cdot2{,}8\).</div>
+<details><summary>Решение</summary>Умножаем без запятых, в ответе после запятой столько цифр, сколько у обоих множителей вместе: \(4{,}2\).
+<p class="ls-answer">Ответ: 4,2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(6{,}8 + 5{,}44\).</div>
+<details><summary>Решение</summary>Запятая под запятой, недостающие разряды — нули: \(12{,}24\).
+<p class="ls-answer">Ответ: 12,24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(2{,}5\cdot0{,}8\).</div>
+<details><summary>Решение</summary>Умножаем без запятых, в ответе после запятой столько цифр, сколько у обоих множителей вместе: \(2\).
+<p class="ls-answer">Ответ: 2</p></details></div>
+</section>
+<section class="ls-card" id="ls-s14">
+<h2>Десятичные: деление (урок 25)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(2{,}52 : 9\).</div>
+<details><summary>Решение</summary>Делим как обычно; запятую в частном ставим, когда «перешли» запятую в делимом: \(0{,}28\). Проверка: \(0{,}28\cdot9 = 2{,}52\) ✓.
+<p class="ls-answer">Ответ: 0,28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(0{,}36 : 0{,}06\).</div>
+<details><summary>Решение</summary>Переносим запятую в обоих числах вправо на 2, чтобы делитель стал целым: \(36 : 6 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(68{,}8 : 8\).</div>
+<details><summary>Решение</summary>Делим как обычно; запятую в частном ставим, когда «перешли» запятую в делимом: \(8{,}6\). Проверка: \(8{,}6\cdot8 = 68{,}8\) ✓.
+<p class="ls-answer">Ответ: 8,6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(12 : 0{,}6\).</div>
+<details><summary>Решение</summary>Переносим запятую в обоих числах вправо на 2, чтобы делитель стал целым: \(1200 : 60 = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+</section>
+<section class="ls-card" id="ls-s15">
+<h2>Геометрия: углы (урок 13)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Один из смежных углов равен \(69^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 69 = 111^\circ\).
+<p class="ls-answer">Ответ: 111</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> В треугольнике два угла \(59^\circ\) и \(44^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 59 - 44 = 77^\circ\).
+<p class="ls-answer">Ответ: 77</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Один из смежных углов равен \(85^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 85 = 95^\circ\).
+<p class="ls-answer">Ответ: 95</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В треугольнике два угла \(63^\circ\) и \(38^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 63 - 38 = 79^\circ\).
+<p class="ls-answer">Ответ: 79</p></details></div>
+</section>
+<section class="ls-card" id="ls-s16">
+<h2>Геометрия: треугольники (урок 19)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> В равнобедренном треугольнике угол при вершине \(88^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>Углы при основании равны: \((180 - 88) : 2 = 46^\circ\).
+<p class="ls-answer">Ответ: 46</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Два угла треугольника \(39^\circ\) и \(68^\circ\). Какой это треугольник? 1 — остроугольный, 2 — прямоугольный, 3 — тупоугольный.</div>
+<details><summary>Решение</summary>Третий угол \(73^\circ\). Наибольший угол 73° → остроугольный.
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> В равнобедренном треугольнике угол при вершине \(46^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>Углы при основании равны: \((180 - 46) : 2 = 67^\circ\).
+<p class="ls-answer">Ответ: 67</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Два угла треугольника \(28^\circ\) и \(29^\circ\). Какой это треугольник? 1 — остроугольный, 2 — прямоугольный, 3 — тупоугольный.</div>
+<details><summary>Решение</summary>Третий угол \(123^\circ\). Наибольший угол 123° → тупоугольный.
+<p class="ls-answer">Ответ: 3</p></details></div>
+</section>
+<section class="ls-card" id="ls-s17">
+<h2>Геометрия: клетки (урок 16)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 206 206" width="206" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="194" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="194" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="194" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 168,168 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 5, высота 5: \(S = \frac{5\cdot5}{2} = 12{,}5\).
+<p class="ls-answer">Ответ: 12,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите площадь фигуры на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="168" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="168" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="168" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="168" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="168" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="168" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,142 142,142 142,64 64,64 64,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Разрезаем на два прямоугольника: \(4\cdot3 + 1\cdot1 = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 258 154" width="258" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 220,116 142,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 7, высота 3: \(S = \frac{7\cdot3}{2} = 10{,}5\).
+<p class="ls-answer">Ответ: 10,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите площадь фигуры на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 258 154" width="258" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 220,116 220,64 116,64 116,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Разрезаем на два прямоугольника: \(7\cdot2 + 3\cdot1 = 17\).
+<p class="ls-answer">Ответ: 17</p></details></div>
+</section>
+<section class="ls-card" id="ls-s18">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Решите уравнение \(139 - x = 21\).</div>
+<details><summary>Решение</summary>Неизвестное вычитаемое = уменьшаемое − разность: \(x = 139 - 21 = 118\). Проверка: \(139 - 118 = 21\) ✓.
+<p class="ls-answer">Ответ: 118</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Решите уравнение \(x : 6 + 7 = 17\).</div>
+<details><summary>Решение</summary>Шаг 1: \(x : 6 = 17 - 7 = 10\). Шаг 2 — неизвестное делимое: \(x = 10\cdot6 = 60\).
+<p class="ls-answer">Ответ: 60</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите столбиком \(1692 : 9\).</div>
+<details><summary>Решение</summary>По шагам: \(16 : 9 = 1\) (остаток 7); \(79 : 9 = 8\) (остаток 7); \(72 : 9 = 8\). Ответ: 188. Проверка: \(188\cdot9 = 1692\) ✓.
+<p class="ls-answer">Ответ: 188</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(75 - 18 + 13\).</div>
+<details><summary>Решение</summary>Сложение и вычитание — по порядку слева направо: \(75 - 18 = 57\), \(57 + 13 = 70\).
+<p class="ls-answer">Ответ: 70</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(\frac{1}{3} + \frac{2}{4}\).</div>
+<details><summary>Решение</summary>Шаг 1 — общий знаменатель 12. Шаг 2 — доп. множители: 4 и 3. Шаг 3: \(\frac{4}{12} + \frac{6}{12} = \frac{10}{12}\) \(= \frac{5}{6}\).
+<p class="ls-answer">Ответ: \(\frac{5}{6}\)</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычислите \(\frac{9}{9}\cdot\frac{9}{5}\).</div>
+<details><summary>Решение</summary>Числитель на числитель, знаменатель на знаменатель (сначала сокращаем крест-накрест): \(\frac{9\cdot9}{9\cdot5} = 1{,}8\).
+<p class="ls-answer">Ответ: 1,8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычислите \(2\cdot2{,}8\).</div>
+<details><summary>Решение</summary>Умножаем без запятых, в ответе после запятой столько цифр, сколько у обоих множителей вместе: \(5{,}6\).
+<p class="ls-answer">Ответ: 5,6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычислите \(13{,}6 : 0{,}8\).</div>
+<details><summary>Решение</summary>Переносим запятую в обоих числах вправо на 2, чтобы делитель стал целым: \(1360 : 80 = 17\).
+<p class="ls-answer">Ответ: 17</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> В треугольнике два угла \(70^\circ\) и \(73^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 70 - 73 = 37^\circ\).
+<p class="ls-answer">Ответ: 37</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 180 154" width="180" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="168" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="168" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="168" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="168" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="168" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 116,116 142,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 3, высота 3: \(S = \frac{3\cdot3}{2} = 4{,}5\).
+<p class="ls-answer">Ответ: 4,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> Вычислите \(25 : 5\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(5\cdot5 = 25\), значит \(25 : 5 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">12.</span> В равнобедренном треугольнике угол при вершине \(50^\circ\). Найдите угол при основании.</div>
+<details><summary>Решение</summary>Углы при основании равны: \((180 - 50) : 2 = 65^\circ\).
+<p class="ls-answer">Ответ: 65</p></details></div>
+</section>
+<nav class="ls-foot"><a href="26-kontrolnyy-srez-1.html">← Урок 26</a><a href="00-index.html">Все уроки</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
