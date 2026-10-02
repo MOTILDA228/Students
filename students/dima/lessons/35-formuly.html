@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 35. Формулы: подстановка и нахождение неизвестного (№12)</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 35. Формулы: подстановка и нахождение неизвестного (№12)</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №12</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Подставить</a><a href="#ls-s5">Ступень 2. Найти неизвестное</a><a href="#ls-s6">Ступень 3. Задачи-формулы</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> №12 — подставить числа в формулу. Если неизвестное «внутри» — получаем простое уравнение из уроков 9–18.</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> подставляет не в ту букву; при нахождении неизвестного делит вместо вычитания (правила компонентов!).</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 34)</span> Бросают игральный кубик. Найдите вероятность того, что выпадет число меньше 4.</div>
+<details><summary>Решение</summary>Подходят: 1, 2, 3 — 3 из 6: \(0{,}5\).
+<p class="ls-answer">Ответ: 0,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 34)</span> Из 25 фонариков 1 неисправны. Найдите вероятность того, что случайно выбранный фонарик исправен.</div>
+<details><summary>Решение</summary>Исправных 24: \(P = \frac{24}{25} = 0{,}96\).
+<p class="ls-answer">Ответ: 0,96</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 33)</span> Вписанный угол равен \(58^\circ\). Найдите центральный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Центральный — в 2 раза больше: \(116^\circ\).
+<p class="ls-answer">Ответ: 116</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 33)</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 36^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 36 = 54^\circ\).
+<p class="ls-answer">Ответ: 54</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 31)</span> Решите уравнение \(8x + 7x = 90\).</div>
+<details><summary>Решение</summary>Приводим подобные: \(15x = 90\); \(x = 90 : 15 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 31)</span> Решите уравнение \(5(x - 1) + 9 = -1\).</div>
+<details><summary>Решение</summary>Раскрываем скобки: \(5x - 5 + 9 = -1\); \(5x = -1 + 5 - 9 = -5\); \(x = -1\).
+<p class="ls-answer">Ответ: -1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(42 : 7\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(7\cdot6 = 42\), значит \(42 : 7 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(4\cdot\square = 28\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(28 : 4 = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Подстановка</h3>
+<ol class="ls-steps"><li>Выписать, чему равна каждая буква.</li><li>Переписать формулу, вместо букв — числа в скобках.</li><li>Посчитать по порядку действий.</li></ol>
+<div class="ls-example">\(S = vt\), \(v = 60\), \(t = 3\): \(S = 60\cdot3 = 180\).</div>
+<h3>2. Неизвестное внутри формулы</h3>
+<div class="ls-example">\(P = 2(a + b)\), \(P = 30\), \(a = 9\): \(30 = 2(9 + b)\) → \(9 + b = 15\) → \(b = 6\). Это уравнение в два шага (урок 18)!</div>
+<div class="ls-warn">Проверь единицы: минуты и часы, рубли и копейки.</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Подставить</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Формула \(A = Pt\) — работа тока \(A\) (Дж), мощность \(P\) (Вт), время \(t\) (с). Найдите \(A\), если \(P = 14\), \(t = 10\).</div>
+<details><summary>Решение</summary>Подставляем: \(P = 14\), \(t = 10\) → \(A = 140\).
+<p class="ls-answer">Ответ: 140</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Формула \(P = 2(a + b)\) — периметр прямоугольника. Найдите \(P\), если \(a = 13\), \(b = 15\).</div>
+<details><summary>Решение</summary>Подставляем: \(a = 13\), \(b = 15\) → \(P = 56\).
+<p class="ls-answer">Ответ: 56</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Формула \(P = 2(a + b)\) — периметр прямоугольника. Найдите \(P\), если \(a = 27\), \(b = 3\).</div>
+<details><summary>Решение</summary>Подставляем: \(a = 27\), \(b = 3\) → \(P = 60\).
+<p class="ls-answer">Ответ: 60</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Формула \(S = vt\) — путь \(S\) (км), скорость \(v\) (км/ч), время \(t\) (ч). Найдите \(S\), если \(v = 28\), \(t = 25\).</div>
+<details><summary>Решение</summary>Подставляем: \(v = 28\), \(t = 25\) → \(S = 700\).
+<p class="ls-answer">Ответ: 700</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Формула \(C = 150 + 11(t - 5)\) — стоимость поездки на такси \(C\) (руб.) длительностью \(t\) мин. Найдите \(C\), если \(t = 9\).</div>
+<details><summary>Решение</summary>Подставляем: \(t = 9\) → \(C = 194\).
+<p class="ls-answer">Ответ: 194</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Формула \(P = 2(a + b)\) — периметр прямоугольника. Найдите \(P\), если \(a = 27\), \(b = 27\).</div>
+<details><summary>Решение</summary>Подставляем: \(a = 27\), \(b = 27\) → \(P = 108\).
+<p class="ls-answer">Ответ: 108</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Формула \(F = 1{,}8C + 32\) — температура по Фаренгейту через Цельсий. Найдите \(F\), если \(C = 8\).</div>
+<details><summary>Решение</summary>Подставляем: \(C = 8\) → \(F = 46{,}4\).
+<p class="ls-answer">Ответ: 46,4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Формула \(S = vt\) — путь \(S\) (км), скорость \(v\) (км/ч), время \(t\) (ч). Найдите \(S\), если \(v = 28\), \(t = 22\).</div>
+<details><summary>Решение</summary>Подставляем: \(v = 28\), \(t = 22\) → \(S = 616\).
+<p class="ls-answer">Ответ: 616</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Формула \(S = vt\) — путь \(S\) (км), скорость \(v\) (км/ч), время \(t\) (ч). Найдите \(S\), если \(v = 6\), \(t = 12\).</div>
+<details><summary>Решение</summary>Подставляем: \(v = 6\), \(t = 12\) → \(S = 72\).
+<p class="ls-answer">Ответ: 72</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Найти неизвестное</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 144\) км, \(v = 24\) км/ч.</div>
+<details><summary>Решение</summary>\(144 = 24\cdott\) — неизвестный множитель: \(t = 144 : 24 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 30\), \(a = 4\).</div>
+<details><summary>Решение</summary>\(30 = 2(a + b)\) → \(a + b = 15\) → \(b = 15 - 4 = 11\).
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 128\) км, \(v = 32\) км/ч.</div>
+<details><summary>Решение</summary>\(128 = 32\cdott\) — неизвестный множитель: \(t = 128 : 32 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 66\), \(a = 24\).</div>
+<details><summary>Решение</summary>\(66 = 2(a + b)\) → \(a + b = 33\) → \(b = 33 - 24 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 10\), \(a = 3\).</div>
+<details><summary>Решение</summary>\(10 = 2(a + b)\) → \(a + b = 5\) → \(b = 5 - 3 = 2\).
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 312\) км, \(v = 39\) км/ч.</div>
+<details><summary>Решение</summary>\(312 = 39\cdott\) — неизвестный множитель: \(t = 312 : 39 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 36\), \(a = 13\).</div>
+<details><summary>Решение</summary>\(36 = 2(a + b)\) → \(a + b = 18\) → \(b = 18 - 13 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 210\) км, \(v = 70\) км/ч.</div>
+<details><summary>Решение</summary>\(210 = 70\cdott\) — неизвестный множитель: \(t = 210 : 70 = 3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Задачи-формулы</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Стоимость заказа считают по формуле \(C = 191 + 3n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 218\)?</div>
+<details><summary>Решение</summary>\(218 = 191 + 3n\) → \(3n = 27\) → \(n = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Стоимость заказа считают по формуле \(C = 15 + 5n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 140\)?</div>
+<details><summary>Решение</summary>\(140 = 15 + 5n\) → \(5n = 125\) → \(n = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Стоимость заказа считают по формуле \(C = 164 + 5n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 284\)?</div>
+<details><summary>Решение</summary>\(284 = 164 + 5n\) → \(5n = 120\) → \(n = 24\).
+<p class="ls-answer">Ответ: 24</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Стоимость заказа считают по формуле \(C = 74 + 2n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 82\)?</div>
+<details><summary>Решение</summary>\(82 = 74 + 2n\) → \(2n = 8\) → \(n = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Стоимость заказа считают по формуле \(C = 177 + 7n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 450\)?</div>
+<details><summary>Решение</summary>\(450 = 177 + 7n\) → \(7n = 273\) → \(n = 39\).
+<p class="ls-answer">Ответ: 39</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Стоимость заказа считают по формуле \(C = 154 + 8n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 298\)?</div>
+<details><summary>Решение</summary>\(298 = 154 + 8n\) → \(8n = 144\) → \(n = 18\).
+<p class="ls-answer">Ответ: 18</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Формула \(S = vt\) — путь \(S\) (км), скорость \(v\) (км/ч), время \(t\) (ч). Найдите \(S\), если \(v = 22\), \(t = 6\).</div>
+<details><summary>Решение</summary>Подставляем: \(v = 22\), \(t = 6\) → \(S = 132\).
+<p class="ls-answer">Ответ: 132</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 90\), \(a = 16\).</div>
+<details><summary>Решение</summary>\(90 = 2(a + b)\) → \(a + b = 45\) → \(b = 45 - 16 = 29\).
+<p class="ls-answer">Ответ: 29</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Стоимость заказа считают по формуле \(C = 123 + 4n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 207\)?</div>
+<details><summary>Решение</summary>\(207 = 123 + 4n\) → \(4n = 84\) → \(n = 21\).
+<p class="ls-answer">Ответ: 21</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Стоимость заказа считают по формуле \(C = 80 + 4n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 172\)?</div>
+<details><summary>Решение</summary>\(172 = 80 + 4n\) → \(4n = 92\) → \(n = 23\).
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 296\) км, \(v = 74\) км/ч.</div>
+<details><summary>Решение</summary>\(296 = 74\cdott\) — неизвестный множитель: \(t = 296 : 74 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Формула \(A = Pt\) — работа тока \(A\) (Дж), мощность \(P\) (Вт), время \(t\) (с). Найдите \(A\), если \(P = 29\), \(t = 21\).</div>
+<details><summary>Решение</summary>Подставляем: \(P = 29\), \(t = 21\) → \(A = 609\).
+<p class="ls-answer">Ответ: 609</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Формула \(C = 150 + 11(t - 5)\) — стоимость поездки на такси \(C\) (руб.) длительностью \(t\) мин. Найдите \(C\), если \(t = 27\).</div>
+<details><summary>Решение</summary>Подставляем: \(t = 27\) → \(C = 392\).
+<p class="ls-answer">Ответ: 392</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Формула \(F = 1{,}8C + 32\) — температура по Фаренгейту через Цельсий. Найдите \(F\), если \(C = 16\).</div>
+<details><summary>Решение</summary>Подставляем: \(C = 16\) → \(F = 60{,}8\).
+<p class="ls-answer">Ответ: 60,8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 32\) км, \(v = 8\) км/ч.</div>
+<details><summary>Решение</summary>\(32 = 8\cdott\) — неизвестный множитель: \(t = 32 : 8 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 70\), \(a = 15\).</div>
+<details><summary>Решение</summary>\(70 = 2(a + b)\) → \(a + b = 35\) → \(b = 35 - 15 = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 46\), \(a = 13\).</div>
+<details><summary>Решение</summary>\(46 = 2(a + b)\) → \(a + b = 23\) → \(b = 23 - 13 = 10\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Стоимость заказа считают по формуле \(C = 22 + 6n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 184\)?</div>
+<details><summary>Решение</summary>\(184 = 22 + 6n\) → \(6n = 162\) → \(n = 27\).
+<p class="ls-answer">Ответ: 27</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Стоимость заказа считают по формуле \(C = 179 + 2n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 229\)?</div>
+<details><summary>Решение</summary>\(229 = 179 + 2n\) → \(2n = 50\) → \(n = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 33)</span> Вписанный угол равен \(60^\circ\). Найдите центральный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Центральный — в 2 раза больше: \(120^\circ\).
+<p class="ls-answer">Ответ: 120</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 31)</span> Решите уравнение \(6x + (-10) = 7x + (-11)\).</div>
+<details><summary>Решение</summary>Иксы — влево, числа — вправо (при переносе знак меняется): \(6x - 7x = -11 - (-10)\); \(-1x = -1\); \(x = 1\).
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 27)</span> Вычислите \(1{,}5\cdot2{,}6\).</div>
+<details><summary>Решение</summary>Умножаем без запятых, в ответе после запятой столько цифр, сколько у обоих множителей вместе: \(3{,}9\).
+<p class="ls-answer">Ответ: 3,9</p></details></div>
+</section>
+<nav class="ls-foot"><a href="34-veroyatnost.html">← Урок 34</a><a href="00-index.html">Все уроки</a><a href="36-geom-chetyrehugolniki.html">Урок 36 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 37. №6: все типы вычислений</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 37. №6: все типы вычислений</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №6</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Дроби</a><a href="#ls-s5">Ступень 2. Десятичные</a><a href="#ls-s6">Ступень 3. С минусами</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> собрать в одну таблицу все виды №6: обыкновенные дроби, десятичные, с минусами и степенями 10. Первый вопрос к себе: «какой это вид?»</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> начинает считать, не определив вид; смешивает обыкновенные и десятичные без перевода.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 36)</span> Периметр квадрата 48. Найдите его площадь.</div>
+<details><summary>Решение</summary>Сторона \(48 : 4 = 12\), \(S = 12^2 = 144\).
+<p class="ls-answer">Ответ: 144</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 36)</span> Один угол параллелограмма \(36^\circ\). Найдите соседний с ним угол.</div>
+<details><summary>Решение</summary>Соседние углы в сумме \(180^\circ\): 144°.
+<p class="ls-answer">Ответ: 144</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 35)</span> Формула \(C = 150 + 11(t - 5)\) — стоимость поездки на такси \(C\) (руб.) длительностью \(t\) мин. Найдите \(C\), если \(t = 21\).</div>
+<details><summary>Решение</summary>Подставляем: \(t = 21\) → \(C = 326\).
+<p class="ls-answer">Ответ: 326</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 35)</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 58\), \(a = 27\).</div>
+<details><summary>Решение</summary>\(58 = 2(a + b)\) → \(a + b = 29\) → \(b = 29 - 27 = 2\).
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 33)</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 57^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 57 = 33^\circ\).
+<p class="ls-answer">Ответ: 33</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 33)</span> Радиус окружности 11. Найдите диаметр.</div>
+<details><summary>Решение</summary>Диаметр — два радиуса: 22.
+<p class="ls-answer">Ответ: 22</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(18 : 2\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(2\cdot9 = 18\), значит \(18 : 2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(5\cdot\square = 25\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(25 : 5 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>Виды №6 и что делать</h3>
+<div class="ls-table-wrap"><table class="ls-table"><tr><th>Вид</th><th>Что делать</th><th>Урок</th></tr>
+<tr><td>\(\left(\frac{2}{5} + \frac{3}{4}\right)\cdot20\)</td><td class="ls-left">скобка — общий знаменатель; потом умножить</td><td>21, 23</td></tr>
+<tr><td>\(\frac{6{,}3}{0{,}7}\)</td><td class="ls-left">запятую в обоих вправо → 63 : 7</td><td>25</td></tr>
+<tr><td>\((5{,}4 - 2{,}9)\cdot1{,}6\)</td><td class="ls-left">скобка, потом умножение десятичных</td><td>24</td></tr>
+<tr><td>\(-0{,}3\cdot(-10)^3 + \ldots\)</td><td class="ls-left">сначала степени, потом знаки</td><td>29</td></tr></table></div>
+<div class="ls-rule">Ответ в №6 — всегда конечная десятичная дробь или целое. Получилось \(\frac{1}{3}\) — где-то ошибка.</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Дроби</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите значение выражения \(\left(\frac{2}{5} + \frac{4}{5}\right)\cdot10\).</div>
+<details><summary>Решение</summary>Скобка: \(1{,}2\); умножаем на 10: \(12\).
+<p class="ls-answer">Ответ: 12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите значение выражения \(\left(\frac{3}{5} + \frac{1}{4}\right)\cdot10\).</div>
+<details><summary>Решение</summary>Скобка: \(0{,}85\); умножаем на 10: \(8{,}5\).
+<p class="ls-answer">Ответ: 8,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите значение выражения \(\left(\frac{1}{2} + \frac{1}{4}\right)\cdot20\).</div>
+<details><summary>Решение</summary>Скобка: \(0{,}75\); умножаем на 20: \(15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите значение выражения \(\left(\frac{1}{2} + \frac{1}{4}\right)\cdot4\).</div>
+<details><summary>Решение</summary>Скобка: \(0{,}75\); умножаем на 4: \(3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите значение выражения \(\left(\frac{4}{5} + \frac{3}{25}\right)\cdot10\).</div>
+<details><summary>Решение</summary>Скобка: \(0{,}92\); умножаем на 10: \(9{,}2\).
+<p class="ls-answer">Ответ: 9,2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите значение выражения \(\left(\frac{9}{20} + \frac{3}{25}\right)\cdot4\).</div>
+<details><summary>Решение</summary>Скобка: \(0{,}57\); умножаем на 4: \(2{,}28\).
+<p class="ls-answer">Ответ: 2,28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите значение выражения \(\left(\frac{3}{4} + \frac{7}{10}\right)\cdot5\).</div>
+<details><summary>Решение</summary>Скобка: \(1{,}45\); умножаем на 5: \(7{,}25\).
+<p class="ls-answer">Ответ: 7,25</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Десятичные</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите значение выражения \(\frac{14{,}5}{0{,}5}\).</div>
+<details><summary>Решение</summary>Переносим запятую: \(145 : 5 = 29\).
+<p class="ls-answer">Ответ: 29</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите значение выражения \((3{,}4 - 0{,}5)\cdot9\).</div>
+<details><summary>Решение</summary>Скобка \(2{,}9\); \(2{,}9\cdot9 = 26{,}1\).
+<p class="ls-answer">Ответ: 26,1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите значение выражения \(\frac{3{,}3}{0{,}3}\).</div>
+<details><summary>Решение</summary>Переносим запятую: \(33 : 3 = 11\).
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите значение выражения \(\frac{1{,}8}{0{,}9}\).</div>
+<details><summary>Решение</summary>Переносим запятую: \(18 : 9 = 2\).
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите значение выражения \(\frac{22{,}5}{0{,}9}\).</div>
+<details><summary>Решение</summary>Переносим запятую: \(225 : 9 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите значение выражения \(\frac{4{,}5}{0{,}3}\).</div>
+<details><summary>Решение</summary>Переносим запятую: \(45 : 3 = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите значение выражения \(\frac{2{,}4}{0{,}4}\).</div>
+<details><summary>Решение</summary>Переносим запятую: \(24 : 4 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. С минусами</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(4\cdot(-8) + 1\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(4\cdot(-8) = -32\); потом \(-32 + 1 = -31\).
+<p class="ls-answer">Ответ: -31</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(9\cdot(-2) + 13\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(9\cdot(-2) = -18\); потом \(-18 + 13 = -5\).
+<p class="ls-answer">Ответ: -5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(3\cdot(-5) + 4\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(3\cdot(-5) = -15\); потом \(-15 + 4 = -11\).
+<p class="ls-answer">Ответ: -11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(6\cdot(-8) + 1\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(6\cdot(-8) = -48\); потом \(-48 + 1 = -47\).
+<p class="ls-answer">Ответ: -47</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите значение выражения \(-0{,}6\cdot(-10)^3 + 2\cdot(-10)^2 - 44\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(600 + 200 - 44 = 756\).
+<p class="ls-answer">Ответ: 756</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите значение выражения \(-0{,}1\cdot(-10)^3 + 1\cdot(-10)^2 - 29\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(100 + 100 - 29 = 171\).
+<p class="ls-answer">Ответ: 171</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите значение выражения \(-0{,}3\cdot(-10)^3 + 4\cdot(-10)^2 - 77\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(300 + 400 - 77 = 623\).
+<p class="ls-answer">Ответ: 623</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Найдите значение выражения \(-0{,}9\cdot(-10)^3 + 1\cdot(-10)^2 - 28\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(900 + 100 - 28 = 972\).
+<p class="ls-answer">Ответ: 972</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите значение выражения \(\left(\frac{3}{5} + \frac{7}{10}\right)\cdot4\).</div>
+<details><summary>Решение</summary>Скобка: \(1{,}3\); умножаем на 4: \(5{,}2\).
+<p class="ls-answer">Ответ: 5,2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(6\cdot(-3) + (-2)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(6\cdot(-3) = -18\); потом \(-18 + (-2) = -20\).
+<p class="ls-answer">Ответ: -20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите значение выражения \(-0{,}2\cdot(-10)^3 + 1\cdot(-10)^2 - 45\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(200 + 100 - 45 = 255\).
+<p class="ls-answer">Ответ: 255</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите значение выражения \(-0{,}1\cdot(-10)^3 + 2\cdot(-10)^2 - 17\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(100 + 200 - 17 = 283\).
+<p class="ls-answer">Ответ: 283</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(8\cdot(-4) + (-16)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(8\cdot(-4) = -32\); потом \(-32 + (-16) = -48\).
+<p class="ls-answer">Ответ: -48</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите значение выражения \(\left(\frac{3}{4} + \frac{1}{2}\right)\cdot5\).</div>
+<details><summary>Решение</summary>Скобка: \(1{,}25\); умножаем на 5: \(6{,}25\).
+<p class="ls-answer">Ответ: 6,25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите значение выражения \(\left(\frac{3}{4} + \frac{3}{25}\right)\cdot4\).</div>
+<details><summary>Решение</summary>Скобка: \(0{,}87\); умножаем на 4: \(3{,}48\).
+<p class="ls-answer">Ответ: 3,48</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите значение выражения \(\left(\frac{3}{4} + \frac{4}{5}\right)\cdot5\).</div>
+<details><summary>Решение</summary>Скобка: \(1{,}55\); умножаем на 5: \(7{,}75\).
+<p class="ls-answer">Ответ: 7,75</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите значение выражения \(\frac{16{,}1}{0{,}7}\).</div>
+<details><summary>Решение</summary>Переносим запятую: \(161 : 7 = 23\).
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите значение выражения \((9{,}6 - 0{,}4)\cdot9\).</div>
+<details><summary>Решение</summary>Скобка \(9{,}2\); \(9{,}2\cdot9 = 82{,}8\).
+<p class="ls-answer">Ответ: 82,8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите значение выражения \(\frac{4{,}2}{0{,}2}\).</div>
+<details><summary>Решение</summary>Переносим запятую: \(42 : 2 = 21\).
+<p class="ls-answer">Ответ: 21</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите значение выражения \(-0{,}1\cdot(-10)^3 + 3\cdot(-10)^2 - 19\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(100 + 300 - 19 = 381\).
+<p class="ls-answer">Ответ: 381</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Найдите значение выражения \(-0{,}7\cdot(-10)^3 + 2\cdot(-10)^2 - 81\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(700 + 200 - 81 = 819\).
+<p class="ls-answer">Ответ: 819</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 35)</span> Стоимость заказа считают по формуле \(C = 175 + 5n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 230\)?</div>
+<details><summary>Решение</summary>\(230 = 175 + 5n\) → \(5n = 55\) → \(n = 11\).
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 33)</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 21^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 21 = 69^\circ\).
+<p class="ls-answer">Ответ: 69</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 29)</span> Вычислите \(90 : (-9)\).</div>
+<details><summary>Решение</summary>Знаки разные → «−»: \(90 : (-9) = -10\).
+<p class="ls-answer">Ответ: -10</p></details></div>
+</section>
+<nav class="ls-foot"><a href="36-geom-chetyrehugolniki.html">← Урок 36</a><a href="00-index.html">Все уроки</a><a href="38-praktika-tarify.html">Урок 38 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 64. Повторение: проценты, вероятность, формулы</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 64. Повторение: проценты, вероятность, формулы</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №10</span><span class="ls-tag">ОГЭ №12</span><span class="ls-tag">ОГЭ №1–5</span><span class="ls-tag">повторение</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Проценты</a><a href="#ls-s5">Ступень 2. Вероятность</a><a href="#ls-s6">Ступень 3. Формулы</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> три «бытовых» темы, которые дают баллы в №1–5, №10, №12.</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> в вероятности переворачивает дробь; в процентах вычитает проценты как рубли.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 63)</span> Цена 1800 руб. повысилась на 15%. Какой стала цена?</div>
+<details><summary>Решение</summary>Стало 115%: \(1800\cdot1{,}15 = 2070\) руб.
+<p class="ls-answer">Ответ: 2070</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 63)</span> Формула \(F = 1{,}8C + 32\) — температура по Фаренгейту через Цельсий. Найдите \(F\), если \(C = -12\).</div>
+<details><summary>Решение</summary>Подставляем: \(C = -12\) → \(F = 10{,}4\).
+<p class="ls-answer">Ответ: 10,4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 62)</span> Найдите площадь трапеции на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 258 154" width="258" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="142" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="142" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="142" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 220,116 194,38 116,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основания 7 и 3, высота 3: \(S = \frac{7+3}{2}\cdot3 = 15\).
+<p class="ls-answer">Ответ: 15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 62)</span> Катеты прямоугольного треугольника равны 5 и 12. Найдите гипотенузу.</div>
+<details><summary>Решение</summary>\(c^2 = 5^2 + 12^2 = 25 + 144 = 169\), \(c = \sqrt{169} = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 60)</span> Найдите площадь треугольника на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 180 154" width="180" height="154" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="142" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="142" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="142" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="142" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="142" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="142" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="142" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="168" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="168" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="168" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="168" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="168" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,116 142,116 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основание (по нижней линии) 4, высота 3: \(S = \frac{4\cdot3}{2} = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 60)</span> Решите уравнение \(4(x - 8) + 1 = -19\).</div>
+<details><summary>Решение</summary>Раскрываем скобки: \(4x - 32 + 1 = -19\); \(4x = -19 + 32 - 1 = 12\); \(x = 3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(12 : 3\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(3\cdot4 = 12\), значит \(12 : 3 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(3\cdot\square = 24\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(24 : 3 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<div class="ls-rule"><b>Проценты</b> (урок 32): скидка \(p\%\) — умножить на \((100 - p)\%\). <b>Вероятность</b> (34): подходящие : все. <b>Формулы</b> (35): подставить; неизвестное — уравнение.</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Проценты</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Товар стоит 2300 руб. Сколько он будет стоить со скидкой 15%?</div>
+<details><summary>Решение</summary>Остаётся 85%: \(2300\cdot0{,}85 = 1955\) руб.
+<p class="ls-answer">Ответ: 1955</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Сколько процентов составляет 200 от 500?</div>
+<details><summary>Решение</summary>\(\frac{200}{500}\cdot100\% = 40\%\).
+<p class="ls-answer">Ответ: 40</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> 50% числа равны 300. Найдите это число.</div>
+<details><summary>Решение</summary>1% — это \(300 : 50 = 6\); 100% — \(6\cdot100 = 600\).
+<p class="ls-answer">Ответ: 600</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Сколько процентов составляет 18 от 25?</div>
+<details><summary>Решение</summary>\(\frac{18}{25}\cdot100\% = 72\%\).
+<p class="ls-answer">Ответ: 72</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> 5% числа равны 8. Найдите это число.</div>
+<details><summary>Решение</summary>1% — это \(8 : 5 = 1{,}6\); 100% — \(1{,}6\cdot100 = 160\).
+<p class="ls-answer">Ответ: 160</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите 10% от 80.</div>
+<details><summary>Решение</summary>\(80\cdot\frac{10}{100} = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Сколько процентов составляет 4 от 20?</div>
+<details><summary>Решение</summary>\(\frac{4}{20}\cdot100\% = 20\%\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Вероятность</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> В классе 50 учеников: 11 занимаются футболом, 14 — плаванием (каждый одним видом), остальные не занимаются спортом. Найдите вероятность того, что случайный ученик не занимается спортом.</div>
+<details><summary>Решение</summary>Не занимаются: \(50 - 11 - 14 = 25\). \(P = \frac{25}{50} = 0{,}5\).
+<p class="ls-answer">Ответ: 0,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Из 25 фонариков 1 неисправны. Найдите вероятность того, что случайно выбранный фонарик исправен.</div>
+<details><summary>Решение</summary>Исправных 24: \(P = \frac{24}{25} = 0{,}96\).
+<p class="ls-answer">Ответ: 0,96</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Из 400 фонариков 92 неисправны. Найдите вероятность того, что случайно выбранный фонарик исправен.</div>
+<details><summary>Решение</summary>Исправных 308: \(P = \frac{308}{400} = 0{,}77\).
+<p class="ls-answer">Ответ: 0,77</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> В классе 25 учеников: 8 занимаются футболом, 6 — плаванием (каждый одним видом), остальные не занимаются спортом. Найдите вероятность того, что случайный ученик не занимается спортом.</div>
+<details><summary>Решение</summary>Не занимаются: \(25 - 8 - 6 = 11\). \(P = \frac{11}{25} = 0{,}44\).
+<p class="ls-answer">Ответ: 0,44</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Из 200 фонариков 6 неисправны. Найдите вероятность того, что случайно выбранный фонарик исправен.</div>
+<details><summary>Решение</summary>Исправных 194: \(P = \frac{194}{200} = 0{,}97\).
+<p class="ls-answer">Ответ: 0,97</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> В коробке 50 ручек, из них 38 красных. Найдите вероятность того, что ручка красная.</div>
+<details><summary>Решение</summary>\(P = \frac{38}{50} = 0{,}76\).
+<p class="ls-answer">Ответ: 0,76</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> В классе 20 учеников: 4 занимаются футболом, 3 — плаванием (каждый одним видом), остальные не занимаются спортом. Найдите вероятность того, что случайный ученик не занимается спортом.</div>
+<details><summary>Решение</summary>Не занимаются: \(20 - 4 - 3 = 13\). \(P = \frac{13}{20} = 0{,}65\).
+<p class="ls-answer">Ответ: 0,65</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Формулы</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Формула \(C = 150 + 11(t - 5)\) — стоимость поездки на такси \(C\) (руб.) длительностью \(t\) мин. Найдите \(C\), если \(t = 37\).</div>
+<details><summary>Решение</summary>Подставляем: \(t = 37\) → \(C = 502\).
+<p class="ls-answer">Ответ: 502</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Формула \(F = 1{,}8C + 32\) — температура по Фаренгейту через Цельсий. Найдите \(F\), если \(C = -17\).</div>
+<details><summary>Решение</summary>Подставляем: \(C = -17\) → \(F = 1{,}4\).
+<p class="ls-answer">Ответ: 1,4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Формула \(S = vt\) — путь \(S\) (км), скорость \(v\) (км/ч), время \(t\) (ч). Найдите \(S\), если \(v = 10\), \(t = 23\).</div>
+<details><summary>Решение</summary>Подставляем: \(v = 10\), \(t = 23\) → \(S = 230\).
+<p class="ls-answer">Ответ: 230</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Формула \(P = 2(a + b)\) — периметр прямоугольника. Найдите \(P\), если \(a = 15\), \(b = 19\).</div>
+<details><summary>Решение</summary>Подставляем: \(a = 15\), \(b = 19\) → \(P = 68\).
+<p class="ls-answer">Ответ: 68</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 102\), \(a = 26\).</div>
+<details><summary>Решение</summary>\(102 = 2(a + b)\) → \(a + b = 51\) → \(b = 51 - 26 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 222\) км, \(v = 37\) км/ч.</div>
+<details><summary>Решение</summary>\(222 = 37\cdott\) — неизвестный множитель: \(t = 222 : 37 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 145\) км, \(v = 29\) км/ч.</div>
+<details><summary>Решение</summary>\(145 = 29\cdott\) — неизвестный множитель: \(t = 145 : 29 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Сколько процентов составляет 4 от 40?</div>
+<details><summary>Решение</summary>\(\frac{4}{40}\cdot100\% = 10\%\).
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Формула \(A = Pt\) — работа тока \(A\) (Дж), мощность \(P\) (Вт), время \(t\) (с). Найдите \(A\), если \(P = 11\), \(t = 19\).</div>
+<details><summary>Решение</summary>Подставляем: \(P = 11\), \(t = 19\) → \(A = 209\).
+<p class="ls-answer">Ответ: 209</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> По формуле \(S = vt\) найдите \(t\) (в часах), если \(S = 148\) км, \(v = 37\) км/ч.</div>
+<details><summary>Решение</summary>\(148 = 37\cdott\) — неизвестный множитель: \(t = 148 : 37 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> По формуле \(P = 2(a + b)\) найдите \(b\), если \(P = 94\), \(a = 25\).</div>
+<details><summary>Решение</summary>\(94 = 2(a + b)\) → \(a + b = 47\) → \(b = 47 - 25 = 22\).
+<p class="ls-answer">Ответ: 22</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Формула \(C = 150 + 11(t - 5)\) — стоимость поездки на такси \(C\) (руб.) длительностью \(t\) мин. Найдите \(C\), если \(t = 6\).</div>
+<details><summary>Решение</summary>Подставляем: \(t = 6\) → \(C = 161\).
+<p class="ls-answer">Ответ: 161</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Цена 4200 руб. повысилась на 20%. Какой стала цена?</div>
+<details><summary>Решение</summary>Стало 120%: \(4200\cdot1{,}2 = 5040\) руб.
+<p class="ls-answer">Ответ: 5040</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Товар стоит 4100 руб. Сколько он будет стоить со скидкой 25%?</div>
+<details><summary>Решение</summary>Остаётся 75%: \(4100\cdot0{,}75 = 3075\) руб.
+<p class="ls-answer">Ответ: 3075</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Цена 4500 руб. повысилась на 25%. Какой стала цена?</div>
+<details><summary>Решение</summary>Стало 125%: \(4500\cdot1{,}25 = 5625\) руб.
+<p class="ls-answer">Ответ: 5625</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Из 25 фонариков 3 неисправны. Найдите вероятность того, что случайно выбранный фонарик исправен.</div>
+<details><summary>Решение</summary>Исправных 22: \(P = \frac{22}{25} = 0{,}88\).
+<p class="ls-answer">Ответ: 0,88</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> В коробке 100 ручек, из них 80 красных. Найдите вероятность того, что ручка красная.</div>
+<details><summary>Решение</summary>\(P = \frac{80}{100} = 0{,}8\).
+<p class="ls-answer">Ответ: 0,8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Из 20 фонариков 3 неисправны. Найдите вероятность того, что случайно выбранный фонарик исправен.</div>
+<details><summary>Решение</summary>Исправных 17: \(P = \frac{17}{20} = 0{,}85\).
+<p class="ls-answer">Ответ: 0,85</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Стоимость заказа считают по формуле \(C = 28 + 9n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 181\)?</div>
+<details><summary>Решение</summary>\(181 = 28 + 9n\) → \(9n = 153\) → \(n = 17\).
+<p class="ls-answer">Ответ: 17</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Стоимость заказа считают по формуле \(C = 151 + 3n\), где \(n\) — число предметов. Сколько предметов заказали, если \(C = 178\)?</div>
+<details><summary>Решение</summary>\(178 = 151 + 3n\) → \(3n = 27\) → \(n = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 62)</span> Найдите площадь трапеции на клетчатой бумаге (клетка \(1\times1\)).
+<svg class="ls-fig" viewBox="0 0 206 128" width="206" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="116" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 168,90 142,38 64,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Основания 5 и 3, высота 2: \(S = \frac{5+3}{2}\cdot2 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 60)</span> Решите уравнение \(4x + (-14) = 5x + (-11)\).</div>
+<details><summary>Решение</summary>Иксы — влево, числа — вправо (при переносе знак меняется): \(4x - 5x = -11 - (-14)\); \(-1x = 3\); \(x = -3\).
+<p class="ls-answer">Ответ: -3</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 56)</span> Центральный угол равен \(82^\circ\). Найдите вписанный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Вписанный — половина центрального: \(41^\circ\).
+<p class="ls-answer">Ответ: 41</p></details></div>
+</section>
+<nav class="ls-foot"><a href="63-praktika-shiny.html">← Урок 63</a><a href="00-index.html">Все уроки</a><a href="65-probnyy-oge-3.html">Урок 65 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

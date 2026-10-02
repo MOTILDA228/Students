@@ -1,0 +1,432 @@
+@title Урок 58. Графики функций (№11)
+@tags ОГЭ №11
+@teacher
+<p><b>Новая идея урока:</b> три вида графиков: прямая \(y = kx + b\), парабола \(y = x^2\), гипербола \(y = \frac{k}{x}\). По форме определяем вид, по знакам — какая формула.</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> путает параболу и гиперболу; не знает, что \(b\) — точка на оси \(y\).</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+@tasks Разминка-повторение (12 минут)
+@task
+@rep 57
+Решите уравнение \(3x + 5x = 72\).
+@sol
+Приводим подобные: \(8x = 72\); \(x = 72 : 8 = 9\).
+@ans 9
+@check F(72,8)
+@task
+@rep 57
+Найдите значение выражения \((3{,}6 - 0{,}2)\cdot3\).
+@sol
+Скобка \(3{,}4\); \(3{,}4\cdot3 = 10{,}2\).
+@ans 10,2
+@check (F('3.6')-F('0.2'))*3
+@task
+@rep 56
+Вписанный угол равен \(30^\circ\). Найдите центральный угол, опирающийся на ту же дугу.
+@sol
+Центральный — в 2 раза больше: \(60^\circ\).
+@ans 60
+@check 2*30
+@task
+@rep 56
+В треугольнике два угла \(53^\circ\) и \(24^\circ\). Найдите третий.
+@sol
+\(180 - 53 - 24 = 103^\circ\).
+@ans 103
+@check 180-53-24
+@task
+@rep 54
+Решите неравенство \(-3x \ge -9\). В ответ запишите наибольшее целое решение.
+@sol
+Делим на \(-3\) — <b>знак переворачивается</b>: \(x \le 3\). Наибольшее целое 3.
+@ans 3
+@check max(x for x in range(-50,50) if -3*x >= -9)
+@task
+@rep 54
+Решите неравенство \(3x + (-2) > 1\). В ответ запишите наименьшее целое решение.
+@sol
+\(3x > 1 - (-2) = 3\); \(x > 1\). Наименьшее целое: 2.
+@ans 2
+@check min(x for x in range(-50,50) if 3*x+(-2) > 1)
+@task
+@rep 8
+Вычислите \(40 : 5\).
+@sol
+Вспоминаем «семейство»: \(5\cdot8 = 40\), значит \(40 : 5 = 8\).
+@ans 8
+@check 40//5
+@task
+@rep 8
+Какое число пропущено: \(4\cdot\square = 16\)?
+@sol
+Пропущенный множитель: \(16 : 4 = 4\).
+@ans 4
+@check 16//4
+@theory Шпаргалка
+<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=18
+f 2*x - 1
+@end
+<figcaption>прямая \(y = kx + b\)</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f x*x - 1
+@end
+<figcaption>парабола (есть \(x^2\))</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=18
+f 2/x
+@end
+<figcaption>гипербола (\(x\) в знаменателе)</figcaption></figure></div>
+<div class="ls-rule">Прямая: \(k > 0\) — идёт вверх, \(k < 0\) — вниз; \(b\) — где пересекает ось \(y\). Парабола: перед \(x^2\) минус — ветви вниз. Гипербола: \(k > 0\) — в I и III четвертях.</div>
+@tasks Ступень 1. Значение функции
+@task
+Функция задана формулой \(y = -5x + (-2)\). Найдите \(y\) при \(x = -1\).
+@sol
+\(y = -5\cdot(-1) + (-2) = 3\).
+@ans 3
+@check -5*(-1)+(-2)
+@task
+Функция задана формулой \(y = -3x + 8\). Найдите \(y\) при \(x = 1\).
+@sol
+\(y = -3\cdot1 + 8 = 5\).
+@ans 5
+@check -3*(1)+(8)
+@task
+Функция задана формулой \(y = 3x + (-1)\). Найдите \(y\) при \(x = 4\).
+@sol
+\(y = 3\cdot4 + (-1) = 11\).
+@ans 11
+@check 3*(4)+(-1)
+@task
+Функция задана формулой \(y = -3x + (-5)\). Найдите \(y\) при \(x = -1\).
+@sol
+\(y = -3\cdot(-1) + (-5) = -2\).
+@ans -2
+@check -3*(-1)+(-5)
+@task
+Функция задана формулой \(y = -4x + 5\). Найдите \(y\) при \(x = 5\).
+@sol
+\(y = -4\cdot5 + 5 = -15\).
+@ans -15
+@check -4*(5)+(5)
+@task
+Функция задана формулой \(y = -3x + 0\). Найдите \(y\) при \(x = 2\).
+@sol
+\(y = -3\cdot2 + 0 = -6\).
+@ans -6
+@check -3*(2)+(0)
+@tasks Ступень 2. b по графику
+@task
+По графику функции \(y = kx + b\) определите \(b\) (где прямая пересекает ось \(y\)).
+@plot -4 4 -5 5 scale=20
+f 1*x + (0)
+@end
+@sol
+Прямая пересекает ось \(y\) в точке 0: \(b = 0\).
+@ans 0
+@check 0
+@task
+По графику функции \(y = kx + b\) определите \(b\) (где прямая пересекает ось \(y\)).
+@plot -4 4 -5 5 scale=20
+f -3*x + (3)
+@end
+@sol
+Прямая пересекает ось \(y\) в точке 3: \(b = 3\).
+@ans 3
+@check 3
+@task
+По графику функции \(y = kx + b\) определите \(b\) (где прямая пересекает ось \(y\)).
+@plot -4 4 -5 5 scale=20
+f 3*x + (3)
+@end
+@sol
+Прямая пересекает ось \(y\) в точке 3: \(b = 3\).
+@ans 3
+@check 3
+@task
+По графику функции \(y = kx + b\) определите \(b\) (где прямая пересекает ось \(y\)).
+@plot -4 4 -5 5 scale=20
+f -1*x + (1)
+@end
+@sol
+Прямая пересекает ось \(y\) в точке 1: \(b = 1\).
+@ans 1
+@check 1
+@task
+По графику функции \(y = kx + b\) определите \(b\) (где прямая пересекает ось \(y\)).
+@plot -4 4 -5 5 scale=20
+f -3*x + (1)
+@end
+@sol
+Прямая пересекает ось \(y\) в точке 1: \(b = 1\).
+@ans 1
+@check 1
+@tasks Ступень 3. Соответствие (№11)
+@task
+Установите соответствие между графиками и формулами: 1) \(y = x^2 - 2\); 2) \(y = \frac{2}{x}\); 3) \(y = -x + 2\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f -x+2
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f 2/x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x*x-2
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 3, Б → 2, В → 1.
+@ans 321
+@check match([lambda x: -x+2, lambda x: 2/x, lambda x: x*x-2], [lambda x: x*x-2, lambda x: 2/x, lambda x: -x+2])
+@task
+Установите соответствие между графиками и формулами: 1) \(y = 2x + 1\); 2) \(y = x^2 - 2\); 3) \(y = -\frac{2}{x}\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f x*x-2
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f 2*x+1
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f -2/x
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 2, Б → 1, В → 3.
+@ans 213
+@check match([lambda x: x*x-2, lambda x: 2*x+1, lambda x: -2/x], [lambda x: 2*x+1, lambda x: x*x-2, lambda x: -2/x])
+@task
+Установите соответствие между графиками и формулами: 1) \(y = \frac{2}{x}\); 2) \(y = x^2\); 3) \(y = x - 1\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f 2/x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x*x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x-1
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 1, Б → 2, В → 3.
+@ans 123
+@check match([lambda x: 2/x, lambda x: x*x, lambda x: x-1], [lambda x: 2/x, lambda x: x*x, lambda x: x-1])
+@task
+Установите соответствие между графиками и формулами: 1) \(y = -\frac{2}{x}\); 2) \(y = x^2 - 2\); 3) \(y = x - 1\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f x*x-2
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x-1
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f -2/x
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 2, Б → 3, В → 1.
+@ans 231
+@check match([lambda x: x*x-2, lambda x: x-1, lambda x: -2/x], [lambda x: -2/x, lambda x: x*x-2, lambda x: x-1])
+@task
+Установите соответствие между графиками и формулами: 1) \(y = x^2\); 2) \(y = \frac{2}{x}\); 3) \(y = -x + 2\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f -x+2
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f 2/x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x*x
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 3, Б → 2, В → 1.
+@ans 321
+@check match([lambda x: -x+2, lambda x: 2/x, lambda x: x*x], [lambda x: x*x, lambda x: 2/x, lambda x: -x+2])
+@task
+Установите соответствие между графиками и формулами: 1) \(y = \frac{2}{x}\); 2) \(y = 2x + 1\); 3) \(y = x^2\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f 2/x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x*x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f 2*x+1
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 1, Б → 3, В → 2.
+@ans 132
+@check match([lambda x: 2/x, lambda x: x*x, lambda x: 2*x+1], [lambda x: 2/x, lambda x: 2*x+1, lambda x: x*x])
+@tasks Мини-срез (10 минут, без подсказок)
+@task
+Функция задана формулой \(y = 1x + 6\). Найдите \(y\) при \(x = -5\).
+@sol
+\(y = 1\cdot(-5) + 6 = 1\).
+@ans 1
+@check 1*(-5)+(6)
+@task
+По графику функции \(y = kx + b\) определите \(b\) (где прямая пересекает ось \(y\)).
+@plot -4 4 -5 5 scale=20
+f -2*x + (1)
+@end
+@sol
+Прямая пересекает ось \(y\) в точке 1: \(b = 1\).
+@ans 1
+@check 1
+@task
+Установите соответствие между графиками и формулами: 1) \(y = x - 1\); 2) \(y = x^2 - 2\); 3) \(y = \frac{2}{x}\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f x-1
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x*x-2
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f 2/x
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 1, Б → 2, В → 3.
+@ans 123
+@check match([lambda x: x-1, lambda x: x*x-2, lambda x: 2/x], [lambda x: x-1, lambda x: x*x-2, lambda x: 2/x])
+@task
+Установите соответствие между графиками и формулами: 1) \(y = x - 1\); 2) \(y = -\frac{2}{x}\); 3) \(y = -x^2\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f -2/x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x-1
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f -x*x
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 2, Б → 1, В → 3.
+@ans 213
+@check match([lambda x: -2/x, lambda x: x-1, lambda x: -x*x], [lambda x: x-1, lambda x: -2/x, lambda x: -x*x])
+@task
+По графику функции \(y = kx + b\) определите \(b\) (где прямая пересекает ось \(y\)).
+@plot -4 4 -5 5 scale=20
+f -2*x + (1)
+@end
+@sol
+Прямая пересекает ось \(y\) в точке 1: \(b = 1\).
+@ans 1
+@check 1
+@hw
+@task
+Функция задана формулой \(y = -1x + 7\). Найдите \(y\) при \(x = 0\).
+@sol
+\(y = -1\cdot0 + 7 = 7\).
+@ans 7
+@check -1*(0)+(7)
+@task
+Функция задана формулой \(y = 2x + (-2)\). Найдите \(y\) при \(x = 2\).
+@sol
+\(y = 2\cdot2 + (-2) = 2\).
+@ans 2
+@check 2*(2)+(-2)
+@task
+Функция задана формулой \(y = -4x + (-8)\). Найдите \(y\) при \(x = -2\).
+@sol
+\(y = -4\cdot(-2) + (-8) = 0\).
+@ans 0
+@check -4*(-2)+(-8)
+@task
+Установите соответствие между графиками и формулами: 1) \(y = -x^2\); 2) \(y = x - 1\); 3) \(y = -\frac{2}{x}\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f -x*x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x-1
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f -2/x
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 1, Б → 2, В → 3.
+@ans 123
+@check match([lambda x: -x*x, lambda x: x-1, lambda x: -2/x], [lambda x: -x*x, lambda x: x-1, lambda x: -2/x])
+@task
+Установите соответствие между графиками и формулами: 1) \(y = \frac{2}{x}\); 2) \(y = -x + 2\); 3) \(y = x^2 - 2\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f 2/x
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f -x+2
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x*x-2
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 1, Б → 2, В → 3.
+@ans 123
+@check match([lambda x: 2/x, lambda x: -x+2, lambda x: x*x-2], [lambda x: 2/x, lambda x: -x+2, lambda x: x*x-2])
+@task
+Установите соответствие между графиками и формулами: 1) \(y = -\frac{2}{x}\); 2) \(y = x - 1\); 3) \(y = x^2 - 2\).<div class="ls-figs"><figure>
+@plot -3 3 -3 3 scale=16
+f x-1
+@end
+<figcaption>А</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f -2/x
+@end
+<figcaption>Б</figcaption></figure><figure>
+@plot -3 3 -3 3 scale=16
+f x*x-2
+@end
+<figcaption>В</figcaption></figure></div>
+@sol
+Парабола — есть \(x^2\), гипербола — \(x\) в знаменателе, прямая — \(kx + b\). А → 2, Б → 1, В → 3.
+@ans 213
+@check match([lambda x: x-1, lambda x: -2/x, lambda x: x*x-2], [lambda x: -2/x, lambda x: x-1, lambda x: x*x-2])
+@task
+@rep 56
+В треугольнике два угла \(45^\circ\) и \(67^\circ\). Найдите третий.
+@sol
+\(180 - 45 - 67 = 68^\circ\).
+@ans 68
+@check 180-45-67
+@task
+@rep 54
+Решите неравенство \(-3x \ge -12\). В ответ запишите наибольшее целое решение.
+@sol
+Делим на \(-3\) — <b>знак переворачивается</b>: \(x \le 4\). Наибольшее целое 4.
+@ans 4
+@check max(x for x in range(-50,50) if -3*x >= -12)
+@task
+@rep 50
+Найдите значение выражения \(\left(\frac{7}{10} + \frac{3}{4}\right)\cdot10\).
+@sol
+Скобка: \(1{,}45\); умножаем на 10: \(14{,}5\).
+@ans 14,5
+@check (F(7,10)+F(3,4))*10

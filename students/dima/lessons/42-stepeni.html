@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 42. Степени (простые случаи №8)</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 42. Степени (простые случаи №8)</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №8</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Вычислить степень</a><a href="#ls-s5">Ступень 2. Свойства</a><a href="#ls-s6">Ступень 3. Подстановка</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> \(a^n\) — \(a\) умножить само на себя \(n\) раз. При умножении показатели складываются, при делении — вычитаются (основания одинаковые!).</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> \(2^3 = 6\) (умножает основание на показатель); складывает показатели при разных основаниях.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 41)</span> Вычислите \(2\cdot(-7) + (-1)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(2\cdot(-7) = -14\); потом \(-14 + (-1) = -15\).
+<p class="ls-answer">Ответ: -15</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 41)</span> Катеты прямоугольного треугольника равны 20 и 21. Найдите гипотенузу.</div>
+<details><summary>Решение</summary>\(c^2 = 20^2 + 21^2 = 400 + 441 = 841\), \(c = \sqrt{841} = 29\).
+<p class="ls-answer">Ответ: 29</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 40)</span> В лотерее 500 билетов, выигрышных 243. Найдите вероятность того, что билет выигрышный.</div>
+<details><summary>Решение</summary>\(P = \frac{243}{500} = 0{,}486\).
+<p class="ls-answer">Ответ: 0,486</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 40)</span> Решите уравнение \(8x + 13 = 3x + 53\).</div>
+<details><summary>Решение</summary>Иксы — влево, числа — вправо (при переносе знак меняется): \(8x - 3x = 53 - 13\); \(5x = 40\); \(x = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 38)</span> Формула \(S = vt\) — путь \(S\) (км), скорость \(v\) (км/ч), время \(t\) (ч). Найдите \(S\), если \(v = 29\), \(t = 4\).</div>
+<details><summary>Решение</summary>Подставляем: \(v = 29\), \(t = 4\) → \(S = 116\).
+<p class="ls-answer">Ответ: 116</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 38)</span> Цена 5300 руб. повысилась на 25%. Какой стала цена?</div>
+<details><summary>Решение</summary>Стало 125%: \(5300\cdot1{,}25 = 6625\) руб.
+<p class="ls-answer">Ответ: 6625</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(49 : 7\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(7\cdot7 = 49\), значит \(49 : 7 = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(7\cdot\square = 42\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(42 : 7 = 6\).
+<p class="ls-answer">Ответ: 6</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Что такое степень</h3>
+<div class="ls-rule">\(2^5 = 2\cdot2\cdot2\cdot2\cdot2 = 32\). Не \(2\cdot5\)!</div>
+<div class="ls-table-wrap"><table class="ls-table"><tr><th>Выучить</th></tr>
+<tr><td>\(2^2 = 4,\ 2^3 = 8,\ 2^4 = 16,\ 2^5 = 32,\ 2^6 = 64\)</td></tr><tr><td>\(3^2 = 9,\ 3^3 = 27,\ 3^4 = 81\); \(5^2 = 25,\ 5^3 = 125\); \(10^n\) — единица и \(n\) нулей</td></tr></table></div>
+<h3>2. Свойства (одинаковые основания)</h3>
+<div class="ls-rule">\(a^m\cdot a^n = a^{m + n}\); \(a^m : a^n = a^{m - n}\).</div>
+<div class="ls-example">\(\frac{3^7}{3^5} = 3^2 = 9\); \(2^3\cdot2^4 : 2^5 = 2^2 = 4\).</div>
+<h3>3. Подстановка</h3>
+<div class="ls-example">\(3a^2\) при \(a = 4\): сначала степень \(4^2 = 16\), потом \(3\cdot16 = 48\).</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Вычислить степень</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(4^3\).</div>
+<details><summary>Решение</summary>\(4^3 = 4\cdot4\cdot4 = 64\).
+<p class="ls-answer">Ответ: 64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(4^2\).</div>
+<details><summary>Решение</summary>\(4^2 = 4\cdot4 = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(3^4\).</div>
+<details><summary>Решение</summary>\(3^4 = 3\cdot3\cdot3\cdot3 = 81\).
+<p class="ls-answer">Ответ: 81</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(5^3\).</div>
+<details><summary>Решение</summary>\(5^3 = 5\cdot5\cdot5 = 125\).
+<p class="ls-answer">Ответ: 125</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(5^2\).</div>
+<details><summary>Решение</summary>\(5^2 = 5\cdot5 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычислите \(3^3\).</div>
+<details><summary>Решение</summary>\(3^3 = 3\cdot3\cdot3 = 27\).
+<p class="ls-answer">Ответ: 27</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычислите \(0{,}4^2\).</div>
+<details><summary>Решение</summary>\(0{,}4\cdot0{,}4 = 0{,}16\) (после запятой две цифры).
+<p class="ls-answer">Ответ: 0,16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычислите \(0{,}8^2\).</div>
+<details><summary>Решение</summary>\(0{,}8\cdot0{,}8 = 0{,}64\) (после запятой две цифры).
+<p class="ls-answer">Ответ: 0,64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Вычислите \(0{,}3^2\).</div>
+<details><summary>Решение</summary>\(0{,}3\cdot0{,}3 = 0{,}09\) (после запятой две цифры).
+<p class="ls-answer">Ответ: 0,09</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Свойства</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(\frac{2^{8}}{2^{6}}\).</div>
+<details><summary>Решение</summary>При делении показатели вычитаются: \(2^{8-6} = 2^2 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(\frac{3^{7}}{3^{5}}\).</div>
+<details><summary>Решение</summary>При делении показатели вычитаются: \(3^{7-5} = 3^2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(\frac{5^{8}}{5^{6}}\).</div>
+<details><summary>Решение</summary>При делении показатели вычитаются: \(5^{8-6} = 5^2 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(\frac{5^{9}}{5^{7}}\).</div>
+<details><summary>Решение</summary>При делении показатели вычитаются: \(5^{9-7} = 5^2 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(5^3\cdot5^3 : 5^4\).</div>
+<details><summary>Решение</summary>Показатели: \(3 + 3 - 4 = 2\): \(5^2 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычислите \(\frac{3^{9}}{3^{7}}\).</div>
+<details><summary>Решение</summary>При делении показатели вычитаются: \(3^{9-7} = 3^2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычислите \(3^3\cdot3^2 : 3^3\).</div>
+<details><summary>Решение</summary>Показатели: \(3 + 2 - 3 = 2\): \(3^2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычислите \(3^4\cdot3^2 : 3^4\).</div>
+<details><summary>Решение</summary>Показатели: \(4 + 2 - 4 = 2\): \(3^2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Подстановка</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 5\), \(b = 1\).</div>
+<details><summary>Решение</summary>\(3\cdot25 - 1^3 = 75 - 1 = 74\).
+<p class="ls-answer">Ответ: 74</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 5\), \(b = 4\).</div>
+<details><summary>Решение</summary>\(3\cdot25 - 4^3 = 75 - 64 = 11\).
+<p class="ls-answer">Ответ: 11</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 2\), \(b = -2\).</div>
+<details><summary>Решение</summary>\(3\cdot4 - (-2)^3 = 12 - (-8) = 20\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 2\), \(b = 2\).</div>
+<details><summary>Решение</summary>\(3\cdot4 - 2^3 = 12 - 8 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 5\), \(b = -4\).</div>
+<details><summary>Решение</summary>\(3\cdot25 - (-4)^3 = 75 - (-64) = 139\).
+<p class="ls-answer">Ответ: 139</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 3\), \(b = -1\).</div>
+<details><summary>Решение</summary>\(3\cdot9 - (-1)^3 = 27 - (-1) = 28\).
+<p class="ls-answer">Ответ: 28</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(2^4\).</div>
+<details><summary>Решение</summary>\(2^4 = 2\cdot2\cdot2\cdot2 = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(3^3\cdot3^3 : 3^4\).</div>
+<details><summary>Решение</summary>Показатели: \(3 + 3 - 4 = 2\): \(3^2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 4\), \(b = 4\).</div>
+<details><summary>Решение</summary>\(3\cdot16 - 4^3 = 48 - 64 = -16\).
+<p class="ls-answer">Ответ: -16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 3\), \(b = -2\).</div>
+<details><summary>Решение</summary>\(3\cdot9 - (-2)^3 = 27 - (-8) = 35\).
+<p class="ls-answer">Ответ: 35</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(\frac{2^{10}}{2^{8}}\).</div>
+<details><summary>Решение</summary>При делении показатели вычитаются: \(2^{10-8} = 2^2 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(3^2\).</div>
+<details><summary>Решение</summary>\(3^2 = 3\cdot3 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(10^4\).</div>
+<details><summary>Решение</summary>\(10^4 = 10\cdot10\cdot10\cdot10 = 10000\).
+<p class="ls-answer">Ответ: 10000</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(10^3\).</div>
+<details><summary>Решение</summary>\(10^3 = 10\cdot10\cdot10 = 1000\).
+<p class="ls-answer">Ответ: 1000</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(2^2\cdot2^3 : 2^3\).</div>
+<details><summary>Решение</summary>Показатели: \(2 + 3 - 3 = 2\): \(2^2 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(\frac{3^{6}}{3^{4}}\).</div>
+<details><summary>Решение</summary>При делении показатели вычитаются: \(3^{6-4} = 3^2 = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычислите \(5^2\cdot5^2 : 5^2\).</div>
+<details><summary>Решение</summary>Показатели: \(2 + 2 - 2 = 2\): \(5^2 = 25\).
+<p class="ls-answer">Ответ: 25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 5\), \(b = -1\).</div>
+<details><summary>Решение</summary>\(3\cdot25 - (-1)^3 = 75 - (-1) = 76\).
+<p class="ls-answer">Ответ: 76</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Найдите значение выражения \(3a^2 - b^3\) при \(a = 4\), \(b = -1\).</div>
+<details><summary>Решение</summary>\(3\cdot16 - (-1)^3 = 48 - (-1) = 49\).
+<p class="ls-answer">Ответ: 49</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 40)</span> Решите уравнение \(9x + 13 = 1x + 85\).</div>
+<details><summary>Решение</summary>Иксы — влево, числа — вправо (при переносе знак меняется): \(9x - 1x = 85 - 13\); \(8x = 72\); \(x = 9\).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 38)</span> Сколько процентов составляет 100 от 200?</div>
+<details><summary>Решение</summary>\(\frac{100}{200}\cdot100\% = 50\%\).
+<p class="ls-answer">Ответ: 50</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 34)</span> Из 50 фонариков 10 неисправны. Найдите вероятность того, что случайно выбранный фонарик исправен.</div>
+<details><summary>Решение</summary>Исправных 40: \(P = \frac{40}{50} = 0{,}8\).
+<p class="ls-answer">Ответ: 0,8</p></details></div>
+</section>
+<nav class="ls-foot"><a href="41-razbor-sreza-2.html">← Урок 41</a><a href="00-index.html">Все уроки</a><a href="43-geom-tangens-srednyaya-liniya.html">Урок 43 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 33. Геометрия: окружность, радиус, диаметр, углы</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 33. Геометрия: окружность, радиус, диаметр, углы</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №16</span><span class="ls-tag">ОГЭ №18</span><span class="ls-tag">геометрия</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Радиус и диаметр, клетки</a><a href="#ls-s5">Ступень 2. Длина и площадь</a><a href="#ls-s6">Ступень 3. Углы</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> радиус и диаметр (\(d = 2R\)), длина окружности и площадь круга с \(\pi \approx 3{,}14\), вписанный угол — половина центрального, угол на диаметр — \(90^\circ\).</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> путает радиус и диаметр; в формуле площади умножает на 2 вместо возведения в квадрат.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 32)</span> Цена 900 руб. повысилась на 5%. Какой стала цена?</div>
+<details><summary>Решение</summary>Стало 105%: \(900\cdot1{,}05 = 945\) руб.
+<p class="ls-answer">Ответ: 945</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 32)</span> Найдите 20% от 320.</div>
+<details><summary>Решение</summary>\(320\cdot\frac{20}{100} = 64\).
+<p class="ls-answer">Ответ: 64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 31)</span> Решите уравнение \(8x + 2x = -10\).</div>
+<details><summary>Решение</summary>Приводим подобные: \(10x = -10\); \(x = -10 : 10 = -1\).
+<p class="ls-answer">Ответ: -1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 31)</span> Решите уравнение \(3x + (-10) = 7x + 18\).</div>
+<details><summary>Решение</summary>Иксы — влево, числа — вправо (при переносе знак меняется): \(3x - 7x = 18 - (-10)\); \(-4x = 28\); \(x = -7\).
+<p class="ls-answer">Ответ: -7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 29)</span> Вычислите \(-56 : (-7)\).</div>
+<details><summary>Решение</summary>Знаки одинаковые → «+»: \(-56 : (-7) = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 29)</span> Вычислите \(9\cdot(-9) + (-18)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(9\cdot(-9) = -81\); потом \(-81 + (-18) = -99\).
+<p class="ls-answer">Ответ: -99</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(72 : 9\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(9\cdot8 = 72\), значит \(72 : 9 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(5\cdot\square = 15\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(15 : 5 = 3\).
+<p class="ls-answer">Ответ: 3</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Радиус и диаметр</h3>
+<svg class="ls-fig" viewBox="0 0 332 332" width="332" height="332" xmlns="http://www.w3.org/2000/svg" role="img"><circle cx="166" cy="166" r="140" fill="none" stroke="currentColor" stroke-width="2.0"/><line x1="26" y1="166" x2="306" y2="166" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/><text x="236" y="179" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor">R</text><text x="156.1" y="175.9" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><text x="320" y="166" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text><text x="12" y="166" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">B</text></svg>
+<div class="ls-rule">Радиус \(R\) — от центра до окружности. Диаметр \(d = 2R\). \(C = 2\pi R\) (длина), \(S = \pi R^2\) (площадь круга), \(\pi \approx 3{,}14\).</div>
+<h3>2. Углы в окружности</h3>
+<div class="ls-rule"><b>Центральный</b> угол — вершина в центре. <b>Вписанный</b> — вершина на окружности. Вписанный = половина центрального, если опираются на одну дугу.</div>
+<div class="ls-rule">Вписанный угол, опирающийся на <b>диаметр</b>, — прямой (\(90^\circ\)).</div>
+<div class="ls-warn">\(S = \pi R^2\): радиус умножается сам на себя, а не на 2.</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Радиус и диаметр, клетки</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Диаметр окружности 8. Найдите радиус.</div>
+<details><summary>Решение</summary>Радиус — половина диаметра: 4.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Радиус окружности 10. Найдите диаметр.</div>
+<details><summary>Решение</summary>Диаметр — два радиуса: 20.
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Диаметр окружности 4. Найдите радиус.</div>
+<details><summary>Решение</summary>Радиус — половина диаметра: 2.
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Радиус окружности 24. Найдите диаметр.</div>
+<details><summary>Решение</summary>Диаметр — два радиуса: 48.
+<p class="ls-answer">Ответ: 48</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите диаметр окружности с центром \(O\), проходящей через точку \(A\).
+<svg class="ls-fig" viewBox="0 0 284 284" width="284" height="284" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="272" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="272" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="272" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="272" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="272" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="272" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="272" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="272" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="272" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="272" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="272" y1="272" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="272" x2="272" y2="272" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="246" x2="272" y2="246" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="220" x2="272" y2="220" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="272" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="272" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="272" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="272" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="272" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="272" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="272" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><circle cx="142" cy="142" r="104" fill="none" stroke="currentColor" stroke-width="2.0"/><circle cx="142" cy="142" r="3.2" fill="currentColor"/><text x="128" y="142" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><circle cx="246" cy="142" r="3.2" fill="currentColor"/><text x="260" y="142" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text></svg></div>
+<details><summary>Решение</summary>Радиус 4 клеток, диаметр 8.
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите радиус окружности с центром \(O\), проходящей через точку \(A\).
+<svg class="ls-fig" viewBox="0 0 284 284" width="284" height="284" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="272" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="272" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="272" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="272" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="272" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="272" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="272" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="272" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="272" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="272" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="272" y1="272" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="272" x2="272" y2="272" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="246" x2="272" y2="246" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="220" x2="272" y2="220" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="272" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="272" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="272" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="272" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="272" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="272" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="272" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><circle cx="142" cy="142" r="104" fill="none" stroke="currentColor" stroke-width="2.0"/><circle cx="142" cy="142" r="3.2" fill="currentColor"/><text x="128" y="142" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><circle cx="246" cy="142" r="3.2" fill="currentColor"/><text x="260" y="142" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text></svg></div>
+<details><summary>Решение</summary>От \(O\) до \(A\) — 4 клеток.
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите радиус окружности с центром \(O\), проходящей через точку \(A\).
+<svg class="ls-fig" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="168" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="168" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="168" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="168" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="168" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="168" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="168" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="168" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="168" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="168" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="168" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="168" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="168" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><circle cx="90" cy="90" r="52" fill="none" stroke="currentColor" stroke-width="2.0"/><circle cx="90" cy="90" r="3.2" fill="currentColor"/><text x="76" y="90" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><circle cx="142" cy="90" r="3.2" fill="currentColor"/><text x="156" y="90" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text></svg></div>
+<details><summary>Решение</summary>От \(O\) до \(A\) — 2 клеток.
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Найдите диаметр окружности с центром \(O\), проходящей через точку \(A\).
+<svg class="ls-fig" viewBox="0 0 284 284" width="284" height="284" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="272" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="272" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="272" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="272" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="272" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="272" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="272" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="272" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="272" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="272" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="272" y1="272" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="272" x2="272" y2="272" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="246" x2="272" y2="246" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="220" x2="272" y2="220" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="272" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="272" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="272" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="272" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="272" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="272" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="272" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="272" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><circle cx="142" cy="142" r="104" fill="none" stroke="currentColor" stroke-width="2.0"/><circle cx="142" cy="142" r="3.2" fill="currentColor"/><text x="128" y="142" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">O</text><circle cx="246" cy="142" r="3.2" fill="currentColor"/><text x="260" y="142" text-anchor="middle" dominant-baseline="central" font-family="Times New Roman, Georgia, serif" font-style="italic" font-size="17" fill="currentColor">A</text></svg></div>
+<details><summary>Решение</summary>Радиус 4 клеток, диаметр 8.
+<p class="ls-answer">Ответ: 8</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Длина и площадь</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите длину окружности радиуса 2. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(C = 2\pi R = 2\cdot3{,}14\cdot2 = 12{,}56\).
+<p class="ls-answer">Ответ: 12,56</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите длину окружности радиуса 9. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(C = 2\pi R = 2\cdot3{,}14\cdot9 = 56{,}52\).
+<p class="ls-answer">Ответ: 56,52</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите длину окружности радиуса 10. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(C = 2\pi R = 2\cdot3{,}14\cdot10 = 62{,}8\).
+<p class="ls-answer">Ответ: 62,8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите длину окружности радиуса 3. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(C = 2\pi R = 2\cdot3{,}14\cdot3 = 18{,}84\).
+<p class="ls-answer">Ответ: 18,84</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите площадь круга радиуса 7. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(S = \pi R^2 = 3{,}14\cdot49 = 153{,}86\).
+<p class="ls-answer">Ответ: 153,86</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите площадь круга радиуса 2. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(S = \pi R^2 = 3{,}14\cdot4 = 12{,}56\).
+<p class="ls-answer">Ответ: 12,56</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите площадь круга радиуса 10. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(S = \pi R^2 = 3{,}14\cdot100 = 314\).
+<p class="ls-answer">Ответ: 314</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Найдите площадь круга радиуса 4. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(S = \pi R^2 = 3{,}14\cdot16 = 50{,}24\).
+<p class="ls-answer">Ответ: 50,24</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Углы</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вписанный угол равен \(88^\circ\). Найдите центральный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Центральный — в 2 раза больше: \(176^\circ\).
+<p class="ls-answer">Ответ: 176</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Центральный угол равен \(166^\circ\). Найдите вписанный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Вписанный — половина центрального: \(83^\circ\).
+<p class="ls-answer">Ответ: 83</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Центральный угол равен \(90^\circ\). Найдите вписанный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Вписанный — половина центрального: \(45^\circ\).
+<p class="ls-answer">Ответ: 45</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вписанный угол равен \(61^\circ\). Найдите центральный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Центральный — в 2 раза больше: \(122^\circ\).
+<p class="ls-answer">Ответ: 122</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Центральный угол равен \(158^\circ\). Найдите вписанный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Вписанный — половина центрального: \(79^\circ\).
+<p class="ls-answer">Ответ: 79</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 70^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 70 = 20^\circ\).
+<p class="ls-answer">Ответ: 20</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 59^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 59 = 31^\circ\).
+<p class="ls-answer">Ответ: 31</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 67^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 67 = 23^\circ\).
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 54^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 54 = 36^\circ\).
+<p class="ls-answer">Ответ: 36</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Диаметр окружности 32. Найдите радиус.</div>
+<details><summary>Решение</summary>Радиус — половина диаметра: 16.
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вписанный угол равен \(20^\circ\). Найдите центральный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Центральный — в 2 раза больше: \(40^\circ\).
+<p class="ls-answer">Ответ: 40</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 62^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 62 = 28^\circ\).
+<p class="ls-answer">Ответ: 28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> \(AB\) — диаметр окружности, \(C\) — точка на ней, \(\angle CAB = 33^\circ\). Найдите \(\angle CBA\).</div>
+<details><summary>Решение</summary>Угол на диаметр \(\angle ACB = 90^\circ\). \(\angle CBA = 90 - 33 = 57^\circ\).
+<p class="ls-answer">Ответ: 57</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите площадь круга радиуса 6. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(S = \pi R^2 = 3{,}14\cdot36 = 113{,}04\).
+<p class="ls-answer">Ответ: 113,04</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Диаметр окружности 18. Найдите радиус.</div>
+<details><summary>Решение</summary>Радиус — половина диаметра: 9.
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Диаметр окружности 46. Найдите радиус.</div>
+<details><summary>Решение</summary>Радиус — половина диаметра: 23.
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите площадь круга радиуса 5. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(S = \pi R^2 = 3{,}14\cdot25 = 78{,}5\).
+<p class="ls-answer">Ответ: 78,5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите площадь круга радиуса 1. Считайте \(\pi \approx 3{,}14\).</div>
+<details><summary>Решение</summary>\(S = \pi R^2 = 3{,}14\cdot1 = 3{,}14\).
+<p class="ls-answer">Ответ: 3,14</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Центральный угол равен \(72^\circ\). Найдите вписанный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Вписанный — половина центрального: \(36^\circ\).
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Центральный угол равен \(114^\circ\). Найдите вписанный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Вписанный — половина центрального: \(57^\circ\).
+<p class="ls-answer">Ответ: 57</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вписанный угол равен \(59^\circ\). Найдите центральный угол, опирающийся на ту же дугу.</div>
+<details><summary>Решение</summary>Центральный — в 2 раза больше: \(118^\circ\).
+<p class="ls-answer">Ответ: 118</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 31)</span> Решите уравнение \(3(x - 4) + 2 = 2\).</div>
+<details><summary>Решение</summary>Раскрываем скобки: \(3x - 12 + 2 = 2\); \(3x = 2 + 12 - 2 = 12\); \(x = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 29)</span> Вычислите \(6\cdot(-4) + 14\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(6\cdot(-4) = -24\); потом \(-24 + 14 = -10\).
+<p class="ls-answer">Ответ: -10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 25)</span> Вычислите \(2{,}1 : 0{,}07\).</div>
+<details><summary>Решение</summary>Переносим запятую в обоих числах вправо на 2, чтобы делитель стал целым: \(210 : 7 = 30\).
+<p class="ls-answer">Ответ: 30</p></details></div>
+</section>
+<nav class="ls-foot"><a href="32-procenty.html">← Урок 32</a><a href="00-index.html">Все уроки</a><a href="34-veroyatnost.html">Урок 34 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

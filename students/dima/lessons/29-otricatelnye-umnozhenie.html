@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 29. Отрицательные числа: умножение, деление, №6 с минусами</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 29. Отрицательные числа: умножение, деление, №6 с минусами</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">ОГЭ №6</span><span class="ls-tag">база</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Умножение и деление</a><a href="#ls-s5">Ступень 2. Выражения и степени</a><a href="#ls-s6">Ступень 3. Как в ОГЭ №6</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> правило знаков: одинаковые знаки — «+», разные — «−». Минус в скобках возводится в степень, без скобок — нет.</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> путает \((-2)^2 = 4\) и \(-2^2 = -4\); в выражении №6 с \((-10)^3\) теряет знак.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 28)</span> Вычислите \(3 - (-20)\).</div>
+<details><summary>Решение</summary>Вычитание — это прибавление противоположного: \(3 - (-20) = 3 + 20 = 23\).
+<p class="ls-answer">Ответ: 23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 28)</span> Вычислите \(17 - 4\).</div>
+<details><summary>Решение</summary>Вычитание — это прибавление противоположного: \(17 - 4 = 17 + (-4) = 13\).
+<p class="ls-answer">Ответ: 13</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 27)</span> Вычислите \(2{,}6\cdot1{,}4\).</div>
+<details><summary>Решение</summary>Умножаем без запятых, в ответе после запятой столько цифр, сколько у обоих множителей вместе: \(3{,}64\).
+<p class="ls-answer">Ответ: 3,64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 27)</span> Вычислите \(\frac{1}{2} + \frac{2}{4}\).</div>
+<details><summary>Решение</summary>Шаг 1 — общий знаменатель 4. Шаг 2 — доп. множители: 2 и 1. Шаг 3: \(\frac{2}{4} + \frac{2}{4} = \frac{4}{4}\) \(= 1\).
+<p class="ls-answer">Ответ: 1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 25)</span> Запишите \(\frac{4}{5}\) десятичной дробью.</div>
+<details><summary>Решение</summary>Домножаем знаменатель до 10, 100 или 1000 (или делим 4 на 5): \(0{,}8\).
+<p class="ls-answer">Ответ: 0,8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 25)</span> Вычислите \(14{,}4 : 0{,}9\).</div>
+<details><summary>Решение</summary>Переносим запятую в обоих числах вправо на 1, чтобы делитель стал целым: \(144 : 9 = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(16 : 2\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(2\cdot8 = 16\), значит \(16 : 2 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(3\cdot\square = 15\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(15 : 3 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Правило знаков</h3>
+<div class="ls-table-wrap"><table class="ls-table">
+<tr><th></th><th>Пример</th></tr>
+<tr><td>«+» · «+» = «+»</td><td>\(3\cdot4 = 12\)</td></tr>
+<tr><td>«−» · «−» = «+»</td><td>\((-3)\cdot(-4) = 12\)</td></tr>
+<tr><td>«+» · «−» = «−»</td><td>\(3\cdot(-4) = -12\)</td></tr>
+</table></div>
+<div class="ls-rule">С делением — то же правило: \(-12 : 3 = -4\), \(-12 : (-3) = 4\).</div>
+<h3>2. Степени</h3>
+<div class="ls-rule">\((-10)^2 = 100\), \((-10)^3 = -1000\): чётная степень — «+», нечётная — «−».<br>\(-3^2 = -9\): без скобок в квадрат возводится только 3.</div>
+<h3>3. Задание №6 ОГЭ</h3>
+<div class="ls-example">\(-0{,}3\cdot(-10)^3 + 4\cdot(-10)^2 - 50 = -0{,}3\cdot(-1000) + 400 - 50 = 300 + 400 - 50 = 650\).</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Умножение и деление</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(-8\cdot(-12)\).</div>
+<details><summary>Решение</summary>Знаки одинаковые → результат «+»: \(-8\cdot(-12) = 96\).
+<p class="ls-answer">Ответ: 96</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(-8\cdot9\).</div>
+<details><summary>Решение</summary>Знаки разные → результат «−»: \(-8\cdot9 = -72\).
+<p class="ls-answer">Ответ: -72</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(-7\cdot5\).</div>
+<details><summary>Решение</summary>Знаки разные → результат «−»: \(-7\cdot5 = -35\).
+<p class="ls-answer">Ответ: -35</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(-1\cdot4\).</div>
+<details><summary>Решение</summary>Знаки разные → результат «−»: \(-1\cdot4 = -4\).
+<p class="ls-answer">Ответ: -4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(-2\cdot(-8)\).</div>
+<details><summary>Решение</summary>Знаки одинаковые → результат «+»: \(-2\cdot(-8) = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычислите \(-6\cdot(-8)\).</div>
+<details><summary>Решение</summary>Знаки одинаковые → результат «+»: \(-6\cdot(-8) = 48\).
+<p class="ls-answer">Ответ: 48</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычислите \(-20 : 2\).</div>
+<details><summary>Решение</summary>Знаки разные → «−»: \(-20 : 2 = -10\).
+<p class="ls-answer">Ответ: -10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычислите \(-2 : 2\).</div>
+<details><summary>Решение</summary>Знаки разные → «−»: \(-2 : 2 = -1\).
+<p class="ls-answer">Ответ: -1</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Вычислите \(-35 : (-7)\).</div>
+<details><summary>Решение</summary>Знаки одинаковые → «+»: \(-35 : (-7) = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> Вычислите \(72 : (-8)\).</div>
+<details><summary>Решение</summary>Знаки разные → «−»: \(72 : (-8) = -9\).
+<p class="ls-answer">Ответ: -9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> Вычислите \(3 : (-3)\).</div>
+<details><summary>Решение</summary>Знаки разные → «−»: \(3 : (-3) = -1\).
+<p class="ls-answer">Ответ: -1</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Выражения и степени</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(3\cdot(-2) + (-17)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(3\cdot(-2) = -6\); потом \(-6 + (-17) = -23\).
+<p class="ls-answer">Ответ: -23</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(2\cdot(-2) + (-12)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(2\cdot(-2) = -4\); потом \(-4 + (-12) = -16\).
+<p class="ls-answer">Ответ: -16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(6\cdot(-5) + 12\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(6\cdot(-5) = -30\); потом \(-30 + 12 = -18\).
+<p class="ls-answer">Ответ: -18</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(7\cdot(-4) + (-17)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(7\cdot(-4) = -28\); потом \(-28 + (-17) = -45\).
+<p class="ls-answer">Ответ: -45</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(9\cdot(-5) + (-16)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(9\cdot(-5) = -45\); потом \(-45 + (-16) = -61\).
+<p class="ls-answer">Ответ: -61</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычислите \(-5^2\).</div>
+<details><summary>Решение</summary>Без скобок минус НЕ возводится: \(-5^2 = -25\).
+<p class="ls-answer">Ответ: -25</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычислите \((-4)^3\).</div>
+<details><summary>Решение</summary>Минус в скобках возводится: \((-4)^3 = -64\) (нечётная — минус).
+<p class="ls-answer">Ответ: -64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычислите \(-2^3\).</div>
+<details><summary>Решение</summary>Без скобок минус НЕ возводится: \(-2^3 = -8\).
+<p class="ls-answer">Ответ: -8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Вычислите \(-2^2\).</div>
+<details><summary>Решение</summary>Без скобок минус НЕ возводится: \(-2^2 = -4\).
+<p class="ls-answer">Ответ: -4</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> Вычислите \((-2)^2\).</div>
+<details><summary>Решение</summary>Минус в скобках возводится: \((-2)^2 = 4\) (чётная степень — плюс).
+<p class="ls-answer">Ответ: 4</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Как в ОГЭ №6</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Найдите значение выражения \(-0{,}4\cdot(-10)^3 + 2\cdot(-10)^2 - 90\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(400 + 200 - 90 = 510\).
+<p class="ls-answer">Ответ: 510</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Найдите значение выражения \(-0{,}8\cdot(-10)^3 + 1\cdot(-10)^2 - 64\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(800 + 100 - 64 = 836\).
+<p class="ls-answer">Ответ: 836</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите значение выражения \(-0{,}5\cdot(-10)^3 + 5\cdot(-10)^2 - 53\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(500 + 500 - 53 = 947\).
+<p class="ls-answer">Ответ: 947</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите значение выражения \(-0{,}5\cdot(-10)^3 + 3\cdot(-10)^2 - 20\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(500 + 300 - 20 = 780\).
+<p class="ls-answer">Ответ: 780</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Найдите значение выражения \(-0{,}6\cdot(-10)^3 + 1\cdot(-10)^2 - 38\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(600 + 100 - 38 = 662\).
+<p class="ls-answer">Ответ: 662</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Найдите значение выражения \(-0{,}4\cdot(-10)^3 + 4\cdot(-10)^2 - 67\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(400 + 400 - 67 = 733\).
+<p class="ls-answer">Ответ: 733</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(-4\cdot7\).</div>
+<details><summary>Решение</summary>Знаки разные → результат «−»: \(-4\cdot7 = -28\).
+<p class="ls-answer">Ответ: -28</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(-4^3\).</div>
+<details><summary>Решение</summary>Без скобок минус НЕ возводится: \(-4^3 = -64\).
+<p class="ls-answer">Ответ: -64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Найдите значение выражения \(-0{,}8\cdot(-10)^3 + 2\cdot(-10)^2 - 40\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(800 + 200 - 40 = 960\).
+<p class="ls-answer">Ответ: 960</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Найдите значение выражения \(-0{,}4\cdot(-10)^3 + 2\cdot(-10)^2 - 81\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(400 + 200 - 81 = 519\).
+<p class="ls-answer">Ответ: 519</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \(4\cdot(-5) + (-9)\).</div>
+<details><summary>Решение</summary>Сначала умножение: \(4\cdot(-5) = -20\); потом \(-20 + (-9) = -29\).
+<p class="ls-answer">Ответ: -29</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(-2\cdot(-4)\).</div>
+<details><summary>Решение</summary>Знаки одинаковые → результат «+»: \(-2\cdot(-4) = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(-9\cdot8\).</div>
+<details><summary>Решение</summary>Знаки разные → результат «−»: \(-9\cdot8 = -72\).
+<p class="ls-answer">Ответ: -72</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(-1\cdot12\).</div>
+<details><summary>Решение</summary>Знаки разные → результат «−»: \(-1\cdot12 = -12\).
+<p class="ls-answer">Ответ: -12</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \((-3)^2\).</div>
+<details><summary>Решение</summary>Минус в скобках возводится: \((-3)^2 = 9\) (чётная степень — плюс).
+<p class="ls-answer">Ответ: 9</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычислите \((-2)^3\).</div>
+<details><summary>Решение</summary>Минус в скобках возводится: \((-2)^3 = -8\) (нечётная — минус).
+<p class="ls-answer">Ответ: -8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычислите \((-4)^2\).</div>
+<details><summary>Решение</summary>Минус в скобках возводится: \((-4)^2 = 16\) (чётная степень — плюс).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Найдите значение выражения \(-0{,}3\cdot(-10)^3 + 3\cdot(-10)^2 - 15\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(300 + 300 - 15 = 585\).
+<p class="ls-answer">Ответ: 585</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Найдите значение выражения \(-0{,}4\cdot(-10)^3 + 4\cdot(-10)^2 - 72\).</div>
+<details><summary>Решение</summary>\((-10)^3 = -1000\), \((-10)^2 = 100\): \(400 + 400 - 72 = 728\).
+<p class="ls-answer">Ответ: 728</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 27)</span> Вычислите \(0{,}2\cdot2{,}3\).</div>
+<details><summary>Решение</summary>Умножаем без запятых, в ответе после запятой столько цифр, сколько у обоих множителей вместе: \(0{,}46\).
+<p class="ls-answer">Ответ: 0,46</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 25)</span> Запишите \(\frac{9}{25}\) десятичной дробью.</div>
+<details><summary>Решение</summary>Домножаем знаменатель до 10, 100 или 1000 (или делим 9 на 25): \(0{,}36\).
+<p class="ls-answer">Ответ: 0,36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 21)</span> Найдите \(\frac{4}{9}\) от числа 108.</div>
+<details><summary>Решение</summary>Одна 9-я часть: \(108 : 9 = 12\); 4 таких частей: \(12\cdot4 = 48\).
+<p class="ls-answer">Ответ: 48</p></details></div>
+</section>
+<nav class="ls-foot"><a href="28-otricatelnye-slozhenie.html">← Урок 28</a><a href="00-index.html">Все уроки</a><a href="30-geom-pifagor.html">Урок 30 →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>
