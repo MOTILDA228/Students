@@ -87,14 +87,14 @@
 @src Урок 15
 Вычислите столбиком \(2340 : 9\).
 @sol
-По шагам: \(23 : 9 = 2\) (остаток 5); \(54 : 9 = 6\); \(0 : 9 = 0\). Ответ: 260. Проверка: \(260\cdot9 = 2340\) ✓.
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>3</td><td>4</td><td>0</td><td class="l u">9</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">8</td><td></td><td></td><td class="l q">2</td><td class="q">6</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td>5</td><td>4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">5</td><td class="u">4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>По шагам: \(23 : 9 = 2\) (остаток 5); \(54 : 9 = 6\); \(0 : 9 = 0\). Ответ: 260. Проверка: \(260\cdot9 = 2340\) ✓.
 @ans 260
 @check 2340//9
 @task
 @src Урок 15
 Вычислите \(3035 : 5\). Осторожно: в частном будет ноль.
 @sol
-Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 607. Проверка: \(607\cdot5 = 3035\) ✓.
+<table class="ls-col"><tbody><tr><td></td><td>3</td><td>0</td><td>3</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">3</td><td class="u">0</td><td></td><td></td><td class="l q">6</td><td class="q">0</td><td class="q">7</td><td></td></tr><tr><td></td><td></td><td></td><td>3</td><td>5</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">3</td><td class="u">5</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 607. Проверка: \(607\cdot5 = 3035\) ✓.
 @ans 607
 @check 3035//5
 @tasks Порядок действий

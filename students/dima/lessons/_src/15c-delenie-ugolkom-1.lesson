@@ -1,0 +1,325 @@
+@title Урок 15c. Деление уголком на однозначное число
+@tags база | столбик
+@teacher
+<p><b>Новая идея урока:</b> деление — это раздача «по разрядам», сначала самые крупные. В уголке один и тот же цикл: <b>Делю → Умножаю → Вычитаю → Сношу</b> (Д-У-В-С), пока цифры не кончатся. <b>Метод для Димы:</b> всё — на клетчатой бумаге, <b>одна цифра — одна клетка</b>, единицы строго под единицами. Первые 3 примера он проговаривает вслух каждый шаг, вы только задаёте вопросы («что делим? сколько раз помещается? что пишем?»). Карточку-алгоритм держать перед ним весь урок. Ошибку не исправлять за него — спросить «проверь умножением».</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> не знает, с чего начать (берёт одну цифру, когда она меньше делителя); вычитает с ошибкой (повторить урок 15); забывает снести цифру; не проверяет умножением.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+@tasks Разминка-повторение (12 минут)
+@task
+@rep 15
+Разделите уголком \(102 : 6\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>0</td><td>2</td><td class="l u">6</td><td class="u"></td><td class="u"></td></tr><tr><td></td><td class="u">−</td><td class="u">6</td><td></td><td class="l q">1</td><td class="q">7</td><td></td></tr><tr><td></td><td></td><td>4</td><td>2</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">2</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 17. Проверка: \(17\cdot6 = 102\) ✓.
+@ans 17
+@check 102//6
+@task
+@rep 15
+Умножьте столбиком \(219\cdot5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>2</td><td>1</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">0</td><td class="q">9</td><td class="q">5</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1095.
+@ans 1095
+@check 219*5
+@task
+@rep 14
+Решите уравнение \(x : 5 = 24\).
+@sol
+Неизвестное делимое = частное · делитель: \(x = 24\cdot5 = 120\). Проверка: \(120 : 5 = 24\) ✓.
+@ans 120
+@check 24*5
+@task
+@rep 14
+Решите уравнение \(x : 2 = 20\).
+@sol
+Неизвестное делимое = частное · делитель: \(x = 20\cdot2 = 40\). Проверка: \(40 : 2 = 20\) ✓.
+@ans 40
+@check 20*2
+@task
+@rep 12
+Решите уравнение \(9\cdot x = 216\).
+@sol
+Неизвестный множитель = произведение : известный множитель: \(x = 216 : 9 = 24\). Проверка: \(9\cdot24 = 216\) ✓.
+@ans 24
+@check 216//9
+@task
+@rep 12
+3 одинаковых пачек тетрадей содержат 108 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(3\cdot x = 108\).)
+@sol
+Неизвестный множитель: \(x = 108 : 3 = 36\).
+@ans 36
+@check 108//3
+@task
+@rep 8
+Вычислите \(9 : 3\).
+@sol
+Вспоминаем «семейство»: \(3\cdot3 = 9\), значит \(9 : 3 = 3\).
+@ans 3
+@check 9//3
+@task
+@rep 8
+Какое число пропущено: \(9\cdot\square = 81\)?
+@sol
+Пропущенный множитель: \(81 : 9 = 9\).
+@ans 9
+@check 81//9
+@theory Шпаргалка
+<h3>1. На деньгах</h3>
+<div class="ls-example">846 руб. (8 сотенных, 4 десятки, 6 рублёвых монет) делим на 2 человек: сотни — по 4, десятки — по 2, рубли — по 3. Каждому 423 руб.: \(846 : 2 = 423\).</div>
+<h3>2. Уголок</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td>8</td><td>4</td><td>6</td><td class="l u">2</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">8</td><td></td><td></td><td class="l q">4</td><td class="q">2</td><td class="q">3</td><td></td></tr><tr><td></td><td></td><td>4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table><table class="ls-col"><tbody><tr><td></td><td>9</td><td>3</td><td>6</td><td class="l u">4</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">8</td><td></td><td></td><td class="l q">2</td><td class="q">3</td><td class="q">4</td><td></td></tr><tr><td></td><td>1</td><td>3</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>−</td><td class="u">1</td><td class="u">2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>1</td><td>6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
+<div class="ls-rule"><b>Карточка Д-У-В-С</b> (держать перед глазами):<br>
+0) Найди <b>первое неполное делимое</b> — первое число слева, которое не меньше делителя (в 936 : 4 это 9).<br>
+<b>Д</b>елю: сколько раз 4 помещается в 9? — 2 (таблица!). Пишу 2 в частное.<br>
+<b>У</b>множаю: \(2\cdot4 = 8\), пишу под 9.<br>
+<b>В</b>ычитаю: \(9 - 8 = 1\). Остаток обязательно <b>меньше делителя</b>.<br>
+<b>С</b>ношу следующую цифру (3) → 13. И снова Д-У-В-С.</div>
+<div class="ls-rule"><b>Сколько цифр в ответе?</b> Отметь первое неполное делимое (9) — одна цифра частного; плюс по одной на каждую оставшуюся цифру (3 и 6). Итого 3 цифры.</div>
+<div class="ls-warn">Остаток получился больше делителя или равен ему — значит, в частном цифра мала, увеличь её на 1.</div>
+@tasks Ступень 1. Каждая цифра делится сама
+@task
+Разделите уголком \(62 : 2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>6</td><td>2</td><td class="l u">2</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td></td><td class="l q">3</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td>2</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 31. Проверка: \(31\cdot2 = 62\) ✓.
+@ans 31
+@check 62//2
+@task
+Разделите уголком \(44 : 4\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>4</td><td class="l u">4</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td></td><td class="l q">1</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td>4</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 11. Проверка: \(11\cdot4 = 44\) ✓.
+@ans 11
+@check 44//4
+@task
+Разделите уголком \(884 : 2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>8</td><td>8</td><td>4</td><td class="l u">2</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">8</td><td></td><td></td><td class="l q">4</td><td class="q">4</td><td class="q">2</td><td></td></tr><tr><td></td><td></td><td>8</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">8</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>4</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">4</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 442. Проверка: \(442\cdot2 = 884\) ✓.
+@ans 442
+@check 884//2
+@task
+Разделите уголком \(448 : 2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>4</td><td>8</td><td class="l u">2</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td></td><td></td><td class="l q">2</td><td class="q">2</td><td class="q">4</td><td></td></tr><tr><td></td><td></td><td>4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>8</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">8</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 224. Проверка: \(224\cdot2 = 448\) ✓.
+@ans 224
+@check 448//2
+@task
+Разделите уголком \(88 : 2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>8</td><td>8</td><td class="l u">2</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">8</td><td></td><td class="l q">4</td><td class="q">4</td><td></td></tr><tr><td></td><td></td><td>8</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">8</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 44. Проверка: \(44\cdot2 = 88\) ✓.
+@ans 44
+@check 88//2
+@task
+Разделите уголком \(48 : 4\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>8</td><td class="l u">4</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td></td><td class="l q">1</td><td class="q">2</td><td></td></tr><tr><td></td><td></td><td>8</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">8</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 12. Проверка: \(12\cdot4 = 48\) ✓.
+@ans 12
+@check 48//4
+@tasks Ступень 2. С остатками на шагах — по заготовке
+@task
+Разделите уголком \(395 : 5\). Заполни заготовку:<table class="ls-col"><tbody><tr><td></td><td>3</td><td>9</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td></td><td></td><td></td><td></td><td class="l"></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>3</td><td>9</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">3</td><td class="u">5</td><td></td><td class="l q">7</td><td class="q">9</td><td></td></tr><tr><td></td><td></td><td>4</td><td>5</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 79.
+@ans 79
+@check 395//5
+@task
+Разделите уголком \(132 : 6\). Заполни заготовку:<table class="ls-col"><tbody><tr><td></td><td>1</td><td>3</td><td>2</td><td class="l u">6</td><td class="u"></td><td class="u"></td></tr><tr><td></td><td></td><td></td><td></td><td class="l"></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>3</td><td>2</td><td class="l u">6</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">2</td><td></td><td class="l q">2</td><td class="q">2</td><td></td></tr><tr><td></td><td></td><td>1</td><td>2</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">2</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 22.
+@ans 22
+@check 132//6
+@task
+Разделите уголком \(355 : 5\). Заполни заготовку:<table class="ls-col"><tbody><tr><td></td><td>3</td><td>5</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td></td><td></td><td></td><td></td><td class="l"></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>3</td><td>5</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">3</td><td class="u">5</td><td></td><td class="l q">7</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 71.
+@ans 71
+@check 355//5
+@task
+Разделите уголком \(288 : 6\). Заполни заготовку:<table class="ls-col"><tbody><tr><td></td><td>2</td><td>8</td><td>8</td><td class="l u">6</td><td class="u"></td><td class="u"></td></tr><tr><td></td><td></td><td></td><td></td><td class="l"></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>8</td><td>8</td><td class="l u">6</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td class="l q">4</td><td class="q">8</td><td></td></tr><tr><td></td><td></td><td>4</td><td>8</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">8</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 48.
+@ans 48
+@check 288//6
+@task
+Разделите уголком \(280 : 7\). Заполни заготовку:<table class="ls-col"><tbody><tr><td></td><td>2</td><td>8</td><td>0</td><td class="l u">7</td><td class="u"></td><td class="u"></td></tr><tr><td></td><td></td><td></td><td></td><td class="l"></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>8</td><td>0</td><td class="l u">7</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">8</td><td></td><td class="l q">4</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 40.
+@ans 40
+@check 280//7
+@task
+Разделите уголком \(630 : 9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>6</td><td>3</td><td>0</td><td class="l u">9</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td class="u">3</td><td></td><td class="l q">7</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 70. Проверка: \(70\cdot9 = 630\) ✓.
+@ans 70
+@check 630//9
+@task
+Разделите уголком \(410 : 5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>1</td><td>0</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td class="u">0</td><td></td><td class="l q">8</td><td class="q">2</td><td></td></tr><tr><td></td><td></td><td>1</td><td>0</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">0</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 82. Проверка: \(82\cdot5 = 410\) ✓.
+@ans 82
+@check 410//5
+@task
+Разделите уголком \(196 : 7\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>9</td><td>6</td><td class="l u">7</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">4</td><td></td><td class="l q">2</td><td class="q">8</td><td></td></tr><tr><td></td><td></td><td>5</td><td>6</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">5</td><td class="u">6</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 28. Проверка: \(28\cdot7 = 196\) ✓.
+@ans 28
+@check 196//7
+@task
+Разделите уголком \(288 : 8\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>8</td><td>8</td><td class="l u">8</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td class="l q">3</td><td class="q">6</td><td></td></tr><tr><td></td><td></td><td>4</td><td>8</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">8</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 36. Проверка: \(36\cdot8 = 288\) ✓.
+@ans 36
+@check 288//8
+@tasks Ступень 3. Трёхзначное частное и прикидка
+@task
+Разделите уголком \(5495 : 7\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>5</td><td>4</td><td>9</td><td>5</td><td class="l u">7</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td class="u">9</td><td></td><td></td><td class="l q">7</td><td class="q">8</td><td class="q">5</td><td></td></tr><tr><td></td><td></td><td>5</td><td>9</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">5</td><td class="u">6</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>3</td><td>5</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">3</td><td class="u">5</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 785. Проверка: \(785\cdot7 = 5495\) ✓.
+@ans 785
+@check 5495//7
+@task
+Разделите уголком \(441 : 3\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>4</td><td>1</td><td class="l u">3</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">3</td><td></td><td></td><td class="l q">1</td><td class="q">4</td><td class="q">7</td><td></td></tr><tr><td></td><td>1</td><td>4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>−</td><td class="u">1</td><td class="u">2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>1</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">1</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 147. Проверка: \(147\cdot3 = 441\) ✓.
+@ans 147
+@check 441//3
+@task
+Разделите уголком \(6447 : 7\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>6</td><td>4</td><td>4</td><td>7</td><td class="l u">7</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td class="u">3</td><td></td><td></td><td class="l q">9</td><td class="q">2</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td>1</td><td>4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>7</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>−</td><td class="u">7</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 921. Проверка: \(921\cdot7 = 6447\) ✓.
+@ans 921
+@check 6447//7
+@task
+Разделите уголком \(1925 : 7\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>9</td><td>2</td><td>5</td><td class="l u">7</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">4</td><td></td><td></td><td class="l q">2</td><td class="q">7</td><td class="q">5</td><td></td></tr><tr><td></td><td></td><td>5</td><td>2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">9</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>3</td><td>5</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">3</td><td class="u">5</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 275. Проверка: \(275\cdot7 = 1925\) ✓.
+@ans 275
+@check 1925//7
+@task
+Разделите уголком \(5862 : 6\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>5</td><td>8</td><td>6</td><td>2</td><td class="l u">6</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">5</td><td class="u">4</td><td></td><td></td><td class="l q">9</td><td class="q">7</td><td class="q">7</td><td></td></tr><tr><td></td><td></td><td>4</td><td>6</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>4</td><td>2</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">4</td><td class="u">2</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 977. Проверка: \(977\cdot6 = 5862\) ✓.
+@ans 977
+@check 5862//6
+@task
+Сколько цифр будет в частном \(3840 : 5\)? (Не дели до конца — только прикинь.)
+@sol
+Первое неполное делимое — 38 (первое число, которое ≥ 5). После него остаётся 2 цифр, значит в частном 3 цифры. (Ответ 768.)
+@ans 3
+@check len(str(3840//5))
+@task
+Сколько цифр будет в частном \(2390 : 5\)? (Не дели до конца — только прикинь.)
+@sol
+Первое неполное делимое — 23 (первое число, которое ≥ 5). После него остаётся 2 цифр, значит в частном 3 цифры. (Ответ 478.)
+@ans 3
+@check len(str(2390//5))
+@task
+Сколько цифр будет в частном \(4332 : 6\)? (Не дели до конца — только прикинь.)
+@sol
+Первое неполное делимое — 43 (первое число, которое ≥ 6). После него остаётся 2 цифр, значит в частном 3 цифры. (Ответ 722.)
+@ans 3
+@check len(str(4332//6))
+@tasks Мини-срез (10 минут, без подсказок)
+@task
+Разделите уголком \(744 : 8\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>7</td><td>4</td><td>4</td><td class="l u">8</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">7</td><td class="u">2</td><td></td><td class="l q">9</td><td class="q">3</td><td></td></tr><tr><td></td><td></td><td>2</td><td>4</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 93. Проверка: \(93\cdot8 = 744\) ✓.
+@ans 93
+@check 744//8
+@task
+Разделите уголком \(6696 : 8\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>6</td><td>6</td><td>9</td><td>6</td><td class="l u">8</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td class="u">4</td><td></td><td></td><td class="l q">8</td><td class="q">3</td><td class="q">7</td><td></td></tr><tr><td></td><td></td><td>2</td><td>9</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td>6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">5</td><td class="u">6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 837. Проверка: \(837\cdot8 = 6696\) ✓.
+@ans 837
+@check 6696//8
+@task
+Сколько цифр будет в частном \(1770 : 6\)? (Не дели до конца — только прикинь.)
+@sol
+Первое неполное делимое — 17 (первое число, которое ≥ 6). После него остаётся 2 цифр, значит в частном 3 цифры. (Ответ 295.)
+@ans 3
+@check len(str(1770//6))
+@task
+Сколько цифр будет в частном \(5159 : 7\)? (Не дели до конца — только прикинь.)
+@sol
+Первое неполное делимое — 51 (первое число, которое ≥ 7). После него остаётся 2 цифр, значит в частном 3 цифры. (Ответ 737.)
+@ans 3
+@check len(str(5159//7))
+@task
+Разделите уголком \(75 : 3\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>7</td><td>5</td><td class="l u">3</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td></td><td class="l q">2</td><td class="q">5</td><td></td></tr><tr><td></td><td>1</td><td>5</td><td></td><td></td><td></td></tr><tr><td>−</td><td class="u">1</td><td class="u">5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 25. Проверка: \(25\cdot3 = 75\) ✓.
+@ans 25
+@check 75//3
+@hw
+@task
+Разделите уголком \(422 : 2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>2</td><td>2</td><td class="l u">2</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td></td><td></td><td class="l q">2</td><td class="q">1</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td>2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>2</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">2</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 211. Проверка: \(211\cdot2 = 422\) ✓.
+@ans 211
+@check 422//2
+@task
+Разделите уголком \(96 : 3\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>9</td><td>6</td><td class="l u">3</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">9</td><td></td><td class="l q">3</td><td class="q">2</td><td></td></tr><tr><td></td><td></td><td>6</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">6</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 32. Проверка: \(32\cdot3 = 96\) ✓.
+@ans 32
+@check 96//3
+@task
+Разделите уголком \(236 : 4\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>3</td><td>6</td><td class="l u">4</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">0</td><td></td><td class="l q">5</td><td class="q">9</td><td></td></tr><tr><td></td><td></td><td>3</td><td>6</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">3</td><td class="u">6</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 59. Проверка: \(59\cdot4 = 236\) ✓.
+@ans 59
+@check 236//4
+@task
+Разделите уголком \(272 : 8\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>7</td><td>2</td><td class="l u">8</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td class="l q">3</td><td class="q">4</td><td></td></tr><tr><td></td><td></td><td>3</td><td>2</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">3</td><td class="u">2</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 34. Проверка: \(34\cdot8 = 272\) ✓.
+@ans 34
+@check 272//8
+@task
+Разделите уголком \(36 : 3\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>3</td><td>6</td><td class="l u">3</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">3</td><td></td><td class="l q">1</td><td class="q">2</td><td></td></tr><tr><td></td><td></td><td>6</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">6</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 12. Проверка: \(12\cdot3 = 36\) ✓.
+@ans 12
+@check 36//3
+@task
+Разделите уголком \(213 : 3\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>1</td><td>3</td><td class="l u">3</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">1</td><td></td><td class="l q">7</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td></td><td>3</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">3</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 71. Проверка: \(71\cdot3 = 213\) ✓.
+@ans 71
+@check 213//3
+@task
+Сколько цифр будет в частном \(7875 : 9\)? (Не дели до конца — только прикинь.)
+@sol
+Первое неполное делимое — 78 (первое число, которое ≥ 9). После него остаётся 2 цифр, значит в частном 3 цифры. (Ответ 875.)
+@ans 3
+@check len(str(7875//9))
+@task
+Сколько цифр будет в частном \(1653 : 3\)? (Не дели до конца — только прикинь.)
+@sol
+Первое неполное делимое — 16 (первое число, которое ≥ 3). После него остаётся 2 цифр, значит в частном 3 цифры. (Ответ 551.)
+@ans 3
+@check len(str(1653//3))
+@task
+@rep 14
+Решите уравнение \(144 : x = 24\).
+@sol
+Неизвестный делитель = делимое : частное: \(x = 144 : 24 = 6\). Проверка: \(144 : 6 = 24\) ✓.
+@ans 6
+@check 144//24
+@task
+@rep 12
+Решите уравнение \(7\cdot x = 91\).
+@sol
+Неизвестный множитель = произведение : известный множитель: \(x = 91 : 7 = 13\). Проверка: \(7\cdot13 = 91\) ✓.
+@ans 13
+@check 91//7
+@task
+@rep 8
+Вычислите \(40 : 5\).
+@sol
+Вспоминаем «семейство»: \(5\cdot8 = 40\), значит \(40 : 5 = 8\).
+@ans 8
+@check 40//5

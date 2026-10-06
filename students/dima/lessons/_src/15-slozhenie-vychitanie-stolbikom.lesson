@@ -1,0 +1,352 @@
+@title Урок 15. Сложение и вычитание в столбик
+@tags база | столбик
+@teacher
+<p><b>Новая идея урока:</b> столбик — это сложение «по разрядам»: единицы с единицами, десятки с десятками. Перенос (10 единиц = 1 десяток) и «занимание» (1 десяток = 10 единиц). Без уверенного вычитания в столбик не получится деление уголком. <b>Метод для Димы:</b> всё — на клетчатой бумаге, <b>одна цифра — одна клетка</b>, единицы строго под единицами. Первые 3 примера он проговаривает вслух каждый шаг, вы только задаёте вопросы («что делим? сколько раз помещается? что пишем?»). Карточку-алгоритм держать перед ним весь урок. Ошибку не исправлять за него — спросить «проверь умножением».</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> пишет числа «по левому краю», а не единицы под единицами; при вычитании из меньшей цифры вычитает наоборот (\(3 - 8 \to 5\)); забывает, что занятый разряд уменьшился на 1.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+@tasks Разминка-повторение (12 минут)
+@task
+@rep 14
+Решите уравнение \(x : 9 = 27\).
+@sol
+Неизвестное делимое = частное · делитель: \(x = 27\cdot9 = 243\). Проверка: \(243 : 9 = 27\) ✓.
+@ans 243
+@check 27*9
+@task
+@rep 14
+Решите уравнение \(120 : x = 15\).
+@sol
+Неизвестный делитель = делимое : частное: \(x = 120 : 15 = 8\). Проверка: \(120 : 8 = 15\) ✓.
+@ans 8
+@check 120//15
+@task
+@rep 13
+Один из вертикальных углов равен \(142^\circ\). Найдите другой.
+@sol
+Вертикальные углы равны: \(142^\circ\).
+@ans 142
+@check 142
+@task
+@rep 13
+В треугольнике два угла \(66^\circ\) и \(77^\circ\). Найдите третий.
+@sol
+\(180 - 66 - 77 = 37^\circ\).
+@ans 37
+@check 180-66-77
+@task
+@rep 11
+Решите уравнение \(119 - x = 100\).
+@sol
+Неизвестное вычитаемое = уменьшаемое − разность: \(x = 119 - 100 = 19\). Проверка: \(119 - 19 = 100\) ✓.
+@ans 19
+@check 119-100
+@task
+@rep 11
+Решите уравнение \(x - 114 = 57\).
+@sol
+Неизвестное уменьшаемое = разность + вычитаемое: \(x = 57 + 114 = 171\). Проверка: \(171 - 114 = 57\) ✓.
+@ans 171
+@check 57+114
+@task
+@rep 8
+Вычислите \(40 : 5\).
+@sol
+Вспоминаем «семейство»: \(5\cdot8 = 40\), значит \(40 : 5 = 8\).
+@ans 8
+@check 40//5
+@task
+@rep 8
+Какое число пропущено: \(4\cdot\square = 20\)?
+@sol
+Пропущенный множитель: \(20 : 4 = 5\).
+@ans 5
+@check 20//4
+@theory Шпаргалка
+<h3>1. Разряды — на деньгах</h3>
+<div class="ls-rule">\(487 = 4\) сотни \(+ 8\) десятков \(+ 7\) единиц — как 4 купюры по 100 руб., 8 монет по 10 руб. и 7 монет по 1 руб. Складывать можно только одинаковое: рубли с рублями, десятки с десятками.</div>
+<h3>2. Сложение столбиком</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td>4</td><td>8</td><td>7</td></tr><tr><td>+</td><td class="u">3</td><td class="u">5</td><td class="u">6</td></tr><tr><td></td><td class="q">8</td><td class="q">4</td><td class="q">3</td></tr></tbody></table></div>
+<ol class="ls-steps"><li>Записать числа так, чтобы <b>единицы были под единицами</b>.</li><li>Складывать <b>справа налево</b>: \(7 + 6 = 13\) — пишем 3, а <b>1 десяток переносим</b> (маленькая 1 сверху).</li><li>\(8 + 5 + 1 = 14\) — пишем 4, переносим 1. \(4 + 3 + 1 = 8\). Ответ 843.</li></ol>
+<h3>3. Вычитание столбиком</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>5</td><td>0</td><td>3</td></tr><tr><td>−</td><td class="u">1</td><td class="u">7</td><td class="u">8</td></tr><tr><td></td><td class="q">3</td><td class="q">2</td><td class="q">5</td></tr></tbody></table></div>
+<ol class="ls-steps"><li>\(3 - 8\) — не получается. <b>Занимаем</b> 1 десяток у соседа слева (ставим над ним точку): \(13 - 8 = 5\).</li><li>У десятков был 0, а мы заняли — значит занимаем у сотен: \(10 - 1 - 7 = 2\).</li><li>Сотни: было 5, заняли 1 → \(4 - 1 = 3\). Ответ 325.</li></ol>
+<div class="ls-warn">Нельзя вычитать «наоборот» (\(3 - 8\) не равно 5). Проверка вычитания — сложением: \(325 + 178 = 503\) ✓.</div>
+@tasks Ступень 1. Двузначные
+@task
+Сложите столбиком \(20 + 44\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td>2</td><td>0</td></tr><tr><td>+</td><td class="u">4</td><td class="u">4</td></tr><tr><td></td><td class="q">6</td><td class="q">4</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 64
+@check 20+44
+@task
+Сложите столбиком \(63 + 29\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>6</td><td>3</td></tr><tr><td>+</td><td class="u">2</td><td class="u">9</td></tr><tr><td></td><td class="q">9</td><td class="q">2</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 92
+@check 63+29
+@task
+Сложите столбиком \(23 + 47\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>2</td><td>3</td></tr><tr><td>+</td><td class="u">4</td><td class="u">7</td></tr><tr><td></td><td class="q">7</td><td class="q">0</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 70
+@check 23+47
+@task
+Сложите столбиком \(69 + 51\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>6</td><td>9</td></tr><tr><td></td><td>+</td><td class="u">5</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 120
+@check 69+51
+@task
+Сложите столбиком \(71 + 85\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>7</td><td>1</td></tr><tr><td></td><td>+</td><td class="u">8</td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">5</td><td class="q">6</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 156
+@check 71+85
+@task
+Вычтите столбиком \(131 - 89\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>1</td><td>3</td><td>1</td></tr><tr><td>−</td><td class="u"></td><td class="u">8</td><td class="u">9</td></tr><tr><td></td><td></td><td class="q">4</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(42 + 89 = 131\) ✓.
+@ans 42
+@check 131-89
+@task
+Вычтите столбиком \(94 - 58\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>9</td><td>4</td></tr><tr><td>−</td><td class="u">5</td><td class="u">8</td></tr><tr><td></td><td class="q">3</td><td class="q">6</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(36 + 58 = 94\) ✓.
+@ans 36
+@check 94-58
+@task
+Вычтите столбиком \(94 - 68\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>9</td><td>4</td></tr><tr><td>−</td><td class="u">6</td><td class="u">8</td></tr><tr><td></td><td class="q">2</td><td class="q">6</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(26 + 68 = 94\) ✓.
+@ans 26
+@check 94-68
+@task
+Вычтите столбиком \(38 - 28\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td>3</td><td>8</td></tr><tr><td>−</td><td class="u">2</td><td class="u">8</td></tr><tr><td></td><td class="q">1</td><td class="q">0</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(10 + 28 = 38\) ✓.
+@ans 10
+@check 38-28
+@task
+Вычтите столбиком \(115 - 38\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>1</td><td>1</td><td>5</td></tr><tr><td>−</td><td class="u"></td><td class="u">3</td><td class="u">8</td></tr><tr><td></td><td></td><td class="q">7</td><td class="q">7</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(77 + 38 = 115\) ✓.
+@ans 77
+@check 115-38
+@tasks Ступень 2. Трёхзначные
+@task
+Сложите столбиком \(693 + 155\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td>6</td><td>9</td><td>3</td></tr><tr><td>+</td><td class="u">1</td><td class="u">5</td><td class="u">5</td></tr><tr><td></td><td class="q">8</td><td class="q">4</td><td class="q">8</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 848
+@check 693+155
+@task
+Сложите столбиком \(550 + 561\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>5</td><td>5</td><td>0</td></tr><tr><td></td><td>+</td><td class="u">5</td><td class="u">6</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">1</td><td class="q">1</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 1111
+@check 550+561
+@task
+Сложите столбиком \(159 + 231\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>1</td><td>5</td><td>9</td></tr><tr><td>+</td><td class="u">2</td><td class="u">3</td><td class="u">1</td></tr><tr><td></td><td class="q">3</td><td class="q">9</td><td class="q">0</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 390
+@check 159+231
+@task
+Сложите столбиком \(377 + 379\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td>3</td><td>7</td><td>7</td></tr><tr><td>+</td><td class="u">3</td><td class="u">7</td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">5</td><td class="q">6</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 756
+@check 377+379
+@task
+Сложите столбиком \(402 + 183\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>4</td><td>0</td><td>2</td></tr><tr><td>+</td><td class="u">1</td><td class="u">8</td><td class="u">3</td></tr><tr><td></td><td class="q">5</td><td class="q">8</td><td class="q">5</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 585
+@check 402+183
+@task
+Вычтите столбиком \(734 - 601\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>7</td><td>3</td><td>4</td></tr><tr><td>−</td><td class="u">6</td><td class="u">0</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">3</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(133 + 601 = 734\) ✓.
+@ans 133
+@check 734-601
+@task
+Вычтите столбиком \(404 - 184\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>4</td><td>0</td><td>4</td></tr><tr><td>−</td><td class="u">1</td><td class="u">8</td><td class="u">4</td></tr><tr><td></td><td class="q">2</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(220 + 184 = 404\) ✓.
+@ans 220
+@check 404-184
+@task
+Вычтите столбиком \(526 - 329\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>5</td><td>2</td><td>6</td></tr><tr><td>−</td><td class="u">3</td><td class="u">2</td><td class="u">9</td></tr><tr><td></td><td class="q">1</td><td class="q">9</td><td class="q">7</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(197 + 329 = 526\) ✓.
+@ans 197
+@check 526-329
+@task
+Вычтите столбиком \(803 - 605\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>8</td><td>0</td><td>3</td></tr><tr><td>−</td><td class="u">6</td><td class="u">0</td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">9</td><td class="q">8</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(198 + 605 = 803\) ✓.
+@ans 198
+@check 803-605
+@task
+Вычтите столбиком \(603 - 471\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>6</td><td>0</td><td>3</td></tr><tr><td>−</td><td class="u">4</td><td class="u">7</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(132 + 471 = 603\) ✓.
+@ans 132
+@check 603-471
+@task
+Вычтите столбиком \(903 - 695\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>9</td><td>0</td><td>3</td></tr><tr><td>−</td><td class="u">6</td><td class="u">9</td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">0</td><td class="q">8</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(208 + 695 = 903\) ✓.
+@ans 208
+@check 903-695
+@tasks Ступень 3. Вычитание с «заниманием» — главное для деления
+@task
+Вычтите столбиком \(909 - 651\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>9</td><td>0</td><td>9</td></tr><tr><td>−</td><td class="u">6</td><td class="u">5</td><td class="u">1</td></tr><tr><td></td><td class="q">2</td><td class="q">5</td><td class="q">8</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(258 + 651 = 909\) ✓.
+@ans 258
+@check 909-651
+@task
+Вычтите столбиком \(424 - 153\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>4</td><td>2</td><td>4</td></tr><tr><td>−</td><td class="u">1</td><td class="u">5</td><td class="u">3</td></tr><tr><td></td><td class="q">2</td><td class="q">7</td><td class="q">1</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(271 + 153 = 424\) ✓.
+@ans 271
+@check 424-153
+@task
+Вычтите столбиком \(886 - 675\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>8</td><td>8</td><td>6</td></tr><tr><td>−</td><td class="u">6</td><td class="u">7</td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">1</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(211 + 675 = 886\) ✓.
+@ans 211
+@check 886-675
+@task
+Вычтите столбиком \(468 - 355\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>4</td><td>6</td><td>8</td></tr><tr><td>−</td><td class="u">3</td><td class="u">5</td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">3</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(113 + 355 = 468\) ✓.
+@ans 113
+@check 468-355
+@task
+Вычтите столбиком \(332 - 148\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>3</td><td>3</td><td>2</td></tr><tr><td>−</td><td class="u">1</td><td class="u">4</td><td class="u">8</td></tr><tr><td></td><td class="q">1</td><td class="q">8</td><td class="q">4</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(184 + 148 = 332\) ✓.
+@ans 184
+@check 332-148
+@task
+Вычтите столбиком \(831 - 695\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>8</td><td>3</td><td>1</td></tr><tr><td>−</td><td class="u">6</td><td class="u">9</td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">6</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(136 + 695 = 831\) ✓.
+@ans 136
+@check 831-695
+@task
+Вычтите столбиком \(949 - 657\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>9</td><td>4</td><td>9</td></tr><tr><td>−</td><td class="u">6</td><td class="u">5</td><td class="u">7</td></tr><tr><td></td><td class="q">2</td><td class="q">9</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(292 + 657 = 949\) ✓.
+@ans 292
+@check 949-657
+@tasks Мини-срез (10 минут, без подсказок)
+@task
+Сложите столбиком \(588 + 586\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>5</td><td>8</td><td>8</td></tr><tr><td></td><td>+</td><td class="u">5</td><td class="u">8</td><td class="u">6</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">7</td><td class="q">4</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 1174
+@check 588+586
+@task
+Вычтите столбиком \(304 - 161\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>3</td><td>0</td><td>4</td></tr><tr><td>−</td><td class="u">1</td><td class="u">6</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">4</td><td class="q">3</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(143 + 161 = 304\) ✓.
+@ans 143
+@check 304-161
+@task
+Вычтите столбиком \(399 - 254\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>3</td><td>9</td><td>9</td></tr><tr><td>−</td><td class="u">2</td><td class="u">5</td><td class="u">4</td></tr><tr><td></td><td class="q">1</td><td class="q">4</td><td class="q">5</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(145 + 254 = 399\) ✓.
+@ans 145
+@check 399-254
+@task
+Вычтите столбиком \(471 - 302\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>4</td><td>7</td><td>1</td></tr><tr><td>−</td><td class="u">3</td><td class="u">0</td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">6</td><td class="q">9</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(169 + 302 = 471\) ✓.
+@ans 169
+@check 471-302
+@task
+Сложите столбиком \(408 + 161\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>4</td><td>0</td><td>8</td></tr><tr><td>+</td><td class="u">1</td><td class="u">6</td><td class="u">1</td></tr><tr><td></td><td class="q">5</td><td class="q">6</td><td class="q">9</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 569
+@check 408+161
+@hw
+@task
+Сложите столбиком \(725 + 491\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>7</td><td>2</td><td>5</td></tr><tr><td></td><td>+</td><td class="u">4</td><td class="u">9</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">1</td><td class="q">6</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 1216
+@check 725+491
+@task
+Сложите столбиком \(828 + 358\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>8</td><td>2</td><td>8</td></tr><tr><td></td><td>+</td><td class="u">3</td><td class="u">5</td><td class="u">8</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">8</td><td class="q">6</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 1186
+@check 828+358
+@task
+Сложите столбиком \(343 + 196\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td>3</td><td>4</td><td>3</td></tr><tr><td>+</td><td class="u">1</td><td class="u">9</td><td class="u">6</td></tr><tr><td></td><td class="q">5</td><td class="q">3</td><td class="q">9</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+@ans 539
+@check 343+196
+@task
+Вычтите столбиком \(588 - 289\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>5</td><td>8</td><td>8</td></tr><tr><td>−</td><td class="u">2</td><td class="u">8</td><td class="u">9</td></tr><tr><td></td><td class="q">2</td><td class="q">9</td><td class="q">9</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(299 + 289 = 588\) ✓.
+@ans 299
+@check 588-289
+@task
+Вычтите столбиком \(667 - 455\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>6</td><td>6</td><td>7</td></tr><tr><td>−</td><td class="u">4</td><td class="u">5</td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(212 + 455 = 667\) ✓.
+@ans 212
+@check 667-455
+@task
+Вычтите столбиком \(726 - 622\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>7</td><td>2</td><td>6</td></tr><tr><td>−</td><td class="u">6</td><td class="u">2</td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">0</td><td class="q">4</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(104 + 622 = 726\) ✓.
+@ans 104
+@check 726-622
+@task
+Вычтите столбиком \(536 - 404\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>5</td><td>3</td><td>6</td></tr><tr><td>−</td><td class="u">4</td><td class="u">0</td><td class="u">4</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(132 + 404 = 536\) ✓.
+@ans 132
+@check 536-404
+@task
+Вычтите столбиком \(396 - 146\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>3</td><td>9</td><td>6</td></tr><tr><td>−</td><td class="u">1</td><td class="u">4</td><td class="u">6</td></tr><tr><td></td><td class="q">2</td><td class="q">5</td><td class="q">0</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(250 + 146 = 396\) ✓.
+@ans 250
+@check 396-146
+@task
+@rep 13
+Один из вертикальных углов равен \(94^\circ\). Найдите другой.
+@sol
+Вертикальные углы равны: \(94^\circ\).
+@ans 94
+@check 94
+@task
+@rep 11
+Решите уравнение \(196 - x = 96\).
+@sol
+Неизвестное вычитаемое = уменьшаемое − разность: \(x = 196 - 96 = 100\). Проверка: \(196 - 100 = 96\) ✓.
+@ans 100
+@check 196-96
+@task
+@rep 7
+Вычислите \(14 : 2\).
+@sol
+Вспоминаем «семейство»: \(2\cdot7 = 14\), значит \(14 : 2 = 7\).
+@ans 7
+@check 14//2

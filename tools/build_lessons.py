@@ -188,14 +188,14 @@ def plan_rows(student_dir):
     rows = []
     if plan.exists():
         for line in plan.read_text(encoding="utf-8").splitlines():
-            m = re.match(r"^\|\s*(\d+)\s*\|([^|]*)\|([^|]*)\|([^|]*)\|([^|]*)\|", line)
+            m = re.match(r"^\|\s*(\d+[a-z]?)\s*\|([^|]*)\|([^|]*)\|([^|]*)\|([^|]*)\|", line)
             if m:
                 rows.append([c.strip().replace("**", "") for c in m.groups()])
     return rows
 
 
 def render_index(student_dir, subtitle, built):
-    by_num = {int(re.match(r"\d+", p.name).group()): p.name for p in built}
+    by_num = {re.match(r"\d+[a-z]?", p.name).group().lstrip("0") or "0": p.name for p in built}
     rows = plan_rows(student_dir)
     body = [f'<header class="ls-head"><h1>Уроки: {subtitle.split("·")[0].strip()}</h1>'
             f'<div class="ls-sub">{subtitle}</div>'
@@ -205,7 +205,7 @@ def render_index(student_dir, subtitle, built):
             '<table class="ls-table ls-index"><thead><tr><th>№</th><th>Тема</th><th>ОГЭ</th>'
             '<th>Тип</th><th>Когда</th></tr></thead><tbody>']
     for num, topic, oge, kind, month in rows:
-        n = int(num)
+        n = num.lstrip("0") or "0"
         cls = ' class="ls-row-geo"' if kind.strip() == "Г" else (
             ' class="ls-row-ctrl"' if "контроль" in kind else "")
         cell = f'<a href="{by_num[n]}">{html.escape(topic)}</a>' if n in by_num else html.escape(topic)

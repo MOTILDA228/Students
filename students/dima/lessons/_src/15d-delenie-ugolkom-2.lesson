@@ -1,0 +1,302 @@
+@title Урок 15d. Деление уголком: нули в частном, проверка, задачи
+@tags ОГЭ №6 | база | столбик
+@teacher
+<p><b>Новая идея урока:</b> главная ловушка деления — <b>ноль в частном</b>: снесли цифру, а число меньше делителя — пишем 0 и сносим следующую. Каждый ответ проверяем умножением. <b>Метод для Димы:</b> всё — на клетчатой бумаге, <b>одна цифра — одна клетка</b>, единицы строго под единицами. Первые 3 примера он проговаривает вслух каждый шаг, вы только задаёте вопросы («что делим? сколько раз помещается? что пишем?»). Карточку-алгоритм держать перед ним весь урок. Ошибку не исправлять за него — спросить «проверь умножением».</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> в срезе знаменитое «824 : 4 = 26» вместо 206 — потерян ноль. Помогает прикидка числа цифр (урок 15c) и проверка умножением.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+@tasks Разминка-повторение (12 минут)
+@task
+@rep 15
+Разделите уголком \(180 : 4\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>8</td><td>0</td><td class="l u">4</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">6</td><td></td><td class="l q">4</td><td class="q">5</td><td></td></tr><tr><td></td><td></td><td>2</td><td>0</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">0</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 45. Проверка: \(45\cdot4 = 180\) ✓.
+@ans 45
+@check 180//4
+@task
+@rep 15
+Умножьте столбиком \(296\cdot6\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">5</td><td class="c">3</td><td></td></tr><tr><td></td><td></td><td>2</td><td>9</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">1</td><td class="q">7</td><td class="q">7</td><td class="q">6</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1776.
+@ans 1776
+@check 296*6
+@task
+@rep 14
+Решите уравнение \(x - 115 = 95\).
+@sol
+Неизвестное уменьшаемое = разность + вычитаемое: \(x = 95 + 115 = 210\). Проверка: \(210 - 115 = 95\) ✓.
+@ans 210
+@check 95+115
+@task
+@rep 14
+Решите уравнение \(x : 4 = 23\).
+@sol
+Неизвестное делимое = частное · делитель: \(x = 23\cdot4 = 92\). Проверка: \(92 : 4 = 23\) ✓.
+@ans 92
+@check 23*4
+@task
+@rep 12
+9 одинаковых пачек тетрадей содержат 243 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(9\cdot x = 243\).)
+@sol
+Неизвестный множитель: \(x = 243 : 9 = 27\).
+@ans 27
+@check 243//9
+@task
+@rep 12
+Решите уравнение \(8\cdot x = 192\).
+@sol
+Неизвестный множитель = произведение : известный множитель: \(x = 192 : 8 = 24\). Проверка: \(8\cdot24 = 192\) ✓.
+@ans 24
+@check 192//8
+@task
+@rep 8
+Вычислите \(21 : 7\).
+@sol
+Вспоминаем «семейство»: \(7\cdot3 = 21\), значит \(21 : 7 = 3\).
+@ans 3
+@check 21//7
+@task
+@rep 8
+Какое число пропущено: \(9\cdot\square = 63\)?
+@sol
+Пропущенный множитель: \(63 : 9 = 7\).
+@ans 7
+@check 63//9
+@theory Шпаргалка
+<h3>1. Ноль в частном</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td>8</td><td>2</td><td>4</td><td class="l u">4</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">8</td><td></td><td></td><td class="l q">2</td><td class="q">0</td><td class="q">6</td><td></td></tr><tr><td></td><td></td><td>2</td><td>4</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table><table class="ls-col"><tbody><tr><td></td><td>1</td><td>4</td><td>5</td><td>0</td><td class="l u">5</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">0</td><td></td><td></td><td class="l q">2</td><td class="q">9</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td>4</td><td>5</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">5</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
+<ol class="ls-steps"><li>\(8 : 4 = 2\), \(2\cdot4 = 8\), \(8 - 8 = 0\).</li><li>Сносим 2. <b>2 меньше 4</b> — в частное пишем <b>0</b>, сносим следующую цифру 4 → 24.</li><li>\(24 : 4 = 6\). Ответ <b>206</b> (а не 26!).</li></ol>
+<div class="ls-rule"><b>Прикидка спасает:</b> в 824 : 4 первое неполное делимое 8, после него 2 цифры → в ответе 3 цифры. Получил 26 — потерял ноль.</div>
+<h3>2. Проверка — всегда</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td></td></tr><tr><td></td><td>2</td><td>0</td><td>6</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">8</td><td class="q">2</td><td class="q">4</td></tr></tbody></table></div>
+<div class="ls-rule">Частное × делитель = делимое: \(206\cdot4 = 824\) ✓.</div>
+@tasks Ступень 1. Разминка без нулей
+@task
+Разделите уголком \(245 : 5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>4</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">0</td><td></td><td class="l q">4</td><td class="q">9</td><td></td></tr><tr><td></td><td></td><td>4</td><td>5</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 49. Проверка: \(49\cdot5 = 245\) ✓.
+@ans 49
+@check 245//5
+@task
+Разделите уголком \(345 : 5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>3</td><td>4</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">3</td><td class="u">0</td><td></td><td class="l q">6</td><td class="q">9</td><td></td></tr><tr><td></td><td></td><td>4</td><td>5</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 69. Проверка: \(69\cdot5 = 345\) ✓.
+@ans 69
+@check 345//5
+@task
+Разделите уголком \(295 : 5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>9</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">5</td><td></td><td class="l q">5</td><td class="q">9</td><td></td></tr><tr><td></td><td></td><td>4</td><td>5</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 59. Проверка: \(59\cdot5 = 295\) ✓.
+@ans 59
+@check 295//5
+@task
+Разделите уголком \(640 : 8\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>6</td><td>4</td><td>0</td><td class="l u">8</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td class="u">4</td><td></td><td class="l q">8</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 80. Проверка: \(80\cdot8 = 640\) ✓.
+@ans 80
+@check 640//8
+@tasks Ступень 2. Ноль в частном
+@task
+Разделите уголком \(4200 : 6\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>2</td><td>0</td><td>0</td><td class="l u">6</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td class="u">2</td><td></td><td></td><td class="l q">7</td><td class="q">0</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 6, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 700. Проверка: \(700\cdot6 = 4200\) ✓.
+@ans 700
+@check 4200//6
+@task
+Разделите уголком \(380 : 2\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>3</td><td>8</td><td>0</td><td class="l u">2</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td></td><td></td><td class="l q">1</td><td class="q">9</td><td class="q">0</td><td></td></tr><tr><td></td><td>1</td><td>8</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>−</td><td class="u">1</td><td class="u">8</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 2, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 190. Проверка: \(190\cdot2 = 380\) ✓.
+@ans 190
+@check 380//2
+@task
+Разделите уголком \(2736 : 9\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>7</td><td>3</td><td>6</td><td class="l u">9</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">7</td><td></td><td></td><td class="l q">3</td><td class="q">0</td><td class="q">4</td><td></td></tr><tr><td></td><td></td><td></td><td>3</td><td>6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">3</td><td class="u">6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 9, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 304. Проверка: \(304\cdot9 = 2736\) ✓.
+@ans 304
+@check 2736//9
+@task
+Разделите уголком \(2450 : 5\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>4</td><td>5</td><td>0</td><td class="l u">5</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">0</td><td></td><td></td><td class="l q">4</td><td class="q">9</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td>4</td><td>5</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">5</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 5, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 490. Проверка: \(490\cdot5 = 2450\) ✓.
+@ans 490
+@check 2450//5
+@task
+Разделите уголком \(2560 : 8\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>5</td><td>6</td><td>0</td><td class="l u">8</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td class="l q">3</td><td class="q">2</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td>1</td><td>6</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">6</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 8, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 320. Проверка: \(320\cdot8 = 2560\) ✓.
+@ans 320
+@check 2560//8
+@task
+Разделите уголком \(6440 : 7\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>6</td><td>4</td><td>4</td><td>0</td><td class="l u">7</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td class="u">3</td><td></td><td></td><td class="l q">9</td><td class="q">2</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td>1</td><td>4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 7, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 920. Проверка: \(920\cdot7 = 6440\) ✓.
+@ans 920
+@check 6440//7
+@task
+Разделите уголком \(1440 : 4\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>4</td><td>4</td><td>0</td><td class="l u">4</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">2</td><td></td><td></td><td class="l q">3</td><td class="q">6</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td>2</td><td>4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 4, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 360. Проверка: \(360\cdot4 = 1440\) ✓.
+@ans 360
+@check 1440//4
+@tasks Ступень 3. Проверка и задачи
+@task
+Проверь умножением: верно ли, что \(410 : 5 = 84\)? Ответ: 1 — верно, 0 — неверно.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>8</td><td>4</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">4</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>\(84\cdot5 = 420\) ≠ 410 → 0.
+@ans 0
+@check int(84*5==410)
+@task
+Проверь умножением: верно ли, что \(208 : 8 = 16\)? Ответ: 1 — верно, 0 — неверно.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>1</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">8</td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">8</td></tr></tbody></table>\(16\cdot8 = 128\) ≠ 208 → 0.
+@ans 0
+@check int(16*8==208)
+@task
+Проверь умножением: верно ли, что \(102 : 3 = 24\)? Ответ: 1 — верно, 0 — неверно.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>2</td><td>4</td></tr><tr><td>×</td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">7</td><td class="q">2</td></tr></tbody></table>\(24\cdot3 = 72\) ≠ 102 → 0.
+@ans 0
+@check int(24*3==102)
+@task
+Проверь умножением: верно ли, что \(621 : 9 = 69\)? Ответ: 1 — верно, 0 — неверно.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">8</td><td></td></tr><tr><td></td><td></td><td>6</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">6</td><td class="q">2</td><td class="q">1</td></tr></tbody></table>\(69\cdot9 = 621\) = 621 → 1.
+@ans 1
+@check int(69*9==621)
+@task
+623 тетрадей разложили поровну в 7 коробок. Сколько тетрадей в одной коробке?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>6</td><td>2</td><td>3</td><td class="l u">7</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">5</td><td class="u">6</td><td></td><td class="l q">8</td><td class="q">9</td><td></td></tr><tr><td></td><td></td><td>6</td><td>3</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">6</td><td class="u">3</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(623 : 7 = 89\).
+@ans 89
+@check 623//7
+@task
+За 5 одинаковых билета заплатили 210 руб.. Сколько стоит один билет?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>1</td><td>0</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">0</td><td></td><td class="l q">4</td><td class="q">2</td><td></td></tr><tr><td></td><td></td><td>1</td><td>0</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">0</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(210 : 5 = 42\).
+@ans 42
+@check 210//5
+@task
+141 тетрадей разложили поровну в 3 коробок. Сколько тетрадей в одной коробке?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>4</td><td>1</td><td class="l u">3</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">2</td><td></td><td class="l q">4</td><td class="q">7</td><td></td></tr><tr><td></td><td></td><td>2</td><td>1</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">1</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(141 : 3 = 47\).
+@ans 47
+@check 141//3
+@task
+792 тетрадей разложили поровну в 9 коробок. Сколько тетрадей в одной коробке?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>7</td><td>9</td><td>2</td><td class="l u">9</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">7</td><td class="u">2</td><td></td><td class="l q">8</td><td class="q">8</td><td></td></tr><tr><td></td><td></td><td>7</td><td>2</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">7</td><td class="u">2</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(792 : 9 = 88\).
+@ans 88
+@check 792//9
+@task
+За 6 одинаковых билета заплатили 246 руб.. Сколько стоит один билет?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>4</td><td>6</td><td class="l u">6</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td class="l q">4</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">6</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(246 : 6 = 41\).
+@ans 41
+@check 246//6
+@tasks Мини-срез (10 минут, без подсказок)
+@task
+Разделите уголком \(105 : 5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>0</td><td>5</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">0</td><td></td><td class="l q">2</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">5</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 21. Проверка: \(21\cdot5 = 105\) ✓.
+@ans 21
+@check 105//5
+@task
+Проверь умножением: верно ли, что \(147 : 7 = 31\)? Ответ: 1 — верно, 0 — неверно.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>3</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">7</td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">7</td></tr></tbody></table>\(31\cdot7 = 217\) ≠ 147 → 0.
+@ans 0
+@check int(31*7==147)
+@task
+304 тетрадей разложили поровну в 4 коробок. Сколько тетрадей в одной коробке?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>3</td><td>0</td><td>4</td><td class="l u">4</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">8</td><td></td><td class="l q">7</td><td class="q">6</td><td></td></tr><tr><td></td><td></td><td>2</td><td>4</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(304 : 4 = 76\).
+@ans 76
+@check 304//4
+@task
+174 км машина проехала за 3 часов с одной скоростью. Сколько км она проезжала за час?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>7</td><td>4</td><td class="l u">3</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">5</td><td></td><td class="l q">5</td><td class="q">8</td><td></td></tr><tr><td></td><td></td><td>2</td><td>4</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(174 : 3 = 58\).
+@ans 58
+@check 174//3
+@task
+Проверь умножением: верно ли, что \(140 : 4 = 35\)? Ответ: 1 — верно, 0 — неверно.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>3</td><td>5</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">1</td><td class="q">4</td><td class="q">0</td></tr></tbody></table>\(35\cdot4 = 140\) = 140 → 1.
+@ans 1
+@check int(35*4==140)
+@hw
+@task
+Разделите уголком \(5520 : 8\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>5</td><td>5</td><td>2</td><td>0</td><td class="l u">8</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td class="u">8</td><td></td><td></td><td class="l q">6</td><td class="q">9</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td>7</td><td>2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">7</td><td class="u">2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 8, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 690. Проверка: \(690\cdot8 = 5520\) ✓.
+@ans 690
+@check 5520//8
+@task
+Разделите уголком \(814 : 2\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>8</td><td>1</td><td>4</td><td class="l u">2</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">8</td><td></td><td></td><td class="l q">4</td><td class="q">0</td><td class="q">7</td><td></td></tr><tr><td></td><td></td><td>1</td><td>4</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">4</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 2, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 407. Проверка: \(407\cdot2 = 814\) ✓.
+@ans 407
+@check 814//2
+@task
+Разделите уголком \(418 : 2\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>1</td><td>8</td><td class="l u">2</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td></td><td></td><td class="l q">2</td><td class="q">0</td><td class="q">9</td><td></td></tr><tr><td></td><td></td><td>1</td><td>8</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">8</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 2, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 209. Проверка: \(209\cdot2 = 418\) ✓.
+@ans 209
+@check 418//2
+@task
+Разделите уголком \(4500 : 5\). Внимание: в частном есть ноль.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>5</td><td>0</td><td>0</td><td class="l u">5</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td class="u">5</td><td></td><td></td><td class="l q">9</td><td class="q">0</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если снесли цифру, а число меньше 5, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: 900. Проверка: \(900\cdot5 = 4500\) ✓.
+@ans 900
+@check 4500//5
+@task
+Проверь умножением: верно ли, что \(522 : 6 = 97\)? Ответ: 1 — верно, 0 — неверно.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>9</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">5</td><td class="q">8</td><td class="q">2</td></tr></tbody></table>\(97\cdot6 = 582\) ≠ 522 → 0.
+@ans 0
+@check int(97*6==522)
+@task
+Проверь умножением: верно ли, что \(792 : 9 = 87\)? Ответ: 1 — верно, 0 — неверно.
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">6</td><td></td></tr><tr><td></td><td></td><td>8</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">8</td><td class="q">3</td></tr></tbody></table>\(87\cdot9 = 783\) ≠ 792 → 0.
+@ans 0
+@check int(87*9==792)
+@task
+288 км машина проехала за 3 часов с одной скоростью. Сколько км она проезжала за час?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>8</td><td>8</td><td class="l u">3</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">7</td><td></td><td class="l q">9</td><td class="q">6</td><td></td></tr><tr><td></td><td></td><td>1</td><td>8</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">8</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(288 : 3 = 96\).
+@ans 96
+@check 288//3
+@task
+426 тетрадей разложили поровну в 6 коробок. Сколько тетрадей в одной коробке?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>4</td><td>2</td><td>6</td><td class="l u">6</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">4</td><td class="u">2</td><td></td><td class="l q">7</td><td class="q">1</td><td></td></tr><tr><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">6</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Делим: \(426 : 6 = 71\).
+@ans 71
+@check 426//6
+@task
+@rep 14
+Решите уравнение \(48 : x = 16\).
+@sol
+Неизвестный делитель = делимое : частное: \(x = 48 : 16 = 3\). Проверка: \(48 : 3 = 16\) ✓.
+@ans 3
+@check 48//16
+@task
+@rep 12
+Решите уравнение \(x\cdot4 = 56\).
+@sol
+Неизвестный множитель = произведение : известный множитель: \(x = 56 : 4 = 14\). Проверка: \(4\cdot14 = 56\) ✓.
+@ans 14
+@check 56//4
+@task
+@rep 8
+Вычислите \(9 : 3\).
+@sol
+Вспоминаем «семейство»: \(3\cdot3 = 9\), значит \(9 : 3 = 3\).
+@ans 3
+@check 9//3

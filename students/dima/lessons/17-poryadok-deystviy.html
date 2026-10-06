@@ -63,6 +63,13 @@ body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
 .ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
 .ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
 .ls-answer { font-weight: 700; }
+.ls-col { border-collapse: collapse; font: 600 1.15em/1 ui-monospace, Consolas, monospace; margin: 10px 0; }
+.ls-col td { width: 1.3em; min-width: 1.3em; height: 1.45em; text-align: center; vertical-align: middle; padding: 0; border: 1px solid var(--ls-grid); }
+.ls-col td.u { border-bottom: 2px solid var(--ls-text); }
+.ls-col td.l { border-left: 2px solid var(--ls-text); }
+.ls-col td.c { font-size: .68em; color: var(--ls-accent); vertical-align: bottom; }
+.ls-col td.q { color: var(--ls-accent); }
+.ls-cols { display: flex; flex-wrap: wrap; gap: 6px 32px; align-items: flex-start; }
 .ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
 .ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
 .ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
@@ -117,18 +124,18 @@ mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 <svg class="ls-fig" viewBox="0 0 206 128" width="206" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="116" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,90 168,90 90,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
 <details><summary>Решение</summary>Основание (по нижней линии) 5, высота 2: \(S = \frac{5\cdot2}{2} = 5\).
 <p class="ls-answer">Ответ: 5</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите \(4254 : 6\). Осторожно: в частном будет ноль.</div>
-<details><summary>Решение</summary>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 709. Проверка: \(709\cdot6 = 4254\) ✓.
-<p class="ls-answer">Ответ: 709</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите столбиком \(2760 : 8\).</div>
-<details><summary>Решение</summary>По шагам: \(27 : 8 = 3\) (остаток 3); \(36 : 8 = 4\) (остаток 4); \(40 : 8 = 5\). Ответ: 345. Проверка: \(345\cdot8 = 2760\) ✓.
-<p class="ls-answer">Ответ: 345</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 13)</span> В треугольнике два угла \(36^\circ\) и \(55^\circ\). Найдите третий.</div>
-<details><summary>Решение</summary>\(180 - 36 - 55 = 89^\circ\).
-<p class="ls-answer">Ответ: 89</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 13)</span> Один из вертикальных углов равен \(139^\circ\). Найдите другой.</div>
-<details><summary>Решение</summary>Вертикальные углы равны: \(139^\circ\).
-<p class="ls-answer">Ответ: 139</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 15)</span> Умножьте столбиком \(782\cdot6\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>7</td><td>8</td><td>2</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">4</td><td class="q">6</td><td class="q">9</td><td class="q">2</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4692.
+<p class="ls-answer">Ответ: 4692</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычтите столбиком \(843 - 609\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>8</td><td>4</td><td>3</td></tr><tr><td>−</td><td class="u">6</td><td class="u">0</td><td class="u">9</td></tr><tr><td></td><td class="q">2</td><td class="q">3</td><td class="q">4</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(234 + 609 = 843\) ✓.
+<p class="ls-answer">Ответ: 234</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 13)</span> В треугольнике два угла \(59^\circ\) и \(50^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 59 - 50 = 71^\circ\).
+<p class="ls-answer">Ответ: 71</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 13)</span> Один из вертикальных углов равен \(107^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Вертикальные углы равны: \(107^\circ\).
+<p class="ls-answer">Ответ: 107</p></details></div>
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(12 : 3\).</div>
 <details><summary>Решение</summary>Вспоминаем «семейство»: \(3\cdot4 = 12\), значит \(12 : 3 = 4\).
 <p class="ls-answer">Ответ: 4</p></details></div>
@@ -278,15 +285,15 @@ mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычислите \(14 : 7 + 8\cdot3\).</div>
 <details><summary>Решение</summary>Сначала деление и умножение: \(14 : 7 = 2\), \(8\cdot3 = 24\); потом сложение: 26.
 <p class="ls-answer">Ответ: 26</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите \(2040 : 3\). Осторожно: в частном будет ноль.</div>
-<details><summary>Решение</summary>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 680. Проверка: \(680\cdot3 = 2040\) ✓.
-<p class="ls-answer">Ответ: 680</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 13)</span> Один из смежных углов равен \(42^\circ\). Найдите другой.</div>
-<details><summary>Решение</summary>Смежные в сумме \(180^\circ\): \(180 - 42 = 138^\circ\).
-<p class="ls-answer">Ответ: 138</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 9)</span> Задумали число, прибавили к нему 43 и получили 75. Какое число задумали? (Составьте уравнение \(x + 43 = 75\).)</div>
-<details><summary>Решение</summary>\(x = 75 - 43 = 32\).
-<p class="ls-answer">Ответ: 32</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 15)</span> Умножьте столбиком \(790\cdot3\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td></td><td></td></tr><tr><td></td><td></td><td>7</td><td>9</td><td>0</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">2</td><td class="q">3</td><td class="q">7</td><td class="q">0</td></tr></tbody></table>Умножаем 3 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2370.
+<p class="ls-answer">Ответ: 2370</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 13)</span> Один из вертикальных углов равен \(40^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Вертикальные углы равны: \(40^\circ\).
+<p class="ls-answer">Ответ: 40</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 9)</span> Решите уравнение \(84 + x = 217\).</div>
+<details><summary>Решение</summary>Неизвестное слагаемое = сумма − известное слагаемое: \(x = 217 - 84 = 133\). Проверка: \(133 + 84 = 217\) ✓.
+<p class="ls-answer">Ответ: 133</p></details></div>
 </section>
 <nav class="ls-foot"><a href="16-geom-ploshchadi-kletki.html">← Урок 16</a><a href="00-index.html">Все уроки</a><a href="18-uravneniya-dva-shaga.html">Урок 18 →</a></nav>
 </div>

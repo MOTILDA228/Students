@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 15a. Умножение в столбик на однозначное число</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-col { border-collapse: collapse; font: 600 1.15em/1 ui-monospace, Consolas, monospace; margin: 10px 0; }
+.ls-col td { width: 1.3em; min-width: 1.3em; height: 1.45em; text-align: center; vertical-align: middle; padding: 0; border: 1px solid var(--ls-grid); }
+.ls-col td.u { border-bottom: 2px solid var(--ls-text); }
+.ls-col td.l { border-left: 2px solid var(--ls-text); }
+.ls-col td.c { font-size: .68em; color: var(--ls-accent); vertical-align: bottom; }
+.ls-col td.q { color: var(--ls-accent); }
+.ls-cols { display: flex; flex-wrap: wrap; gap: 6px 32px; align-items: flex-start; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 15a. Умножение в столбик на однозначное число</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">база</span><span class="ls-tag">столбик</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. По частям и двузначные</a><a href="#ls-s5">Ступень 2. Трёхзначные</a><a href="#ls-s6">Ступень 3. Четырёхзначные и задачи</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> умножение «по частям» (\(23\cdot4 = 20\cdot4 + 3\cdot4\)) и та же идея в столбике: умножаем на каждую цифру справа налево, десятки переносим наверх и <b>прибавляем</b> к следующему произведению. <b>Метод для Димы:</b> всё — на клетчатой бумаге, <b>одна цифра — одна клетка</b>, единицы строго под единицами. Первые 3 примера он проговаривает вслух каждый шаг, вы только задаёте вопросы («что делим? сколько раз помещается? что пишем?»). Карточку-алгоритм держать перед ним весь урок. Ошибку не исправлять за него — спросить «проверь умножением».</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> забывает прибавить перенос; прибавляет перенос <b>до</b> умножения; пишет двузначное число в одну клетку; паузы на таблице (держать таблицу рядом первые 15 минут).</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычтите столбиком \(624 - 344\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>6</td><td>2</td><td>4</td></tr><tr><td>−</td><td class="u">3</td><td class="u">4</td><td class="u">4</td></tr><tr><td></td><td class="q">2</td><td class="q">8</td><td class="q">0</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(280 + 344 = 624\) ✓.
+<p class="ls-answer">Ответ: 280</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 15)</span> Умножьте столбиком \(846\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td class="c">5</td><td></td></tr><tr><td></td><td></td><td>8</td><td>4</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">6</td><td class="q">1</td><td class="q">4</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 7614.
+<p class="ls-answer">Ответ: 7614</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(x : 9 = 30\).</div>
+<details><summary>Решение</summary>Неизвестное делимое = частное · делитель: \(x = 30\cdot9 = 270\). Проверка: \(270 : 9 = 30\) ✓.
+<p class="ls-answer">Ответ: 270</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(x : 8 = 13\).</div>
+<details><summary>Решение</summary>Неизвестное делимое = частное · делитель: \(x = 13\cdot8 = 104\). Проверка: \(104 : 8 = 13\) ✓.
+<p class="ls-answer">Ответ: 104</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 12)</span> 6 одинаковых пачек тетрадей содержат 96 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(6\cdot x = 96\).)</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(x = 96 : 6 = 16\).
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 12)</span> Решите уравнение \(x\cdot2 = 34\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 34 : 2 = 17\). Проверка: \(2\cdot17 = 34\) ✓.
+<p class="ls-answer">Ответ: 17</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(25 : 5\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(5\cdot5 = 25\), значит \(25 : 5 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(7\cdot\square = 56\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(56 : 7 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Сначала — по частям</h3>
+<div class="ls-example">\(23\cdot4 = 20\cdot4 + 3\cdot4 = 80 + 12 = 92\). Столбик делает то же самое, только короче.</div>
+<h3>2. Столбик</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>2</td><td>3</td></tr><tr><td>×</td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">9</td><td class="q">2</td></tr></tbody></table><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>3</td><td>4</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">2</td><td class="q">0</td><td class="q">8</td><td class="q">2</td></tr></tbody></table></div>
+<ol class="ls-steps"><li>Однозначное число пишем под <b>единицами</b> большого.</li><li>\(7\cdot6 = 42\): пишем <b>2</b>, а <b>4</b> — маленькой цифрой над десятками.</li><li>\(4\cdot6 = 24\), <b>плюс 4</b> сверху = 28: пишем 8, 2 — наверх над сотнями.</li><li>\(3\cdot6 = 18\), плюс 2 = 20: пишем 20. Ответ 2082.</li></ol>
+<div class="ls-rule"><b>Порядок в каждом шаге:</b> сначала умножить, потом прибавить то, что сверху.</div>
+<div class="ls-warn">Прикидка: \(347\cdot6\) — это примерно \(350\cdot6 = 2100\). Если получилось 208 или 20 820 — ошибка.</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. По частям и двузначные</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(25\cdot4\).</div>
+<details><summary>Решение</summary>Разбиваем: \(25\cdot4 = 20\cdot4 + 5\cdot4 = 80 + 20 = 100\).
+<p class="ls-answer">Ответ: 100</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычислите \(20\cdot2\).</div>
+<details><summary>Решение</summary>Разбиваем: \(20\cdot2 = 20\cdot2 + 0\cdot2 = 40 + 0 = 40\).
+<p class="ls-answer">Ответ: 40</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычислите \(17\cdot2\).</div>
+<details><summary>Решение</summary>Разбиваем: \(17\cdot2 = 10\cdot2 + 7\cdot2 = 20 + 14 = 34\).
+<p class="ls-answer">Ответ: 34</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычислите \(19\cdot5\).</div>
+<details><summary>Решение</summary>Разбиваем: \(19\cdot5 = 10\cdot5 + 9\cdot5 = 50 + 45 = 95\).
+<p class="ls-answer">Ответ: 95</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Умножьте столбиком \(36\cdot2\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>3</td><td>6</td></tr><tr><td>×</td><td class="u"></td><td class="u">2</td></tr><tr><td></td><td class="q">7</td><td class="q">2</td></tr></tbody></table>Умножаем 2 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 72.
+<p class="ls-answer">Ответ: 72</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Умножьте столбиком \(70\cdot6\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>7</td><td>0</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">4</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 420.
+<p class="ls-answer">Ответ: 420</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Умножьте столбиком \(88\cdot4\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td></tr><tr><td></td><td></td><td>8</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">3</td><td class="q">5</td><td class="q">2</td></tr></tbody></table>Умножаем 4 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 352.
+<p class="ls-answer">Ответ: 352</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Умножьте столбиком \(98\cdot6\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>9</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">5</td><td class="q">8</td><td class="q">8</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 588.
+<p class="ls-answer">Ответ: 588</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Умножьте столбиком \(83\cdot2\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>8</td><td>3</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">6</td><td class="q">6</td></tr></tbody></table>Умножаем 2 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 166.
+<p class="ls-answer">Ответ: 166</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> Умножьте столбиком \(97\cdot5\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td></tr><tr><td></td><td></td><td>9</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">4</td><td class="q">8</td><td class="q">5</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 485.
+<p class="ls-answer">Ответ: 485</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Трёхзначные</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Умножьте столбиком \(254\cdot3\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td>2</td><td>5</td><td>4</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">7</td><td class="q">6</td><td class="q">2</td></tr></tbody></table>Умножаем 3 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 762.
+<p class="ls-answer">Ответ: 762</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Умножьте столбиком \(541\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td><td></td></tr><tr><td></td><td></td><td>5</td><td>4</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">4</td><td class="q">8</td><td class="q">6</td><td class="q">9</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4869.
+<p class="ls-answer">Ответ: 4869</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Умножьте столбиком \(318\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td class="c">7</td><td></td></tr><tr><td></td><td></td><td>3</td><td>1</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">2</td><td class="q">8</td><td class="q">6</td><td class="q">2</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2862.
+<p class="ls-answer">Ответ: 2862</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Умножьте столбиком \(825\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>8</td><td>2</td><td>5</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">4</td><td class="q">2</td><td class="q">5</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 7425.
+<p class="ls-answer">Ответ: 7425</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Умножьте столбиком \(989\cdot2\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>9</td><td>8</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">9</td><td class="q">7</td><td class="q">8</td></tr></tbody></table>Умножаем 2 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1978.
+<p class="ls-answer">Ответ: 1978</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Умножьте столбиком \(786\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">7</td><td class="c">5</td><td></td></tr><tr><td></td><td></td><td>7</td><td>8</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">0</td><td class="q">7</td><td class="q">4</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 7074.
+<p class="ls-answer">Ответ: 7074</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Умножьте столбиком \(116\cdot8\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">4</td><td></td></tr><tr><td></td><td>1</td><td>1</td><td>6</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">8</td></tr><tr><td></td><td class="q">9</td><td class="q">2</td><td class="q">8</td></tr></tbody></table>Умножаем 8 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 928.
+<p class="ls-answer">Ответ: 928</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Умножьте столбиком \(220\cdot6\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>2</td><td>0</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1320.
+<p class="ls-answer">Ответ: 1320</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Четырёхзначные и задачи</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Умножьте столбиком \(3648\cdot4\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td class="c">1</td><td class="c">3</td><td></td></tr><tr><td></td><td></td><td>3</td><td>6</td><td>4</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">1</td><td class="q">4</td><td class="q">5</td><td class="q">9</td><td class="q">2</td></tr></tbody></table>Умножаем 4 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 14592.
+<p class="ls-answer">Ответ: 14592</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Умножьте столбиком \(2668\cdot5\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">3</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>2</td><td>6</td><td>6</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">3</td><td class="q">4</td><td class="q">0</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 13340.
+<p class="ls-answer">Ответ: 13340</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Умножьте столбиком \(3481\cdot8\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">6</td><td></td><td></td></tr><tr><td></td><td></td><td>3</td><td>4</td><td>8</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">8</td></tr><tr><td></td><td class="q">2</td><td class="q">7</td><td class="q">8</td><td class="q">4</td><td class="q">8</td></tr></tbody></table>Умножаем 8 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 27848.
+<p class="ls-answer">Ответ: 27848</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Умножьте столбиком \(3128\cdot5\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td class="c">1</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>3</td><td>1</td><td>2</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">5</td><td class="q">6</td><td class="q">4</td><td class="q">0</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 15640.
+<p class="ls-answer">Ответ: 15640</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Билет стоит 430 руб. Сколько стоят 6 билетов?</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>4</td><td>3</td><td>0</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">2</td><td class="q">5</td><td class="q">8</td><td class="q">0</td></tr></tbody></table>\(430\cdot6 = 2580\) руб.
+<p class="ls-answer">Ответ: 2580</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Билет стоит 331 руб. Сколько стоят 3 билетов?</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>3</td><td>3</td><td>1</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">9</td><td class="q">9</td><td class="q">3</td></tr></tbody></table>\(331\cdot3 = 993\) руб.
+<p class="ls-answer">Ответ: 993</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Билет стоит 209 руб. Сколько стоят 4 билетов?</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td></tr><tr><td></td><td>2</td><td>0</td><td>9</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">8</td><td class="q">3</td><td class="q">6</td></tr></tbody></table>\(209\cdot4 = 836\) руб.
+<p class="ls-answer">Ответ: 836</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Билет стоит 259 руб. Сколько стоят 6 билетов?</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">5</td><td></td></tr><tr><td></td><td></td><td>2</td><td>5</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">1</td><td class="q">5</td><td class="q">5</td><td class="q">4</td></tr></tbody></table>\(259\cdot6 = 1554\) руб.
+<p class="ls-answer">Ответ: 1554</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычислите \(46\cdot6\).</div>
+<details><summary>Решение</summary>Разбиваем: \(46\cdot6 = 40\cdot6 + 6\cdot6 = 240 + 36 = 276\).
+<p class="ls-answer">Ответ: 276</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Умножьте столбиком \(4011\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>4</td><td>0</td><td>1</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">3</td><td class="q">6</td><td class="q">0</td><td class="q">9</td><td class="q">9</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 36099.
+<p class="ls-answer">Ответ: 36099</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Билет стоит 337 руб. Сколько стоят 6 билетов?</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>3</td><td>3</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">2</td><td class="q">0</td><td class="q">2</td><td class="q">2</td></tr></tbody></table>\(337\cdot6 = 2022\) руб.
+<p class="ls-answer">Ответ: 2022</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Билет стоит 429 руб. Сколько стоят 5 билетов?</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>4</td><td>2</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">4</td><td class="q">5</td></tr></tbody></table>\(429\cdot5 = 2145\) руб.
+<p class="ls-answer">Ответ: 2145</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Умножьте столбиком \(639\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">8</td><td></td></tr><tr><td></td><td></td><td>6</td><td>3</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">5</td><td class="q">7</td><td class="q">5</td><td class="q">1</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 5751.
+<p class="ls-answer">Ответ: 5751</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Умножьте столбиком \(94\cdot6\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>9</td><td>4</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">5</td><td class="q">6</td><td class="q">4</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 564.
+<p class="ls-answer">Ответ: 564</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Умножьте столбиком \(89\cdot3\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>8</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">2</td><td class="q">6</td><td class="q">7</td></tr></tbody></table>Умножаем 3 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 267.
+<p class="ls-answer">Ответ: 267</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Умножьте столбиком \(686\cdot4\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>6</td><td>8</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">2</td><td class="q">7</td><td class="q">4</td><td class="q">4</td></tr></tbody></table>Умножаем 4 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2744.
+<p class="ls-answer">Ответ: 2744</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Умножьте столбиком \(582\cdot7\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">5</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>5</td><td>8</td><td>2</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">7</td></tr><tr><td></td><td class="q">4</td><td class="q">0</td><td class="q">7</td><td class="q">4</td></tr></tbody></table>Умножаем 7 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4074.
+<p class="ls-answer">Ответ: 4074</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Умножьте столбиком \(547\cdot8\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">5</td><td></td></tr><tr><td></td><td></td><td>5</td><td>4</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">8</td></tr><tr><td></td><td class="q">4</td><td class="q">3</td><td class="q">7</td><td class="q">6</td></tr></tbody></table>Умножаем 8 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4376.
+<p class="ls-answer">Ответ: 4376</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Умножьте столбиком \(603\cdot2\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>6</td><td>0</td><td>3</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">0</td><td class="q">6</td></tr></tbody></table>Умножаем 2 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1206.
+<p class="ls-answer">Ответ: 1206</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Билет стоит 472 руб. Сколько стоят 5 билетов?</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>4</td><td>7</td><td>2</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">3</td><td class="q">6</td><td class="q">0</td></tr></tbody></table>\(472\cdot5 = 2360\) руб.
+<p class="ls-answer">Ответ: 2360</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Билет стоит 375 руб. Сколько стоят 5 билетов?</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>3</td><td>7</td><td>5</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">8</td><td class="q">7</td><td class="q">5</td></tr></tbody></table>\(375\cdot5 = 1875\) руб.
+<p class="ls-answer">Ответ: 1875</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(36 : x = 18\).</div>
+<details><summary>Решение</summary>Неизвестный делитель = делимое : частное: \(x = 36 : 18 = 2\). Проверка: \(36 : 2 = 18\) ✓.
+<p class="ls-answer">Ответ: 2</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 12)</span> Решите уравнение \(x\cdot2 = 54\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 54 : 2 = 27\). Проверка: \(2\cdot27 = 54\) ✓.
+<p class="ls-answer">Ответ: 27</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(24 : 6\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(6\cdot4 = 24\), значит \(24 : 6 = 4\).
+<p class="ls-answer">Ответ: 4</p></details></div>
+</section>
+<nav class="ls-foot"><a href="15-slozhenie-vychitanie-stolbikom.html">← Урок 15</a><a href="00-index.html">Все уроки</a><a href="15b-umnozhenie-stolbikom-2.html">Урок 15b →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

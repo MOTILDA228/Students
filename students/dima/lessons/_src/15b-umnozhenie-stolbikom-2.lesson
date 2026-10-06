@@ -1,0 +1,295 @@
+@title Урок 15b. Умножение в столбик на двузначное число
+@tags база | столбик
+@teacher
+<p><b>Новая идея урока:</b> \(46\cdot23 = 46\cdot3 + 46\cdot20\): две строчки и сложение. Вторую строчку пишем <b>со сдвигом на одну клетку влево</b> — это десятки. <b>Метод для Димы:</b> всё — на клетчатой бумаге, <b>одна цифра — одна клетка</b>, единицы строго под единицами. Первые 3 примера он проговаривает вслух каждый шаг, вы только задаёте вопросы («что делим? сколько раз помещается? что пишем?»). Карточку-алгоритм держать перед ним весь урок. Ошибку не исправлять за него — спросить «проверь умножением».</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> не сдвигает вторую строчку; умножает только на одну цифру; ошибается в сложении в конце (повторить урок 15).</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+@tasks Разминка-повторение (12 минут)
+@task
+@rep 15
+Вычтите столбиком \(462 - 353\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>4</td><td>6</td><td>2</td></tr><tr><td>−</td><td class="u">3</td><td class="u">5</td><td class="u">3</td></tr><tr><td></td><td class="q">1</td><td class="q">0</td><td class="q">9</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(109 + 353 = 462\) ✓.
+@ans 109
+@check 462-353
+@task
+@rep 15
+Разделите уголком \(80 : 5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td>8</td><td>0</td><td class="l u">5</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">5</td><td></td><td class="l q">1</td><td class="q">6</td><td></td></tr><tr><td></td><td>3</td><td>0</td><td></td><td></td><td></td></tr><tr><td>−</td><td class="u">3</td><td class="u">0</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 16. Проверка: \(16\cdot5 = 80\) ✓.
+@ans 16
+@check 80//5
+@task
+@rep 14
+Решите уравнение \(84 + x = 171\).
+@sol
+Неизвестное слагаемое = сумма − известное слагаемое: \(x = 171 - 84 = 87\). Проверка: \(87 + 84 = 171\) ✓.
+@ans 87
+@check 171-84
+@task
+@rep 14
+Решите уравнение \(x : 4 = 22\).
+@sol
+Неизвестное делимое = частное · делитель: \(x = 22\cdot4 = 88\). Проверка: \(88 : 4 = 22\) ✓.
+@ans 88
+@check 22*4
+@task
+@rep 12
+Решите уравнение \(x\cdot2 = 48\).
+@sol
+Неизвестный множитель = произведение : известный множитель: \(x = 48 : 2 = 24\). Проверка: \(2\cdot24 = 48\) ✓.
+@ans 24
+@check 48//2
+@task
+@rep 12
+7 одинаковых пачек тетрадей содержат 203 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(7\cdot x = 203\).)
+@sol
+Неизвестный множитель: \(x = 203 : 7 = 29\).
+@ans 29
+@check 203//7
+@task
+@rep 8
+Вычислите \(28 : 7\).
+@sol
+Вспоминаем «семейство»: \(7\cdot4 = 28\), значит \(28 : 7 = 4\).
+@ans 4
+@check 28//7
+@task
+@rep 8
+Какое число пропущено: \(8\cdot\square = 40\)?
+@sol
+Пропущенный множитель: \(40 : 8 = 5\).
+@ans 5
+@check 40//8
+@theory Шпаргалка
+<h3>1. Идея</h3>
+<div class="ls-example">\(46\cdot23 = 46\cdot3 + 46\cdot20 = 138 + 920 = 1058\).</div>
+<h3>2. Столбик</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>4</td><td>6</td></tr><tr><td></td><td></td><td>×</td><td class="u">2</td><td class="u">3</td></tr><tr><td></td><td></td><td>1</td><td>3</td><td>8</td></tr><tr><td>+</td><td class="u"></td><td class="u">9</td><td class="u">2</td><td class="u"></td></tr><tr><td></td><td class="q">1</td><td class="q">0</td><td class="q">5</td><td class="q">8</td></tr></tbody></table><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>7</td><td>8</td></tr><tr><td></td><td></td><td>×</td><td class="u">3</td><td class="u">5</td></tr><tr><td></td><td></td><td>3</td><td>9</td><td>0</td></tr><tr><td>+</td><td class="u">2</td><td class="u">3</td><td class="u">4</td><td class="u"></td></tr><tr><td></td><td class="q">2</td><td class="q">7</td><td class="q">3</td><td class="q">0</td></tr></tbody></table></div>
+<ol class="ls-steps"><li>Умножаем верхнее число на <b>единицы</b> нижнего (\(46\cdot3 = 138\)) — как в уроке 15a.</li><li>Умножаем на <b>десятки</b> (\(46\cdot2 = 92\)) и пишем <b>со сдвигом на клетку влево</b> (на самом деле это 920).</li><li>Складываем строчки столбиком: \(138 + 920 = 1058\).</li></ol>
+<div class="ls-warn">Прикидка: \(46\cdot23 \approx 50\cdot20 = 1000\). Ответ 230 — значит, забыт сдвиг.</div>
+@tasks Ступень 1. Разминка: на однозначное
+@task
+Умножьте столбиком \(524\cdot3\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>5</td><td>2</td><td>4</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">1</td><td class="q">5</td><td class="q">7</td><td class="q">2</td></tr></tbody></table>Умножаем 3 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1572.
+@ans 1572
+@check 524*3
+@task
+Умножьте столбиком \(809\cdot7\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td class="c">6</td><td></td></tr><tr><td></td><td></td><td>8</td><td>0</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">7</td></tr><tr><td></td><td class="q">5</td><td class="q">6</td><td class="q">6</td><td class="q">3</td></tr></tbody></table>Умножаем 7 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 5663.
+@ans 5663
+@check 809*7
+@task
+Умножьте столбиком \(537\cdot9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">6</td><td></td></tr><tr><td></td><td></td><td>5</td><td>3</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">4</td><td class="q">8</td><td class="q">3</td><td class="q">3</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4833.
+@ans 4833
+@check 537*9
+@task
+Умножьте столбиком \(186\cdot7\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">6</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>1</td><td>8</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">7</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">0</td><td class="q">2</td></tr></tbody></table>Умножаем 7 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1302.
+@ans 1302
+@check 186*7
+@tasks Ступень 2. На двузначное (второе число до 19)
+@task
+Умножьте столбиком \(35\cdot14\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>3</td><td>5</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">4</td></tr><tr><td></td><td>1</td><td>4</td><td>0</td></tr><tr><td>+</td><td class="u">3</td><td class="u">5</td><td class="u"></td></tr><tr><td></td><td class="q">4</td><td class="q">9</td><td class="q">0</td></tr></tbody></table>Шаг 1: \(35\cdot4 = 140\). Шаг 2: \(35\cdot1 = 35\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 490.
+@ans 490
+@check 35*14
+@task
+Умножьте столбиком \(27\cdot19\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>7</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">9</td></tr><tr><td></td><td>2</td><td>4</td><td>3</td></tr><tr><td>+</td><td class="u">2</td><td class="u">7</td><td class="u"></td></tr><tr><td></td><td class="q">5</td><td class="q">1</td><td class="q">3</td></tr></tbody></table>Шаг 1: \(27\cdot9 = 243\). Шаг 2: \(27\cdot1 = 27\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 513.
+@ans 513
+@check 27*19
+@task
+Умножьте столбиком \(22\cdot15\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>2</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">5</td></tr><tr><td></td><td>1</td><td>1</td><td>0</td></tr><tr><td>+</td><td class="u">2</td><td class="u">2</td><td class="u"></td></tr><tr><td></td><td class="q">3</td><td class="q">3</td><td class="q">0</td></tr></tbody></table>Шаг 1: \(22\cdot5 = 110\). Шаг 2: \(22\cdot1 = 22\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 330.
+@ans 330
+@check 22*15
+@task
+Умножьте столбиком \(31\cdot15\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>3</td><td>1</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">5</td></tr><tr><td></td><td>1</td><td>5</td><td>5</td></tr><tr><td>+</td><td class="u">3</td><td class="u">1</td><td class="u"></td></tr><tr><td></td><td class="q">4</td><td class="q">6</td><td class="q">5</td></tr></tbody></table>Шаг 1: \(31\cdot5 = 155\). Шаг 2: \(31\cdot1 = 31\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 465.
+@ans 465
+@check 31*15
+@task
+Умножьте столбиком \(12\cdot17\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>1</td><td>2</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">7</td></tr><tr><td></td><td></td><td>8</td><td>4</td></tr><tr><td>+</td><td class="u">1</td><td class="u">2</td><td class="u"></td></tr><tr><td></td><td class="q">2</td><td class="q">0</td><td class="q">4</td></tr></tbody></table>Шаг 1: \(12\cdot7 = 84\). Шаг 2: \(12\cdot1 = 12\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 204.
+@ans 204
+@check 12*17
+@task
+Умножьте столбиком \(32\cdot19\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>3</td><td>2</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">9</td></tr><tr><td></td><td>2</td><td>8</td><td>8</td></tr><tr><td>+</td><td class="u">3</td><td class="u">2</td><td class="u"></td></tr><tr><td></td><td class="q">6</td><td class="q">0</td><td class="q">8</td></tr></tbody></table>Шаг 1: \(32\cdot9 = 288\). Шаг 2: \(32\cdot1 = 32\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 608.
+@ans 608
+@check 32*19
+@task
+Умножьте столбиком \(23\cdot11\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>3</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">1</td></tr><tr><td></td><td></td><td>2</td><td>3</td></tr><tr><td>+</td><td class="u">2</td><td class="u">3</td><td class="u"></td></tr><tr><td></td><td class="q">2</td><td class="q">5</td><td class="q">3</td></tr></tbody></table>Шаг 1: \(23\cdot1 = 23\). Шаг 2: \(23\cdot1 = 23\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 253.
+@ans 253
+@check 23*11
+@tasks Ступень 3. На двузначное
+@task
+Умножьте столбиком \(46\cdot87\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>4</td><td>6</td></tr><tr><td></td><td></td><td>×</td><td class="u">8</td><td class="u">7</td></tr><tr><td></td><td></td><td>3</td><td>2</td><td>2</td></tr><tr><td>+</td><td class="u">3</td><td class="u">6</td><td class="u">8</td><td class="u"></td></tr><tr><td></td><td class="q">4</td><td class="q">0</td><td class="q">0</td><td class="q">2</td></tr></tbody></table>Шаг 1: \(46\cdot7 = 322\). Шаг 2: \(46\cdot8 = 368\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 4002.
+@ans 4002
+@check 46*87
+@task
+Умножьте столбиком \(34\cdot62\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>3</td><td>4</td></tr><tr><td></td><td></td><td>×</td><td class="u">6</td><td class="u">2</td></tr><tr><td></td><td></td><td></td><td>6</td><td>8</td></tr><tr><td>+</td><td class="u">2</td><td class="u">0</td><td class="u">4</td><td class="u"></td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">0</td><td class="q">8</td></tr></tbody></table>Шаг 1: \(34\cdot2 = 68\). Шаг 2: \(34\cdot6 = 204\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 2108.
+@ans 2108
+@check 34*62
+@task
+Умножьте столбиком \(82\cdot81\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>8</td><td>2</td></tr><tr><td></td><td></td><td>×</td><td class="u">8</td><td class="u">1</td></tr><tr><td></td><td></td><td></td><td>8</td><td>2</td></tr><tr><td>+</td><td class="u">6</td><td class="u">5</td><td class="u">6</td><td class="u"></td></tr><tr><td></td><td class="q">6</td><td class="q">6</td><td class="q">4</td><td class="q">2</td></tr></tbody></table>Шаг 1: \(82\cdot1 = 82\). Шаг 2: \(82\cdot8 = 656\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 6642.
+@ans 6642
+@check 82*81
+@task
+Умножьте столбиком \(50\cdot95\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td>0</td></tr><tr><td></td><td></td><td>×</td><td class="u">9</td><td class="u">5</td></tr><tr><td></td><td></td><td>2</td><td>5</td><td>0</td></tr><tr><td>+</td><td class="u">4</td><td class="u">5</td><td class="u">0</td><td class="u"></td></tr><tr><td></td><td class="q">4</td><td class="q">7</td><td class="q">5</td><td class="q">0</td></tr></tbody></table>Шаг 1: \(50\cdot5 = 250\). Шаг 2: \(50\cdot9 = 450\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 4750.
+@ans 4750
+@check 50*95
+@task
+Умножьте столбиком \(37\cdot34\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>3</td><td>7</td></tr><tr><td></td><td></td><td>×</td><td class="u">3</td><td class="u">4</td></tr><tr><td></td><td></td><td>1</td><td>4</td><td>8</td></tr><tr><td>+</td><td class="u">1</td><td class="u">1</td><td class="u">1</td><td class="u"></td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">5</td><td class="q">8</td></tr></tbody></table>Шаг 1: \(37\cdot4 = 148\). Шаг 2: \(37\cdot3 = 111\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 1258.
+@ans 1258
+@check 37*34
+@task
+Умножьте столбиком \(54\cdot51\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td>4</td></tr><tr><td></td><td></td><td>×</td><td class="u">5</td><td class="u">1</td></tr><tr><td></td><td></td><td></td><td>5</td><td>4</td></tr><tr><td>+</td><td class="u">2</td><td class="u">7</td><td class="u">0</td><td class="u"></td></tr><tr><td></td><td class="q">2</td><td class="q">7</td><td class="q">5</td><td class="q">4</td></tr></tbody></table>Шаг 1: \(54\cdot1 = 54\). Шаг 2: \(54\cdot5 = 270\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 2754.
+@ans 2754
+@check 54*51
+@task
+Умножьте столбиком \(22\cdot27\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>2</td></tr><tr><td></td><td>×</td><td class="u">2</td><td class="u">7</td></tr><tr><td></td><td>1</td><td>5</td><td>4</td></tr><tr><td>+</td><td class="u">4</td><td class="u">4</td><td class="u"></td></tr><tr><td></td><td class="q">5</td><td class="q">9</td><td class="q">4</td></tr></tbody></table>Шаг 1: \(22\cdot7 = 154\). Шаг 2: \(22\cdot2 = 44\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 594.
+@ans 594
+@check 22*27
+@task
+Умножьте столбиком \(32\cdot24\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>3</td><td>2</td></tr><tr><td></td><td>×</td><td class="u">2</td><td class="u">4</td></tr><tr><td></td><td>1</td><td>2</td><td>8</td></tr><tr><td>+</td><td class="u">6</td><td class="u">4</td><td class="u"></td></tr><tr><td></td><td class="q">7</td><td class="q">6</td><td class="q">8</td></tr></tbody></table>Шаг 1: \(32\cdot4 = 128\). Шаг 2: \(32\cdot2 = 64\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 768.
+@ans 768
+@check 32*24
+@tasks Мини-срез (10 минут, без подсказок)
+@task
+Умножьте столбиком \(621\cdot4\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>6</td><td>2</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">2</td><td class="q">4</td><td class="q">8</td><td class="q">4</td></tr></tbody></table>Умножаем 4 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2484.
+@ans 2484
+@check 621*4
+@task
+Умножьте столбиком \(77\cdot28\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>7</td><td>7</td></tr><tr><td></td><td></td><td>×</td><td class="u">2</td><td class="u">8</td></tr><tr><td></td><td></td><td>6</td><td>1</td><td>6</td></tr><tr><td>+</td><td class="u">1</td><td class="u">5</td><td class="u">4</td><td class="u"></td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">5</td><td class="q">6</td></tr></tbody></table>Шаг 1: \(77\cdot8 = 616\). Шаг 2: \(77\cdot2 = 154\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 2156.
+@ans 2156
+@check 77*28
+@task
+Умножьте столбиком \(64\cdot67\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>6</td><td>4</td></tr><tr><td></td><td></td><td>×</td><td class="u">6</td><td class="u">7</td></tr><tr><td></td><td></td><td>4</td><td>4</td><td>8</td></tr><tr><td>+</td><td class="u">3</td><td class="u">8</td><td class="u">4</td><td class="u"></td></tr><tr><td></td><td class="q">4</td><td class="q">2</td><td class="q">8</td><td class="q">8</td></tr></tbody></table>Шаг 1: \(64\cdot7 = 448\). Шаг 2: \(64\cdot6 = 384\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 4288.
+@ans 4288
+@check 64*67
+@task
+Умножьте столбиком \(84\cdot19\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>8</td><td>4</td></tr><tr><td></td><td></td><td>×</td><td class="u">1</td><td class="u">9</td></tr><tr><td></td><td></td><td>7</td><td>5</td><td>6</td></tr><tr><td>+</td><td class="u"></td><td class="u">8</td><td class="u">4</td><td class="u"></td></tr><tr><td></td><td class="q">1</td><td class="q">5</td><td class="q">9</td><td class="q">6</td></tr></tbody></table>Шаг 1: \(84\cdot9 = 756\). Шаг 2: \(84\cdot1 = 84\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 1596.
+@ans 1596
+@check 84*19
+@task
+Умножьте столбиком \(51\cdot15\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>5</td><td>1</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">5</td></tr><tr><td></td><td>2</td><td>5</td><td>5</td></tr><tr><td>+</td><td class="u">5</td><td class="u">1</td><td class="u"></td></tr><tr><td></td><td class="q">7</td><td class="q">6</td><td class="q">5</td></tr></tbody></table>Шаг 1: \(51\cdot5 = 255\). Шаг 2: \(51\cdot1 = 51\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 765.
+@ans 765
+@check 51*15
+@hw
+@task
+Умножьте столбиком \(479\cdot5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>4</td><td>7</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">3</td><td class="q">9</td><td class="q">5</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2395.
+@ans 2395
+@check 479*5
+@task
+Умножьте столбиком \(494\cdot5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>4</td><td>9</td><td>4</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">4</td><td class="q">7</td><td class="q">0</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2470.
+@ans 2470
+@check 494*5
+@task
+Умножьте столбиком \(48\cdot19\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>4</td><td>8</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">9</td></tr><tr><td></td><td>4</td><td>3</td><td>2</td></tr><tr><td>+</td><td class="u">4</td><td class="u">8</td><td class="u"></td></tr><tr><td></td><td class="q">9</td><td class="q">1</td><td class="q">2</td></tr></tbody></table>Шаг 1: \(48\cdot9 = 432\). Шаг 2: \(48\cdot1 = 48\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 912.
+@ans 912
+@check 48*19
+@task
+Умножьте столбиком \(37\cdot15\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>3</td><td>7</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">5</td></tr><tr><td></td><td>1</td><td>8</td><td>5</td></tr><tr><td>+</td><td class="u">3</td><td class="u">7</td><td class="u"></td></tr><tr><td></td><td class="q">5</td><td class="q">5</td><td class="q">5</td></tr></tbody></table>Шаг 1: \(37\cdot5 = 185\). Шаг 2: \(37\cdot1 = 37\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 555.
+@ans 555
+@check 37*15
+@task
+Умножьте столбиком \(26\cdot11\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>6</td></tr><tr><td></td><td>×</td><td class="u">1</td><td class="u">1</td></tr><tr><td></td><td></td><td>2</td><td>6</td></tr><tr><td>+</td><td class="u">2</td><td class="u">6</td><td class="u"></td></tr><tr><td></td><td class="q">2</td><td class="q">8</td><td class="q">6</td></tr></tbody></table>Шаг 1: \(26\cdot1 = 26\). Шаг 2: \(26\cdot1 = 26\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 286.
+@ans 286
+@check 26*11
+@task
+Умножьте столбиком \(25\cdot58\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>2</td><td>5</td></tr><tr><td></td><td></td><td>×</td><td class="u">5</td><td class="u">8</td></tr><tr><td></td><td></td><td>2</td><td>0</td><td>0</td></tr><tr><td>+</td><td class="u">1</td><td class="u">2</td><td class="u">5</td><td class="u"></td></tr><tr><td></td><td class="q">1</td><td class="q">4</td><td class="q">5</td><td class="q">0</td></tr></tbody></table>Шаг 1: \(25\cdot8 = 200\). Шаг 2: \(25\cdot5 = 125\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 1450.
+@ans 1450
+@check 25*58
+@task
+Умножьте столбиком \(42\cdot75\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>4</td><td>2</td></tr><tr><td></td><td></td><td>×</td><td class="u">7</td><td class="u">5</td></tr><tr><td></td><td></td><td>2</td><td>1</td><td>0</td></tr><tr><td>+</td><td class="u">2</td><td class="u">9</td><td class="u">4</td><td class="u"></td></tr><tr><td></td><td class="q">3</td><td class="q">1</td><td class="q">5</td><td class="q">0</td></tr></tbody></table>Шаг 1: \(42\cdot5 = 210\). Шаг 2: \(42\cdot7 = 294\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 3150.
+@ans 3150
+@check 42*75
+@task
+Умножьте столбиком \(55\cdot22\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td>5</td></tr><tr><td></td><td></td><td>×</td><td class="u">2</td><td class="u">2</td></tr><tr><td></td><td></td><td>1</td><td>1</td><td>0</td></tr><tr><td>+</td><td class="u">1</td><td class="u">1</td><td class="u">0</td><td class="u"></td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">1</td><td class="q">0</td></tr></tbody></table>Шаг 1: \(55\cdot2 = 110\). Шаг 2: \(55\cdot2 = 110\) — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: 1210.
+@ans 1210
+@check 55*22
+@task
+@rep 14
+Решите уравнение \(26 : x = 13\).
+@sol
+Неизвестный делитель = делимое : частное: \(x = 26 : 13 = 2\). Проверка: \(26 : 2 = 13\) ✓.
+@ans 2
+@check 26//13
+@task
+@rep 12
+8 одинаковых пачек тетрадей содержат 184 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(8\cdot x = 184\).)
+@sol
+Неизвестный множитель: \(x = 184 : 8 = 23\).
+@ans 23
+@check 184//8
+@task
+@rep 8
+Вычислите \(36\cdot6\).
+@sol
+Разбиваем: \(36\cdot6 = 30\cdot6 + 6\cdot6 = 180 + 36 = 216\).
+@ans 216
+@check 36*6

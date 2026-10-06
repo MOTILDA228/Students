@@ -63,6 +63,13 @@ body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
 .ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
 .ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
 .ls-answer { font-weight: 700; }
+.ls-col { border-collapse: collapse; font: 600 1.15em/1 ui-monospace, Consolas, monospace; margin: 10px 0; }
+.ls-col td { width: 1.3em; min-width: 1.3em; height: 1.45em; text-align: center; vertical-align: middle; padding: 0; border: 1px solid var(--ls-grid); }
+.ls-col td.u { border-bottom: 2px solid var(--ls-text); }
+.ls-col td.l { border-left: 2px solid var(--ls-text); }
+.ls-col td.c { font-size: .68em; color: var(--ls-accent); vertical-align: bottom; }
+.ls-col td.q { color: var(--ls-accent); }
+.ls-cols { display: flex; flex-wrap: wrap; gap: 6px 32px; align-items: flex-start; }
 .ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
 .ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
 .ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
@@ -109,30 +116,30 @@ mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 </details>
 <section class="ls-card" id="ls-s2">
 <h2>Разминка-повторение (12 минут)</h2>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите \(5740 : 7\). Осторожно: в частном будет ноль.</div>
-<details><summary>Решение</summary>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 820. Проверка: \(820\cdot7 = 5740\) ✓.
-<p class="ls-answer">Ответ: 820</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите столбиком \(275\cdot3\).</div>
-<details><summary>Решение</summary>\(275\cdot3 = 825\) (умножаем справа налево, переносим десятки).
-<p class="ls-answer">Ответ: 825</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(36 : x = 18\).</div>
-<details><summary>Решение</summary>Неизвестный делитель = делимое : частное: \(x = 36 : 18 = 2\). Проверка: \(36 : 2 = 18\) ✓.
-<p class="ls-answer">Ответ: 2</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(x : 9 = 29\).</div>
-<details><summary>Решение</summary>Неизвестное делимое = частное · делитель: \(x = 29\cdot9 = 261\). Проверка: \(261 : 9 = 29\) ✓.
-<p class="ls-answer">Ответ: 261</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 12)</span> 7 одинаковых пачек тетрадей содержат 189 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(7\cdot x = 189\).)</div>
-<details><summary>Решение</summary>Неизвестный множитель: \(x = 189 : 7 = 27\).
-<p class="ls-answer">Ответ: 27</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 12)</span> Решите уравнение \(4\cdot x = 56\).</div>
-<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 56 : 4 = 14\). Проверка: \(4\cdot14 = 56\) ✓.
-<p class="ls-answer">Ответ: 14</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(63 : 7\).</div>
-<details><summary>Решение</summary>Вспоминаем «семейство»: \(7\cdot9 = 63\), значит \(63 : 7 = 9\).
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 15)</span> Умножьте столбиком \(660\cdot7\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td></td><td></td></tr><tr><td></td><td></td><td>6</td><td>6</td><td>0</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">7</td></tr><tr><td></td><td class="q">4</td><td class="q">6</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Умножаем 7 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4620.
+<p class="ls-answer">Ответ: 4620</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 15)</span> Разделите уголком \(664 : 8\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td>6</td><td>6</td><td>4</td><td class="l u">8</td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td class="u">4</td><td></td><td class="l q">8</td><td class="q">3</td><td></td></tr><tr><td></td><td></td><td>2</td><td>4</td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr></tbody></table>Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу. Ответ: 83. Проверка: \(83\cdot8 = 664\) ✓.
+<p class="ls-answer">Ответ: 83</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(x : 7 = 26\).</div>
+<details><summary>Решение</summary>Неизвестное делимое = частное · делитель: \(x = 26\cdot7 = 182\). Проверка: \(182 : 7 = 26\) ✓.
+<p class="ls-answer">Ответ: 182</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(64 + x = 203\).</div>
+<details><summary>Решение</summary>Неизвестное слагаемое = сумма − известное слагаемое: \(x = 203 - 64 = 139\). Проверка: \(139 + 64 = 203\) ✓.
+<p class="ls-answer">Ответ: 139</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 12)</span> 7 одинаковых пачек тетрадей содержат 119 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(7\cdot x = 119\).)</div>
+<details><summary>Решение</summary>Неизвестный множитель: \(x = 119 : 7 = 17\).
+<p class="ls-answer">Ответ: 17</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 12)</span> Решите уравнение \(9\cdot x = 144\).</div>
+<details><summary>Решение</summary>Неизвестный множитель = произведение : известный множитель: \(x = 144 : 9 = 16\). Проверка: \(9\cdot16 = 144\) ✓.
+<p class="ls-answer">Ответ: 16</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(35 : 5\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(5\cdot7 = 35\), значит \(35 : 5 = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(5\cdot\square = 45\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(45 : 5 = 9\).
 <p class="ls-answer">Ответ: 9</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(5\cdot\square = 40\)?</div>
-<details><summary>Решение</summary>Пропущенный множитель: \(40 : 5 = 8\).
-<p class="ls-answer">Ответ: 8</p></details></div>
 </section>
 <section class="ls-card" id="ls-s3">
 <h2>Шпаргалка</h2>
@@ -150,9 +157,9 @@ mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 <section class="ls-card" id="ls-s4">
 <h2>Ступень 1. Прямоугольники</h2>
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его площадь.
-<svg class="ls-fig" viewBox="0 0 128 206" width="128" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="116" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="116" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="116" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="116" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="116" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="116" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="116" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 90,168 90,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
-<details><summary>Решение</summary>Считаем клетки: длина 2, ширина 5. \(S = 2\cdot5 = 10\).
-<p class="ls-answer">Ответ: 10</p></details></div>
+<svg class="ls-fig" viewBox="0 0 206 128" width="206" height="128" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="116" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="116" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="116" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="116" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="116" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="116" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="116" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="116" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="194" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="194" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="194" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="194" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="64,90 168,90 168,38 64,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
+<details><summary>Решение</summary>Считаем клетки: длина 4, ширина 2. \(S = 4\cdot2 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> На клетчатой бумаге с клеткой \(1\times1\) изображён прямоугольник. Найдите его периметр.
 <svg class="ls-fig" viewBox="0 0 258 206" width="258" height="206" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="12" y1="194" x2="12" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="38" y1="194" x2="38" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="64" y1="194" x2="64" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="90" y1="194" x2="90" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="116" y1="194" x2="116" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="142" y1="194" x2="142" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="168" y1="194" x2="168" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="194" y1="194" x2="194" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="220" y1="194" x2="220" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="246" y1="194" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="194" x2="246" y2="194" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="168" x2="246" y2="168" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="142" x2="246" y2="142" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="116" x2="246" y2="116" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="90" x2="246" y2="90" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="64" x2="246" y2="64" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="38" x2="246" y2="38" stroke="var(--ls-grid)" stroke-width="1"/><line x1="12" y1="12" x2="246" y2="12" stroke="var(--ls-grid)" stroke-width="1"/><polygon points="38,168 220,168 220,38 38,38" fill="var(--ls-fig-fill)" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/></svg></div>
 <details><summary>Решение</summary>Длина 7, ширина 5: \(P = 2\cdot(7 + 5) = 24\).
@@ -319,7 +326,7 @@ mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 <details><summary>Решение</summary>Вспоминаем «семейство»: \(5\cdot8 = 40\), значит \(40 : 5 = 8\).
 <p class="ls-answer">Ответ: 8</p></details></div>
 </section>
-<nav class="ls-foot"><a href="15-delenie-stolbikom.html">← Урок 15</a><a href="00-index.html">Все уроки</a><a href="17-poryadok-deystviy.html">Урок 17 →</a></nav>
+<nav class="ls-foot"><a href="15d-delenie-ugolkom-2.html">← Урок 15d</a><a href="00-index.html">Все уроки</a><a href="17-poryadok-deystviy.html">Урок 17 →</a></nav>
 </div>
 <script>
 function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }

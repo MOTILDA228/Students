@@ -133,25 +133,25 @@
 @task
 Вычислите столбиком \(2376 : 8\).
 @sol
-По шагам: \(23 : 8 = 2\) (остаток 7); \(77 : 8 = 9\) (остаток 5); \(56 : 8 = 7\). Ответ: 297. Проверка: \(297\cdot8 = 2376\) ✓.
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>3</td><td>7</td><td>6</td><td class="l u">8</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">1</td><td class="u">6</td><td></td><td></td><td class="l q">2</td><td class="q">9</td><td class="q">7</td><td></td></tr><tr><td></td><td></td><td>7</td><td>7</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">7</td><td class="u">2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td>6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">5</td><td class="u">6</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>По шагам: \(23 : 8 = 2\) (остаток 7); \(77 : 8 = 9\) (остаток 5); \(56 : 8 = 7\). Ответ: 297. Проверка: \(297\cdot8 = 2376\) ✓.
 @ans 297
 @check 2376//8
 @task
 Вычислите \(924 : 3\). Осторожно: в частном будет ноль.
 @sol
-Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 308. Проверка: \(308\cdot3 = 924\) ✓.
+<table class="ls-col"><tbody><tr><td></td><td>9</td><td>2</td><td>4</td><td class="l u">3</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">9</td><td></td><td></td><td class="l q">3</td><td class="q">0</td><td class="q">8</td><td></td></tr><tr><td></td><td></td><td>2</td><td>4</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">2</td><td class="u">4</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 308. Проверка: \(308\cdot3 = 924\) ✓.
 @ans 308
 @check 924//3
 @task
 Вычислите столбиком \(822 : 6\).
 @sol
-По шагам: \(8 : 6 = 1\) (остаток 2); \(22 : 6 = 3\) (остаток 4); \(42 : 6 = 7\). Ответ: 137. Проверка: \(137\cdot6 = 822\) ✓.
+<table class="ls-col"><tbody><tr><td></td><td>8</td><td>2</td><td>2</td><td class="l u">6</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">6</td><td></td><td></td><td class="l q">1</td><td class="q">3</td><td class="q">7</td><td></td></tr><tr><td></td><td>2</td><td>2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>−</td><td class="u">1</td><td class="u">8</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>4</td><td>2</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">4</td><td class="u">2</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>По шагам: \(8 : 6 = 1\) (остаток 2); \(22 : 6 = 3\) (остаток 4); \(42 : 6 = 7\). Ответ: 137. Проверка: \(137\cdot6 = 822\) ✓.
 @ans 137
 @check 822//6
 @task
 Вычислите \(2850 : 3\). Осторожно: в частном будет ноль.
 @sol
-Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 950. Проверка: \(950\cdot3 = 2850\) ✓.
+<table class="ls-col"><tbody><tr><td></td><td>2</td><td>8</td><td>5</td><td>0</td><td class="l u">3</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td>−</td><td class="u">2</td><td class="u">7</td><td></td><td></td><td class="l q">9</td><td class="q">5</td><td class="q">0</td><td></td></tr><tr><td></td><td></td><td>1</td><td>5</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">1</td><td class="u">5</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 950. Проверка: \(950\cdot3 = 2850\) ✓.
 @ans 950
 @check 2850//3
 @tasks Порядок действий (урок 17)
@@ -432,7 +432,7 @@ poly 1,1 8,1 8,3 4,3 4,4 1,4 fill
 @task
 Вычислите столбиком \(1692 : 9\).
 @sol
-По шагам: \(16 : 9 = 1\) (остаток 7); \(79 : 9 = 8\) (остаток 7); \(72 : 9 = 8\). Ответ: 188. Проверка: \(188\cdot9 = 1692\) ✓.
+<table class="ls-col"><tbody><tr><td></td><td>1</td><td>6</td><td>9</td><td>2</td><td class="l u">9</td><td class="u"></td><td class="u"></td><td class="u"></td></tr><tr><td></td><td class="u">−</td><td class="u">9</td><td></td><td></td><td class="l q">1</td><td class="q">8</td><td class="q">8</td><td></td></tr><tr><td></td><td></td><td>7</td><td>9</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>−</td><td class="u">7</td><td class="u">2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>7</td><td>2</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>−</td><td class="u">7</td><td class="u">2</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr></tbody></table>По шагам: \(16 : 9 = 1\) (остаток 7); \(79 : 9 = 8\) (остаток 7); \(72 : 9 = 8\). Ответ: 188. Проверка: \(188\cdot9 = 1692\) ✓.
 @ans 188
 @check 1692//9
 @task

@@ -12,8 +12,8 @@ def parse(plan):
         m = re.match(r"\*\*Цель:\*\*\s*(.*)", line)
         if m: goal = m.group(1)
         c = [x.strip() for x in line.strip().strip("|").split("|")]
-        if line.startswith("|") and len(c) >= 5 and c[0].isdigit():
-            rows.append({"n": int(c[0]), "t": c[1], "oge": c[2], "type": c[3],
+        if line.startswith("|") and len(c) >= 5 and re.fullmatch(r"\d+[a-z]?", c[0]):
+            rows.append({"n": int(c[0]) if c[0].isdigit() else c[0], "t": c[1], "oge": c[2], "type": c[3],
                          "m": c[4].replace("✅", "").strip()})
     return goal, rows
 

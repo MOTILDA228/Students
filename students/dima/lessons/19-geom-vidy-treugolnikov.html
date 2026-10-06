@@ -63,6 +63,13 @@ body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
 .ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
 .ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
 .ls-answer { font-weight: 700; }
+.ls-col { border-collapse: collapse; font: 600 1.15em/1 ui-monospace, Consolas, monospace; margin: 10px 0; }
+.ls-col td { width: 1.3em; min-width: 1.3em; height: 1.45em; text-align: center; vertical-align: middle; padding: 0; border: 1px solid var(--ls-grid); }
+.ls-col td.u { border-bottom: 2px solid var(--ls-text); }
+.ls-col td.l { border-left: 2px solid var(--ls-text); }
+.ls-col td.c { font-size: .68em; color: var(--ls-accent); vertical-align: bottom; }
+.ls-col td.q { color: var(--ls-accent); }
+.ls-cols { display: flex; flex-wrap: wrap; gap: 6px 32px; align-items: flex-start; }
 .ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
 .ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
 .ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
@@ -121,12 +128,12 @@ mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 17)</span> Вычислите \((48 - 17)\cdot6 - 6\cdot6\).</div>
 <details><summary>Решение</summary>Скобки: 31; умножения: \(31\cdot6 = 186\), \(6\cdot6 = 36\); вычитание: 150.
 <p class="ls-answer">Ответ: 150</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите столбиком \(992 : 8\).</div>
-<details><summary>Решение</summary>По шагам: \(9 : 8 = 1\) (остаток 1); \(19 : 8 = 2\) (остаток 3); \(32 : 8 = 4\). Ответ: 124. Проверка: \(124\cdot8 = 992\) ✓.
-<p class="ls-answer">Ответ: 124</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите \(2800 : 4\). Осторожно: в частном будет ноль.</div>
-<details><summary>Решение</summary>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 700. Проверка: \(700\cdot4 = 2800\) ✓.
-<p class="ls-answer">Ответ: 700</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычтите столбиком \(650 - 538\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>6</td><td>5</td><td>0</td></tr><tr><td>−</td><td class="u">5</td><td class="u">3</td><td class="u">8</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(112 + 538 = 650\) ✓.
+<p class="ls-answer">Ответ: 112</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 15)</span> Умножьте столбиком \(291\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">8</td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>9</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">2</td><td class="q">6</td><td class="q">1</td><td class="q">9</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2619.
+<p class="ls-answer">Ответ: 2619</p></details></div>
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(45 : 5\).</div>
 <details><summary>Решение</summary>Вспоминаем «семейство»: \(5\cdot9 = 45\), значит \(45 : 5 = 9\).
 <p class="ls-answer">Ответ: 9</p></details></div>
@@ -272,9 +279,9 @@ mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 17)</span> Вычислите \((21 - 9)\cdot2\).</div>
 <details><summary>Решение</summary>Сначала скобки: \(21 - 9 = 12\); потом \(12\cdot2 = 24\).
 <p class="ls-answer">Ответ: 24</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите \(5648 : 8\). Осторожно: в частном будет ноль.</div>
-<details><summary>Решение</summary>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 706. Проверка: \(706\cdot8 = 5648\) ✓.
-<p class="ls-answer">Ответ: 706</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 15)</span> Умножьте столбиком \(541\cdot9\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td><td></td></tr><tr><td></td><td></td><td>5</td><td>4</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">4</td><td class="q">8</td><td class="q">6</td><td class="q">9</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4869.
+<p class="ls-answer">Ответ: 4869</p></details></div>
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 11)</span> Решите уравнение \(x - 81 = 100\).</div>
 <details><summary>Решение</summary>Неизвестное уменьшаемое = разность + вычитаемое: \(x = 100 + 81 = 181\). Проверка: \(181 - 81 = 100\) ✓.
 <p class="ls-answer">Ответ: 181</p></details></div>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 15. Сложение и вычитание в столбик</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --ls-bg: #f6f7fb; --ls-card: #ffffff; --ls-text: #1d2330; --ls-muted: #5b6475;
+  --ls-accent: #3b5bdb; --ls-accent-soft: #e7ecff; --ls-border: #dde1ea;
+  --ls-rule-bg: #fff8e1; --ls-rule-border: #f2c94c; --ls-warn-bg: #ffecec; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #e9f8ef; --ls-ok-border: #2f9e44; --ls-rep: #9c36b5;
+  --ls-grid: #cfd5e2; --ls-fig-fill: #dfe6ff; --ls-teacher-bg: #f1f3f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+    --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+    --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+    --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+    --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+  }
+}
+:root[data-theme="dark"] {
+  --ls-bg: #12151c; --ls-card: #1b1f29; --ls-text: #e6e9f0; --ls-muted: #9aa3b5;
+  --ls-accent: #8ea4ff; --ls-accent-soft: #252c44; --ls-border: #2c3242;
+  --ls-rule-bg: #2d2714; --ls-rule-border: #a88a2c; --ls-warn-bg: #3a1d1f; --ls-warn-border: #e5484d;
+  --ls-ok-bg: #16301f; --ls-ok-border: #3fb95b; --ls-rep: #da77f2;
+  --ls-grid: #343b4d; --ls-fig-fill: #28314f; --ls-teacher-bg: #20242f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ls-wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+.ls-head { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.ls-head h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; }
+.ls-sub, .ls-muted { color: var(--ls-muted); }
+.ls-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ls-tag { background: var(--ls-accent-soft); color: var(--ls-accent); border-radius: 999px; padding: 2px 12px; font-size: .85rem; font-weight: 600; }
+.ls-nav { position: sticky; top: 0; z-index: 5; background: var(--ls-bg); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ls-nav a, .ls-btn, .ls-foot a { font: inherit; font-size: .9rem; text-decoration: none; color: var(--ls-accent); background: var(--ls-card);
+  border: 1px solid var(--ls-border); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.ls-btn:hover, .ls-nav a:hover, .ls-foot a:hover { border-color: var(--ls-accent); }
+.ls-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 20px 0 40px; }
+.ls-card { background: var(--ls-card); border: 1px solid var(--ls-border); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.ls-card h2 { margin-top: 0; font-size: 1.3rem; }
+.ls-card h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+.ls-teacher { background: var(--ls-teacher-bg); }
+.ls-teacher > summary { cursor: pointer; font-weight: 700; color: var(--ls-muted); }
+.ls-rule { background: var(--ls-rule-bg); border-left: 5px solid var(--ls-rule-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-warn { background: var(--ls-warn-bg); border-left: 5px solid var(--ls-warn-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-example { background: var(--ls-ok-bg); border-left: 5px solid var(--ls-ok-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.ls-steps { padding-left: 1.3em; } .ls-steps li { margin: 4px 0; }
+.ls-task { border-top: 1px dashed var(--ls-border); padding: 14px 0; }
+.ls-task:first-of-type { border-top: 0; }
+.ls-task-num { font-weight: 700; color: var(--ls-accent); }
+.ls-task-src { color: var(--ls-muted); font-size: .85rem; }
+.ls-rep { color: var(--ls-rep); font-weight: 700; font-size: .85rem; }
+.ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
+.ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
+.ls-answer { font-weight: 700; }
+.ls-col { border-collapse: collapse; font: 600 1.15em/1 ui-monospace, Consolas, monospace; margin: 10px 0; }
+.ls-col td { width: 1.3em; min-width: 1.3em; height: 1.45em; text-align: center; vertical-align: middle; padding: 0; border: 1px solid var(--ls-grid); }
+.ls-col td.u { border-bottom: 2px solid var(--ls-text); }
+.ls-col td.l { border-left: 2px solid var(--ls-text); }
+.ls-col td.c { font-size: .68em; color: var(--ls-accent); vertical-align: bottom; }
+.ls-col td.q { color: var(--ls-accent); }
+.ls-cols { display: flex; flex-wrap: wrap; gap: 6px 32px; align-items: flex-start; }
+.ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
+.ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
+.ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
+.ls-figs figure { margin: 0; }
+.ls-figs figcaption { text-align: center; color: var(--ls-muted); font-size: .9rem; }
+.ls-opts { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 8px 0; }
+.ls-table-wrap { overflow-x: auto; }
+.ls-table { border-collapse: collapse; margin: 10px 0; font-size: .95rem; }
+.ls-table th, .ls-table td { border: 1px solid var(--ls-border); padding: 6px 10px; text-align: center; }
+.ls-table th { background: var(--ls-accent-soft); }
+.ls-table .ls-left { text-align: left; }
+.ls-index { width: 100%; }
+.ls-row-geo td:first-child { box-shadow: inset 4px 0 0 var(--ls-ok-border); }
+.ls-row-ctrl td { font-weight: 700; }
+.ls-hl { background: var(--ls-rule-bg); border-radius: 4px; padding: 0 4px; }
+mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.ls-student .ls-task details, .ls-student .ls-teacher { display: none !important; }
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .ls-nav, .ls-btn, .ls-foot { display: none !important; }
+  .ls-head { break-inside: avoid; }
+  .ls-card, .ls-head { border-color: #999; }
+  .ls-task, .ls-rule, .ls-warn, .ls-example, .ls-fig { break-inside: avoid; }
+  details > *:not(summary) { display: block !important; }
+  .ls-fig { color: #000; }
+}
+</style>
+</head>
+<body>
+<div class="ls-wrap">
+<header class="ls-head"><h1>Урок 15. Сложение и вычитание в столбик</h1><div class="ls-sub">Дима · 9 класс · подготовка к ОГЭ по математике</div><div class="ls-tags"><span class="ls-tag">база</span><span class="ls-tag">столбик</span></div></header>
+<nav class="ls-nav"><a href="00-index.html">← Все уроки</a><a href="#ls-s2">Разминка-повторение (12 минут)</a><a href="#ls-s3">Шпаргалка</a><a href="#ls-s4">Ступень 1. Двузначные</a><a href="#ls-s5">Ступень 2. Трёхзначные</a><a href="#ls-s6">Ступень 3. Вычитание с «заниманием» — главное для деления</a><a href="#ls-s7">Мини-срез (10 минут, без подсказок)</a><a href="#ls-s8">Домашнее задание</a><button class="ls-btn" type="button" onclick="lsToggleAll(true)">Раскрыть все решения</button><button class="ls-btn" type="button" onclick="lsToggleAll(false)">Свернуть все решения</button><button class="ls-btn" type="button" onclick="lsStudentMode(this)">Режим ученика</button><button class="ls-btn" type="button" onclick="lsPrintStudent()">Печать для ученика</button></nav>
+<details class="ls-card ls-teacher"><summary>Для репетитора: план урока</summary>
+<p><b>Новая идея урока:</b> столбик — это сложение «по разрядам»: единицы с единицами, десятки с десятками. Перенос (10 единиц = 1 десяток) и «занимание» (1 десяток = 10 единиц). Без уверенного вычитания в столбик не получится деление уголком. <b>Метод для Димы:</b> всё — на клетчатой бумаге, <b>одна цифра — одна клетка</b>, единицы строго под единицами. Первые 3 примера он проговаривает вслух каждый шаг, вы только задаёте вопросы («что делим? сколько раз помещается? что пишем?»). Карточку-алгоритм держать перед ним весь урок. Ошибку не исправлять за него — спросить «проверь умножением».</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> пишет числа «по левому краю», а не единицы под единицами; при вычитании из меньшей цифры вычитает наоборот (\(3 - 8 \to 5\)); забывает, что занятый разряд уменьшился на 1.</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+</details>
+<section class="ls-card" id="ls-s2">
+<h2>Разминка-повторение (12 минут)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(x : 9 = 27\).</div>
+<details><summary>Решение</summary>Неизвестное делимое = частное · делитель: \(x = 27\cdot9 = 243\). Проверка: \(243 : 9 = 27\) ✓.
+<p class="ls-answer">Ответ: 243</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> <span class="ls-rep">Повторение (урок 14)</span> Решите уравнение \(120 : x = 15\).</div>
+<details><summary>Решение</summary>Неизвестный делитель = делимое : частное: \(x = 120 : 15 = 8\). Проверка: \(120 : 8 = 15\) ✓.
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> <span class="ls-rep">Повторение (урок 13)</span> Один из вертикальных углов равен \(142^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Вертикальные углы равны: \(142^\circ\).
+<p class="ls-answer">Ответ: 142</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> <span class="ls-rep">Повторение (урок 13)</span> В треугольнике два угла \(66^\circ\) и \(77^\circ\). Найдите третий.</div>
+<details><summary>Решение</summary>\(180 - 66 - 77 = 37^\circ\).
+<p class="ls-answer">Ответ: 37</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> <span class="ls-rep">Повторение (урок 11)</span> Решите уравнение \(119 - x = 100\).</div>
+<details><summary>Решение</summary>Неизвестное вычитаемое = уменьшаемое − разность: \(x = 119 - 100 = 19\). Проверка: \(119 - 19 = 100\) ✓.
+<p class="ls-answer">Ответ: 19</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> <span class="ls-rep">Повторение (урок 11)</span> Решите уравнение \(x - 114 = 57\).</div>
+<details><summary>Решение</summary>Неизвестное уменьшаемое = разность + вычитаемое: \(x = 57 + 114 = 171\). Проверка: \(171 - 114 = 57\) ✓.
+<p class="ls-answer">Ответ: 171</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> <span class="ls-rep">Повторение (урок 8)</span> Вычислите \(40 : 5\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(5\cdot8 = 40\), значит \(40 : 5 = 8\).
+<p class="ls-answer">Ответ: 8</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> <span class="ls-rep">Повторение (урок 8)</span> Какое число пропущено: \(4\cdot\square = 20\)?</div>
+<details><summary>Решение</summary>Пропущенный множитель: \(20 : 4 = 5\).
+<p class="ls-answer">Ответ: 5</p></details></div>
+</section>
+<section class="ls-card" id="ls-s3">
+<h2>Шпаргалка</h2>
+<h3>1. Разряды — на деньгах</h3>
+<div class="ls-rule">\(487 = 4\) сотни \(+ 8\) десятков \(+ 7\) единиц — как 4 купюры по 100 руб., 8 монет по 10 руб. и 7 монет по 1 руб. Складывать можно только одинаковое: рубли с рублями, десятки с десятками.</div>
+<h3>2. Сложение столбиком</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td>4</td><td>8</td><td>7</td></tr><tr><td>+</td><td class="u">3</td><td class="u">5</td><td class="u">6</td></tr><tr><td></td><td class="q">8</td><td class="q">4</td><td class="q">3</td></tr></tbody></table></div>
+<ol class="ls-steps"><li>Записать числа так, чтобы <b>единицы были под единицами</b>.</li><li>Складывать <b>справа налево</b>: \(7 + 6 = 13\) — пишем 3, а <b>1 десяток переносим</b> (маленькая 1 сверху).</li><li>\(8 + 5 + 1 = 14\) — пишем 4, переносим 1. \(4 + 3 + 1 = 8\). Ответ 843.</li></ol>
+<h3>3. Вычитание столбиком</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>5</td><td>0</td><td>3</td></tr><tr><td>−</td><td class="u">1</td><td class="u">7</td><td class="u">8</td></tr><tr><td></td><td class="q">3</td><td class="q">2</td><td class="q">5</td></tr></tbody></table></div>
+<ol class="ls-steps"><li>\(3 - 8\) — не получается. <b>Занимаем</b> 1 десяток у соседа слева (ставим над ним точку): \(13 - 8 = 5\).</li><li>У десятков был 0, а мы заняли — значит занимаем у сотен: \(10 - 1 - 7 = 2\).</li><li>Сотни: было 5, заняли 1 → \(4 - 1 = 3\). Ответ 325.</li></ol>
+<div class="ls-warn">Нельзя вычитать «наоборот» (\(3 - 8\) не равно 5). Проверка вычитания — сложением: \(325 + 178 = 503\) ✓.</div>
+</section>
+<section class="ls-card" id="ls-s4">
+<h2>Ступень 1. Двузначные</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Сложите столбиком \(20 + 44\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td>2</td><td>0</td></tr><tr><td>+</td><td class="u">4</td><td class="u">4</td></tr><tr><td></td><td class="q">6</td><td class="q">4</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 64</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Сложите столбиком \(63 + 29\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>6</td><td>3</td></tr><tr><td>+</td><td class="u">2</td><td class="u">9</td></tr><tr><td></td><td class="q">9</td><td class="q">2</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 92</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Сложите столбиком \(23 + 47\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>2</td><td>3</td></tr><tr><td>+</td><td class="u">4</td><td class="u">7</td></tr><tr><td></td><td class="q">7</td><td class="q">0</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 70</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Сложите столбиком \(69 + 51\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>6</td><td>9</td></tr><tr><td></td><td>+</td><td class="u">5</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 120</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Сложите столбиком \(71 + 85\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>7</td><td>1</td></tr><tr><td></td><td>+</td><td class="u">8</td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">5</td><td class="q">6</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 156</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычтите столбиком \(131 - 89\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>1</td><td>3</td><td>1</td></tr><tr><td>−</td><td class="u"></td><td class="u">8</td><td class="u">9</td></tr><tr><td></td><td></td><td class="q">4</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(42 + 89 = 131\) ✓.
+<p class="ls-answer">Ответ: 42</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычтите столбиком \(94 - 58\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>9</td><td>4</td></tr><tr><td>−</td><td class="u">5</td><td class="u">8</td></tr><tr><td></td><td class="q">3</td><td class="q">6</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(36 + 58 = 94\) ✓.
+<p class="ls-answer">Ответ: 36</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычтите столбиком \(94 - 68\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>9</td><td>4</td></tr><tr><td>−</td><td class="u">6</td><td class="u">8</td></tr><tr><td></td><td class="q">2</td><td class="q">6</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(26 + 68 = 94\) ✓.
+<p class="ls-answer">Ответ: 26</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Вычтите столбиком \(38 - 28\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td>3</td><td>8</td></tr><tr><td>−</td><td class="u">2</td><td class="u">8</td></tr><tr><td></td><td class="q">1</td><td class="q">0</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(10 + 28 = 38\) ✓.
+<p class="ls-answer">Ответ: 10</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> Вычтите столбиком \(115 - 38\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>1</td><td>1</td><td>5</td></tr><tr><td>−</td><td class="u"></td><td class="u">3</td><td class="u">8</td></tr><tr><td></td><td></td><td class="q">7</td><td class="q">7</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(77 + 38 = 115\) ✓.
+<p class="ls-answer">Ответ: 77</p></details></div>
+</section>
+<section class="ls-card" id="ls-s5">
+<h2>Ступень 2. Трёхзначные</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Сложите столбиком \(693 + 155\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td>6</td><td>9</td><td>3</td></tr><tr><td>+</td><td class="u">1</td><td class="u">5</td><td class="u">5</td></tr><tr><td></td><td class="q">8</td><td class="q">4</td><td class="q">8</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 848</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Сложите столбиком \(550 + 561\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>5</td><td>5</td><td>0</td></tr><tr><td></td><td>+</td><td class="u">5</td><td class="u">6</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">1</td><td class="q">1</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 1111</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Сложите столбиком \(159 + 231\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>1</td><td>5</td><td>9</td></tr><tr><td>+</td><td class="u">2</td><td class="u">3</td><td class="u">1</td></tr><tr><td></td><td class="q">3</td><td class="q">9</td><td class="q">0</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 390</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Сложите столбиком \(377 + 379\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td>3</td><td>7</td><td>7</td></tr><tr><td>+</td><td class="u">3</td><td class="u">7</td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">5</td><td class="q">6</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 756</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Сложите столбиком \(402 + 183\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>4</td><td>0</td><td>2</td></tr><tr><td>+</td><td class="u">1</td><td class="u">8</td><td class="u">3</td></tr><tr><td></td><td class="q">5</td><td class="q">8</td><td class="q">5</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 585</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычтите столбиком \(734 - 601\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>7</td><td>3</td><td>4</td></tr><tr><td>−</td><td class="u">6</td><td class="u">0</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">3</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(133 + 601 = 734\) ✓.
+<p class="ls-answer">Ответ: 133</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычтите столбиком \(404 - 184\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>4</td><td>0</td><td>4</td></tr><tr><td>−</td><td class="u">1</td><td class="u">8</td><td class="u">4</td></tr><tr><td></td><td class="q">2</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(220 + 184 = 404\) ✓.
+<p class="ls-answer">Ответ: 220</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычтите столбиком \(526 - 329\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>5</td><td>2</td><td>6</td></tr><tr><td>−</td><td class="u">3</td><td class="u">2</td><td class="u">9</td></tr><tr><td></td><td class="q">1</td><td class="q">9</td><td class="q">7</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(197 + 329 = 526\) ✓.
+<p class="ls-answer">Ответ: 197</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> Вычтите столбиком \(803 - 605\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>8</td><td>0</td><td>3</td></tr><tr><td>−</td><td class="u">6</td><td class="u">0</td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">9</td><td class="q">8</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(198 + 605 = 803\) ✓.
+<p class="ls-answer">Ответ: 198</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> Вычтите столбиком \(603 - 471\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>6</td><td>0</td><td>3</td></tr><tr><td>−</td><td class="u">4</td><td class="u">7</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(132 + 471 = 603\) ✓.
+<p class="ls-answer">Ответ: 132</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> Вычтите столбиком \(903 - 695\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>9</td><td>0</td><td>3</td></tr><tr><td>−</td><td class="u">6</td><td class="u">9</td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">0</td><td class="q">8</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(208 + 695 = 903\) ✓.
+<p class="ls-answer">Ответ: 208</p></details></div>
+</section>
+<section class="ls-card" id="ls-s6">
+<h2>Ступень 3. Вычитание с «заниманием» — главное для деления</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Вычтите столбиком \(909 - 651\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>9</td><td>0</td><td>9</td></tr><tr><td>−</td><td class="u">6</td><td class="u">5</td><td class="u">1</td></tr><tr><td></td><td class="q">2</td><td class="q">5</td><td class="q">8</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(258 + 651 = 909\) ✓.
+<p class="ls-answer">Ответ: 258</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычтите столбиком \(424 - 153\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>4</td><td>2</td><td>4</td></tr><tr><td>−</td><td class="u">1</td><td class="u">5</td><td class="u">3</td></tr><tr><td></td><td class="q">2</td><td class="q">7</td><td class="q">1</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(271 + 153 = 424\) ✓.
+<p class="ls-answer">Ответ: 271</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычтите столбиком \(886 - 675\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>8</td><td>8</td><td>6</td></tr><tr><td>−</td><td class="u">6</td><td class="u">7</td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">1</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(211 + 675 = 886\) ✓.
+<p class="ls-answer">Ответ: 211</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычтите столбиком \(468 - 355\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>4</td><td>6</td><td>8</td></tr><tr><td>−</td><td class="u">3</td><td class="u">5</td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">3</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(113 + 355 = 468\) ✓.
+<p class="ls-answer">Ответ: 113</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычтите столбиком \(332 - 148\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>3</td><td>3</td><td>2</td></tr><tr><td>−</td><td class="u">1</td><td class="u">4</td><td class="u">8</td></tr><tr><td></td><td class="q">1</td><td class="q">8</td><td class="q">4</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(184 + 148 = 332\) ✓.
+<p class="ls-answer">Ответ: 184</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычтите столбиком \(831 - 695\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>8</td><td>3</td><td>1</td></tr><tr><td>−</td><td class="u">6</td><td class="u">9</td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">6</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(136 + 695 = 831\) ✓.
+<p class="ls-answer">Ответ: 136</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычтите столбиком \(949 - 657\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>9</td><td>4</td><td>9</td></tr><tr><td>−</td><td class="u">6</td><td class="u">5</td><td class="u">7</td></tr><tr><td></td><td class="q">2</td><td class="q">9</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(292 + 657 = 949\) ✓.
+<p class="ls-answer">Ответ: 292</p></details></div>
+</section>
+<section class="ls-card" id="ls-s7">
+<h2>Мини-срез (10 минут, без подсказок)</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Сложите столбиком \(588 + 586\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>5</td><td>8</td><td>8</td></tr><tr><td></td><td>+</td><td class="u">5</td><td class="u">8</td><td class="u">6</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">7</td><td class="q">4</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 1174</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Вычтите столбиком \(304 - 161\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>3</td><td>0</td><td>4</td></tr><tr><td>−</td><td class="u">1</td><td class="u">6</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">4</td><td class="q">3</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(143 + 161 = 304\) ✓.
+<p class="ls-answer">Ответ: 143</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Вычтите столбиком \(399 - 254\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>3</td><td>9</td><td>9</td></tr><tr><td>−</td><td class="u">2</td><td class="u">5</td><td class="u">4</td></tr><tr><td></td><td class="q">1</td><td class="q">4</td><td class="q">5</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(145 + 254 = 399\) ✓.
+<p class="ls-answer">Ответ: 145</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычтите столбиком \(471 - 302\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">•</td><td></td></tr><tr><td></td><td>4</td><td>7</td><td>1</td></tr><tr><td>−</td><td class="u">3</td><td class="u">0</td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">6</td><td class="q">9</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(169 + 302 = 471\) ✓.
+<p class="ls-answer">Ответ: 169</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Сложите столбиком \(408 + 161\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>4</td><td>0</td><td>8</td></tr><tr><td>+</td><td class="u">1</td><td class="u">6</td><td class="u">1</td></tr><tr><td></td><td class="q">5</td><td class="q">6</td><td class="q">9</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 569</p></details></div>
+</section>
+<section class="ls-card" id="ls-s8">
+<h2>Домашнее задание</h2>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">1.</span> Сложите столбиком \(725 + 491\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>7</td><td>2</td><td>5</td></tr><tr><td></td><td>+</td><td class="u">4</td><td class="u">9</td><td class="u">1</td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">1</td><td class="q">6</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 1216</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">2.</span> Сложите столбиком \(828 + 358\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>8</td><td>2</td><td>8</td></tr><tr><td></td><td>+</td><td class="u">3</td><td class="u">5</td><td class="u">8</td></tr><tr><td></td><td class="q">1</td><td class="q">1</td><td class="q">8</td><td class="q">6</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 1186</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">3.</span> Сложите столбиком \(343 + 196\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td>3</td><td>4</td><td>3</td></tr><tr><td>+</td><td class="u">1</td><td class="u">9</td><td class="u">6</td></tr><tr><td></td><td class="q">5</td><td class="q">3</td><td class="q">9</td></tr></tbody></table>Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).
+<p class="ls-answer">Ответ: 539</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">4.</span> Вычтите столбиком \(588 - 289\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td class="c">•</td><td></td></tr><tr><td></td><td>5</td><td>8</td><td>8</td></tr><tr><td>−</td><td class="u">2</td><td class="u">8</td><td class="u">9</td></tr><tr><td></td><td class="q">2</td><td class="q">9</td><td class="q">9</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(299 + 289 = 588\) ✓.
+<p class="ls-answer">Ответ: 299</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">5.</span> Вычтите столбиком \(667 - 455\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>6</td><td>6</td><td>7</td></tr><tr><td>−</td><td class="u">4</td><td class="u">5</td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(212 + 455 = 667\) ✓.
+<p class="ls-answer">Ответ: 212</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">6.</span> Вычтите столбиком \(726 - 622\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>7</td><td>2</td><td>6</td></tr><tr><td>−</td><td class="u">6</td><td class="u">2</td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">0</td><td class="q">4</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(104 + 622 = 726\) ✓.
+<p class="ls-answer">Ответ: 104</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">7.</span> Вычтите столбиком \(536 - 404\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>5</td><td>3</td><td>6</td></tr><tr><td>−</td><td class="u">4</td><td class="u">0</td><td class="u">4</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">2</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(132 + 404 = 536\) ✓.
+<p class="ls-answer">Ответ: 132</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">8.</span> Вычтите столбиком \(396 - 146\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>3</td><td>9</td><td>6</td></tr><tr><td>−</td><td class="u">1</td><td class="u">4</td><td class="u">6</td></tr><tr><td></td><td class="q">2</td><td class="q">5</td><td class="q">0</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(250 + 146 = 396\) ✓.
+<p class="ls-answer">Ответ: 250</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">9.</span> <span class="ls-rep">Повторение (урок 13)</span> Один из вертикальных углов равен \(94^\circ\). Найдите другой.</div>
+<details><summary>Решение</summary>Вертикальные углы равны: \(94^\circ\).
+<p class="ls-answer">Ответ: 94</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 11)</span> Решите уравнение \(196 - x = 96\).</div>
+<details><summary>Решение</summary>Неизвестное вычитаемое = уменьшаемое − разность: \(x = 196 - 96 = 100\). Проверка: \(196 - 100 = 96\) ✓.
+<p class="ls-answer">Ответ: 100</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 7)</span> Вычислите \(14 : 2\).</div>
+<details><summary>Решение</summary>Вспоминаем «семейство»: \(2\cdot7 = 14\), значит \(14 : 2 = 7\).
+<p class="ls-answer">Ответ: 7</p></details></div>
+</section>
+<nav class="ls-foot"><a href="14-delimoe-delitel-vse-pravila.html">← Урок 14</a><a href="00-index.html">Все уроки</a><a href="15a-umnozhenie-stolbikom-1.html">Урок 15a →</a></nav>
+</div>
+<script>
+function lsToggleAll(open) { document.querySelectorAll('.ls-task details').forEach(function (d) { d.open = open; }); }
+function lsStudentMode(btn) {
+  var on = document.body.classList.toggle('ls-student');
+  if (btn) btn.textContent = on ? 'Показать решения' : 'Режим ученика';
+}
+function lsPrintStudent() {
+  var had = document.body.classList.contains('ls-student');
+  document.body.classList.add('ls-student');
+  window.print();
+  if (!had) document.body.classList.remove('ls-student');
+}
+window.addEventListener('beforeprint', function () {
+  if (!document.body.classList.contains('ls-student')) lsToggleAll(true);
+});
+</script>
+</body>
+</html>

@@ -63,6 +63,13 @@ body { margin: 0; background: var(--ls-bg); color: var(--ls-text);
 .ls-task details { margin-top: 8px; background: var(--ls-accent-soft); border-radius: 10px; padding: 6px 12px; }
 .ls-task summary { cursor: pointer; color: var(--ls-accent); font-weight: 600; }
 .ls-answer { font-weight: 700; }
+.ls-col { border-collapse: collapse; font: 600 1.15em/1 ui-monospace, Consolas, monospace; margin: 10px 0; }
+.ls-col td { width: 1.3em; min-width: 1.3em; height: 1.45em; text-align: center; vertical-align: middle; padding: 0; border: 1px solid var(--ls-grid); }
+.ls-col td.u { border-bottom: 2px solid var(--ls-text); }
+.ls-col td.l { border-left: 2px solid var(--ls-text); }
+.ls-col td.c { font-size: .68em; color: var(--ls-accent); vertical-align: bottom; }
+.ls-col td.q { color: var(--ls-accent); }
+.ls-cols { display: flex; flex-wrap: wrap; gap: 6px 32px; align-items: flex-start; }
 .ls-mono { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.3; overflow-x: auto; display: block; }
 .ls-fig { display: block; max-width: 100%; height: auto; margin: 10px 0; color: var(--ls-text); }
 .ls-figs { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: flex-end; }
@@ -278,9 +285,9 @@ mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 <div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">10.</span> <span class="ls-rep">Повторение (урок 19)</span> В равнобедренном треугольнике угол при вершине \(64^\circ\). Найдите угол при основании.</div>
 <details><summary>Решение</summary>Углы при основании равны: \((180 - 64) : 2 = 58^\circ\).
 <p class="ls-answer">Ответ: 58</p></details></div>
-<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 15)</span> Вычислите \(1150 : 5\). Осторожно: в частном будет ноль.</div>
-<details><summary>Решение</summary>Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: 230. Проверка: \(230\cdot5 = 1150\) ✓.
-<p class="ls-answer">Ответ: 230</p></details></div>
+<div class="ls-task"><div class="ls-task-q"><span class="ls-task-num">11.</span> <span class="ls-rep">Повторение (урок 15)</span> Умножьте столбиком \(782\cdot5\).</div>
+<details><summary>Решение</summary><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>7</td><td>8</td><td>2</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">3</td><td class="q">9</td><td class="q">1</td><td class="q">0</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 3910.
+<p class="ls-answer">Ответ: 3910</p></details></div>
 </section>
 <nav class="ls-foot"><a href="22-geom-utverzhdeniya-1.html">← Урок 22</a><a href="00-index.html">Все уроки</a><a href="24-desyatichnye-slozhenie-umnozhenie.html">Урок 24 →</a></nav>
 </div>

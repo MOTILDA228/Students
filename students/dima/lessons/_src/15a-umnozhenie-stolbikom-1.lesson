@@ -1,0 +1,338 @@
+@title Урок 15a. Умножение в столбик на однозначное число
+@tags база | столбик
+@teacher
+<p><b>Новая идея урока:</b> умножение «по частям» (\(23\cdot4 = 20\cdot4 + 3\cdot4\)) и та же идея в столбике: умножаем на каждую цифру справа налево, десятки переносим наверх и <b>прибавляем</b> к следующему произведению. <b>Метод для Димы:</b> всё — на клетчатой бумаге, <b>одна цифра — одна клетка</b>, единицы строго под единицами. Первые 3 примера он проговаривает вслух каждый шаг, вы только задаёте вопросы («что делим? сколько раз помещается? что пишем?»). Карточку-алгоритм держать перед ним весь урок. Ошибку не исправлять за него — спросить «проверь умножением».</p>
+<ol class="ls-steps">
+  <li>0–12 мин — <b>разминка-повторение</b> (8 задач на время; две — таблица/деление). Ошибки — сразу разобрать.</li>
+  <li>12–22 мин — <b>новое</b>: шпаргалка, проговорить алгоритм вслух, 2 примера у доски.</li>
+  <li>22–50 мин — <b>«лесенка»</b>: ступень 1 вместе (вы подсказываете), ступень 2 сам, ступень 3 сам на время. Кто быстро — дальше, не дожидаясь.</li>
+  <li>50–60 мин — <b>мини-срез</b> из 5 задач без подсказок. Результат: 5 → 10 баллов, 4 → 8, 3 → 6, 2 → 4 — в журнал.</li>
+</ol>
+<p><b>Ошибки, которые ждём:</b> забывает прибавить перенос; прибавляет перенос <b>до</b> умножения; пишет двузначное число в одну клетку; паузы на таблице (держать таблицу рядом первые 15 минут).</p>
+<p><b>Правило «проверь себя»:</b> после каждого ответа — подставить обратно (умножением, сложением). Требовать это всегда, вслух.</p>
+<p><b>ДЗ</b> короткое (15 мин) и только на то, что получалось на уроке. Не сделал ДЗ — первые 10 минут следующего урока решает его при вас.</p>
+@tasks Разминка-повторение (12 минут)
+@task
+@rep 15
+Вычтите столбиком \(624 - 344\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">•</td><td></td><td></td></tr><tr><td></td><td>6</td><td>2</td><td>4</td></tr><tr><td>−</td><td class="u">3</td><td class="u">4</td><td class="u">4</td></tr><tr><td></td><td class="q">2</td><td class="q">8</td><td class="q">0</td></tr></tbody></table>Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: \(280 + 344 = 624\) ✓.
+@ans 280
+@check 624-344
+@task
+@rep 15
+Умножьте столбиком \(846\cdot9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td class="c">5</td><td></td></tr><tr><td></td><td></td><td>8</td><td>4</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">6</td><td class="q">1</td><td class="q">4</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 7614.
+@ans 7614
+@check 846*9
+@task
+@rep 14
+Решите уравнение \(x : 9 = 30\).
+@sol
+Неизвестное делимое = частное · делитель: \(x = 30\cdot9 = 270\). Проверка: \(270 : 9 = 30\) ✓.
+@ans 270
+@check 30*9
+@task
+@rep 14
+Решите уравнение \(x : 8 = 13\).
+@sol
+Неизвестное делимое = частное · делитель: \(x = 13\cdot8 = 104\). Проверка: \(104 : 8 = 13\) ✓.
+@ans 104
+@check 13*8
+@task
+@rep 12
+6 одинаковых пачек тетрадей содержат 96 тетрадей. Сколько тетрадей в одной пачке? (Уравнение \(6\cdot x = 96\).)
+@sol
+Неизвестный множитель: \(x = 96 : 6 = 16\).
+@ans 16
+@check 96//6
+@task
+@rep 12
+Решите уравнение \(x\cdot2 = 34\).
+@sol
+Неизвестный множитель = произведение : известный множитель: \(x = 34 : 2 = 17\). Проверка: \(2\cdot17 = 34\) ✓.
+@ans 17
+@check 34//2
+@task
+@rep 8
+Вычислите \(25 : 5\).
+@sol
+Вспоминаем «семейство»: \(5\cdot5 = 25\), значит \(25 : 5 = 5\).
+@ans 5
+@check 25//5
+@task
+@rep 8
+Какое число пропущено: \(7\cdot\square = 56\)?
+@sol
+Пропущенный множитель: \(56 : 7 = 8\).
+@ans 8
+@check 56//7
+@theory Шпаргалка
+<h3>1. Сначала — по частям</h3>
+<div class="ls-example">\(23\cdot4 = 20\cdot4 + 3\cdot4 = 80 + 12 = 92\). Столбик делает то же самое, только короче.</div>
+<h3>2. Столбик</h3>
+<div class="ls-cols"><table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>2</td><td>3</td></tr><tr><td>×</td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">9</td><td class="q">2</td></tr></tbody></table><table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>3</td><td>4</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">2</td><td class="q">0</td><td class="q">8</td><td class="q">2</td></tr></tbody></table></div>
+<ol class="ls-steps"><li>Однозначное число пишем под <b>единицами</b> большого.</li><li>\(7\cdot6 = 42\): пишем <b>2</b>, а <b>4</b> — маленькой цифрой над десятками.</li><li>\(4\cdot6 = 24\), <b>плюс 4</b> сверху = 28: пишем 8, 2 — наверх над сотнями.</li><li>\(3\cdot6 = 18\), плюс 2 = 20: пишем 20. Ответ 2082.</li></ol>
+<div class="ls-rule"><b>Порядок в каждом шаге:</b> сначала умножить, потом прибавить то, что сверху.</div>
+<div class="ls-warn">Прикидка: \(347\cdot6\) — это примерно \(350\cdot6 = 2100\). Если получилось 208 или 20 820 — ошибка.</div>
+@tasks Ступень 1. По частям и двузначные
+@task
+Вычислите \(25\cdot4\).
+@sol
+Разбиваем: \(25\cdot4 = 20\cdot4 + 5\cdot4 = 80 + 20 = 100\).
+@ans 100
+@check 25*4
+@task
+Вычислите \(20\cdot2\).
+@sol
+Разбиваем: \(20\cdot2 = 20\cdot2 + 0\cdot2 = 40 + 0 = 40\).
+@ans 40
+@check 20*2
+@task
+Вычислите \(17\cdot2\).
+@sol
+Разбиваем: \(17\cdot2 = 10\cdot2 + 7\cdot2 = 20 + 14 = 34\).
+@ans 34
+@check 17*2
+@task
+Вычислите \(19\cdot5\).
+@sol
+Разбиваем: \(19\cdot5 = 10\cdot5 + 9\cdot5 = 50 + 45 = 95\).
+@ans 95
+@check 19*5
+@task
+Умножьте столбиком \(36\cdot2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td></td></tr><tr><td></td><td>3</td><td>6</td></tr><tr><td>×</td><td class="u"></td><td class="u">2</td></tr><tr><td></td><td class="q">7</td><td class="q">2</td></tr></tbody></table>Умножаем 2 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 72.
+@ans 72
+@check 36*2
+@task
+Умножьте столбиком \(70\cdot6\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>7</td><td>0</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">4</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 420.
+@ans 420
+@check 70*6
+@task
+Умножьте столбиком \(88\cdot4\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td></tr><tr><td></td><td></td><td>8</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">3</td><td class="q">5</td><td class="q">2</td></tr></tbody></table>Умножаем 4 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 352.
+@ans 352
+@check 88*4
+@task
+Умножьте столбиком \(98\cdot6\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>9</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">5</td><td class="q">8</td><td class="q">8</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 588.
+@ans 588
+@check 98*6
+@task
+Умножьте столбиком \(83\cdot2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>8</td><td>3</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">6</td><td class="q">6</td></tr></tbody></table>Умножаем 2 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 166.
+@ans 166
+@check 83*2
+@task
+Умножьте столбиком \(97\cdot5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td></tr><tr><td></td><td></td><td>9</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">4</td><td class="q">8</td><td class="q">5</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 485.
+@ans 485
+@check 97*5
+@tasks Ступень 2. Трёхзначные
+@task
+Умножьте столбиком \(254\cdot3\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td>2</td><td>5</td><td>4</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">7</td><td class="q">6</td><td class="q">2</td></tr></tbody></table>Умножаем 3 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 762.
+@ans 762
+@check 254*3
+@task
+Умножьте столбиком \(541\cdot9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td><td></td></tr><tr><td></td><td></td><td>5</td><td>4</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">4</td><td class="q">8</td><td class="q">6</td><td class="q">9</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4869.
+@ans 4869
+@check 541*9
+@task
+Умножьте столбиком \(318\cdot9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td class="c">7</td><td></td></tr><tr><td></td><td></td><td>3</td><td>1</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">2</td><td class="q">8</td><td class="q">6</td><td class="q">2</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2862.
+@ans 2862
+@check 318*9
+@task
+Умножьте столбиком \(825\cdot9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>8</td><td>2</td><td>5</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">4</td><td class="q">2</td><td class="q">5</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 7425.
+@ans 7425
+@check 825*9
+@task
+Умножьте столбиком \(989\cdot2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>9</td><td>8</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">9</td><td class="q">7</td><td class="q">8</td></tr></tbody></table>Умножаем 2 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1978.
+@ans 1978
+@check 989*2
+@task
+Умножьте столбиком \(786\cdot9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">7</td><td class="c">5</td><td></td></tr><tr><td></td><td></td><td>7</td><td>8</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">7</td><td class="q">0</td><td class="q">7</td><td class="q">4</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 7074.
+@ans 7074
+@check 786*9
+@task
+Умножьте столбиком \(116\cdot8\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td class="c">1</td><td class="c">4</td><td></td></tr><tr><td></td><td>1</td><td>1</td><td>6</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">8</td></tr><tr><td></td><td class="q">9</td><td class="q">2</td><td class="q">8</td></tr></tbody></table>Умножаем 8 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 928.
+@ans 928
+@check 116*8
+@task
+Умножьте столбиком \(220\cdot6\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>2</td><td>2</td><td>0</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">2</td><td class="q">0</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1320.
+@ans 1320
+@check 220*6
+@tasks Ступень 3. Четырёхзначные и задачи
+@task
+Умножьте столбиком \(3648\cdot4\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td class="c">1</td><td class="c">3</td><td></td></tr><tr><td></td><td></td><td>3</td><td>6</td><td>4</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">1</td><td class="q">4</td><td class="q">5</td><td class="q">9</td><td class="q">2</td></tr></tbody></table>Умножаем 4 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 14592.
+@ans 14592
+@check 3648*4
+@task
+Умножьте столбиком \(2668\cdot5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">3</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>2</td><td>6</td><td>6</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">3</td><td class="q">3</td><td class="q">4</td><td class="q">0</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 13340.
+@ans 13340
+@check 2668*5
+@task
+Умножьте столбиком \(3481\cdot8\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">6</td><td></td><td></td></tr><tr><td></td><td></td><td>3</td><td>4</td><td>8</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">8</td></tr><tr><td></td><td class="q">2</td><td class="q">7</td><td class="q">8</td><td class="q">4</td><td class="q">8</td></tr></tbody></table>Умножаем 8 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 27848.
+@ans 27848
+@check 3481*8
+@task
+Умножьте столбиком \(3128\cdot5\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td class="c">1</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>3</td><td>1</td><td>2</td><td>8</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">5</td><td class="q">6</td><td class="q">4</td><td class="q">0</td></tr></tbody></table>Умножаем 5 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 15640.
+@ans 15640
+@check 3128*5
+@task
+Билет стоит 430 руб. Сколько стоят 6 билетов?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td></td><td></td></tr><tr><td></td><td></td><td>4</td><td>3</td><td>0</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">2</td><td class="q">5</td><td class="q">8</td><td class="q">0</td></tr></tbody></table>\(430\cdot6 = 2580\) руб.
+@ans 2580
+@check 430*6
+@task
+Билет стоит 331 руб. Сколько стоят 3 билетов?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>3</td><td>3</td><td>1</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">9</td><td class="q">9</td><td class="q">3</td></tr></tbody></table>\(331\cdot3 = 993\) руб.
+@ans 993
+@check 331*3
+@task
+Билет стоит 209 руб. Сколько стоят 4 билетов?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td></td></tr><tr><td></td><td>2</td><td>0</td><td>9</td></tr><tr><td>×</td><td class="u"></td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">8</td><td class="q">3</td><td class="q">6</td></tr></tbody></table>\(209\cdot4 = 836\) руб.
+@ans 836
+@check 209*4
+@task
+Билет стоит 259 руб. Сколько стоят 6 билетов?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">5</td><td></td></tr><tr><td></td><td></td><td>2</td><td>5</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">1</td><td class="q">5</td><td class="q">5</td><td class="q">4</td></tr></tbody></table>\(259\cdot6 = 1554\) руб.
+@ans 1554
+@check 259*6
+@tasks Мини-срез (10 минут, без подсказок)
+@task
+Вычислите \(46\cdot6\).
+@sol
+Разбиваем: \(46\cdot6 = 40\cdot6 + 6\cdot6 = 240 + 36 = 276\).
+@ans 276
+@check 46*6
+@task
+Умножьте столбиком \(4011\cdot9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>4</td><td>0</td><td>1</td><td>1</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">3</td><td class="q">6</td><td class="q">0</td><td class="q">9</td><td class="q">9</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 36099.
+@ans 36099
+@check 4011*9
+@task
+Билет стоит 337 руб. Сколько стоят 6 билетов?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>3</td><td>3</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">2</td><td class="q">0</td><td class="q">2</td><td class="q">2</td></tr></tbody></table>\(337\cdot6 = 2022\) руб.
+@ans 2022
+@check 337*6
+@task
+Билет стоит 429 руб. Сколько стоят 5 билетов?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">1</td><td class="c">4</td><td></td></tr><tr><td></td><td></td><td>4</td><td>2</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">1</td><td class="q">4</td><td class="q">5</td></tr></tbody></table>\(429\cdot5 = 2145\) руб.
+@ans 2145
+@check 429*5
+@task
+Умножьте столбиком \(639\cdot9\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">8</td><td></td></tr><tr><td></td><td></td><td>6</td><td>3</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">9</td></tr><tr><td></td><td class="q">5</td><td class="q">7</td><td class="q">5</td><td class="q">1</td></tr></tbody></table>Умножаем 9 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 5751.
+@ans 5751
+@check 639*9
+@hw
+@task
+Умножьте столбиком \(94\cdot6\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>9</td><td>4</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">6</td></tr><tr><td></td><td class="q">5</td><td class="q">6</td><td class="q">4</td></tr></tbody></table>Умножаем 6 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 564.
+@ans 564
+@check 94*6
+@task
+Умножьте столбиком \(89\cdot3\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>8</td><td>9</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u">3</td></tr><tr><td></td><td class="q">2</td><td class="q">6</td><td class="q">7</td></tr></tbody></table>Умножаем 3 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 267.
+@ans 267
+@check 89*3
+@task
+Умножьте столбиком \(686\cdot4\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>6</td><td>8</td><td>6</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">4</td></tr><tr><td></td><td class="q">2</td><td class="q">7</td><td class="q">4</td><td class="q">4</td></tr></tbody></table>Умножаем 4 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 2744.
+@ans 2744
+@check 686*4
+@task
+Умножьте столбиком \(582\cdot7\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">5</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>5</td><td>8</td><td>2</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">7</td></tr><tr><td></td><td class="q">4</td><td class="q">0</td><td class="q">7</td><td class="q">4</td></tr></tbody></table>Умножаем 7 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4074.
+@ans 4074
+@check 582*7
+@task
+Умножьте столбиком \(547\cdot8\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">5</td><td></td></tr><tr><td></td><td></td><td>5</td><td>4</td><td>7</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">8</td></tr><tr><td></td><td class="q">4</td><td class="q">3</td><td class="q">7</td><td class="q">6</td></tr></tbody></table>Умножаем 8 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 4376.
+@ans 4376
+@check 547*8
+@task
+Умножьте столбиком \(603\cdot2\).
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>6</td><td>0</td><td>3</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">2</td></tr><tr><td></td><td class="q">1</td><td class="q">2</td><td class="q">0</td><td class="q">6</td></tr></tbody></table>Умножаем 2 на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: 1206.
+@ans 1206
+@check 603*2
+@task
+Билет стоит 472 руб. Сколько стоят 5 билетов?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">1</td><td></td></tr><tr><td></td><td></td><td>4</td><td>7</td><td>2</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">2</td><td class="q">3</td><td class="q">6</td><td class="q">0</td></tr></tbody></table>\(472\cdot5 = 2360\) руб.
+@ans 2360
+@check 472*5
+@task
+Билет стоит 375 руб. Сколько стоят 5 билетов?
+@sol
+<table class="ls-col"><tbody><tr><td></td><td></td><td class="c">3</td><td class="c">2</td><td></td></tr><tr><td></td><td></td><td>3</td><td>7</td><td>5</td></tr><tr><td></td><td>×</td><td class="u"></td><td class="u"></td><td class="u">5</td></tr><tr><td></td><td class="q">1</td><td class="q">8</td><td class="q">7</td><td class="q">5</td></tr></tbody></table>\(375\cdot5 = 1875\) руб.
+@ans 1875
+@check 375*5
+@task
+@rep 14
+Решите уравнение \(36 : x = 18\).
+@sol
+Неизвестный делитель = делимое : частное: \(x = 36 : 18 = 2\). Проверка: \(36 : 2 = 18\) ✓.
+@ans 2
+@check 36//18
+@task
+@rep 12
+Решите уравнение \(x\cdot2 = 54\).
+@sol
+Неизвестный множитель = произведение : известный множитель: \(x = 54 : 2 = 27\). Проверка: \(2\cdot27 = 54\) ✓.
+@ans 27
+@check 54//2
+@task
+@rep 8
+Вычислите \(24 : 6\).
+@sol
+Вспоминаем «семейство»: \(6\cdot4 = 24\), значит \(24 : 6 = 4\).
+@ans 4
+@check 24//6

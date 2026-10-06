@@ -5,6 +5,7 @@ level: 1 — самые простые, 2 — средние, 3 — уровен
 """
 from fractions import Fraction as Fr
 import math
+import column as C
 
 
 def num(x):
@@ -195,7 +196,7 @@ def long_div(r, lv):
         steps.append(M(f"{cur} : {d} = {cur//d}") + (f" (остаток {cur % d})" if cur % d else ""))
         rem = cur % d
     return T(f"Вычислите столбиком {M(f'{p} : {d}')}.",
-             "По шагам: " + "; ".join(steps) + f". Ответ: {q}. Проверка: {M(f'{q}\\cdot{d} = {p}')} ✓.",
+             C.div(p, d) + "По шагам: " + "; ".join(steps) + f". Ответ: {q}. Проверка: {M(f'{q}\\cdot{d} = {p}')} ✓.",
              q, f"{p}//{d}")
 
 
@@ -204,7 +205,7 @@ def long_div_zero(r, lv):
     q = r.choice([x for x in range(101, 999) if '0' in str(x)[1:]])
     p = d * q
     return T(f"Вычислите {M(f'{p} : {d}')}. Осторожно: в частном будет ноль.",
-             f"Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: {q}. Проверка: {M(f'{q}\\cdot{d} = {p}')} ✓.",
+             C.div(p, d) + f"Если очередное число меньше делителя, пишем в частном 0 и сносим следующую цифру. Ответ: {q}. Проверка: {M(f'{q}\\cdot{d} = {p}')} ✓.",
              q, f"{p}//{d}")
 
 
@@ -213,14 +214,14 @@ def long_div_2(r, lv):
     q = r.randint(12, 48)
     p = d * q
     return T(f"Вычислите {M(f'{p} : {d}')}.",
-             f"Подбираем цифры частного прикидкой: {M(f'{d}\\cdot{q//10*10} = {d*(q//10*10)}')}, остаётся {p - d*(q//10*10)}, {M(f'{p - d*(q//10*10)} : {d} = {q%10}')}. Ответ: {q}.",
+             C.div(p, d) + f"Подбираем цифры частного прикидкой: {M(f'{d}\\cdot{q//10*10} = {d*(q//10*10)}')}, остаётся {p - d*(q//10*10)}, {M(f'{p - d*(q//10*10)} : {d} = {q%10}')}. Ответ: {q}.",
              q, f"{p}//{d}")
 
 
 def mul_column(r, lv):
     a, b = r.randint(100, 900), r.randint(2, 9)
     return T(f"Вычислите столбиком {M(f'{a}\\cdot{b}')}.",
-             f"{M(f'{a}\\cdot{b} = {a*b}')} (умножаем справа налево, переносим десятки).", a * b, f"{a}*{b}")
+             C.mul(a, b) + f"Умножаем справа налево, десятки переносим наверх: {M(f'{a}\\cdot{b} = {a*b}')}.", a * b, f"{a}*{b}")
 
 
 # ---------- 17: порядок действий ----------
@@ -593,4 +594,103 @@ def grid_lshape(r, lv):
              f"Разрезаем на два прямоугольника: {M(f'{a}\\cdot{e} + {c}\\cdot{b-e} = {S}')}.", S, f"area((1,1),({a+1},1),({a+1},{1+e}),({1+c},{1+e}),({1+c},{b+1}),(1,{b+1}))", fig)
 
 
-GEN = {k: v for k, v in globals().items() if callable(v) and not k.startswith("_") and k not in ("num", "ans", "M", "T", "G", "d", "Fr")}
+# ---------- 15–15d: столбики с нуля ----------
+DUVS = "Цикл «Д-У-В-С»: <b>Д</b>елю → <b>У</b>множаю → <b>В</b>ычитаю → <b>С</b>ношу."
+
+
+def col_add(r, lv):
+    a, b = (r.randint(15, 89), r.randint(15, 89)) if lv == 1 else (r.randint(150, 899), r.randint(150, 899))
+    return T(f"Сложите столбиком {M(f'{a} + {b}')}.", C.add_sub(a, b) + "Складываем справа налево по разрядам; если вышло 10 и больше — пишем единицы, а 1 переносим в следующий разряд (маленькая цифра сверху).", a + b, f"{a}+{b}")
+
+
+def col_sub(r, lv):
+    b = r.randint(15, 89) if lv == 1 else r.randint(120, 699)
+    a = b + (r.randint(10, 80) if lv == 1 else r.randint(100, 300))
+    return T(f"Вычтите столбиком {M(f'{a} - {b}')}.", C.add_sub(a, b, "-") + f"Справа налево. Если сверху цифра меньше — «занимаем» 1 десяток у соседа слева (ставим точку над ним, он уменьшается на 1). Проверка: {M(f'{a-b} + {b} = {a}')} ✓.", a - b, f"{a}-{b}")
+
+
+def mul1(r, lv):
+    a = r.randint(12, 98) if lv == 1 else (r.randint(102, 989) if lv == 2 else r.randint(1012, 4989))
+    b = r.randint(2, 9)
+    return T(f"Умножьте столбиком {M(f'{a}\\cdot{b}')}.",
+             C.mul(a, b) + f"Умножаем {b} на каждую цифру справа налево; десятки результата переносим наверх и прибавляем к следующему произведению. Ответ: {a*b}.", a * b, f"{a}*{b}")
+
+
+def mul2(r, lv):
+    a, b = (r.randint(12, 49), r.randint(11, 19)) if lv == 1 else (r.randint(21, 99), r.randint(12, 99))
+    while b % 10 == 0: b += 1
+    p1, p2 = a * (b % 10), a * (b // 10)
+    return T(f"Умножьте столбиком {M(f'{a}\\cdot{b}')}.",
+             C.mul(a, b) + f"Шаг 1: {M(f'{a}\\cdot{b%10} = {p1}')}. Шаг 2: {M(f'{a}\\cdot{b//10} = {p2}')} — пишем со сдвигом на одну клетку влево (это десятки!). Шаг 3: складываем. Ответ: {a*b}.",
+             a * b, f"{a}*{b}")
+
+
+def _div_pick(r, lv):
+    if lv == 1:  # каждая цифра делится без остатка: 846 : 2
+        d = r.randint(2, 4)
+        q = int("".join(str(r.randint(1, 9 // d)) for _ in range(r.choice([2, 3]))))
+        return d, q
+    if lv == 2:
+        d = r.randint(3, 9); q = r.randint(12, 99)
+        return d, q
+    d = r.randint(3, 9); q = r.randint(102, 999)
+    while "0" in str(q): q = r.randint(102, 999)
+    return d, q
+
+
+def div1(r, lv):
+    d, q = _div_pick(r, lv)
+    p = d * q
+    return T(f"Разделите уголком {M(f'{p} : {d}')}.",
+             C.div(p, d) + DUVS + f" Ответ: {q}. Проверка: {M(f'{q}\\cdot{d} = {p}')} ✓.", q, f"{p}//{d}")
+
+
+def div1_blank(r, lv):
+    d, q = _div_pick(r, lv)
+    p = d * q
+    t = T(f"Разделите уголком {M(f'{p} : {d}')}. Заполни заготовку:" + C.div(p, d, blank=True),
+          C.div(p, d) + DUVS + f" Ответ: {q}.", q, f"{p}//{d}")
+    return t
+
+
+def div_digits(r, lv):
+    d, q = _div_pick(r, 3)
+    p = d * q
+    first = int(str(p)[0]) if int(str(p)[0]) >= d else int(str(p)[:2])
+    k = len(str(q))
+    return T(f"Сколько цифр будет в частном {M(f'{p} : {d}')}? (Не дели до конца — только прикинь.)",
+             f"Первое неполное делимое — {first} (первое число, которое ≥ {d}). После него остаётся {len(str(p)) - len(str(first))} цифр, значит в частном {k} цифры. (Ответ {p // d}.)", k, f"len(str({p}//{d}))")
+
+
+def div_check(r, lv):
+    d, q = _div_pick(r, 2)
+    p = d * q
+    wrong = r.random() < .5
+    shown = q + r.choice([-10, 10, -1, 1, 2]) if wrong else q
+    return T(f"Проверь умножением: верно ли, что {M(f'{p} : {d} = {shown}')}? Ответ: 1 — верно, 0 — неверно.",
+             C.mul(shown, d) + f"{M(f'{shown}\\cdot{d} = {shown*d}')} {'≠' if wrong else '='} {p} → {0 if wrong else 1}.", 0 if wrong else 1, f"int({shown}*{d}=={p})")
+
+
+def div_zero2(r, lv):
+    d = r.randint(2, 9)
+    q = r.choice([x for x in range(101, 990) if "0" in str(x)[1:]])
+    p = d * q
+    return T(f"Разделите уголком {M(f'{p} : {d}')}. Внимание: в частном есть ноль.",
+             C.div(p, d) + f"Если снесли цифру, а число меньше {d}, — пишем в частном <b>0</b> и сносим следующую цифру. Ответ: {q}. Проверка: {M(f'{q}\\cdot{d} = {p}')} ✓.", q, f"{p}//{d}")
+
+
+def div_word(r, lv):
+    d, q = _div_pick(r, 2)
+    p = d * q
+    what = r.choice([(f"{p} тетрадей разложили поровну в {d} коробок", "Сколько тетрадей в одной коробке?"),
+                     (f"{p} км машина проехала за {d} часов с одной скоростью", "Сколько км она проезжала за час?"),
+                     (f"За {d} одинаковых билета заплатили {p} руб.", "Сколько стоит один билет?")])
+    return T(f"{what[0]}. {what[1]}", C.div(p, d) + f"Делим: {M(f'{p} : {d} = {q}')}.", q, f"{p}//{d}")
+
+
+def mul_word(r, lv):
+    a, b = r.randint(105, 480), r.randint(3, 9)
+    return T(f"Билет стоит {a} руб. Сколько стоят {b} билетов?", C.mul(a, b) + f"{M(f'{a}\\cdot{b} = {a*b}')} руб.", a * b, f"{a}*{b}")
+
+
+GEN = {k: v for k, v in globals().items() if callable(v) and not k.startswith("_") and k not in ("num", "ans", "M", "T", "G", "d", "Fr", "C")}
